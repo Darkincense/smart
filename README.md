@@ -5,7 +5,7 @@
 ## Table of contents
 
 - [Guide](#guide)
-- [ShowTime](#showTime)
+- [ShowTime](#showtime)
 - [Code related](#code-related)
 - [Mock](#mock)
 - [Interview](#interview)
