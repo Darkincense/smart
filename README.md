@@ -31,7 +31,14 @@
 
 - https://www.netlify.com 部署静态站点演示
 - http://jsbin.com/
-- https://codesandbox.io/u/xiaoyueyue165 
+- https://codesandbox.io/u/xiaoyueyue165
+- https://codepen.io/
+
+#### userful links
+
+- http://babeljs.io/repl
+- http://beautifytools.com/scss-compiler.php
+- https://www.hackerrank.com/
 
 ### Mock
 
