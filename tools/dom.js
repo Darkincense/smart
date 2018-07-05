@@ -254,7 +254,26 @@ function siblings(obj) {
   return a;
 }
 
+function siblings2(ele) {
+  var newArr = [];
+  var arr = ele.parentNode.children;//ie678中无法取出注释节点;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].nodeType == 1 && arr[i] != ele) {
+      newArr.push(arr[i]);
+    }
+  }
+  return newArr;
+}
 
+/**
+ * 功能:根据索引值找兄弟节点
+ * @param ele
+ * @param index
+ * @returns {*|HTMLElement}
+ */
+function getSibEleOfIndex(ele, index) {
+  return ele.parentNode.children[index];
+}
 
 // ---------------------------·····class与属性，css样式-------------------------
 

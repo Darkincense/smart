@@ -15,7 +15,7 @@ var randomItem = items[Math.floor(Math.random() * items.length)];
 
 // 打乱数字数组的顺序
 var numbers = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
-numbers.sort(function(){ return Math.random() - 0.5});
+numbers.sort(function () { return Math.random() - 0.5 });
 
 // 数组追加
 Array.prototype.push.apply(array1, array2);
@@ -56,27 +56,30 @@ Array.prototype.remove = function (val) {
 // 判断数组里是否有某个元素
 
 Array.prototype.isContains = function (e) {
+  if (Array.prototype.includes) {
+    return Array.prototype.includes(e);
+  }
   for (i = 0; i < this.length && this[i] != e; i++);
   return !(i == this.length);
 }
 function in_array(needle, haystack) {
-	if(typeof needle == 'string' || typeof needle == 'number') {
-		for(var i in haystack) {
-			if(haystack[i] == needle) {
-					return true;
-			}
-		}
-	}
-	return false;
+  if (typeof needle == 'string' || typeof needle == 'number') {
+    for (var i in haystack) {
+      if (haystack[i] == needle) {
+        return true;
+      }
+    }
+  }
+  return false;
 }
 
 
-// 将一组值转换为数组
-function arrayOf() {
-  return []
-    .slice
-    .call(arguments);
-};
+// 将一组类数组转换为数组
+function toArray(obj) {
+  return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj);
+}
+
+
 //去除数组中假值元素，比如undefined,null,0,"",NaN都是假值
 function compact(arr) {
   var index = -1,
@@ -104,10 +107,10 @@ function arrayIndex(element, array) {
 
 //getArrayNum([0,1,2,3,4,5,6,7,8,9],2) 不传第二个参数,默认返回从n1到数组结束的元素
 //[2, 3, 4, 5, 6, 7, 8, 9]
-function getArrayNum(arr,n1,n2){
-  var arr1=[],len=n2||arr.length-1;
-  for(var i=n1;i<=len;i++){
-      arr1.push(arr[i])
+function getArrayNum(arr, n1, n2) {
+  var arr1 = [], len = n2 || arr.length - 1;
+  for (var i = n1; i <= len; i++) {
+    arr1.push(arr[i])
   }
   return arr1;
 }
@@ -145,11 +148,11 @@ var aaa = [{a: 2, b: 1}, {a: 1, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}]
 var bbb = dedupe(aaa, value => value.a)  //只看元素的a键的值是否存在
 console.log(bbb) */
 // 数组最大值，最小值
-function maxArr(arr){
-  return Math.max.apply(null,arr);
+function maxArr(arr) {
+  return Math.max.apply(null, arr);
 }
-function minArr(arr){
-  return Math.min.apply(null,arr);
+function minArr(arr) {
+  return Math.min.apply(null, arr);
 }
 //randomOne([1,2,3,6,8,5,4,2,6])
 //2
@@ -167,12 +170,12 @@ function randomOne(arr) {
 //删除值为'val'的数组元素
 //removeArrayForValue(['test','test1','test2','test','aaa'],'test','%')
 //["aaa"]   带有'test'的都删除
-    
+
 //removeArrayForValue(['test','test1','test2','test','aaa'],'test')
 //["test1", "test2", "aaa"]  //数组元素的值全等于'test'才被删除
-function removeArrayForValue(arr,val,type){
+function removeArrayForValue(arr, val, type) {
   return arr.filter(function (item) {
-      return type? item.indexOf(val) === -1 : item !== val
+    return type ? item.indexOf(val) === -1 : item !== val
   })
 }
 
