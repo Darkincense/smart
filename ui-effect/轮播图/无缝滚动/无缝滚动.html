@@ -1,0 +1,232 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            border: 0;
+        }
+
+        .all {
+            width: 500px;
+            height: 200px;
+            padding: 7px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        .screen {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .screen li {
+            width: 500px;
+            height: 200px;
+            overflow: hidden;
+            float: left;
+        }
+
+        .screen ul {
+            position: absolute;
+            left: 0;
+            top: 0px;
+            width: 3000px;
+        }
+
+        .all ol {
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .all ol li {
+            float: left;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .all ol li.current {
+            background: yellow;
+        }
+
+        #arr {
+            display: none;
+        }
+
+        #arr span {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            margin-top: -20px;
+            background: #000;
+            cursor: pointer;
+            line-height: 40px;
+            text-align: center;
+            font-weight: bold;
+            font-family: '黑体';
+            font-size: 30px;
+            color: #fff;
+            opacity: 0.3;
+            border: 1px solid #fff;
+        }
+
+        #arr #right {
+            right: 5px;
+            left: auto;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            //先复制第一个图片所在的li节点添加到ul中。然后根据图片-1生成li添加到ol中。点亮ol中第一个li。
+            var all = document.getElementById("all");
+            var screen = all.firstElementChild || all.firstChild;
+            var imgWidth = screen.offsetWidth;
+            var ul = screen.children[0];
+            var ulLiArr = ul.children;
+            var ol = screen.children[1];
+            var arr = screen.children[2];
+            var left = arr.children[0];
+            var right = left.nextElementSibling || left.nextSibling;
+
+            var ulLi = ulLiArr[0].cloneNode(true);
+            ul.appendChild(ulLi);
+            for (var i = 0; i < ulLiArr.length - 1; i++) {
+                var olLi = document.createElement("li");
+                olLi.innerHTML = i + 1;
+                ol.appendChild(olLi);
+            }
+            var olLiArr = ol.children;
+            olLiArr[0].className = "current";
+
+            for (var i = 0; i < olLiArr.length; i++) {
+                olLiArr[i].onmouseover = function () {
+                    for (var j = 0; j < olLiArr.length; j++) {
+                        olLiArr[j].className = "";
+                    }
+                    this.className = "current";
+                    square = key = this.innerHTML - 1;
+
+                    //(2).移动ul。(利用匀速运动方法)
+                    animate(-(this.innerHTML - 1) * imgWidth, ul);
+                }
+            }
+
+
+            var key = 0;//图片用
+            var square = 0;//小方块用
+            right.onclick = aotuPlay;
+
+
+            left.onclick = function () {
+                key--;//图片的索引值不能大于5（不能==6）
+                if (key == -1) {
+                    key = ulLiArr.length - 2;//6张图片，倒数第二张索引值为4
+                    ul.style.left = - (ulLiArr.length - 1) * imgWidth + "px";//先闪动到最后一张图片，在缓动到倒数第二张。
+                }
+                square--;//小方块的索引值不能大于4（不能==5）
+                if (square == -1) {
+                    square = olLiArr.length - 1;
+                }
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                animate(-key * imgWidth, ul);
+            }
+
+            var timer = setInterval(aotuPlay, 1000);
+            all.onmouseover = function () {
+                arr.style.display = "block";
+                clearInterval(timer);
+            }
+            all.onmouseout = function () {
+                arr.style.display = "none";
+                timer = setInterval(aotuPlay, 1000);
+            }
+
+
+            function aotuPlay() {
+                key++;//图片的索引值不能大于5（不能==6）
+                if (key == ulLiArr.length) {
+                    key = 1;//第二张的索引值为1；
+                    ul.style.left = 0;//先闪动到left = 0;这个位置，在缓动到第二张。
+                }
+                square++;//小方块的索引值不能大于4（不能==5）
+                if (square == olLiArr.length) {
+                    square = 0;
+                }
+                for (var j = 0; j < olLiArr.length; j++) {
+                    olLiArr[j].className = "";
+                }
+                olLiArr[square].className = "current";
+                animate(-key * imgWidth, ul);
+            }
+        }
+
+        //匀速运动方法
+        function animate(target, ele) {
+            clearInterval(ele.timer);
+            ele.timer = setInterval(function () {
+                var speed = target > ele.offsetLeft ? 10 : -10;
+                ele.style.left = ele.offsetLeft + speed + "px";
+                if (Math.abs(target - ele.offsetLeft) <= Math.abs(speed)) {
+                    ele.style.left = target + "px";
+                    clearInterval(ele.timer);
+                }
+            }, 8);
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="all" id='all'>
+        <div class="screen" id="screen">
+            <ul id="ul">
+                <li>
+                    <img src="images/1.jpg" width="500" height="200" />
+                </li>
+                <li>
+                    <img src="images/2.jpg" width="500" height="200" />
+                </li>
+                <li>
+                    <img src="images/3.jpg" width="500" height="200" />
+                </li>
+                <li>
+                    <img src="images/4.jpg" width="500" height="200" />
+                </li>
+                <li>
+                    <img src="images/5.jpg" width="500" height="200" />
+                </li>
+            </ul>
+            <ol>
+
+            </ol>
+            <div id="arr">
+                <span id="left">
+                    <</span>
+                        <span id="right">></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

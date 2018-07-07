@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        .box {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            position: relative;
+            border: 1px solid #ccc;
+        }
+
+        a {
+            display: none;
+            width: 400px;
+            height: 300px;
+            cursor: move;
+            text-align: center;
+            font: 700 80px/300px "simsun";
+        }
+
+        .show {
+            display: block;
+        }
+
+        ul {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -66px;
+        }
+
+        li {
+            float: left;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            color: #fff;
+            line-height: 18px;
+            cursor: pointer;
+            margin: 2px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .current {
+            background-color: red;
+        }
+
+        span {
+            position: absolute;
+            top: 50%;
+            text-align: center;
+            font: 700 30px/60px "simsun";
+            color: #fff;
+            margin-top: -30px;
+            width: 30px;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        span:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .right {
+            right: 0;
+        }
+    </style>
+
+    <script>
+        window.onload = function () {
+
+            var box = document.getElementsByClassName("box")[0];
+            var aArr = box.getElementsByTagName("a");
+            var liArr = box.getElementsByTagName("li");
+            var spanArr = box.getElementsByTagName("span");
+            //定义一个颜色数组;
+            var colorArr = ["skyblue", "yellowgreen", "pink", "orange", "yellow", "green"];
+            for (var i = 0; i < aArr.length; i++) {
+                aArr[i].style.background = colorArr[i];
+            }
+
+            for (var i = 0; i < liArr.length; i++) {
+                liArr[i].onclick = function () {
+                    count = this.innerHTML - 1;
+                    fn();
+                }
+            }
+
+            var count = 0;
+            spanArr[1].onclick = fn1;
+
+
+            //和右侧的span逻辑相反
+            spanArr[0].onclick = function () {
+                count--;
+                //count的最大值为5,等于6的时候,显示第一个;
+                if (count === -1) {
+                    count = 5; //索引值为5最后一张图;
+                }
+                fn();
+            }
+
+            //加定时器;
+            var timer = setInterval(fn1, 1000);
+
+            //鼠标进入box清除定时器,移开在添加;
+            box.onmouseover = function () {
+                clearInterval(timer);
+            }
+            box.onmouseout = function () {
+                timer = setInterval(fn1, 1000);
+            }
+
+
+
+
+
+            //封装点亮盒子和显示a链接
+            function fn() {
+                for (var j = 0; j < liArr.length; j++) {
+                    liArr[j].className = "";
+                    aArr[j].className = "";
+                }
+                liArr[count].className = "current";
+                aArr[count].className = "show";
+            }
+
+            function fn1() {
+                count++;
+                //count的最大值为5,等于6的时候,显示第一个;
+                if (count === 6) {
+                    count = 0;
+                }
+                fn()
+            };
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="box">
+        <a href="#" class="show">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+        <a href="#">6</a>
+
+        <ul>
+            <li class="current">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+        </ul>
+
+        <span class="left">&lt;</span>
+        <span class="right">&gt;</span>
+    </div>
+
+
+
+</body>
+
+</html>

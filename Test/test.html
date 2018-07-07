@@ -18,31 +18,18 @@
       color: #fff;
       text-align: center;
     }
+    .te{
+      font: 12;
+    }
   </style>
 </head>
 
 <body>
-  	<input type="button" value="获取验证码" style="height: 36px;width: 100px;margin-top: 2px" class="btn" id="vCodeButton">
+  <input type="button" value="获取验证码" style="height: 36px;width: 100px;margin-top: 2px" class="te btn" id="vCodeButton">
 </body>
 <script src="./mock/movie.js"></script>
 <script>
-  	var TIME = 180,
-			timeoutID = null;
-function setTimeInterval() {
-			timeoutID = window.setInterval(function () {
-				var btn = document.querySelector('#vCodeButton');
-				if (TIME > 0 && btn) {
-					TIME--;
-					btn.value = '已发送(' + TIME + ')';
-				} else {
-					btn.value = '重新获取';
-					TIME = 180;
-					window.clearTimeout(timeoutID);
-				}
-
-			}, '1000')
-		}
-    setTimeInterval();
+ 
 </script>
 
 </html>
