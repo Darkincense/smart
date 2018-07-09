@@ -7,29 +7,20 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <style>
-    #box {
-      width: 200px;
-      height: 200px;
-      background-color: purple;
-      border: 1px solid #ccc;
-      position: relative;
-      font: 26px/200px arial, sans-serif;
-      /* font-style | font-variant | font-weight | font-size | line-height | font-family */
-      color: #fff;
-      text-align: center;
-    }
-    .te{
-      font: 12;
-    }
   </style>
 </head>
 
 <body>
-  <input type="button" value="获取验证码" style="height: 36px;width: 100px;margin-top: 2px" class="te btn" id="vCodeButton">
+  <div id="info" class="content padding-t-2x">
+    <h2 class="margin-t-2x">联系方式</h2>
+    <p>公司地址：上海市浦东新区世纪大道1200号中国石油上海大厦25楼营销处</p>
+    <p>邮政编码：200122</p>
+    <p>联系电话：021-50956650</p>
+    <p>传真：021-50956655</p>
+  </div>
 </body>
-<script src="./mock/movie.js"></script>
 <script>
- 
+console.log(document.querySelectorAll('#info p'))
 </script>
 
 </html>
