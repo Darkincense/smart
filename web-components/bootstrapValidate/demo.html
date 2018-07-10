@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>BootstrapValidator demo</title>
+  <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.css" rel="stylesheet">
+  <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+  <script src="./js/bootstrapValidate.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <!-- form: -->
+      <section>
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="page-header">
+            <h2>表单验证</h2>
+          </div>
+
+          <form id="defaultForm" method="post" class="form-horizontal" action="target.php" data-bv-message="This value is not valid"
+            data-bv-feedbackicons-valid="glyphicon glyphicon-ok" data-bv-feedbackicons-invalid="glyphicon glyphicon-remove"
+            data-bv-feedbackicons-validating="glyphicon glyphicon-refresh">
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Username</label>
+              <div class="col-lg-5">
+                <input type="text" class="form-control" name="username" data-bv-trigger="blur" data-bv-message="The username is not valid"
+                data-bv-required="true" data-bv-notempty-message="The username is required and cannot be empty"  data-bv-regexp="[a-zA-Z0-9_\.]+"
+                  data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Email address</label>
+              <div class="col-lg-5">
+                <input class="form-control" name="email" type="email"  data-bv-required="true" data-bv-email="true" data-bv-email-message="The input is not a valid email address"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Website</label>
+              <div class="col-lg-5">
+                <input class="form-control" name="website" type="url"  data-bv-required="true" data-bv-uri-message="The input is not a valid website address"
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-lg-3 control-label">Age</label>
+              <div class="col-lg-2">
+                <input type="number" class="form-control" name="age" step="1" min="10" data-bv-greaterthan-inclusive="false" data-bv-greaterthan-message="The input must be greater than or equal to 10"
+                  max="100" data-bv-lessthan-inclusive="true" data-bv-lessthan-message="The input must be less than 100" />
+           
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-lg-9 col-lg-offset-3">
+                <input type="submit" class="btn btn-primary" value="Sign up">
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+      <!-- :form -->
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $('#defaultForm').bootstrapValidator({
+       // trigger:'change'
+      });
+    });
+  </script>
+</body>
+
+</html>
