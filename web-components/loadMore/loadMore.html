@@ -64,13 +64,13 @@
       ele: "content",
       data: window.yichuku.list,
       totalNum: window.yichuku.totalRows,
-      limit: 5,
+      limit: 15,
       clickFn: func2,
-      // frontendPager: true
+      frontendPager: true
     });
 
     // 后端分页
-    function func(current_page, max_page, totalNum) {
+    function func1(current_page, max_page, totalNum) {
       alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
     }
     // 前端分页
