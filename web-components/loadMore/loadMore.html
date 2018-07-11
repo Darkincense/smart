@@ -15,7 +15,8 @@
     .pager {
       display: inline-block;
       padding-left: 0;
-      margin: 1.250em 0; /*20px*/
+      margin: 1.250em 0;
+      /*20px*/
       list-style: none;
       text-align: center;
     }
@@ -52,20 +53,34 @@
 
 <body>
   <div id="content">
-    <button>加载完成</button>
   </div>
   <script src="../../tools/dom.js"></script>
   <script src="./js/loadMore.js"></script>
+  <script src="./js/pagenationData.js"></script>
   <script>
 
-    loadMore.start({
-      ele: "content"
+
+    loadMore.init({
+      ele: "content",
+      data: window.yichuku.list,
+      totalNum: window.yichuku.totalRows,
+      limit: 5,
+      clickFn: func2,
+      // frontendPager: true
     });
 
-    // 加载完成
-    document.querySelector("button").onclick = function () {
-      loadMore.complete();
+    // 后端分页
+    function func(current_page, max_page, totalNum) {
+      alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
     }
+    // 前端分页
+    function func2(current_page, current_data, max_page, totalNum) {
+
+      alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
+      console.log(current_data)
+    }
+
+
 
   </script>
 </body>

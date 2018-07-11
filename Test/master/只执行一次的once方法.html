@@ -26,12 +26,25 @@
 
 <body>
   <div id="block" class="large">Click Me</div>
+
   <p>文字内容文字内容文字内容文字内容文 字内容文字内容文字内容文字内容文字内 容文字内容文字内容文字内容文字内容文字 内容文字内容文字内容文字内容文字内容文 字内容文字内容文字内容文字内容文 字内容文字内容文字内容文字内容文字内 容文字内容文字内容文字内容文字内容文字
     内容文字内容文字内容文字内容文字内容文 字内容文字内容文字内容文字内容文 字内容文字内容文字内容文字内容文字内 容文字内容文字内容文字内容文字内容文字 内容文字内容文字内容文字内容文字内容
   </p>
+  <button class="btn" onclick="func();">
+    执行一次
+  </button>
 </body>
 
 <script>
+  var isOpen = true;
+  // 仅能全局变量
+  function func() {
+    isOpen ? function () {
+      console.log(1);
+      isOpen = false;
+    }() : '';
+  }
+
   function once(fn) {
     return function (...args) {
       if (fn) {
@@ -44,9 +57,9 @@
 
   block.onclick = once(function (evt) {
     console.log('hide');
-    evt.target.className = 'hide';
+    // evt.target.className = 'hide';
     setTimeout(function () {
-      document.body.removeChild(block);
+      // document.body.removeChild(block);
     }, 2000);
   });
 </script>
