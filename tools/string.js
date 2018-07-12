@@ -2,7 +2,7 @@ String.prototype.trim = function () {
   return this.replace(/(^\s*)|(\s*$)/g, "");
 }
 // 替换全部
-String.prototype.replaceAll = function(s1, s2) {
+String.prototype.replaceAll = function (s1, s2) {
   return this.replace(new RegExp(s1, "gm"), s2)
 }
 //判断一个字符串是否被包含在另一字符串
@@ -20,55 +20,55 @@ String.prototype.endWith = function (s) {
   return (d >= 0 && this.lastIndexOf(s) == d)
 }
 //计算字符串长度
-String.prototype.strLen = function() {
-    var len = 0;
-    for (var i = 0; i < this.length; i++) {
-        if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2; else len ++;
-    }
-    return len;
+String.prototype.strLen = function () {
+  var len = 0;
+  for (var i = 0; i < this.length; i++) {
+    if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2; else len++;
+  }
+  return len;
 }
 function strlen(str) {
-	return (BROWSER.ie && str.indexOf('\n') != -1) ? str.replace(/\r?\n/g, '_').length : str.length;
+  return (BROWSER.ie && str.indexOf('\n') != -1) ? str.replace(/\r?\n/g, '_').length : str.length;
 }
 //将字符串拆成字符，并存到数组中
-String.prototype.strToChars = function(){
-    var chars = new Array();
-    for (var i = 0; i < this.length; i++){
-        chars[i] = [this.substr(i, 1), this.isCHS(i)];
-    }
-    String.prototype.charsArray = chars;
-    return chars;
+String.prototype.strToChars = function () {
+  var chars = new Array();
+  for (var i = 0; i < this.length; i++) {
+    chars[i] = [this.substr(i, 1), this.isCHS(i)];
+  }
+  String.prototype.charsArray = chars;
+  return chars;
 }
 
 //判断某个字符是否是汉字
-String.prototype.isCHS = function(i){
-    if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0)
-        return true;
-    else
-        return false;
+String.prototype.isCHS = function (i) {
+  if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0)
+    return true;
+  else
+    return false;
 }
 
 //截取字符串（从start字节到end字节）
-String.prototype.subCHString = function(start, end){
-    var len = 0;
-    var str = "";
-    this.strToChars();
-    for (var i = 0; i < this.length; i++) {
-        if(this.charsArray[i][1])
-            len += 2;
-        else
-            len++;
-        if (end < len)
-            return str;
-        else if (start < len)
-            str += this.charsArray[i][0];
-    }
-    return str;
+String.prototype.subCHString = function (start, end) {
+  var len = 0;
+  var str = "";
+  this.strToChars();
+  for (var i = 0; i < this.length; i++) {
+    if (this.charsArray[i][1])
+      len += 2;
+    else
+      len++;
+    if (end < len)
+      return str;
+    else if (start < len)
+      str += this.charsArray[i][0];
+  }
+  return str;
 }
 
 //截取字符串（从start字节截取length个字节）
-String.prototype.subCHStr = function(start, length){
-    return this.subCHString(start, start + length);
+String.prototype.subCHStr = function (start, length) {
+  return this.subCHString(start, start + length);
 }
 
 
@@ -86,8 +86,12 @@ function isDigit(value) {
     return true
   }
 }
+
+function isNumber(obj) {
+  return Object.prototype.toString.call(obj).split(" ")[1].slice(0, -1) === 'Number' ? true : false;
+}
 function isUndefined(variable) {
-	return typeof variable == 'undefined' ? true : false;
+  return typeof variable == 'undefined' ? true : false;
 }
 /**
  * 判断变量是否为空
@@ -108,21 +112,21 @@ function replaceAll(str, AFindText, ARepText) {
 // 字符串长度截取,多余的用...代替
 function cutstr(str, len) {
   var temp,
-      icount = 0,
-      patrn = /[^\x00-\xff]/,
-      strre = "";
+    icount = 0,
+    patrn = /[^\x00-\xff]/,
+    strre = "";
   for (var i = 0; i < str.length; i++) {
-      if (icount < len - 1) {
-          temp = str.substr(i, 1);
-              if (patrn.exec(temp) == null) {
-                 icount = icount + 1
-          } else {
-              icount = icount + 2
-          }
-          strre += temp
-          } else {
-          break;
+    if (icount < len - 1) {
+      temp = str.substr(i, 1);
+      if (patrn.exec(temp) == null) {
+        icount = icount + 1
+      } else {
+        icount = icount + 2
       }
+      strre += temp
+    } else {
+      break;
+    }
   }
   return strre + "..."
 }

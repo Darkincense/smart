@@ -54,6 +54,7 @@
 <body>
   <div id="content">
   </div>
+  <div id="more"></div>
   <script src="../../tools/dom.js"></script>
   <script src="./js/loadMore.js"></script>
   <script src="./js/pagenationData.js"></script>
@@ -61,17 +62,20 @@
 
 
     loadMore.init({
-      ele: "content",
+      ele: "#more",
       data: window.yichuku.list,
-      totalNum: window.yichuku.totalRows,
-      limit: 15,
+      totalNum: 23,
+      limit: 5,
       clickFn: func2,
-      frontendPager: true
+      frontendPager: true // 是否采用前端分页
     });
 
     // 后端分页
     function func1(current_page, max_page, totalNum) {
       alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
+
+      // 获取第 current_page 页的数据
+      // Order.queryOrderList(current_page);
     }
     // 前端分页
     function func2(current_page, current_data, max_page, totalNum) {

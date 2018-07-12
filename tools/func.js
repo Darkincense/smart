@@ -4,6 +4,10 @@ function getType(a) {
   return typeArray[1].slice(0, -1);
 }
 
+function isNumber(obj) {
+  return Object.prototype.toString.call(obj).split(" ")[1].slice(0, -1) === 'Number' ? true : false;
+}
+
 //传递一个范围，返回该范围的随机数
 function getRand(min, max) {
   if (max < min) {
@@ -145,16 +149,16 @@ function jump(count, target) {
 
 // 空闲控制 返回函数连续调用时，空闲时间必须大于或等于 delay，fn 才会执行
 
-function debounce(fn,delay){
-    var timer;
-    return function(){
-        var context = this;
-        var args = arguments;
-        timer&&clearTimeout(timer);
-        timer = setTimeout(function(){
-            fn.apply(context,args);
-        },delay);
-    }
+function debounce(fn, delay) {
+  var timer;
+  return function () {
+    var context = this;
+    var args = arguments;
+    timer && clearTimeout(timer);
+    timer = setTimeout(function () {
+      fn.apply(context, args);
+    }, delay);
+  }
 }
 // 节流（Throttling/Throttle）
 // throttle 的关注点是连续的执行间隔时间,强制函数以固定的速率执行。
@@ -174,14 +178,14 @@ function throttle(func, wait) {
   }
 }
 
-window.onerror = function(
+window.onerror = function (
   errMsg,
   scriptURI,
   lineNumber,
   columnNumber,
   errorObj
 ) {
-  setTimeout(function() {
+  setTimeout(function () {
     var rst = {
       "错误信息：": errMsg,
       "出错文件：": scriptURI,
@@ -194,5 +198,5 @@ window.onerror = function(
   });
 };
 function stripscript(s) {
-	return s.replace(/<script.*?>.*?<\/script>/ig, '');
+  return s.replace(/<script.*?>.*?<\/script>/ig, '');
 }

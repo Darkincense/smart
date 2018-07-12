@@ -1,3 +1,4 @@
+var CURRENT_PAGE = 1;
 var CURRENT_DATA = null;
 var SHENGYU_DATA = null;
 var DATA = null;
@@ -6,14 +7,13 @@ var loadMore = {
   init: function (options) {
     var y = this;
     var defaultOptions = {
-      limit: 10,
+      limit: 10, // 限制每页最多展示数目
       CURRENT_PAGE: 1,
       MAX_PAGE: null
     }
     y.options = _extend(defaultOptions, options);
     if (y.checkOptions()) {
-      y.checkOptions().appendById(y.options.ele).bind();
-      // 做一些逻辑初始化的操作
+      y.checkOptions().appendBy$(y.options.ele).bind();
       var splitNum = y.options.limit;
       DATA = y.options.data;
       SHENGYU_DATA = DATA.slice(splitNum);
@@ -21,23 +21,26 @@ var loadMore = {
 
   },
   checkOptions: function () {
-    if (!this.options.hasOwnProperty("ele")) {
-      throw new Error("element is required");
+    if (!this.options.hasOwnProperty("ele") || !document.querySelector(this.options.ele)) {
+      throw new Error("ele必须指定为querySelector可获取的dom元素，用于存放loadmore组件");
     }
-    if (!this.options.hasOwnProperty('data') || !this.options.data.length) {
+    if (!this.options.hasOwnProperty('data') || !this.options.data.length || !Array.isArray(this.options.data)) {
       throw new Error('传入的分页数据不是数组格式');
     }
-    if (!this.options.hasOwnProperty('totalNum')) {
-      throw new Error('分页器的总页数必须指定')
+    if (!this.options.hasOwnProperty('totalNum') || !(typeof (this.options.totalNum) === 'number')) {
+      throw new Error('分页器的总页数必须指定,且为Number类型')
     }
-    if (!this.options.hasOwnProperty('clickFn') || !typeof (this.options.clickFn) === 'function') {
+    if (!this.options.hasOwnProperty('clickFn') || !(typeof (this.options.clickFn) === 'function')) {
       throw new Error('请为分页器指定点击回调函数')
     }
 
     MAX_PAGE = Math.ceil(this.options.totalNum / Number(this.options.limit));
+    if (!typeof (MAX_PAGE) === 'number') {
+      throw new Error("分页器最大页数获取失败，请查看...")
+    }
     this.options.MAX_PAGE = MAX_PAGE;
 
-    if (this.options.CURRENT_PAGE === MAX_PAGE) {
+    if (CURRENT_PAGE === MAX_PAGE) {
       console.log('分页器完成工作任务，消失...')
       return null;
     }
@@ -47,22 +50,21 @@ var loadMore = {
     var box = document.createElement("div");
     box.id = "loadMore";
     box.className = "text-center";
-    box.innerHTML = '<ul class="pager">' +
-      '<li id="btn-load-more" class="">' +
-      '<a href="javascript:;">点击载入更多</a></li>'
+    box.innerHTML = '<ul class="pager">'
+      + '<li id="btn-load-more" class="">'
+      + '<a href="javascript:;">点击载入更多</a></li>'
 
-      +
-      '<li id="btn-loading" class="hidden">' +
-      '<a href="javascript:;">' +
-      '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> 载入中</a> </li>' +
-      '</ul>';
+      + '<li id="btn-loading" class="hidden">'
+      + '<a href="javascript:;">'
+      + '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i> 载入中</a> </li>'
+      + '</ul>';
 
     return box;
   },
-  appendById: function (id) {
+  appendBy$: function (str) {
     var y = this;
     var box = y.makeBtnLayout();
-    document.getElementById(id).appendChild(box);
+    document.querySelector(str).appendChild(box);
     return y;
   },
   bind: function () {
@@ -74,23 +76,24 @@ var loadMore = {
 
       this.classList.add("hidden");
       loading.classList.remove("hidden");
-      y.options.CURRENT_PAGE++;
+      CURRENT_PAGE++;
 
-      console.log('CURRENT_PAGE :' + y.options.CURRENT_PAGE)
+      console.log('CURRENT_PAGE :' + CURRENT_PAGE)
 
       if (!y.options.frontendPager) {
-        y.options.clickFn.call(null, y.options.CURRENT_PAGE, y.options.MAX_PAGE, y.options.totalNum)
+        y.options.clickFn.call(null, CURRENT_PAGE, y.options.MAX_PAGE, y.options.totalNum)
 
       } else {
         // 前端分页
-        if (SHENGYU_DATA.length > 0 && y.options.CURRENT_PAGE - 1 < MAX_PAGE) {
+
+        if (SHENGYU_DATA.length > 0 && CURRENT_PAGE - 1 < MAX_PAGE) {
 
           CURRENT_DATA = SHENGYU_DATA.splice(0, y.options.limit);
-          y.options.clickFn.call(null, y.options.CURRENT_PAGE, CURRENT_DATA, y.options.MAX_PAGE, y.options.totalNum)
+          y.options.clickFn.call(null, CURRENT_PAGE, CURRENT_DATA, y.options.MAX_PAGE, y.options.totalNum)
 
-          if (y.options.CURRENT_PAGE === MAX_PAGE) {
+          if (CURRENT_PAGE === MAX_PAGE) {
             document.getElementById('loadMore').remove();
-            console.log('分页完毕...');
+            console.log('分页完毕');
             return;
           }
           y.loadingGoOn();
@@ -109,3 +112,4 @@ var loadMore = {
     }, 1000);
   }
 }
+

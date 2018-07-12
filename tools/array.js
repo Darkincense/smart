@@ -9,6 +9,13 @@ function isArray(arr) {
     .call(arr) === '[object Array]'
 }
 
+// 用法 Array.isArray(obj) 原生方法，向下做兼容
+if (!Array.isArray) {
+  Array.isArray = function (arg) {
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  };
+}
+
 // 给数组创建一个随机项
 var items = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
 var randomItem = items[Math.floor(Math.random() * items.length)];
