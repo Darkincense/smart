@@ -5,71 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
   <title>Document</title>
-  <style>
-    #more {
-      margin-top: 40px;
-    }
-  </style>
 </head>
 
-<div class="container">
-
-
-</div>
-<div id="more"></div>
-
-
 <body>
+  <script>
+
+    const person = {
+      sayHello: () => console.log(this)
+    }
+
+    const Person = function () {
+      this.sayHello = () => console.log(this)
+    }
+
+    // const pI = new person()
+    // 报错: person is not a constructor
+
+    const PI = new Person()
+    PI.sayHello()
+
+
+
+
+  </script>
+
 </body>
-<script>
-
-  (function () {
-
-    var htmlToElement = function (html) {
-      var template = document.createElement('template');
-      html = html.trim(); // Never return a text node of whitespace as the result
-      template.innerHTML = html;
-      return template.content.firstChild;
-    }
-
-    var btnControl = function (text) {
-      this.content = text;
-    }
-
-    btnControl.prototype.appendById = function (wrapper) {
-      var btn = htmlToElement('<button id="btn" type="button" class="btn btn-primary"></button>');
-      wrapper.append(btn);
-      document.querySelector('#btn').innerHTML = this.content;
-    }
-    // 创建实例
-    var createIntance = (function () {
-      return function () {
-        return  new btnControl('这是一个测试button')
-      }
-    })();
-
-    var shili = createIntance();
-    console.log(shili);
-
-    shili.appendById(document.querySelector('.container'))
-
-
-
-  })()
-
-
-
-
-
-
-
-
-
-
-
-
-</script>
 
 </html>
