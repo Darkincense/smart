@@ -78,12 +78,12 @@ Object.prototype.clone = function () {
     if (typeof obj !== 'object') return;
     var newObj = obj instanceof Array ? [] : {};
     for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        newObj[key] = typeof obj[key] === 'object' ? (obj[key]).clone() : obj[key];
-      }
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = typeof obj[key] === 'object' ? (obj[key]).clone() : obj[key];
+        }
     }
     return newObj;
-  }
+}
 /**
  * @desc 深拷贝，支持常见类型
  * @param {Any} values

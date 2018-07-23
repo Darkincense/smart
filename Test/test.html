@@ -11,12 +11,10 @@
 <body>
   <input type="text">
   <button class="btn">提交</button>
-  <script src="../tools/string.js"></script>
+  <script src="../bulid/tools/object.js"></script>
   <script>
-    document.querySelector('.btn').onclick = function(){
-      alert(document.querySelector('input').value.trim())
-
-    }
+   
+    console.log(qsStringify({name: 'xiaoyueyue',age: '24', a: ['b', 'c', 'd']}));
   </script>
 </body>
 

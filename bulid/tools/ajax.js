@@ -257,37 +257,30 @@ function parseQueryString(url) {
 
 /**
  *
- * @desc   对象序列化
+ * @desc   参数对象序列化
  * @param  {Object} obj
  * @return {String}
  */
-function stringfyQueryString(obj) {
-  if (!obj) return;
 
-  ("");
-
+//eg: qsStringify({name: 'xiaoyueyue',age: '24', a: ['b', 'c', 'd']})
+//        =>   name=xiaoyueyue&age=24&a[0]=b&a[1]=c&a[2]=d
+function qsStringify(obj) {
   var pairs = [];
-
   for (var key in obj) {
-    var value = obj[key];
-
-    if (value instanceof Array) {
-      for (var i = 0; i < value.length; ++i) {
-        pairs.push(
-          encodeURIComponent(key + "[" + i + "]") +
-          "=" +
-          encodeURIComponent(value[i])
-        );
+      var value = obj[key];
+      if (typeof (value) === 'function') {
+          continue;
       }
-
-      continue;
-    }
-    pairs.push(encodeURIComponent(key) + "=" + encodeURIComponent(obj[key]));
+      if (value instanceof Array) {
+          for (var i = 0; i < value.length; ++i) {
+              pairs.push((key + "[" + i + "]") + "=" + value[i]);
+          }
+          continue;
+      }
+      pairs.push(key + "=" + obj[key]);
   }
-
   return pairs.join("&");
 }
-
 
 // form表单数据序列化 传入form id ,返回序列化json字符串
 function formser(form) {
@@ -315,13 +308,6 @@ function formser(form) {
         }
     }
   }
-  return stringfyQueryString(arr);
+  return qsStringify(arr);
 }
-function formatParams(data) {
-  var arr = [];
-  for (var name in data) {
-    arr.push(encodeURIComponent(name) + "=" + encodeURIComponent(data[name]));
-  }
-  arr.push(("v=" + Math.random()).replace(".", ""));
-  return arr.join("&");
-}
+
