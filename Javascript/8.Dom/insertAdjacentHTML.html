@@ -9,11 +9,18 @@
 </head>
 
 <body>
-  <input type="text">
-  <button class="btn">提交</button>
-  <script src="../bulid/tools/object.js"></script>
-  <script>
+  <ul>
+    <!-- beforebegin -->
+    <li>2</li>
+    <!-- afterend -->
+  </ul>
 
+  <script>
+    var li = document.querySelector('li');
+    var ul = document.querySelector('ul');
+
+    li.insertAdjacentHTML('beforebegin', '<li>1</li>')
+    li.insertAdjacentHTML('afterend', '<li>3</li>')
   </script>
 </body>
 

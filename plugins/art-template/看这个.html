@@ -85,7 +85,7 @@
             <tr>
                 <td>{{i+1}}</td>
                 <td>参数</td>
-                <td><button value={{value.EXTRACT_TYPE+"#"+value.xsdwName}} id={{value.EXTRACT_TYPE+"#"+value.xsdwName}} onclick="clickFn(value)">点击事件传参</button></td>
+                <td><button data-OrderID={{value.ORDER_ID}} value={{value.OILINFO_NAME+"#"+value.OIL_NUMBER}} id={{value.EXTRACT_TYPE+"#"+value.xsdwName}} onclick="clickFn(this,value,id)">点击事件传参,查看购买油品详情</button></td>
               </tr>
 </table>
 
@@ -105,7 +105,7 @@
         "NOTICESUB_ID": "162325c1371011e884160050568d787a",
         "NOTICE_CODE": "FY1014269041",
         "NOTICE_ID": "1622765e371011e884160050568d787a",
-        "OILINFO_NAME": "0号 普通柴油",
+        "OILINFO_NAME": "0号普通柴油",
         "OIL_NUMBER": 500,
         "outnum": '200',
         "ORDERSALE_CODE": "2029584249",
@@ -121,9 +121,17 @@
     };
 
     var html = template('test', data);
-    document.getElementById('content').innerHTML = html; function clickFn(value) {
-      alert(value)
-      console.log(value)
+    document.getElementById('content').innerHTML = html;
+
+    function clickFn(that,value) {
+      console.log(that);
+      
+      console.log(arguments);
+
+      console.log(value);
+      var arrTpl = value.split("#");
+      alert("您正在购买的是" + arrTpl[0] + ", 购买数量为:" + arrTpl[1]+",油品id为"+that.dataset["orderid"])
+
     }
   </script>
 
