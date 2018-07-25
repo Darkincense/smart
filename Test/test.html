@@ -13,8 +13,7 @@
   <button class="btn">提交</button>
   <script src="../bulid/tools/object.js"></script>
   <script>
-    var a = [
-      {
+    var a = [{
         date: '2018-7-24',
         value: 2
       },
@@ -33,7 +32,11 @@
     ]
     var map = a.reduce((p, c) => [p[c.date] = p[c.date] || 0, p[c.date] += c.value, p][2], {})
     // 获取映射结果
-    var res = Object.keys(map).map(key => [{ date: key, value: map[key] }][0])
+    var res = Object.keys(map).map(key => [{
+      date: key,
+      value: map[key]
+    }][0])
+
 
     /*     for (var i = 0, length = a.length; i < a.length; i++) {
           for (j = 0; j < a.length - i; j++) {
@@ -44,7 +47,6 @@
           }
         } */
     console.log(res);
-
   </script>
 </body>
 
