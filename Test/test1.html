@@ -10,25 +10,23 @@
 
 <body>
 
-  
-  <div id="test1" class="box"></div>
-  <div id="test2" class="box"></div>
+
+  <div id="test1" class="box">1</div>
+  <div id="test2" class="box">2</div>
   <div id="test3" class="box"></div>
 
-  <div id="test1" class="box"></div>
-  <div id="test2" class="box"></div>
-  <div id="test3" class="box"></div>
+  <div id="test1" class="box">1</div>
+  <div id="test2" class="box">2</div>
+  <div id="test3" class="box">3</div>
+
+  <div id="test1" class="box">1</div>
+  <div id="test2" class="box">2</div>
+  <div id="test3" class="box">3</div>
   <script>
     var checkArr = Array.from(document.querySelectorAll('.box'));
-    var master = [];
     checkArr.forEach((v, i) => {
-      if(!master.includes(v.id)){
-        master.push(v.id);
-      }
+      v.id = "test" + (i + 1)
     })
-
-    console.log(master);
-    
   </script>
 </body>
 

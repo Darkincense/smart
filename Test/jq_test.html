@@ -1,17 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
+
 <body>
-  <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <table class="xiaoshou customers">
+        <tr class="first">
+            <th>公司</th>
+            <th>合计</th>
+            <th>汽油</th>
+            <th>柴油</th>
 
-  <div id="content"></div>
+        </tr>
+        <tr class="del">
+            <td>浦西</td>
+            <td>1792</td>
+            <td>1792</td>
+            <td>0</td>
+        </tr>
 
-  <script>
-  </script>
+    </table>
+    <table class="pifa customers">
+        <tr class="first">
+            <th>公司</th>
+            <th>合计</th>
+            <th>汽油</th>
+            <th>柴油</th>
+
+        </tr>
+        <tr class="del">
+            <td>浦西</td>
+            <td>1792</td>
+            <td>1792</td>
+            <td>0</td>
+        </tr>
+
+    </table>
+    <table class="diaobo customers">
+        <tr class="first">
+            <th>公司</th>
+            <th>合计</th>
+            <th>汽油</th>
+            <th>柴油</th>
+
+        </tr>
+        <tr class="del">
+            <td>浦西</td>
+            <td>1792</td>
+            <td>1792</td>
+            <td>0</td>
+        </tr>
+        <tr class="del">
+            <td>浦西</td>
+            <td>1792</td>
+            <td>1792</td>
+            <td>0</td>
+        </tr>
+
+    </table>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+    <script>
+        // $('.xiaoshou tr:gt(1),.pifa tr:gt(1),.diaobo tr:gt(1)').remove();
+
+        var child = document.querySelectorAll("table tr:not(.first)");
+        $(child).remove();
+    </script>
 </body>
+
 </html>
