@@ -29,7 +29,7 @@
 
 ### ShowTime
 
-- https://www.netlify.com 部署静态站点演示
+- https://www.netlify.com
 - https://codesandbox.io/u/xiaoyueyue165
 - https://codepen.io/xiaoyueyue165/
 - http://jsbin.com/
