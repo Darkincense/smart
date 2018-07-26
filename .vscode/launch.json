@@ -1,0 +1,21 @@
+{
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+    "name": "谷歌浏览器", //运行html文件，用谷歌浏览器打开
+    "type": "chrome",
+    "request": "launch",
+    "url": "${file}",
+    "sourceMaps": true,
+    "webRoot": "${workspaceFolder}\\leetcode\\arr2.html"
+  },
+  {
+    "type": "node",
+    "request": "launch",
+    "name": "调试单个js文件",
+    "program": "${workspaceFolder}\\leetcode\\初级算法\\数组\\5.只出现一次的数字"
+  }
+]
+}
