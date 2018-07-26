@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /**
+     * @param {number[]} digits
+     * @return {number[]}
+     */
+    var plusOne = function (digits) {
+      var arrStr = digits.join('');
+      if (digits[0] == "0") {
+        var number = Number(arrStr.slice(1)) + 1;
+        var tmp = [];
+        if (number < 10) {
+          return tmp.push(String(number))
+        }
+        var prev = (("0") + String(number)).split("");
+        for (var i = 0; i < prev.length; i++) {
+          prev[i] = Number(prev[i])
+        }
+        return prev;
+
+      }
+
+      var last = (String(Number(arrStr) + 1)).split("");
+      for (var i = 0; i < last.length; i++) {
+        last[i] = Number(last[i])
+      }
+      return last;
+    };
+
+    console.log(plusOne([0]));
+  </script>
+</body>
+
+</html>

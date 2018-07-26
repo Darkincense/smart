@@ -16,24 +16,16 @@
      * @return {void} Do not return anything, modify nums in-place instead.
      */
     var rotate = function (nums, k) {
-      var index = k > 1 ? k + 1 : k;
-      if (k > nums.length) {
-        for (var i = 1; i <= k; i++) {
-          nums.push(nums.shift());
-        }
+      for (var i = 1; i <= k; i++) {
+        nums.unshift(nums.pop());
       }
-      var slice = nums.splice(0, index);
-      slice.forEach(function (v) {
-        nums.push(v)
-      })
-
     };
-    var nums1 = [1, 2, 3, 4, 5, 6, 7];
+    var nums1 = [1, 2, 3, 4, 5, 6, 7]
     var nums2 = [1, 2, 3];
     var nums3 = [1, 2];
     rotate(nums1, 3)
     rotate(nums2, 1)
-    rotate(nums3, 1)
+    rotate(nums3, 0)
     console.log(nums1);
     console.log(nums2);
     console.log(nums3);

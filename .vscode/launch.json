@@ -15,7 +15,7 @@
     "type": "node",
     "request": "launch",
     "name": "调试单个js文件",
-    "program": "${workspaceFolder}\\leetcode\\初级算法\\数组\\5.只出现一次的数字"
+    "program": "${workspaceFolder}\\leetcode\\初级算法\\数组\\6.两个数组的交集"
   }
 ]
 }
