@@ -30,9 +30,9 @@
 ### ShowTime
 
 - https://www.netlify.com 部署静态站点演示
-- http://jsbin.com/
 - https://codesandbox.io/u/xiaoyueyue165
-- https://codepen.io/
+- https://codepen.io/xiaoyueyue165/
+- http://jsbin.com/
 - https://jsfiddle.net/
 
 #### userful links
