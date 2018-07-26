@@ -24,7 +24,7 @@
 
 ### Code related
 
-- https://leetcode-cn.com/
+- https://leetcode-cn.com/xiaoyueyue165/
 - https://freecodecamp.cn/
 
 ### ShowTime
