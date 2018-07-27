@@ -58,12 +58,11 @@ function rmoney(s) {
  * @return {Boolean}
  */
 function isSupportWebP() {
-  return (
-    !![].map &&
+  return (!![].map &&
     document
-      .createElement("canvas")
-      .toDataURL("image/webp")
-      .indexOf("data:image/webp") == 0
+    .createElement("canvas")
+    .toDataURL("image/webp")
+    .indexOf("data:image/webp") == 0
   );
 }
 
@@ -99,7 +98,7 @@ function getSelIds(inputName) {
 function ListenEnter(func) {
   document.onkeydown = function (event) {
     var e = event || window.event || arguments.callee.caller.arguments[0];
-    if (e && e.keyCode == 13) {// enter 键
+    if (e && e.keyCode == 13) { // enter 键
 
       func();
     }
@@ -120,12 +119,10 @@ function rangval(val, min, max) {
   try {
     if (val > parseInt(max)) {
       val = max;
-    }
-    else if (val < parseInt(min)) {
+    } else if (val < parseInt(min)) {
       val = min;
     }
-  }
-  catch (e) {
+  } catch (e) {
     console.log(e.message);
   }
   return val;
@@ -197,6 +194,15 @@ window.onerror = function (
     alert(JSON.stringify(rst, null, 10));
   });
 };
+
 function stripscript(s) {
   return s.replace(/<script.*?>.*?<\/script>/ig, '');
+}
+
+// 四舍五入 格式化数字
+// toFix(8440.55,1) => 8440.6
+function toFixed(number, fractionDigits) {
+  var times = Math.pow(10, fractionDigits);
+  var roundNum = Math.round(number * times) / times;
+  return roundNum.toFixed(fractionDigits);
 }
