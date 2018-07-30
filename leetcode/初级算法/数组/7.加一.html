@@ -16,6 +16,8 @@
      */
     var plusOne = function (digits) {
       var arrStr = digits.join('');
+      console.log(Number(arrStr)); //6145390195186705000
+
       if (digits[0] == "0") {
         var number = Number(arrStr.slice(1)) + 1;
         var tmp = [];
@@ -34,10 +36,8 @@
         return prev;
 
       }
-      var stringToNumber = function (str) {
-        return str.slice(0, str.length - 1)
-      }
-      var last = String(parseInt(arrStr) + 1).split("");
+
+      var last = (String(Number(arrStr) + 1)).split("");
       for (var i = 0; i < last.length; i++) {
         last[i] = Number(last[i])
       }
@@ -46,11 +46,9 @@
 
     // console.log(plusOne([0]));
     // console.log(plusOne([9]));
-    // console.log(plusOne([0, 0, 9]));
     // console.log(plusOne([9, 9, 9]));
-    // console.log(plusOne([4, , 3, 2, 1]));
+    // console.log(plusOne([4, 3, 2, 1]));
 
-    console.log("6145390195186705543".length);
 
     console.log(plusOne([6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 4, 3]));
   </script>

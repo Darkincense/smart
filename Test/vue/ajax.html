@@ -9,8 +9,8 @@
 </head>
 
 <body>
-  <script src="../bulid/vue/vue.2.5.15.js"></script>
-  <script src="../bulid/axios.js"></script>
+  <script src="../../bulid/vue/vue.2.5.15.js"></script>
+  <script src="../../bulid/axios.js"></script>
 
   <div id="content">
     <h1>{{text}}</h1>
@@ -18,9 +18,12 @@
 
     <h3>githubStar</h3>
     <ul>
-      <li v-for="record in githubStar">
-          <a :href="record.html_url" > {{record.name}} </a> ({{record.stargazers_count}} stars) <br/> {{record.description}}
+      <li v-if="githubStar===null">loading...</li>
+      <li v-else-if="githubStar.length >1" v-for="record in githubStar">
+        <a :href="record.html_url"> {{record.name}} </a> ({{record.stargazers_count}} stars)
+        <br/> {{record.description}}
       </li>
+      <li v-else>{{error}}</li>
     </ul>
   </div>
 
@@ -29,10 +32,10 @@
       el: "#content",
       data: {
         text: 'Hello,Vue!',
-        githubStar: null
+        githubStar: null,
+        error: null
       },
-      beforeCreate: function () {
-      },
+      beforeCreate: function () {},
       methods: {
         clickFn: function () {
           alert('click')
@@ -41,11 +44,15 @@
           var _this = this;
           axios.get('https://api.github.com/search/repositories?q=javascript&sort=stars')
             .then(response => {
+              console.log(response);
+              
               _this.githubStar = response.data.items;
               console.log(_this.githubStar);
               console.log(_this.$data.githubStar);
             })
             .catch(error => {
+              _this.githubStar = 1;
+              _this.error = error.message;
               console.log(error);
             })
         }
