@@ -9,44 +9,10 @@
 </head>
 
 <body>
-  <input type="text">
-  <button class="btn">提交</button>
-  <script src="../bulid/tools/object.js"></script>
   <script>
-    var a = [{
-        date: '2018-7-24',
-        value: 2
-      },
-      {
-        date: '2018-7-24',
-        value: 5
-      },
-      {
-        date: '2018-7-25',
-        value: 5
-      },
-      {
-        date: '2018-7-25',
-        value: 5
-      },
-    ]
-    var map = a.reduce((p, c) => [p[c.date] = p[c.date] || 0, p[c.date] += c.value, p][2], {})
-    // 获取映射结果
-    var res = Object.keys(map).map(key => [{
-      date: key,
-      value: map[key]
-    }][0])
-
-
-    /*     for (var i = 0, length = a.length; i < a.length; i++) {
-          for (j = 0; j < a.length - i; j++) {
-            if (a[j]["date"] === a[j + 1]["date"]) {
-              a[j + 1].value = a[j].value + a[j + 1].value;
-              a.splice(j, 1);
-            }
-          }
-        } */
-    console.log(res);
+    (function () {
+      alert(1 + ' , 通过测试');
+    })()
   </script>
 </body>
 
