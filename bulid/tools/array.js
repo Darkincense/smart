@@ -1,5 +1,3 @@
-
-
 // Array isArray
 
 function isArray(arr) {
@@ -22,7 +20,9 @@ var randomItem = items[Math.floor(Math.random() * items.length)];
 
 // 打乱数字数组的顺序
 var numbers = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
-numbers.sort(function () { return Math.random() - 0.5 });
+numbers.sort(function () {
+  return Math.random() - 0.5
+});
 
 // 数组追加
 Array.prototype.push.apply(array1, array2);
@@ -36,13 +36,13 @@ Array.prototype.indexOf = function (val) {
 };
 //兼容IE8
 if (!Array.prototype.indexOf) {
-  Array.prototype.indexOf = function (elt /*, from*/) {
+  Array.prototype.indexOf = function (elt /*, from*/ ) {
     var len = this.length >>> 0;
 
     var from = Number(arguments[1]) || 0;
-    from = (from < 0)
-      ? Math.ceil(from)
-      : Math.floor(from);
+    from = (from < 0) ?
+      Math.ceil(from) :
+      Math.floor(from);
     if (from < 0)
       from += len;
 
@@ -69,6 +69,15 @@ Array.prototype.isContains = function (e) {
   for (i = 0; i < this.length && this[i] != e; i++);
   return !(i == this.length);
 }
+
+function isContains(arr, current) {
+  if (Array.prototype.includes) {
+    return arr.includes(current);
+  }
+  for (i = 0; i < arr.length && arr[i] != current; i++);
+  return !(i == arr.length);
+}
+
 function in_array(needle, haystack) {
   if (typeof needle == 'string' || typeof needle == 'number') {
     for (var i in haystack) {
@@ -92,9 +101,9 @@ function compact(arr) {
   var index = -1,
     resIndex = -1,
     result = [],
-    len = arr
-      ? arr.length
-      : 0;
+    len = arr ?
+    arr.length :
+    0;
   while (++index < len) {
     var value = arr[index];
     if (value) {
@@ -115,7 +124,8 @@ function arrayIndex(element, array) {
 //getArrayNum([0,1,2,3,4,5,6,7,8,9],2) 不传第二个参数,默认返回从n1到数组结束的元素
 //[2, 3, 4, 5, 6, 7, 8, 9]
 function getArrayNum(arr, n1, n2) {
-  var arr1 = [], len = n2 || arr.length - 1;
+  var arr1 = [],
+    len = n2 || arr.length - 1;
   for (var i = n1; i <= len; i++) {
     arr1.push(arr[i])
   }
@@ -132,13 +142,13 @@ function dedupe(client, hasher) {
   const lookup = {}
 
   for (let i = 0; i < client.length; i++) {
-    let elem = client[i]  //数组元素
+    let elem = client[i] //数组元素
     let hashed = hasher(elem) //键
 
 
 
-    if (!lookup[hashed]) {  //对象中没有键
-      clone.push(elem)   //放到新数组
+    if (!lookup[hashed]) { //对象中没有键
+      clone.push(elem) //放到新数组
       lookup[hashed] = true //标识符
     }
   }
@@ -158,6 +168,7 @@ console.log(bbb) */
 function maxArr(arr) {
   return Math.max.apply(null, arr);
 }
+
 function minArr(arr) {
   return Math.min.apply(null, arr);
 }
@@ -185,7 +196,3 @@ function removeArrayForValue(arr, val, type) {
     return type ? item.indexOf(val) === -1 : item !== val
   })
 }
-
-
-
-

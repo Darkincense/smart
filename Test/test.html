@@ -2,19 +2,32 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
 </head>
 
 <body>
-  <script>
-    (function () {
-      alert(1 + ' , 通过测试');
-      alert('123'.indexOf('1'))
-    })()
-  </script>
+	<script>
+		var str = '1,2,3,4';
+		var arr = str.split(',');
+
+
+		function isContains(arr, current) {
+			if (Array.prototype.includes) {
+				return arr.includes(current);
+			}
+			for (i = 0; i < arr.length && arr[i] != current; i++);
+			return !(i == arr.length);
+		}
+		var orderId = "1";
+		switch (orderId) {
+			case ("1" && isContains(arr, "1")):
+			alert('xiaoyueyue')
+				break;
+		}
+	</script>
 </body>
 
 </html>
