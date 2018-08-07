@@ -30,10 +30,10 @@
 
 
   <select id="test" class="select" onchange="change();">
-    <option value=0>选项一</option>
-    <option value=1>选项二</option>
-    <option value=2>选项三</option>
-    <option value=3>选项四</option>
+    <option value="0">选项一</option>
+    <option value="1">选项二</option>
+    <option value="2">选项三</option>
+    <option value="3">选项四</option>
   </select>
 
   <script>
@@ -47,7 +47,9 @@
 
     // 4:拿到选中项options的text： myselect.options[index].text;
 
-
+    if (document.getElementById('test').selectedIndex == 0) {
+      alert(document.getElementById('test').selectedIndex)
+    }
 
     function change() {
       var myselect = document.getElementById("test");

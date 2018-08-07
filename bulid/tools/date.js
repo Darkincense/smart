@@ -126,16 +126,21 @@ function mGetDate(year, month) {
 }
 
 // 日期对象转换成时间戳
-var d = +new Date();     //1466489912445
+var d = +new Date(); //1466489912445
 
 //传统浏览器
-function getDate() {
+// 根据num选择当前时间之前或之后,默认选择当天，getDate(1)=》后一天，getDate(-1)前一天
+function getDate(num) {
   var dt = new Date();
+
+  var defaultDate = dt.getDate() + num || dt.getDate();
   var date = [
-    [dt.getFullYear(), dt.getMonth() + 1, dt.getDate()].join('-'),
-    [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(':')
-  ].join(' ').replace(/(?=\b\d\b)/g, '0'); // 正则补零 (略微改动)
-  return date; // => 2018-05-29 10:26:30
+    [dt.getFullYear(), dt.getMonth() + 1, defaultDate].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
+      ':')
+  ].join(' ').replace(/(?=\b\d\b)/g, '0');
+  // 正则补零 (略微改动)
+  return date;
+  // => 2018-05-29 10:26:30
 }
 // 现代浏览器
 function getDate2() {

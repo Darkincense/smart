@@ -58,8 +58,8 @@ function ajax(setting) {
     async: setting.async || true, // 是否异步
     dataType: setting.dataType || "json", // 解析方式
     data: setting.data || "", // 参数
-    success: setting.success || function () { }, // 请求成功回调
-    error: setting.error || function () { } // 请求失败回调
+    success: setting.success || function () {}, // 请求成功回调
+    error: setting.error || function () {} // 请求失败回调
   };
 
   // 参数格式化
@@ -92,14 +92,14 @@ function ajax(setting) {
   }
 
   /*
-  ** 每当readyState改变时，就会触发onreadystatechange事件
-  ** readyState属性存储有XMLHttpRequest的状态信息
-  ** 0 ：请求未初始化
-  ** 1 ：服务器连接已建立
-  ** 2 ：请求已接受
-  ** 3 : 请求处理中
-  ** 4 ：请求已完成，且相应就绪
-  */
+   ** 每当readyState改变时，就会触发onreadystatechange事件
+   ** readyState属性存储有XMLHttpRequest的状态信息
+   ** 0 ：请求未初始化
+   ** 1 ：服务器连接已建立
+   ** 2 ：请求已接受
+   ** 3 : 请求处理中
+   ** 4 ：请求已完成，且相应就绪
+   */
   xhr.onreadystatechange = function () {
     if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
       switch (opts.dataType) {
@@ -191,9 +191,9 @@ function fetch(url, setting) {
     fetch(url, opts)
       .then(async res => {
         let data =
-          dataType === "text"
-            ? await res.text()
-            : dataType === "blob" ? await res.blob() : await res.json();
+          dataType === "text" ?
+          await res.text() :
+          dataType === "blob" ? await res.blob() : await res.json();
         resolve(data);
       })
       .catch(e => {
@@ -209,6 +209,7 @@ function GetQueryString(name) {
   if (r != null) return unescape(r[2]);
   return null;
 }
+
 function getQuery(name, url) {
   //参数：变量名，url为空则表从当前页面的url中取
   var u = arguments[1] || window.location.search,
@@ -248,9 +249,9 @@ function parseQueryString(url) {
   JSON.parse(
     '{"' +
     decodeURIComponent(search)
-      .replace(/"/g, '\\"')
-      .replace(/&/g, '","')
-      .replace(/=/g, '":"') +
+    .replace(/"/g, '\\"')
+    .replace(/&/g, '","')
+    .replace(/=/g, '":"') +
     '"}'
   );
 }
@@ -267,17 +268,17 @@ function parseQueryString(url) {
 function qsStringify(obj) {
   var pairs = [];
   for (var key in obj) {
-      var value = obj[key];
-      if (typeof (value) === 'function') {
-          continue;
+    var value = obj[key];
+    if (typeof (value) === 'function') {
+      continue;
+    }
+    if (value instanceof Array) {
+      for (var i = 0; i < value.length; ++i) {
+        pairs.push((key + "[" + i + "]") + "=" + value[i]);
       }
-      if (value instanceof Array) {
-          for (var i = 0; i < value.length; ++i) {
-              pairs.push((key + "[" + i + "]") + "=" + value[i]);
-          }
-          continue;
-      }
-      pairs.push(key + "=" + obj[key]);
+      continue;
+    }
+    pairs.push(key + "=" + obj[key]);
   }
   return pairs.join("&");
 }
@@ -311,3 +312,60 @@ function formser(form) {
   return qsStringify(arr);
 }
 
+// form表单序列化
+function serialize(form) {
+  var parts = [],
+    field = null,
+    i,
+    len,
+    j,
+    optLen,
+    option,
+    optValue;
+
+  for (i = 0, len = form.elements.length; i < len; i++) {
+    field = form.elements[i];
+
+    switch (field.type) {
+      case "select-one":
+      case "select-multiple":
+
+        if (field.name.length) {
+          for (j = 0, optLen = field.options.length; j < optLen; j++) {
+            option = field.options[j];
+            if (option.selected) {
+              optValue = "";
+              if (option.hasAttribute) {
+                optValue = (option.hasAttribute("value") ? option.value : option.text);
+              } else {
+                optValue = (option.attributes["value"].specified ? option.value : option.text);
+              }
+              parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+            }
+          }
+        }
+        break;
+
+      case undefined: //fieldset
+      case "file": //file input
+      case "submit": //submit button
+      case "reset": //reset button
+      case "button": //custom button
+        break;
+
+      case "radio": //radio button
+      case "checkbox": //checkbox
+        if (!field.checked) {
+          break;
+        }
+        /* falls through */
+
+      default:
+        //don't include form fields without names
+        if (field.name.length) {
+          parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+        }
+    }
+  }
+  return parts.join("&");
+}

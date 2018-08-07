@@ -21,11 +21,16 @@
   <button>点击</button>
   <script>
     var btn = document.querySelector('button');
-    btn.onclick = throttle(clickFunc, 3000)
+    var fn = {
+      clickFunc: function () {
+        console.log('click' + new Date())
+      }
 
-    function clickFunc() {
-      console.log('click' + new Date())
     }
+    btn.onclick = throttle(fn.clickFunc, 3000)
+
+
+
 
 
     // 第一种 时间戳
@@ -136,7 +141,6 @@
       };
       return throttled;
     }
-
   </script>
 </body>
 

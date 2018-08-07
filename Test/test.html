@@ -10,23 +10,37 @@
 
 <body>
 	<script>
-		var str = '1,2,3,4';
-		var arr = str.split(',');
-
-
-		function isContains(arr, current) {
-			if (Array.prototype.includes) {
-				return arr.includes(current);
+		function mGetDate(year, month) {
+			var d = new Date(year, month, 0);
+			return d.getDate();
+		}
+		// 根据num选择当前时间之前或之后,默认选择当天，支持区间（-15,15）
+		function getDate(num) {
+			var dt = new Date();
+			var year = dt.getFullYear();
+			var month = dt.getMonth() + 1;
+			var day = dt.getDate() + num || dt.getDate();
+			var thisMonthDays = mGetDate(year.month);
+			if (day + num > thisMonthDays) {
+				day = day + num - thisMonthDays;
+				month++;
 			}
-			for (i = 0; i < arr.length && arr[i] != current; i++);
-			return !(i == arr.length);
+			// if (day + num <= 0) {
+
+			// 	month--;
+			// }
+
+			var date = [
+				[year, month, day].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
+					':')
+			].join(' ').replace(/(?=\b\d\b)/g, '0');
+			// 正则补零 (略微改动)
+			return date;
+			// => 2018-05-29 10:26:30
 		}
-		var orderId = "1";
-		switch (orderId) {
-			case ("1" && isContains(arr, "1")):
-			alert('xiaoyueyue')
-				break;
-		}
+
+		var defaultDate = getDate(1).split(" ")[0] + " 下午";
+		alert(defaultDate)
 	</script>
 </body>
 
