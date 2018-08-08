@@ -2,7 +2,7 @@
 
 > 日常代码库+笔记
 
-## Table of contents
+## 导航
 
 - [Guide](#guide)
 - [ShowTime](#showtime)
@@ -13,35 +13,34 @@
 
 
 
-## Navigation
+## 指针
 
 ### Guide
-
+- [Fake Google](https://a1.02822.website/)
 - https://www.w3.org/TR/
+- http://babeljs.io/repl
+- http://beautifytools.com/scss-compiler.php
+- https://www.rails365.net/
 - https://eslint.org/docs/rules
 - http://devdocs.io
 - http://devhints.cn
 
-### Code related
+
+### 代码闯关
 
 - https://leetcode-cn.com/xiaoyueyue165/
 - https://freecodecamp.cn/
 
-### ShowTime
+### Show My Code
 
 - https://www.netlify.com
 - https://codesandbox.io/u/xiaoyueyue165
 - https://codepen.io/xiaoyueyue165/
 - http://jsbin.com/
 - https://jsfiddle.net/
-
-#### userful links
-
-- http://babeljs.io/repl
-- http://beautifytools.com/scss-compiler.php
 - https://www.hackerrank.com/
 
-### Mock
+### 模拟测试
 
 - [mockapi](https://www.mockapi.io/projects)
 - [json-server](https://github.com/typicode/json-server)
