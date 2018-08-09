@@ -6,46 +6,68 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
-	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
-	<style>
-		#box {
-			margin-top: 20px;
-			width: 400px;
-		}
-
-		.flex {
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.wrapper {
-			display: flex;
-			justify-content: center;
-		}
-	</style>
 </head>
 
 <body>
-	<div class="container wrapper">
-		<form id="box">
-			<div class="form-group box">
-				<label for="phone">手机号</label>
-				<div class="flex">
-					<input id="phone" type="text" class="form-control" style="width:70%" placeholder="请输入手机号">
-					<button type="button" class="btn btn-default">验证</button>
-				</div>
-
-			</div>
-		</form>
-	</div>
 	<script>
-		var data = {
-			"data": ["上海市", "上海市", "黄浦区"],
-			"index": [0, 0, 0]
-		}
-		var areaArr = data.data;
-		alert(areaArr[0]+" "+areaArr[1]+" "+areaArr[2])
+		var vm = new Vue({
+			el: "#vueControl",
+			data: {
+				companyType: appcan.locStorage.getVal("companyType"),
+				userList: appcan.locStorage.getVal("userList"),
+				isA: false, //订单审核
+				isB: false, //订单结算
+				isC: true, // 配送自提审核
+				isZongbu: appcan.locStorage.getVal("companyType") == '总部'
+			},
+			beforeCreate: function () {},
+			methods: {
+				isShowABC: function () {
+					var userList = JSON.parse(this.userList);
+					/*  for (var i = 0; i < userList.length; i++) {
+					     var item = userList[i].roleName;
+					     var pipei = function (val) {
+					         return item.indexOf(val) != -1;
+					     }
+					     if (pipei("订单审核")) {
+					         this.isA = false;
+					         continue;
+					     }
+					     // isB = pipei("订单结算");
+					     // isC = pipei("配送自提审核");
+					 } */
+					console.log(this.isA);
+
+				},
+				layout: function () {
+					var box = document.getElementById("searchOrders");
+					var companyType = this.companyType;
+					var username = appcan.locStorage.getVal("username");
+					if (companyType == '合资' || companyType == "总部" || companyType == "全资" || username ==
+						"zhouguodong0") {
+						var obj = {
+							companyType: {
+								type: companyType
+							}
+						};
+						var html = template('html', {
+							list: obj
+						})
+						box.innerHTML = html;
+					}
+					if (companyType == "总部") {
+						document.getElementById("audit1").classList.add('none');
+						document.getElementById("audit3").classList.add("w50");
+					}
+				}
+			},
+			mounted: function () {
+				this.layout();
+				this.isShowABC();
+				console.log(this.companyType);
+			}
+
+		})
 	</script>
 </body>
 

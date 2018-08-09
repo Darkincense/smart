@@ -119,22 +119,13 @@ function DateDiff(sDate1, sDate2) { //sDate1和sDate2是年-月-日格式
   return iDays;
 }
 
-// 获取对应月份的总天数
-function mGetDate(year, month) {
-  var d = new Date(year, month, 0);
-  return d.getDate();
-}
-
-// 日期对象转换成时间戳
-var d = +new Date(); //1466489912445
-
 // 根据num选择当前时间之前或之后,默认选择当天，支持区间（-15,15）
-function getDate(num) {
+function getDate(num, type) {
   var dt = new Date();
   var getMonthDays = function (year, month) {
     var d = new Date(year, month, 0);
     return d.getDate();
-  }
+  };
   var year = dt.getFullYear();
   var month = dt.getMonth() + 1;
   var prevMonth = month - 1 || 12;
@@ -142,8 +133,6 @@ function getDate(num) {
 
   var thisMonthDays = getMonthDays(year, month);
   var prevMonthDays = getMonthDays(year, prevMonth);
-  console.log(year + '年' + month + '月有' + thisMonthDays + "天");
-  console.log(year + '年' + prevMonth + '月有' + prevMonthDays + "天");
   if (day + num > 0) {
     day = day + num;
   } else if (day + num > thisMonthDays) {
@@ -153,11 +142,20 @@ function getDate(num) {
     month--;
     day = prevMonthDays + day + num;
   }
-
+  if (type === "obj") {
+    var obj = {
+      year: year,
+      month: month,
+      day: day
+    };
+    return obj;
+  }
+  // default
   var date = [
     [year, month, day].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
       ':')
   ].join(' ').replace(/(?=\b\d\b)/g, '0');
+
   // 正则补零 (略微改动)
   return date;
 }
