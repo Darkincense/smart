@@ -5,19 +5,19 @@
 ## 导航
 
 - [Guide](#guide)
-- [ShowTime](#showtime)
-- [Code related](#code-related)
-- [Mock](#mock)
+- [Show MyCode](#show-mycode)
+- [代码闯关](#代码闯关)
+- [模拟测试](#模拟测试)
 - [Interview](#interview)
-- [Norm](#norm)
+- [前端p级别划分](#前端p级别划分)
 
 
 
 ## 指针
 
 ### Guide
-- [Fake Google1](https://a1.02822.website/) / [Fake Google2](https://coderschool.2345.ga/)
-- https://so.mezw.com/
+
+- [Fake Google1](https://a1.02822.website/) / [Fake Google2](https://coderschool.2345.ga/)/ [AOL](https://www.aolsearch.com/) / [MEZW](https://so.mezw.com/)
 - https://www.w3.org/TR/
 - http://babeljs.io/repl
 - http://beautifytools.com/scss-compiler.php
@@ -32,7 +32,7 @@
 - https://leetcode-cn.com/xiaoyueyue165/
 - https://freecodecamp.cn/
 
-### Show My Code
+### Show-mycode
 
 - https://www.netlify.com
 - https://codesandbox.io/u/xiaoyueyue165
@@ -217,7 +217,7 @@ PWA
 
 
 
-### Norm
+### 前端p级别划分
 
 p5：平均工作两年内；基础扎实、高质完成；基础过硬；熟悉浏览器等前端运行容器的工作原理；熟悉前端常用的工程工具；熟悉前端常用的框架；高质量、可维护；熟练使用类库解决业务问题，项目代码具有可维护性；具备质量意识，掌握兼容性、性能等问题的解决方法；
 

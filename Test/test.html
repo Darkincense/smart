@@ -6,41 +6,46 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
+	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+	<style>
+		#box {
+			margin-top: 20px;
+			width: 400px;
+		}
+
+		.flex {
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.wrapper {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
 </head>
 
 <body>
+	<div class="container wrapper">
+		<form id="box">
+			<div class="form-group box">
+				<label for="phone">手机号</label>
+				<div class="flex">
+					<input id="phone" type="text" class="form-control" style="width:70%" placeholder="请输入手机号">
+					<button type="button" class="btn btn-default">验证</button>
+				</div>
+
+			</div>
+		</form>
+	</div>
 	<script>
-		function mGetDate(year, month) {
-			var d = new Date(year, month, 0);
-			return d.getDate();
+		var data = {
+			"data": ["上海市", "上海市", "黄浦区"],
+			"index": [0, 0, 0]
 		}
-		// 根据num选择当前时间之前或之后,默认选择当天，支持区间（-15,15）
-		function getDate(num) {
-			var dt = new Date();
-			var year = dt.getFullYear();
-			var month = dt.getMonth() + 1;
-			var day = dt.getDate() + num || dt.getDate();
-			var thisMonthDays = mGetDate(year.month);
-			if (day + num > thisMonthDays) {
-				day = day + num - thisMonthDays;
-				month++;
-			}
-			// if (day + num <= 0) {
-
-			// 	month--;
-			// }
-
-			var date = [
-				[year, month, day].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
-					':')
-			].join(' ').replace(/(?=\b\d\b)/g, '0');
-			// 正则补零 (略微改动)
-			return date;
-			// => 2018-05-29 10:26:30
-		}
-
-		var defaultDate = getDate(1).split(" ")[0] + " 下午";
-		alert(defaultDate)
+		var areaArr = data.data;
+		alert(areaArr[0]+" "+areaArr[1]+" "+areaArr[2])
 	</script>
 </body>
 

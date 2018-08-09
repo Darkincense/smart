@@ -128,14 +128,56 @@ function mGetDate(year, month) {
 // 日期对象转换成时间戳
 var d = +new Date(); //1466489912445
 
-//传统浏览器
-// 根据num选择当前时间之前或之后,默认选择当天，getDate(1)=》后一天，getDate(-1)前一天
+// 根据num选择当前时间之前或之后,默认选择当天，支持区间（-15,15）
 function getDate(num) {
   var dt = new Date();
+  var getMonthDays = function (year, month) {
+    var d = new Date(year, month, 0);
+    return d.getDate();
+  }
+  var year = dt.getFullYear();
+  var month = dt.getMonth() + 1;
+  var prevMonth = month - 1 || 12;
+  var day = dt.getDate();
 
-  var defaultDate = dt.getDate() + num || dt.getDate();
+  var thisMonthDays = getMonthDays(year, month);
+  var prevMonthDays = getMonthDays(year, prevMonth);
+  console.log(year + '年' + month + '月有' + thisMonthDays + "天");
+  console.log(year + '年' + prevMonth + '月有' + prevMonthDays + "天");
+  if (day + num > 0) {
+    day = day + num;
+  } else if (day + num > thisMonthDays) {
+    day = day + num - thisMonthDays;
+    month++;
+  } else if (day + num <= 0) {
+    month--;
+    day = prevMonthDays + day + num;
+  }
+
   var date = [
-    [dt.getFullYear(), dt.getMonth() + 1, defaultDate].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
+    [year, month, day].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
+      ':')
+  ].join(' ').replace(/(?=\b\d\b)/g, '0');
+  // 正则补零 (略微改动)
+  return date;
+}
+// 测试用例子
+/* var logThisDate = function (num) {
+  var str = getDate(num).split(" ")[0];
+  console.log(str);
+} */
+
+// logThisDate(0) // 2018-08-08
+// logThisDate(7) //2018-08-15
+// logThisDate(15) //2018-08-23
+
+// logThisDate(-7) //2018-08-1
+// logThisDate(-15) //2018-07-24
+//传统浏览器
+function getDate1() {
+  var dt = new Date();
+  var date = [
+    [dt.getFullYear(), dt.getMonth() + 1, dt.getDate()].join('-'), [dt.getHours(), dt.getMinutes(), dt.getSeconds()].join(
       ':')
   ].join(' ').replace(/(?=\b\d\b)/g, '0');
   // 正则补零 (略微改动)
