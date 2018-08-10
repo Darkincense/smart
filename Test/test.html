@@ -10,64 +10,6 @@
 
 <body>
 	<script>
-		var vm = new Vue({
-			el: "#vueControl",
-			data: {
-				companyType: appcan.locStorage.getVal("companyType"),
-				userList: appcan.locStorage.getVal("userList"),
-				isA: false, //订单审核
-				isB: false, //订单结算
-				isC: true, // 配送自提审核
-				isZongbu: appcan.locStorage.getVal("companyType") == '总部'
-			},
-			beforeCreate: function () {},
-			methods: {
-				isShowABC: function () {
-					var userList = JSON.parse(this.userList);
-					/*  for (var i = 0; i < userList.length; i++) {
-					     var item = userList[i].roleName;
-					     var pipei = function (val) {
-					         return item.indexOf(val) != -1;
-					     }
-					     if (pipei("订单审核")) {
-					         this.isA = false;
-					         continue;
-					     }
-					     // isB = pipei("订单结算");
-					     // isC = pipei("配送自提审核");
-					 } */
-					console.log(this.isA);
-
-				},
-				layout: function () {
-					var box = document.getElementById("searchOrders");
-					var companyType = this.companyType;
-					var username = appcan.locStorage.getVal("username");
-					if (companyType == '合资' || companyType == "总部" || companyType == "全资" || username ==
-						"zhouguodong0") {
-						var obj = {
-							companyType: {
-								type: companyType
-							}
-						};
-						var html = template('html', {
-							list: obj
-						})
-						box.innerHTML = html;
-					}
-					if (companyType == "总部") {
-						document.getElementById("audit1").classList.add('none');
-						document.getElementById("audit3").classList.add("w50");
-					}
-				}
-			},
-			mounted: function () {
-				this.layout();
-				this.isShowABC();
-				console.log(this.companyType);
-			}
-
-		})
 	</script>
 </body>
 

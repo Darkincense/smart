@@ -38,61 +38,62 @@
 <body>
   <div id="content"></div>
   <script id="test" type="text/html">
- {{if chukuliang=='否'}}
-<h1>出库量为否的情况</h1>
-{{each list as value i}}
+    {{if chukuliang=='否'}}
+    <h1>出库量为否的情况</h1>
+    {{each list as value i}}
 
-<table id="customers" class="table{{i}}">
-    <tr>
+    <table id="customers" class="table{{i}}">
+      <tr>
         <th>合计</th>
         <th>汽油</th>
         <th>柴油</th>
-    </tr>
-    <tr>
-      <td>{{i+1}}</td>
-      <td>订单号</td>
-      <td>{{value.ORDERSALE_CODE}}</td>
-    </tr>
-  <tr>
-    <td>{{i+1}}</td>
-    <td>油品名称</td>
-    <td>{{value.OILINFO_NAME}}</td>
-  </tr>
-  <tr>
-      <td>{{i+1}}</td>
-      <td>配送方式</td>
-      <td>{{if value.EXTRACT_TYPE==1}}
-          自提
-          {{else}}
-          配送
-          {{/if}}</td>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>订单号</td>
+        <td>{{value.ORDERSALE_CODE}}</td>
+      </tr>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>油品名称</td>
+        <td>{{value.OILINFO_NAME || value.TIDAI_NAME}}</td>
+      </tr>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>配送方式</td>
+        <td>
+          <!-- {{if value.EXTRACT_TYPE==1}} 自提 {{else}} 配送 {{/if}} -->
+          {{ value.EXTRACT_TYPE ==1?'自提':'配送'}}
+        </td>
+      </tr>
+      <tr>
         <td>{{i+1}}</td>
         <td>油品数量</td>
         <td>{{value.OIL_NUMBER | getThreeDecimal}}</td>
       </tr>
-        <tr>
-            <td>{{i+1}}</td>
-            <td>可申请数量</td>
-            <td>{{value.noticenum-value.outnum}}</td>
-          </tr>
-          <tr>
-              <td>{{i+1}}</td>
-              <td>参数</td>
-              <td>{{value.EXTRACT_TYPE+"#"+value.xsdwName}}</td>
-            </tr>
-            <tr>
-                <td>{{i+1}}</td>
-                <td>参数</td>
-                <td><button data-OrderID={{value.ORDER_ID}} value={{value.OILINFO_NAME+"#"+value.OIL_NUMBER}} id={{value.EXTRACT_TYPE+"#"+value.xsdwName}} onclick="clickFn(this,value,id)">点击事件传参,查看购买油品详情</button></td>
-              </tr>
-</table>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>可申请数量</td>
+        <td>{{value.noticenum-value.outnum}}</td>
+      </tr>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>参数</td>
+        <td>{{value.EXTRACT_TYPE+"#"+value.xsdwName}}</td>
+      </tr>
+      <tr>
+        <td>{{i+1}}</td>
+        <td>参数</td>
+        <td>
+          <button data-OrderID={{value.ORDER_ID}} value={{value.OILINFO_NAME+ "#"+value.OIL_NUMBER}} id={{value.EXTRACT_TYPE+ "#"+value.xsdwName}}
+            onclick="clickFn(this,value,id)">点击事件传参,查看购买油品详情</button>
+        </td>
+      </tr>
+    </table>
 
 
-{{/each}}
- {{/if}}
-    
+    {{/each}} {{/if}}
+
   </script>
   <script src="./template-web.js"></script>
   <script>
@@ -100,19 +101,36 @@
       chukuliang: "否",
       cusType: "普通客户",
       list: [{
-        "CHUKULIANG": "否",
-        "EXTRACT_TYPE": 1,
-        "NOTICESUB_ID": "162325c1371011e884160050568d787a",
-        "NOTICE_CODE": "FY1014269041",
-        "NOTICE_ID": "1622765e371011e884160050568d787a",
-        "OILINFO_NAME": "0号普通柴油",
-        "OIL_NUMBER": 500,
-        "outnum": '200',
-        "ORDERSALE_CODE": "2029584249",
-        "ORDER_ID": "acd9c1882da511e884160050568d787a",
-        "STATEMENT_NUM": 500.00000, "noticenum": 500.00000,
-        "xsdwName": "中国石油天然气股份有限公司上海销售分公司"
-      }
+          "CHUKULIANG": "否",
+          "EXTRACT_TYPE": 1,
+          "NOTICESUB_ID": "162325c1371011e884160050568d787a",
+          "NOTICE_CODE": "FY1014269041",
+          "NOTICE_ID": "1622765e371011e884160050568d787a",
+          "OILINFO_NAME": "0号普通柴油",
+          "OIL_NUMBER": 500,
+          "outnum": '200',
+          "ORDERSALE_CODE": "2029584249",
+          "ORDER_ID": "acd9c1882da511e884160050568d787a",
+          "STATEMENT_NUM": 500.00000,
+          "noticenum": 500.00000,
+          "xsdwName": "中国石油天然气股份有限公司上海销售分公司"
+        },
+        {
+          "CHUKULIANG": "否",
+          "EXTRACT_TYPE": 0,
+          "NOTICESUB_ID": "162325c1371011e884160050568d787a",
+          "NOTICE_CODE": "FY1014269041",
+          "NOTICE_ID": "1622765e371011e884160050568d787a",
+          "TIDAI_NAME": "92号车用柴油",
+          "OIL_NUMBER": 100,
+          "outnum": '200',
+          "ORDERSALE_CODE": "2029584249",
+          "ORDER_ID": "acd9c1882da511e884160050568d787a",
+          "STATEMENT_NUM": 500.00000,
+          "noticenum": 500.00000,
+          "xsdwName": "中国石油天然气股份有限公司上海销售分公司"
+        },
+
       ]
     };
 
@@ -123,14 +141,14 @@
     var html = template('test', data);
     document.getElementById('content').innerHTML = html;
 
-    function clickFn(that,value) {
+    function clickFn(that, value) {
       console.log(that);
-      
+
       console.log(arguments);
 
       console.log(value);
       var arrTpl = value.split("#");
-      alert("您正在购买的是" + arrTpl[0] + ", 购买数量为:" + arrTpl[1]+",油品id为"+that.dataset["orderid"])
+      alert("您正在购买的是" + arrTpl[0] + ", 购买数量为:" + arrTpl[1] + ",油品id为" + that.dataset["orderid"])
 
     }
   </script>

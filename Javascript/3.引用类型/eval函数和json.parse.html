@@ -16,6 +16,8 @@
 
     var data = '{"student" : [{"name":"鸣人","age":17}, {"name":"小樱","age":alert("hehe")},{"name":"佐助","age":17}]}';
 
+    var test = eval(data);
+
     // var evalData = eval('(' + data + ')');
     var parseData = JSON.parse(data);
 
