@@ -1,7 +1,149 @@
-const dom = {
-  on(element, eventType, selector, fn) {
+var dom = {
+
+  // 对象合并 option = _extend(option, opt);
+  _extend: function (option, opt) {
+    if (typeof (opt) != 'object' || !opt) {
+      return option;
+    }
+    for (var property in opt) {
+      option[property] = opt[property];
+    }
+    return option;
+  },
+
+  $: function (selector, el) {
+    if (!el) {
+      el = document;
+    }
+    return el.querySelector(selector);
+  },
+
+  $$: function (selector, el) {
+    if (!el) {
+      el = document;
+    }
+    return Array.prototype.slice.call(el.querySelectorAll(selector));
+  },
+
+
+  // 将NodeList转为数组
+  convertToArray: function (nodeList) {
+    var array = null
+    try {
+      // IE8-NodeList是COM对象
+      array = Array.prototype.slice.call(nodeList, 0)
+    } catch (err) {
+      array = []
+      for (var i = 0, len = nodeList.length; i < len; i++) {
+        array.push(nodeList[i])
+      }
+    }
+    return array
+  },
+
+  index: function (element) {
+    var siblings = element.parentNode.children;
+    for (var index = 0; index < siblings.length; index++) {
+      if (siblings[index] === element) {
+        return index;
+      }
+    }
+    return -1;
+  },
+
+  getIndexByClass: function (element) {
+    var className = element.className;
+    domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
+    for (var index = 0; index < domArr.length; index++) {
+      if (domArr[index] === element) {
+        return index;
+      }
+    }
+    return -1;
+  },
+
+  every: function (nodeList, fn) {
+    for (var i = 0; i < nodeList.length; i++) {
+      fn.call(null, nodeList[i], i);
+    }
+    return nodeList;
+  },
+
+  siblings: function (obj) {
+    var a = [];
+    var p = obj.previousSibling;
+    while (p) { //先取o的哥哥们 判断有没有上一个哥哥元素，如果有则往下执行 p表示previousSibling 
+      if (p.nodeType === 1) {
+        a.push(p);
+      }
+      p = p.previousSibling //最后把上一个节点赋给p 
+    }
+    a.reverse() //把顺序反转一下 这样元素的顺序就是按先后的了 
+    var n = obj.nextSibling; //再取o的弟弟 
+    while (n) { //判断有没有下一个弟弟结点 n是nextSibling的意思 
+      if (n.nodeType === 1) {
+        a.push(n);
+      }
+      n = n.nextSibling;
+    }
+    return a;
+  },
+
+  siblings2: function (ele) {
+    var newArr = [];
+    var arr = ele.parentNode.children; //ie678中无法取出注释节点;
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i].nodeType == 1 && arr[i] != ele) {
+        newArr.push(arr[i]);
+      }
+    }
+    return newArr;
+  },
+
+  /**
+   * 功能:根据索引值找兄弟节点
+   * @param ele
+   * @param index
+   * @returns {*|HTMLElement}
+   */
+  getSibEleOfIndex: function (ele, index) {
+    return ele.parentNode.children[index];
+  },
+
+  uniqueClass: function (element, className) {
+    dom.every(element.parentNode.children, el => {
+      el.classList.remove(className); // 排他
+    });
+    element.classList.add(className);
+    return element;
+  },
+
+  hasClass: function (obj, classStr) {
+    var arr = obj.className.split(/\s+/); //这个正则表达式是因为class可以有多个,判断是否包含 
+    return (arr.indexOf(classStr) == -1) ? false : true;
+  },
+
+  addClass: function (obj, classStr) {
+    if (!this.hasClass(obj, classStr)) {
+      obj.className += " " + classStr
+    };
+  },
+
+  removeClass: function (obj, classStr) {
+    if (this.hasClass(obj, classStr)) {
+      var reg = new RegExp('(\\s|^)' + classStr + '(\\s|$)');
+      obj.className = obj.className.replace(reg, '');
+    }
+  },
+
+  replaceClass: function (obj, newName, oldName) {
+    removeClass(obj, oldName);
+    addClass(obj, newName);
+  },
+
+  on: function (element, eventType, selector, fn) {
     element.addEventListener(eventType, e => {
-      let el = e.target;
+      var el = e.target;
       while (!el.matches(selector)) {
         if (element === el) {
           el = null;
@@ -15,7 +157,7 @@ const dom = {
   },
 
   onSwipe(element, fn) {
-    let x0, y0;
+    var x0, y0;
     element.addEventListener("touchstart", e => {
       x0 = e.touches[0].clientX;
       y0 = e.touches[0].clientY;
@@ -24,8 +166,8 @@ const dom = {
       if (!x0 || !y0) {
         return;
       }
-      let xDiff = e.touches[0].clientX - x0;
-      let yDiff = e.touches[0].clientY - y0;
+      var xDiff = e.touches[0].clientX - x0;
+      var yDiff = e.touches[0].clientY - y0;
 
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
         if (xDiff > 0) {
@@ -45,56 +187,48 @@ const dom = {
     });
   },
 
-  index(element) {
-    const siblings = element.parentNode.children;
-    for (let index = 0; index < siblings.length; index++) {
-      if (siblings[index] === element) {
-        return index;
-      }
+  getStyle: function (ele, attr) {
+    if (ele.currentStyle !== undefined) {
+      return ele.currentStyle[attr];
+    } else {
+      return window.getComputedStyle(ele, null)[attr] ?
+        window.getComputedStyle(ele, null)[attr] :
+        ele.getAttribute(attr);
     }
-    return -1;
   },
 
-  uniqueClass(element, className) {
-    dom.every(element.parentNode.children, el => {
-      el.classList.remove(className); // 排他
-    });
-    element.classList.add(className);
-    return element;
-  },
-
-  every(nodeList, fn) {
-    for (var i = 0; i < nodeList.length; i++) {
-      fn.call(null, nodeList[i], i);
+  setStyle: function (e, a) {
+    for (var i in a) {
+      e.style[i] = a[i]
     }
-    return nodeList;
   },
 
   // http://stackoverflow.com/a/35385518/1262580
-  create(html, children) {
+  create: function (html, children) {
     var template = document.createElement("template");
     template.innerHTML = html.trim();
-    const node = template.content.firstChild;
+    var node = template.content.firstChild;
     if (children) {
       dom.append(node, children);
     }
     return node;
   },
 
-  append(parent, children) {
+  append: function (parent, children) {
     if (children.length === undefined) {
       children = [children];
     }
-    for (let i = 0; i < children.length; i++) {
+    for (var i = 0; i < children.length; i++) {
       parent.appendChild(children[i]);
     }
     return parent;
   },
-  prepend(parent, children) {
+
+  prepend: function (parent, children) {
     if (children.length === undefined) {
       children = [children];
     }
-    for (let i = children.length - 1; i >= 0; i--) {
+    for (var i = children.length - 1; i >= 0; i--) {
       if (parent.firstChild) {
         parent.insertBefore(children[i], parent.firstChild);
       } else {
@@ -103,29 +237,69 @@ const dom = {
     }
     return parent;
   },
-  removeChildren(element) {
+
+  show: function (target) {
+    this.css(target, {
+      display: 'block'
+    });
+  },
+
+  hide: function (target) {
+    this.css(target, {
+      display: 'none'
+    });
+  },
+
+  fadeOut: function (target) {
+    var opacity = 100;
+    var timer = null;
+    var _this = this;
+    timer = setInterval(function () {
+      opacity -= opacity / 20;
+      opacity < 80 && _this.css(target, {
+        opacity: opacity / 100
+      })
+      if (opacity <= 5) {
+        clearInterval(timer);
+        _this.css(target, {
+          display: 'none',
+          opacity: 1
+        })
+      }
+    }, 10);
+  },
+
+  removeChildren: function (element) {
     while (element.hasChildNodes()) {
       element.removeChild(element.lastChild);
     }
     return this;
   },
 
-  dispatchEvent(element, eventType, detail) {
-    const event = new CustomEvent("pageChange", { detail });
-    element.dispatchEvent(event);
-    return this;
+  // el can be an Element, NodeList or query string
+  remove: function (el) {
+    if (typeof el === 'string') {
+      [].forEach.call(document.querySelectorAll(el), node => {
+        node.parentNode.removeChild(node);
+      });
+    } else if (el.parentNode) {
+      // it's an Element
+      el.parentNode.removeChild(el);
+    } else if (el instanceof NodeList) {
+      // it's an array of elements
+      [].forEach.call(el, node => {
+        node.parentNode.removeChild(node);
+      });
+    } else {
+      throw new Error('you can only pass Element, array of Elements or query string as argument');
+    }
   }
+
+
 };
-// 对象合并 option = _extend(option, opt);
-var _extend = function (option, opt) {
-  if (typeof (opt) != 'object' || !opt) {
-    return option;
-  }
-  for (var property in opt) {
-    option[property] = opt[property];
-  }
-  return option;
-};
+
+
+
 
 /**
  * 
@@ -135,7 +309,7 @@ var _extend = function (option, opt) {
 function isPlainObject(obj) {
   if (typeof obj !== 'object' || obj === null) return false
 
-  let proto = obj
+  var proto = obj
   while (Object.getPrototypeOf(proto) !== null) {
     proto = Object.getPrototypeOf(proto)
   }
@@ -156,45 +330,7 @@ Object.prototype.clone = function () {
   return newObj;
 }
 
-
-// ----------------------------------------获取元素------------------------------------------------------
-
-function $(selector, el) {
-  if (!el) {
-    el = document;
-  }
-  return el.querySelector(selector);
-}
-
-function $$(selector, el) {
-  if (!el) {
-    el = document;
-  }
-  return Array.prototype.slice.call(el.querySelectorAll(selector));
-  // Note: el.querySelectorAll(selector) => the returned object is a NodeList ;
-  // If you'd like to convert it to a Array for convenience, use this instead:
-  // return Array.prototype.slice.call(el.querySelectorAll(selector));
-}
-
-// 将NodeList转为数组
-function convertToArray(nodeList) {
-  var array = null
-  try {
-    // IE8-NodeList是COM对象
-    array = Array.prototype.slice.call(nodeList, 0)
-  } catch (err) {
-    array = []
-    for (var i = 0, len = nodeList.length; i < len; i++) {
-      array.push(nodeList[i])
-    }
-  }
-  return array
-}
-
-function getId(id) {
-  return !id ? null : document.getElementById(id);
-}
-
+// ---------------------------·····class -------------------------
 
 function getByClass(oParent, sClass) {
   var aEle = oParent.getElementsByTagName('*');
@@ -208,6 +344,7 @@ function getByClass(oParent, sClass) {
   }
   return aResult;
 }
+
 function $C(classname, ele, tag) {
   var returns = [];
   ele = ele || document;
@@ -234,76 +371,20 @@ function $C(classname, ele, tag) {
   }
   return returns;
 }
-function siblings(obj) {
-  var a = [];//定义一个数组，用来存o的兄弟元素 
-  var p = obj.previousSibling;
-  while (p) {//先取o的哥哥们 判断有没有上一个哥哥元素，如果有则往下执行 p表示previousSibling 
-    if (p.nodeType === 1) {
-      a.push(p);
-    }
-    p = p.previousSibling//最后把上一个节点赋给p 
-  }
-  a.reverse()//把顺序反转一下 这样元素的顺序就是按先后的了 
-  var n = obj.nextSibling;//再取o的弟弟 
-  while (n) {//判断有没有下一个弟弟结点 n是nextSibling的意思 
-    if (n.nodeType === 1) {
-      a.push(n);
-    }
-    n = n.nextSibling;
-  }
-  return a;
-}
 
-function siblings2(ele) {
-  var newArr = [];
-  var arr = ele.parentNode.children;//ie678中无法取出注释节点;
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i].nodeType == 1 && arr[i] != ele) {
-      newArr.push(arr[i]);
-    }
-  }
-  return newArr;
-}
 
-/**
- * 功能:根据索引值找兄弟节点
- * @param ele
- * @param index
- * @returns {*|HTMLElement}
- */
-function getSibEleOfIndex(ele, index) {
-  return ele.parentNode.children[index];
-}
-
-// ---------------------------·····class与属性，css样式-------------------------
-
-function hasClass(obj, classStr) {
-  var arr = obj.className.split(/\s+/); //这个正则表达式是因为class可以有多个,判断是否包含 
-  return (arr.indexOf(classStr) == -1) ? false : true;
-}
-function addClass(obj, classStr) {
-  if (!this.hasClass(obj, classStr)) { obj.className += " " + classStr };
-}
-function removeClass(obj, classStr) {
-  if (this.hasClass(obj, classStr)) {
-    var reg = new RegExp('(\\s|^)' + classStr + '(\\s|$)');
-    obj.className = obj.className.replace(reg, '');
-  }
-}
-function replaceClass(obj, newName, oldName) {
-  removeClass(obj, oldName);
-  addClass(obj, newName);
-}
 
 // 另一套，使用时放开 {}
 var ClassList = {
   // el can be an Element, NodeList or selector
   addClass(el, className) {
     if (typeof el === 'string') el = document.querySelectorAll(el);
-    const els = (el instanceof NodeList) ? [].slice.call(el) : [el];
+    var els = (el instanceof NodeList) ? [].slice.call(el) : [el];
 
     els.forEach(e => {
-      if (this.hasClass(e, className)) { return; }
+      if (this.hasClass(e, className)) {
+        return;
+      }
 
       if (e.classList) {
         e.classList.add(className);
@@ -316,7 +397,7 @@ var ClassList = {
   // el can be an Element, NodeList or selector
   removeClass(el, className) {
     if (typeof el === 'string') el = document.querySelectorAll(el);
-    const els = (el instanceof NodeList) ? [].slice.call(el) : [el];
+    var els = (el instanceof NodeList) ? [].slice.call(el) : [el];
 
     els.forEach(e => {
       if (this.hasClass(e, className)) {
@@ -341,7 +422,7 @@ var ClassList = {
   // el can be an Element or selector
   toggleClass(el, className) {
     if (typeof el === 'string') el = document.querySelector(el);
-    const flag = this.hasClass(el, className);
+    var flag = this.hasClass(el, className);
     if (flag) {
       this.removeClass(el, className);
     } else {
@@ -352,58 +433,11 @@ var ClassList = {
 }
 
 
-function getStyle(ele, attr) {
-  if (ele.currentStyle !== undefined) {
-    return ele.currentStyle[attr];
-  } else {
-    return window.getComputedStyle(ele, null)[attr]
-      ? window.getComputedStyle(ele, null)[attr]
-      : ele.getAttribute(attr);
-  }
-}
 
-function css(t, n) {
-  return t.currentStyle ? t.currentStyle[n] : getComputedStyle(t, !1)[n]
-}
-
-// setStyle(c, {
-//     backgroundColor: this.bgcolor,
-//     display: 'block'
-// })
-function setStyle(e, a) {
-  for (var i in a) {
-    e.style[i] = a[i]
-  }
-}
-
-
-// --------------------------------显示，隐藏，插入---------------------------
-function create(t) {
-  return document.createElement(t)
-}
-
-// el can be an Element, NodeList or query string
-function remove(t) {
-  if (typeof el === 'string') {
-    [].forEach.call(document.querySelectorAll(el), node => {
-      node.parentNode.removeChild(node);
-    });
-  } else if (el.parentNode) {
-    // it's an Element
-    el.parentNode.removeChild(el);
-  } else if (el instanceof NodeList) {
-    // it's an array of elements
-    [].forEach.call(el, node => {
-      node.parentNode.removeChild(node);
-    });
-  } else {
-    throw new Error('you can only pass Element, array of Elements or query string as argument');
-  }
-}
 
 
 function insertAfter(newEl, targetEl) {
-  const parent = targetEl.parentNode;
+  var parent = targetEl.parentNode;
 
   if (parent.lastChild === targetEl) {
     parent.appendChild(newEl);
@@ -411,6 +445,7 @@ function insertAfter(newEl, targetEl) {
     parent.insertBefore(newEl, targetEl.nextSibling);
   }
 }
+
 function appendHTML(el, html) {
   var divTemp = document.createElement("div"),
     nodes = null,
@@ -461,9 +496,9 @@ function htmlToElement(html) {
 //   div = htmlToElement('<div><span>nested</span> <span>stuff</span></div>');
 
 /**
-* @param {String} HTML representing any number of sibling elements
-* @return {NodeList} 
-*/
+ * @param {String} HTML representing any number of sibling elements
+ * @return {NodeList} 
+ */
 function htmlToElements(html) {
   var template = document.createElement('template');
   template.innerHTML = html;
@@ -487,9 +522,6 @@ function removeEvent(a, b, c, d) {
 
 
 //取消浏览器默认行为
-/*  submit.onclick = function(e){
-    stopDefault(e)
- } */
 function stopDefault(e) {
   if (e && e.preventDefault) {
     e.preventDefault();
@@ -507,5 +539,3 @@ function stopBubble(e) {
     window.event.cancelBubble = true;
   }
 }
-
-

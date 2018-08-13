@@ -1,5 +1,5 @@
-(function (window) {  //传入window，提高变量的查找效率
-    function mobileEvent(selector) {  //这个函数就是对外提供的接口。
+(function (window) { //传入window，提高变量的查找效率
+    function mobileEvent(selector) { //这个函数就是对外提供的接口。
         //调用这个函数的原型对象上的_init方法，并返回
         return mobileEvent.prototype._init(selector);
     }
@@ -55,7 +55,7 @@
 
             function touchFn(e) {
                 switch (e.type) {
-                    case "touchstart":  //500ms之后执行
+                    case "touchstart": //500ms之后执行
                         timerId = setTimeout(function () {
                             handler.call(this, e);
                         }, 500)

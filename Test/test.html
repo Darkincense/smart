@@ -9,49 +9,9 @@
 </head>
 
 <body>
-	<button class="btn">
-		按钮1
-	</button>
-	<button class="btn">
-		按钮2
-	</button>
+	<script src="../bulid/tools/dom.js"></script>
 	<script>
-		function addEvent(a, b, c, d) {
-			a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent("on" + b, c)
-		}
-		var btnArr = Array.from(document.querySelectorAll('button'));
-		for (var i = 0; i < btnArr.length; i++) {
-			var item = btnArr[i];
-			item.setAttribute("data-index", i);
-			addEvent(item, 'click', function (e) {
-				var currentBtn = e.target;
-				console.dir(currentBtn);
-
-				var index = currentBtn.dataset["index"];
-				alert(index)
-			})
-		}
-
-
-
-
-		/* 		$('.cheliang-select').on('change', function (e, params) {
-					var cheliangArr = Array.prototype.call(document.querySelectorAll(".cheliang-select'"));
-
-					for (var i = 0; i < cheliangArr.length; i++) {
-						var item = cheliangArr[i];
-						item.setAttribute("data-index", i);
-					};
-
-					var currentSelect = e.target;
-					console.dir(currentSelect)
-					
-						var index = currentSelect.dataset["index"];
-						alert(index)
-
-
-
-				}); */
+		
 	</script>
 </body>
 
