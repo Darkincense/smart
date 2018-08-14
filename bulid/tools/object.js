@@ -92,6 +92,20 @@ Object.prototype.clone = function () {
         }
     }
     return newObj;
+};
+
+// 记一次递归调用打印对象
+function printf(obj) {
+    document.write(obj + "<br>");
+}
+
+function forEach(obj) {
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            obj[key] = typeof obj[key] === 'object' ? forEach(obj[key]) : printf(key + ':' + obj[key]);
+        }
+
+    }
 }
 
 

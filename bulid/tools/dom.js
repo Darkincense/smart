@@ -28,7 +28,7 @@ var dom = {
 
   // 将NodeList转为数组
   convertToArray: function (nodeList) {
-    var array = null
+    var array = null;
     try {
       // IE8-NodeList是COM对象
       array = Array.prototype.slice.call(nodeList, 0)
@@ -51,9 +51,10 @@ var dom = {
     return -1;
   },
 
-  getIndexByClass: function (element) {
-    var className = element.className;
-    domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
+  getIndexByClass: function (param) {
+    var element = param.classname ? param : param.target;
+    var className = element.classname;
+    var domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
     for (var index = 0; index < domArr.length; index++) {
       if (domArr[index] === element) {
         return index;
