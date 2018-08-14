@@ -1,4 +1,3 @@
-
 //异步加载js执行回调函数
 function loadScript(url, callback, charset) {
   var script = document.createElement("script");
@@ -24,24 +23,24 @@ function loadScript(url, callback, charset) {
 }
 
 function delay_script(A) {
-  var B = document.createElement("script")
-    , C = "src"
-    , D = "text/javascript";
+  var B = document.createElement("script"),
+    C = "src",
+    D = "text/javascript";
   B.setAttribute(C, A);
   B.setAttribute("type", D);
   document.body.appendChild(B);
-  return B
+  return B;
 }
 // 兼容IE动态添加script方法
-function loadScriptString (code) {
+function loadScriptString(code) {
   var script = document.createElement('script')
-  script.type = 'text/javascript'
+  script.type = 'text/javascript';
   try {
-    script.appendChild(document.createTextNode(code))
+    script.appendChild(document.createTextNode(code));
   } catch (e) {
-    script.text = code
+    script.text = code;
   }
-  document.body.appendChild(script)
+  document.body.appendChild(script);
 }
 
 // delay_script("//ossweb-img.qq.com/images/js/eas/eas.js");
@@ -68,17 +67,17 @@ function getScript(src, func) {
 
 
 function delay_js(url) {
-  var type = url.split(".")
-    , file = type[type.length - 1];
+  var type = url.split("."),
+    file = type[type.length - 1];
   if (file == "css") {
-    var obj = document.createElement("link")
-      , lnk = "href"
-      , tp = "text/css";
+    var obj = document.createElement("link"),
+      lnk = "href",
+      tp = "text/css";
     obj.setAttribute("rel", "stylesheet");
   } else
-    var obj = document.createElement("script")
-      , lnk = "src"
-      , tp = "text/javascript";
+    var obj = document.createElement("script"),
+      lnk = "src",
+      tp = "text/javascript";
   obj.setAttribute(lnk, url);
   obj.setAttribute("type", tp);
   file == "css" ? document.getElementsByTagName("head")[0].appendChild(obj) : document.body.appendChild(obj);
@@ -111,7 +110,6 @@ function addsize(func) {
     window.onresize = function () {
       old();
       func();
-    }
+    };
   }
 }
-

@@ -1,18 +1,69 @@
-// Array isArray
+var util = {
 
-function isArray(arr) {
-  return Object
-    .prototype
-    .toString
-    .call(arr) === '[object Array]'
-}
+  isArray: function (o) {
+    return Object.prototype.toString.call(o) == "[object Array]";
+  },
 
-// 用法 Array.isArray(obj) 原生方法，向下做兼容
-if (!Array.isArray) {
-  Array.isArray = function (arg) {
-    return Object.prototype.toString.call(arg) === '[object Array]';
-  };
-}
+  arrayIndex: function (element, array) {
+    var index = array.indexOf(element);
+    return index;
+  },
+
+  // 将一组类数组转换为数组
+  toArray: function (obj) {
+    return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj);
+  },
+
+  in_array: function (needle, haystack) {
+    if (typeof needle == 'string' || typeof needle == 'number') {
+      for (var i in haystack) {
+        if (haystack[i] == needle) {
+          return true;
+        }
+      }
+    }
+    return false;
+  },
+
+  isContains: function (arr, current) {
+    if (Array.prototype.includes) {
+      return arr.includes(current);
+    }
+    for (i = 0; i < arr.length && arr[i] != current; i++);
+    return !(i == arr.length);
+  },
+
+  // 数组最大值，最小值
+  maxArr: function (arr) {
+    return Math.max.apply(null, arr);
+  },
+
+  minArr: function (arr) {
+    return Math.min.apply(null, arr);
+  },
+
+  //去除数组中假值元素，比如undefined,null,0,"",NaN都是假值
+  compact: function (arr) {
+    var index = -1,
+      resIndex = -1,
+      result = [],
+      len = arr ?
+      arr.length :
+      0;
+    while (++index < len) {
+      var value = arr[index];
+      if (value) {
+        result[++resIndex] = value;
+      }
+    }
+    return result;
+  },
+  // 从数组中随机取出一个
+  randomOne: function (arr) {
+    return arr[Math.floor(Math.random() * arr.length)];
+  }
+};
+
 
 // 给数组创建一个随机项
 var items = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
@@ -21,7 +72,7 @@ var randomItem = items[Math.floor(Math.random() * items.length)];
 // 打乱数字数组的顺序
 var numbers = [12, 548, 'a', 2, 5478, 'foo', 8852, , 'Doe', 2145, 119];
 numbers.sort(function () {
-  return Math.random() - 0.5
+  return Math.random() - 0.5;
 });
 
 // 数组追加
@@ -70,53 +121,8 @@ Array.prototype.isContains = function (e) {
   return !(i == this.length);
 }
 
-function isContains(arr, current) {
-  if (Array.prototype.includes) {
-    return arr.includes(current);
-  }
-  for (i = 0; i < arr.length && arr[i] != current; i++);
-  return !(i == arr.length);
-}
-
-function in_array(needle, haystack) {
-  if (typeof needle == 'string' || typeof needle == 'number') {
-    for (var i in haystack) {
-      if (haystack[i] == needle) {
-        return true;
-      }
-    }
-  }
-  return false;
-}
 
 
-// 将一组类数组转换为数组
-function toArray(obj) {
-  return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj);
-}
-
-
-//去除数组中假值元素，比如undefined,null,0,"",NaN都是假值
-function compact(arr) {
-  var index = -1,
-    resIndex = -1,
-    result = [],
-    len = arr ?
-    arr.length :
-    0;
-  while (++index < len) {
-    var value = arr[index];
-    if (value) {
-      result[++resIndex] = value;
-    }
-  }
-  return result;
-};
-
-function arrayIndex(element, array) {
-  var index = array.indexOf(element);
-  return index;
-}
 // 得到n1-n2下标的数组
 //getArrayNum([0,1,2,3,4,5,6,7,8,9],5,9)
 //[5, 6, 7, 8, 9]
@@ -138,22 +144,22 @@ function getArrayNum(arr, n1, n2) {
 function dedupe(client, hasher) {
   hasher = hasher || JSON.stringify
 
-  const clone = []
-  const lookup = {}
+  var clone = [],
+    lookup = {};
 
-  for (let i = 0; i < client.length; i++) {
-    let elem = client[i] //数组元素
-    let hashed = hasher(elem) //键
+  for (var i = 0; i < client.length; i++) {
+    var elem = client[i], //数组元素
+      hashed = hasher(elem); //键
 
 
 
     if (!lookup[hashed]) { //对象中没有键
-      clone.push(elem) //放到新数组
-      lookup[hashed] = true //标识符
+      clone.push(elem); //放到新数组
+      lookup[hashed] = true; //标识符
     }
   }
 
-  return clone
+  return clone;
 }
 
 // dedupe.test.js
@@ -164,25 +170,8 @@ console.log(b)
 var aaa = [{a: 2, b: 1}, {a: 1, b: 2}, {a: 1, b: 3}, {a: 1, b: 4}]
 var bbb = dedupe(aaa, value => value.a)  //只看元素的a键的值是否存在
 console.log(bbb) */
-// 数组最大值，最小值
-function maxArr(arr) {
-  return Math.max.apply(null, arr);
-}
 
-function minArr(arr) {
-  return Math.min.apply(null, arr);
-}
-//randomOne([1,2,3,6,8,5,4,2,6])
-//2
-//randomOne([1,2,3,6,8,5,4,2,6])
-//8
-//randomOne([1,2,3,6,8,5,4,2,6])
-//8
-//randomOne([1,2,3,6,8,5,4,2,6])
-//1
-function randomOne(arr) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
+
 
 // 筛选数组
 //删除值为'val'的数组元素
@@ -193,6 +182,6 @@ function randomOne(arr) {
 //["test1", "test2", "aaa"]  //数组元素的值全等于'test'才被删除
 function removeArrayForValue(arr, val, type) {
   return arr.filter(function (item) {
-    return type ? item.indexOf(val) === -1 : item !== val
-  })
+    return type ? item.indexOf(val) === -1 : item !== val;
+  });
 }

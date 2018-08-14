@@ -1,12 +1,84 @@
-// 判断数据类型
-function getType(a) {
-  var typeArray = Object.prototype.toString.call(a).split(" ");
-  return typeArray[1].slice(0, -1);
+window.onerror = function (
+  errMsg,
+  scriptURI,
+  lineNumber,
+  columnNumber,
+  errorObj
+) {
+  setTimeout(function () {
+    var rst = {
+      "错误信息：": errMsg,
+      "出错文件：": scriptURI,
+      "出错行号：": lineNumber,
+      "出错列号：": columnNumber,
+      "错误详情：": errorObj
+    };
+
+    alert(JSON.stringify(rst, null, 10));
+  });
+};
+
+var methods = {
+
+  // 判断数据类型
+  getType: function (a) {
+    var typeArray = Object.prototype.toString.call(a).split(" ");
+    return typeArray[1].slice(0, -1);
+  },
+
+  isEmpty: function (str, callback) {
+    if (str == "" || str == null || typeof (str) == "undefined") {
+      callback();
+    }
+  },
+
+  isNumber: function (obj) {
+    return Object.prototype.toString.call(obj) === "[object Number]";
+  },
+
+  // 判断是否为数字
+  isDigit: function (value) {
+    var patrn = /^[0-9]*$/;
+    if (patrn.exec(value) == null || value == "") {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
+  /**
+   * 判断变量是否为空
+   * @param val
+   * @returns {boolean}
+   */
+  isempty: function (val) {
+    return (val == null || val == '' || val == undefined || typeof (val) == typeof (undefined));
+  },
+
+  // 四舍五入 格式化数字
+  // toFix(8440.55,1) => 8440.6
+  toFixed: function (number, fractionDigits) {
+    var times = Math.pow(10, fractionDigits);
+    var roundNum = Math.round(number * times) / times;
+    return roundNum.toFixed(fractionDigits);
+  },
+  
+  // window.location.href='https://www.baidu.com';
+  // window.open("http://zkcx.bjeea.cn/zhcxxt/index.jsp");
+  // window.open("../../../portal/xgzc.html");
+  openUrl: function (url) {
+    var a = document.createElement('a');
+    a.target = '_blank';
+    a.href = url;
+    a.style.display = 'none';
+    var body = document.getElementsByTagName('body').item(0);
+    body.appendChild(a);
+    a.click();
+    body.removeChild(a);
+  }
 }
 
-function isNumber(obj) {
-  return Object.prototype.toString.call(obj).split(" ")[1].slice(0, -1) === 'Number' ? true : false
-}
+
 
 //传递一个范围，返回该范围的随机数
 function getRand(min, max) {
@@ -40,7 +112,6 @@ function fmoney(s, n) {
 function rmoney(s) {
   return parseFloat(s.replace(/[^\d\.-]/g, ""));
 }
-
 
 /**
  *
@@ -94,14 +165,6 @@ function ListenEnter(func) {
     }
   };
 
-}
-
-
-function setOpacity(e, a) {
-  e.style.opacity = a / 100;
-  e.style.filter = 'alpha(opacity=' + a + ')';
-  /*  if (isIE)
-       e.style.zoom = 1 */
 }
 
 // 超过范围的值只取最大范围
@@ -164,49 +227,3 @@ function throttle(func, wait) {
     }
   }
 }
-
-window.onerror = function (
-  errMsg,
-  scriptURI,
-  lineNumber,
-  columnNumber,
-  errorObj
-) {
-  setTimeout(function () {
-    var rst = {
-      "错误信息：": errMsg,
-      "出错文件：": scriptURI,
-      "出错行号：": lineNumber,
-      "出错列号：": columnNumber,
-      "错误详情：": errorObj
-    };
-
-    alert(JSON.stringify(rst, null, 10));
-  });
-};
-
-function stripscript(s) {
-  return s.replace(/<script.*?>.*?<\/script>/ig, '');
-}
-
-// 四舍五入 格式化数字
-// toFix(8440.55,1) => 8440.6
-function toFixed(number, fractionDigits) {
-  var times = Math.pow(10, fractionDigits);
-  var roundNum = Math.round(number * times) / times;
-  return roundNum.toFixed(fractionDigits);
-}
-
-// window.location.href='https://www.baidu.com';
-// window.open("http://zkcx.bjeea.cn/zhcxxt/index.jsp");
-// window.open("../../../portal/xgzc.html");
-function openUrl(url) {
-  var a = document.createElement('a');
-  a.target = '_blank';
-  a.href = url;
-  a.style.display = 'none';
-  var body = document.getElementsByTagName('body').item(0);
-  body.appendChild(a);
-  a.click();
-  body.removeChild(a);
-};

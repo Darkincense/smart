@@ -33,12 +33,12 @@ var dom = {
       // IE8-NodeList是COM对象
       array = Array.prototype.slice.call(nodeList, 0)
     } catch (err) {
-      array = []
+      array = [];
       for (var i = 0, len = nodeList.length; i < len; i++) {
         array.push(nodeList[i])
       }
     }
-    return array
+    return array;
   },
 
   index: function (element) {
@@ -76,7 +76,7 @@ var dom = {
       if (p.nodeType === 1) {
         a.push(p);
       }
-      p = p.previousSibling //最后把上一个节点赋给p 
+      p = p.previousSibling; //最后把上一个节点赋给p 
     }
     a.reverse() //把顺序反转一下 这样元素的顺序就是按先后的了 
     var n = obj.nextSibling; //再取o的弟弟 
@@ -125,8 +125,8 @@ var dom = {
 
   addClass: function (obj, classStr) {
     if (!this.hasClass(obj, classStr)) {
-      obj.className += " " + classStr
-    };
+      obj.className += " " + classStr;
+    }
   },
 
   removeClass: function (obj, classStr) {
@@ -156,7 +156,7 @@ var dom = {
     return element;
   },
 
-  onSwipe(element, fn) {
+  onSwipe: function (element, fn) {
     var x0, y0;
     element.addEventListener("touchstart", e => {
       x0 = e.touches[0].clientX;
@@ -249,6 +249,30 @@ var dom = {
       display: 'none'
     });
   },
+  setOpacity: function (obj, val) {
+    if (document.documentElement.filters) {
+      obj.style.filter = "alpha(opacity=" + val + ")";
+    } else {
+      obj.style.opacity = val / 100;
+    }
+  },
+  fadeIn: function (obj) {
+    var val = 10;
+    var setOpacity = function (obj, val) {
+      if (document.documentElement.filters) {
+        obj.style.filter = "alpha(opacity=" + val + ")";
+      } else {
+        obj.style.opacity = val / 100;
+      }
+    };
+    var t = setInterval(function () {
+      if (val >= 100) {
+        clearInterval(t);
+      }
+      setOpacity(obj, val);
+      val += 10;
+    }, 250);
+  },
 
   fadeOut: function (target) {
     var opacity = 100;
@@ -258,13 +282,13 @@ var dom = {
       opacity -= opacity / 20;
       opacity < 80 && _this.css(target, {
         opacity: opacity / 100
-      })
+      });
       if (opacity <= 5) {
         clearInterval(timer);
         _this.css(target, {
           display: 'none',
           opacity: 1
-        })
+        });
       }
     }, 10);
   },
@@ -300,36 +324,6 @@ var dom = {
 
 
 
-
-/**
- * 
- * @param {any} obj 
- * @returns {boolean} 判断传入的参数是否是一个朴素对象
- */
-function isPlainObject(obj) {
-  if (typeof obj !== 'object' || obj === null) return false
-
-  var proto = obj
-  while (Object.getPrototypeOf(proto) !== null) {
-    proto = Object.getPrototypeOf(proto)
-  }
-
-  return Object.getPrototypeOf(obj) === proto
-}
-
-// 对象深度克隆，支持[]和{}
-Object.prototype.clone = function () {
-  var obj = this;
-  if (typeof obj !== 'object') return;
-  var newObj = obj instanceof Array ? [] : {};
-  for (var key in obj) {
-    if (obj.hasOwnProperty(key)) {
-      newObj[key] = typeof obj[key] === 'object' ? (obj[key]).clone() : obj[key];
-    }
-  }
-  return newObj;
-}
-
 // ---------------------------·····class -------------------------
 
 function getByClass(oParent, sClass) {
@@ -361,11 +355,11 @@ function $C(classname, ele, tag) {
       returns = eles;
     }
   } else {
-    eles = ele.getElementsByTagName(tag);
+    eles2 = ele.getElementsByTagName(tag);
     var pattern = new RegExp("(^|\\s)" + classname + "(\\s|$)");
-    for (i = 0, L = eles.length; i < L; i++) {
-      if (pattern.test(eles[i].className)) {
-        returns.push(eles[i]);
+    for (var i = 0, L = eles2.length; i < L; i++) {
+      if (pattern.test(eles2[i].className)) {
+        returns.push(eles2[i]);
       }
     }
   }

@@ -1,15 +1,99 @@
-// Object 在obj中是否有key
+var util = {
+    //此对象包含函数与对象
+    isObject: function (obj) {
+        var type = typeof (obj);
+        return type === 'function' || type === 'object' && !!obj;
+    },
 
-function has(obj, key) {
-    return obj != null && hasOwnProperty.call(obj, key);
+    /**
+     * 
+     * @param {any} obj 
+     * @returns {boolean} 判断传入的参数是否是一个朴素对象
+     */
+    isPlainObject: function (obj) {
+        if (typeof obj !== 'object' || obj === null) return false;
+
+        var proto = obj;
+        while (Object.getPrototypeOf(proto) !== null) {
+            proto = Object.getPrototypeOf(proto);
+        }
+
+        return Object.getPrototypeOf(obj) === proto;
+    },
+
+    // Object 在obj中是否有key
+    has: function (obj, key) {
+        return obj != null && hasOwnProperty.call(obj, key);
+    },
+
+    // obj转化为字符串 password=1&sid=1&username=12&
+    signParam: function (obj) {
+        var arr = [];
+        for (var key in obj) {
+            arr.push(key);
+        }
+        arr.sort();
+        var objSign = '';
+        for (var i = 0; i < arr.length; i++) {
+            i < arr.length - 1 ? objSign += arr[i] + '=' + obj[arr[i]] + '&' : objSign += arr[i] + '=' + obj[arr[i]];
+        }
+        return objSign;
+    },
+
+    /**
+     * @desc 深拷贝，支持常见类型
+     * @param {Any} values
+     */
+    deepClone: function (values) {
+        var copy;
+
+        // Handle the 3 simple types, and null or undefined
+        if (null == values || "object" != typeof values) return values;
+
+        // Handle Date
+        if (values instanceof Date) {
+            copy = new Date();
+            copy.setTime(values.getTime());
+            return copy;
+        }
+
+        // Handle Array
+        if (values instanceof Array) {
+            copy = [];
+            for (var i = 0, len = values.length; i < len; i++) {
+                copy[i] = deepClone(values[i]);
+            }
+            return copy;
+        }
+
+        // Handle Object
+        if (values instanceof Object) {
+            copy = {};
+            for (var attr in values) {
+                if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);
+            }
+            return copy;
+        }
+
+        throw new Error("Unable to copy values! Its type isn't supported.");
+    }
+
+};
+
+
+// 对象深度克隆，支持[]和{}
+Object.prototype.clone = function () {
+    var obj = this;
+    if (typeof obj !== 'object') return;
+    var newObj = obj instanceof Array ? [] : {};
+    for (var key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            newObj[key] = typeof obj[key] === 'object' ? (obj[key]).clone() : obj[key];
+        }
+    }
+    return newObj;
 }
-//此对象包含函数与对象
-function isObject(obj) {
 
-    var type = typeof (obj);
-    return type === 'function' || type === 'object' && !!obj;
-
-}
 
 // 获取所有对象的键(属性名)放入到数组中
 
@@ -59,19 +143,7 @@ function pairs(obj) {
     return pairs;
 }
 
-// obj转化为字符串 password=1&sid=1&username=12&
-function signParam(obj) {
-    var arr = [];
-    for (key in obj) {
-        arr.push(key);
-    };
-    arr.sort();
-    var objSign = '';
-    for (var i = 0; i < arr.length; i++) {
-        i < arr.length - 1 ? objSign += arr[i] + '=' + obj[arr[i]] + '&' : objSign += arr[i] + '=' + obj[arr[i]];
-    }
-    return objSign;
-}
+
 // 对象深度克隆，支持[]和{}
 Object.prototype.clone = function () {
     var obj = this;
@@ -84,41 +156,3 @@ Object.prototype.clone = function () {
     }
     return newObj;
 }
-/**
- * @desc 深拷贝，支持常见类型
- * @param {Any} values
- */
-function deepClone(values) {
-    var copy;
-
-    // Handle the 3 simple types, and null or undefined
-    if (null == values || "object" != typeof values) return values;
-
-    // Handle Date
-    if (values instanceof Date) {
-        copy = new Date();
-        copy.setTime(values.getTime());
-        return copy;
-    }
-
-    // Handle Array
-    if (values instanceof Array) {
-        copy = [];
-        for (var i = 0, len = values.length; i < len; i++) {
-            copy[i] = deepClone(values[i]);
-        }
-        return copy;
-    }
-
-    // Handle Object
-    if (values instanceof Object) {
-        copy = {};
-        for (var attr in values) {
-            if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);
-        }
-        return copy;
-    }
-
-    throw new Error("Unable to copy values! Its type isn't supported.");
-}
-
