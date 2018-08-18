@@ -69,12 +69,12 @@
       <tr>
         <td>{{i+1}}</td>
         <td>油品数量</td>
-        <td>{{value.OIL_NUMBER | getThreeDecimal}}</td>
+        <td>{{value.OIL_NUMBER | changeMoney}}</td>
       </tr>
       <tr>
         <td>{{i+1}}</td>
         <td>可申请数量</td>
-        <td>{{value.noticenum-value.outnum}}</td>
+        <td>{{value.noticenum | computed:value.outnum,value.STATEMENT_NUM | changeMoney}}</td>
       </tr>
       <tr>
         <td>{{i+1}}</td>
@@ -85,8 +85,8 @@
         <td>{{i+1}}</td>
         <td>参数</td>
         <td>
-          <button data-OrderID={{value.ORDER_ID}} value={{value.OILINFO_NAME+ "#"+value.OIL_NUMBER}} id={{value.EXTRACT_TYPE+ "#"+value.xsdwName}}
-            onclick="clickFn(this,value,id)">点击事件传参,查看购买油品详情</button>
+          <button data-OrderID={{value.ORDER_ID}} data-OILINFO_NAME={{value.OILINFO_NAME}} data-OIL_NUMBER={{value.OIL_NUMBER}} value={{value.OILINFO_NAME+
+            "#"+value.OIL_NUMBER}} id={{value.EXTRACT_TYPE+ "#"+value.xsdwName}} onclick="clickFn(this,this.dataset,value,id)">传参,查看购买油品详情</button>
         </td>
       </tr>
     </table>
@@ -96,6 +96,7 @@
 
   </script>
   <script src="./template-web.js"></script>
+  <script src="./template-filter.js"></script>
   <script>
     var data = {
       chukuliang: "否",
@@ -108,10 +109,10 @@
           "NOTICE_ID": "1622765e371011e884160050568d787a",
           "OILINFO_NAME": "0号普通柴油",
           "OIL_NUMBER": 500,
-          "outnum": '200',
+          "outnum": '100',
           "ORDERSALE_CODE": "2029584249",
           "ORDER_ID": "acd9c1882da511e884160050568d787a",
-          "STATEMENT_NUM": 500.00000,
+          "STATEMENT_NUM": 777.00000,
           "noticenum": 500.00000,
           "xsdwName": "中国石油天然气股份有限公司上海销售分公司"
         },
@@ -121,12 +122,12 @@
           "NOTICESUB_ID": "162325c1371011e884160050568d787a",
           "NOTICE_CODE": "FY1014269041",
           "NOTICE_ID": "1622765e371011e884160050568d787a",
-          "TIDAI_NAME": "92号车用柴油",
+          "OILINFO_NAME": "92号车用柴油",
           "OIL_NUMBER": 100,
           "outnum": '200',
           "ORDERSALE_CODE": "2029584249",
           "ORDER_ID": "acd9c1882da511e884160050568d787a",
-          "STATEMENT_NUM": 500.00000,
+          "STATEMENT_NUM": 888.00000,
           "noticenum": 500.00000,
           "xsdwName": "中国石油天然气股份有限公司上海销售分公司"
         },
@@ -134,21 +135,33 @@
       ]
     };
 
-    template.defaults.imports.getThreeDecimal = function (num) {
-      return num.toFixed(3)
-    };
+    /* 辅助方法
+
+    使用template.helper(name, callback)注册公用辅助方法：
+
+    template.helper('dateFormat', function (date, format) { 
+     // .. 
+     return value; 
+    }); 
+    模板中使用的方式： {{time | dateFormat:'yyyy-MM-dd hh:mm:ss'}}  
+    支持传入参数与嵌套使用： {{time | say:'cd' | ubb | link}}  */
+
+    function computed(value, outNum, statamentNum) {
+      console.log(statamentNum);
+
+      return (value + Number(outNum)) || 0;
+    }
+
+
 
     var html = template('test', data);
     document.getElementById('content').innerHTML = html;
 
-    function clickFn(that, value) {
+    function clickFn(that, data, value, id) {
       console.log(that);
-
       console.log(arguments);
-
-      console.log(value);
-      var arrTpl = value.split("#");
-      alert("您正在购买的是" + arrTpl[0] + ", 购买数量为:" + arrTpl[1] + ",油品id为" + that.dataset["orderid"])
+      console.log("value:" + value + ",id:" + id);
+      alert("您正在购买的是" + data.oilinfo_name + ", 购买数量为:" + data.oil_number + ",油品id为" + data.orderid)
 
     }
   </script>
