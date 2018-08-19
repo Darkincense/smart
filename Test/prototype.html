@@ -2,69 +2,67 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		#box {
+			width: 100px;
+			height: 100px;
+			background-color: purple;
+			position: fixed;
+			left: 50%;
+			top: 50%;
+			transform: translateX(-50%) translateY(-50%);
+		}
+
+		body {
+			height: 2000px;
+		}
+	</style>
 </head>
 
 <body>
-  <div id="content"></div>
-  <script>
-    var Order = (function () {
-      function Order() {
-        var y = this;
-      }
+	<div id="box">
 
-      var fn = Order.fn = Order.prototype = {
-        constructor: Order,
-        init: function () {
-          Order.create().bind();
-        }
+	</div>
+	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+	<script src="../bulid/tools/dom.js"></script>
+	<script>
+		function SuperType(name) {
+			this.name = name;
+			this.colors = ["red", "blue", "green"];
+		}
+		SuperType.prototype.sayName = function () {
+			console.log(this.name)
+		}
 
-      }
-      Order.extend = fn.extend = function (obj) {
-        for (var k in obj) {
-          this[k] = obj[k];
-        }
-      }
-      // 工具型方法(原型扩展)
-      fn.extend({
-        $: function (selector, el) {
-          if (!el) {
-            el = document;
-          }
-          return el.querySelector(selector);
-        }
+		function SubType(name, age) {
+			//继承属性
+			SuperType.call(this, name); // 第二次调用 SuperType()
+			this.age = age;
+		}
+		//继承方法
+		SubType.prototype = new SuperType(); // 第一次调用 SuperType()
+		SubType.prototype.sayAge = function () {
+			console.log(this.age)
+		}
 
-      })
-      // 核心方法
-      Order.extend({
-        create: function (name) {
-          var dom = document.createElement('button');
-          dom.innerHTML = "点击";
-          document.body.appendChild(dom);
-          return this;
-        },
-        bind: function () {
-          document.querySelector('button').onclick = function () {
-            alert('被点击了')
-          }
-        }
-      })
+		var instancel1 = new SubType('Nicholas', 29);
+		var instancel2 = new SubType('yue', 25);
+		instancel1.colors.push('black');
+		console.log(instancel1.colors); // ["red", "blue", "green", "black"]
+		console.log(instancel2.colors); // ["red", "blue", "green"] 实例独立
 
-
-
-
-      return Order;
-    })()
-
-    var tv = new Order();
-    tv.init();
-
-
-  </script>
-
+		instancel1.sayName(); //Nicholas
+		instancel2.sayName(); //yue 传参
+	</script>
 </body>
 
 </html>
