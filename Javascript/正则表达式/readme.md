@@ -1,6 +1,14 @@
 # RegExp 对象
+
 正则表达式用于对字符串模式匹配及检索替换，是对字符串执行模式匹配的强大工具
 
+## 工具
+> 正则在线可视化工具，正则可视化工具图解符合铁路图规律
+- [regexper](https://regexper.com/)
+- [regulex](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
+
+##### 参考
+- https://2ue.github.io/2017/11/24/regex-to-something/
 ## 语法
 ````
 var patt=new RegExp(pattern,modifiers);
