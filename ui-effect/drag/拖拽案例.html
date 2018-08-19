@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
@@ -54,16 +55,10 @@
     <script src="animate.js"></script>
     <script>
         window.onload = function () {
-            //需求1: 鼠标在drop上面按下-并移动的时候大盒子跟随移动;
-            //需求2: 鼠标弹起去除事件;
 
-            //需求1: 鼠标在drop上面按下-并移动的时候大盒子跟随移动;
-            //新事件:onmousedown == 鼠标按下事件;
-            //新事件:onmouseup == 鼠标弹起事件;
             var box = document.getElementById("d_box");
             var drop = document.getElementById("drop");
 
-            //绑定事件,按下以后再移动
             drop.onmousedown = function (e) {
                 e = e || window.event;
                 var pageyy = e.pageY || scroll().top + e.clientY;
@@ -76,7 +71,7 @@
 
                 document.onmousemove = function (event) {
                     event = event || window.event;
-                    var pagey = event.pageY || scroll().left +event.clientY;
+                    var pagey = event.pageY || scroll().left + event.clientY;
                     var pagex = event.pageX || scroll().top + event.clientY;
 
                     box.style.left = pagex - x + "px";
@@ -93,21 +88,23 @@
         }
     </script>
 </head>
+
 <body>
 
-<div class="nav">
-    <a href="javascript:;" id="register">注册信息</a>
-</div>
-
-<!--用来移动的盒子-->
-<div class="d-box" id="d_box">
-    <!--功能部分-->
-    <div class="hd" id="drop">
-        注册信息 (可以拖拽)
-        <span id="box_close">【关闭】</span>
+    <div class="nav">
+        <a href="javascript:;" id="register">注册信息</a>
     </div>
-    <div class="bd"></div>
-</div>
+
+    <!--用来移动的盒子-->
+    <div class="d-box" id="d_box">
+        <!--功能部分-->
+        <div class="hd" id="drop">
+            注册信息 (可以拖拽)
+            <span id="box_close">【关闭】</span>
+        </div>
+        <div class="bd"></div>
+    </div>
 
 </body>
+
 </html>
