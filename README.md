@@ -1,238 +1,51 @@
 # smart
 
-> 日常代码库+笔记
+> :octocat: 日常代码库+笔记
 
-## 导航
+## 导航栏
 
-- [搜索站](#搜索站)
-- [Guide](#guide)
+- [周刊](#周刊)
 - [Show MyCode](#show-mycode)
-- [代码闯关](#代码闯关)
-- [模拟测试](#模拟测试)
-- [Interview](#interview)
-- [前端p级别划分](#前端p级别划分)
+- [前端开发](#前端开发)
+- [Books](#books)
+- [编码指导](#编码指导)
 
+## 周刊
 
-
-## 指针
-
-### 搜索站
-- [Fake Google1](https://a1.02822.website/) / [Fake Google2](https://coderschool.2345.ga/)- [AOL](https://www.aolsearch.com/) 
-- [微软 Bing](https://cn.bing.com/)
-- [MEZW](https://so.mezw.com/)
-
-### Guide
-
-- https://www.w3.org/TR/
-- http://babeljs.io/repl
-- http://beautifytools.com/scss-compiler.php
-- https://www.rails365.net/
-- https://eslint.org/docs/rules
-- http://devdocs.io
-- http://devhints.cn
-
-
-### 代码闯关
-
-- https://leetcode-cn.com/xiaoyueyue165/
-- https://freecodecamp.cn/
+- [奇舞周刊](https://weekly.75team.com/)
+- [FEX](http://fex.baidu.com/weekly/)
+- [weekly](https://github.com/dt-fe/weekly) 前端精读周刊
+- [50weekly](https://ihtml5.github.io/50weekly/) 发现高质量的前端资源 
 
 ### Show-mycode
 
-- https://www.netlify.com
+- https://leetcode-cn.com/xiaoyueyue165/
+- https://freecodecamp.cn/
 - https://codesandbox.io/u/xiaoyueyue165
-- https://codepen.io/xiaoyueyue165/
-- http://jsbin.com/
-- https://jsfiddle.net/
-- https://www.hackerrank.com/
 
-### 模拟测试
+### 前端开发
 
-- [mockapi](https://www.mockapi.io/projects)
-- [json-server](https://github.com/typicode/json-server)
-- [yapi](https://github.com/YMFE/yapi)
-- [easyapi](https://www.easyapi.com/info/doc)
+- [Best of Javascript](https://bestof.js.org/) / [2017](https://risingstars.js.org/2017/zh) 
+- [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap) - 2018年路线图成为web开发人员
+- [前端圈](https://fequan.com/)
 
-**公共API**
-````js
-// github
-$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars',function(data){})
-// cnode
-$.getJSON('https://cnodejs.org/api/v1/topics',function(data){console.log( data )})
-// 豆瓣电影
-$.get('https://api.douban.com/v2/movie/in_theaters',function(data){console.log( data )},'jsonp')
-````
+## Books
 
-**CDN**
+- [free-programming-books](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md) / [free-programming-books-zh_CN](https://github.com/justjavac/free-programming-books-zh_CN)  - 免费的编程书籍 
+- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) / [Functional-Light-JS](https://github.com/getify/Functional-Light-JS)
+- [booktree](https://github.com/phodal/booktree) A Book Tree http://phodal.github.io/booktree/
+- [books](https://github.com/programthink/books) 【编程随想】收藏的电子书清单（多个学科，含下载链接）
 
-```js
-// animation.css
-<link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.css" rel="stylesheet">
-// axios
-<script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
-// bootstrap
-<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
-// jquery
-<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-```
+## 编码指导
 
-### Interview
+- [javascript](https://github.com/airbnb/javascript) - Javascript风格指导
+- [project-guidelines](https://github.com/wearehive/project-guidelines/blob/master/README-zh.md) - JS 项目行军指南
+- [You-Dont-Need-jQuery](https://github.com/nefe/You-Dont-Need-jQuery/blob/master/README.zh-CN.md) - 你不需要使用jquery
+- [clean-code-javascript](https://github.com/ryanmcdermott/clean-code-javascript) - 干净的概念用于JavaScript代码
+- [frontend-guidelines](https://github.com/bendc/frontend-guidelines) - Some HTML, CSS and JS best practices.
+- [TGideas](http://tguide.qq.com/main/index.htm) TGideas整体WEB解决方案 
 
-<details>
-<summary>View contents</summary>
-  
-#### HTML/CSS篇
 
-SEO和语义化
 
-常见布局及居中
-
-HTML5新特性
-
-CSS3新特性
-
-flex布局
-
-盒模型
-
-#### JS篇
-
-执行上下文（this和闭包）
-
-事件模型
-
-任务队列
-
-原形，面向对象
-
-promise
-
-#### es6
-
-常见函数
-
-设计模式
-
-类型检测
-
-垃圾回收，引用计数和标记清除
-
-#### 算法篇
-
-各种排序，重点是快排
-
-动态规划，参见背包问题
-
-二叉树
-
-#### nodejs篇
-
-nodejs特性
-
-事件循环
-
-多进程，cluster及child process，pm2的原理
-
-koa的特性及中间件的原理
-
-express与koa的区别
-
-#### 网络篇
-
-https
-
-http2
-
-http状态码
-
-网络安全，xss和csrf
-
-session，cookie和token
-
-OSI七层协议
-
-缓存
-
-跨域
-
-模块化，commonJS，es6，cmd，amd
-
-cdn及dns
-
-#### 框架篇
-
-vue解决了什么问题
-
-vue和react的区别
-
-虚拟dom的原理
-
-双向绑定的原理
-
-如何实现component
-
-组件间通讯
-
-vuex
-
-vue-router
-
-#### 项目篇
-
-性能优化
-
-webpack的打包原理,如何抽取css的
-
-提升wabpack的编译速度
-
-错误收集，错误排查
-
-项目监控
-
-项目部署
-
-#### 移动篇
-
-自适应
-
-兼容性
-
-PWA
-
-小程序
-
-移动端手势
-
-#### 补充篇
-
-无限滚动方案
-
-重绘重排重合成
-
-浏览器访问全过程
-
-如何处理兼容性问题
-
-经常去什么技术网站？读过什么书？
-
-未来规划
-
-</details>
-
-
-
-### 前端p级别划分
-
-p5：平均工作两年内；基础扎实、高质完成；基础过硬；熟悉浏览器等前端运行容器的工作原理；熟悉前端常用的工程工具；熟悉前端常用的框架；高质量、可维护；熟练使用类库解决业务问题，项目代码具有可维护性；具备质量意识，掌握兼容性、性能等问题的解决方法；
-
-p6：平均工作三年左右；独当一面、辅助团队；全面了解前端知识体系；掌握日常开发中所涉及的前端知识（开发语言、标准协议、工作原理、工程工具、前端框架、用户体验等）。能提效、可复用；能通过开发或引入效率工具提升团队效率；能提炼可复用组件，为组件库贡献高质量代码；
-
-p7：平均工作五年左右：领域专家、影响团队；精通至少一个领域的前端知识体系；精通常用框架的设计原理，能合理运用；
-
-p8：平均工作五年以上：领域突破、业务增值。
-
-#### 参考
-- https://zhuanlan.zhihu.com/p/37079448
 
 **[⬆ 回到顶部](#smart)**
