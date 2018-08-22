@@ -45,7 +45,4 @@
 - [frontend-guidelines](https://github.com/bendc/frontend-guidelines) - Some HTML, CSS and JS best practices.
 - [TGideas](http://tguide.qq.com/main/index.htm) TGideas整体WEB解决方案 
 
-
-
-
 **[⬆ 回到顶部](#smart)**
