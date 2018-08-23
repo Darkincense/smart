@@ -1,6 +1,6 @@
 # smart
 
-> :octocat: 日常代码库+笔记
+> :octocat: 日常代码库
 
 ## 导航栏
 
