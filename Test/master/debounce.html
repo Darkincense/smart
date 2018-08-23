@@ -15,12 +15,43 @@
       background-color: #444;
       font-size: 30px;
     }
+
+    #box {
+      margin: 30px auto;
+      text-align: center;
+    }
+
+    button {
+      width: 100px;
+      height: 30px;
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    #on {
+      margin-right: 20px;
+    }
   </style>
 </head>
 
 <body>
+  <h1>防抖：</h1>
+  <h3>解决事件频发问题，你尽管触发事件，但是我一定在事件触发 n 秒后才执行，如果你在一个事件触发的 n 秒内又触发了这个事件，那我就以新的事件的时间为准，n 秒后才执行</h3>
+  <ul>
+    <span>频发的事件,比如：</span>
+    <li> window 的 resize、scroll</li>
+    <li> mousedown、mousemove</li>
+    <li> keyup、keydown</li>
+    <li> ...</li>
+  </ul>
   <div id="container"></div>
-  <button id="button">点击取消debounce</button>
+
+  <div id="box">
+    <button id="on">开启防抖</button>
+    <button id="off">关闭防抖</button>
+  </div>
+
+
   <script>
     // https://github.com/mqyqingfeng/Blog/issues/22
     var count = 1;
@@ -32,7 +63,19 @@
       console.log(this)
     };
 
-    container.onmousemove = debounce(getUserAction, 1000, true);
+    container.onmousemove = getUserAction;
+    var $ = function (query) {
+      return document.querySelector(query);
+    }
+    $("#on").onclick = function () {
+      // 现在随你怎么移动，反正你移动完 1000ms 内不再触发，我才执行事件
+      container.onmousemove = debounce(getUserAction, 1000, true);
+    }
+    $("#off").onclick = function () {
+      container.onmousemove = getUserAction;
+    }
+
+
 
 
 
@@ -90,8 +133,7 @@
           }, wait)
           // 如果没有执行过，直接执行
           if (callNow) func.apply(context, args)
-        }
-        else {
+        } else {
           timeout = setTimeout(function () {
             func.apply(context, args)
           }, wait);
@@ -129,38 +171,38 @@
 
     // 第六版 取消
     // 第六版
- /*    function debounce(func, wait, immediate) {
+    /*    function debounce(func, wait, immediate) {
 
-      var timeout, result;
+         var timeout, result;
 
-      var debounced = function () {
-        var context = this;
-        var args = arguments;
+         var debounced = function () {
+           var context = this;
+           var args = arguments;
 
-        if (timeout) clearTimeout(timeout);
-        if (immediate) {
-          // 如果已经执行过，不再执行
-          var callNow = !timeout;
-          timeout = setTimeout(function () {
-            timeout = null;
-          }, wait)
-          if (callNow) result = func.apply(context, args)
-        }
-        else {
-          timeout = setTimeout(function () {
-            func.apply(context, args)
-          }, wait);
-        }
-        return result;
-      };
+           if (timeout) clearTimeout(timeout);
+           if (immediate) {
+             // 如果已经执行过，不再执行
+             var callNow = !timeout;
+             timeout = setTimeout(function () {
+               timeout = null;
+             }, wait)
+             if (callNow) result = func.apply(context, args)
+           }
+           else {
+             timeout = setTimeout(function () {
+               func.apply(context, args)
+             }, wait);
+           }
+           return result;
+         };
 
-      debounced.cancel = function () {
-        clearTimeout(timeout);
-        timeout = null;
-      };
+         debounced.cancel = function () {
+           clearTimeout(timeout);
+           timeout = null;
+         };
 
-      return debounced;
-    } */
+         return debounced;
+       } */
   </script>
 </body>
 
