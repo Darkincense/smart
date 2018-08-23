@@ -39,11 +39,30 @@
 		</form>
 	</div>
 	<script>
+		/*  (function (w) {
+		      var V_Code = {
+		        TIME: 30,
+		        timeoutID: null,
+		        arr: [true, false],
+		        isStart: null, // 随机布尔值
+		        clickNum: 0
+		      }
+
+		      w.V_Code = V_Code;
+		    })(window) */
+		var V_Code = {
+			TIME: 30,
+			timeoutID: null,
+			arr: [true, false],
+			isStart: null, // 随机布尔值
+			clickNum: 0
+		}
+
 		function onceFn(callback) {
-			if (!window.isOnce && typeof callback === 'function') {
+			if (!callback.prototype.isOnce && typeof callback === 'function') {
 				return function () {
 					var result = callback.apply(this, arguments);
-					window.isOnce = true;
+					callback.prototype.isOnce = true;
 					return result;
 				}
 			} else {
@@ -52,14 +71,24 @@
 		};
 
 		document.querySelector('.btn').onclick = function () {
-			onceFn(func)();
+			onceFn(getVerificationCode)();
 		}
 
-		function log(num) {
-			console.log('只执行' + num + '次');
 
+		function getVerificationCode() {
+			V_Code.timeoutID = window.setInterval(function () {
+				var btn = document.querySelector('.btn');
+				if (V_Code.TIME > 0 && btn) {
+					V_Code.TIME--;
+					btn.innerHTML = '已发送(' + V_Code.TIME + ')';
+				} else {
+					btn.innerHTML = '重新获取';
+					V_Code.TIME = 30;
+					window.clearInterval(V_Code.timeoutID);
+				}
+
+			}, '1000')
 		}
-		var func = log(1);
 	</script>
 </body>
 

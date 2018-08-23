@@ -227,3 +227,16 @@ function throttle(func, wait) {
     }
   }
 }
+
+// 只执行一次的once方法 once(function(){})
+function once(fn) {
+  return function () {
+    if (typeof fn === "function") {
+      var ret = fn.apply(this, arguments);
+      fn = null;
+      return ret;
+    } else {
+      throw new TypeError('Expected a function')
+    }
+  }
+}

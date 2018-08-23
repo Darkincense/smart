@@ -36,21 +36,21 @@
 </body>
 
 <script>
-  var isOpen = true;
-  // 仅能全局变量
   function func() {
-    isOpen ? function () {
+    window.isOpen ? function () {
       console.log(1);
-      isOpen = false;
+      window.isOpen = false;
     }() : '';
   }
 
   function once(fn) {
-    return function (...args) {
-      if (fn) {
-        let ret = fn.apply(this, args);
+    return function () {
+      if (typeof fn === "function") {
+        var ret = fn.apply(this, arguments);
         fn = null;
         return ret;
+      } else {
+        throw new TypeError('Expected a function')
       }
     }
   }

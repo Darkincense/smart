@@ -39,48 +39,47 @@
     </form>
   </div>
   <script>
-    var TIME = 30,
-      timeoutID = null,
-      arr = [true, false],
-      isStart = null, // 随机布尔值
-      clickNum = 0;
+    var V_Code = {
+      TIME: 30,
+      timeoutID: null,
+      arr: [true, false],
+      isStart: null, // 随机布尔值
+      clickNum: 0
+    }
+    
 
     document.querySelector('.btn').onclick = function () {
 
-      isStart = arr[Math.floor(Math.random() * arr.length)];
+      V_Code.isStart = V_Code.arr[Math.floor(Math.random() * V_Code.arr.length)];
 
-      clickNum++;
+      V_Code.clickNum++;
 
-      if (isStart === true && TIME === 30) {
+      if (V_Code.isStart === true && V_Code.TIME === 30) {
         getVerificationCode();
       }
-      if (clickNum != 1 && TIME != 30) {
+      if (V_Code.clickNum != 1 && V_Code.TIME != 30) {
         alert('短信验证码正在发送，有效期30秒!')
         return;
       }
-      if (!isStart) {
+      if (!V_Code.isStart) {
         alert('短信验证码发送过程出现异常，请稍后重试!')
       }
     }
 
     function getVerificationCode() {
-      timeoutID = window.setInterval(function () {
+      V_Code.timeoutID = window.setInterval(function () {
         var btn = document.querySelector('.btn');
-        if (TIME > 0 && btn) {
-          TIME--;
-          btn.innerHTML = '已发送(' + TIME + ')';
+        if (V_Code.TIME > 0 && btn) {
+          V_Code.TIME--;
+          btn.innerHTML = '已发送(' + V_Code.TIME + ')';
         } else {
           btn.innerHTML = '重新获取';
-          TIME = 30;
-          window.clearInterval(timeoutID);
+          V_Code.TIME = 30;
+          window.clearInterval(V_Code.timeoutID);
         }
 
       }, '1000')
     }
-
-
-
-
   </script>
 </body>
 
