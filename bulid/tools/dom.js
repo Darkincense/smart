@@ -238,6 +238,13 @@ var dom = {
     }
     return parent;
   },
+  
+  css: function (target, cssObj) {
+    for (var prop in cssObj) {
+        target.style[prop] = cssObj[prop];
+    }
+    return target;
+},
 
   show: function (target) {
     this.css(target, {
