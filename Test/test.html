@@ -6,61 +6,45 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-	<link href="https://cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.css" rel="stylesheet">
 	<style>
-		#box {
-			margin-top: 20px;
-			width: 400px;
+		.box {
+			border: 1px solid #000;
+			padding-bottom: 10px;
 		}
 
-		.flex {
-			display: flex;
-			justify-content: space-between;
-		}
-
-		.wrapper {
-			display: flex;
-			justify-content: center;
+		.none {
+			display: none;
 		}
 	</style>
 </head>
 
 <body>
-	<div class="container wrapper">
-		<form id="box">
-			<div class="form-group box">
-				<label for="">定时器</label>
-				<div class="flex">
-					<input type="text" class="form-control" style="width:70%" placeholder="请输入验证码">
-					<button type="button" class="btn btn-default">获取验证码</button>
-				</div>
-
-			</div>
-		</form>
+	<div class="box">
+		<li>1</li>
+		<li>3</li>
+		<li class="none">4</li>
 	</div>
+	<div class="box">
+		<li>2</li>
+	</div>
+	<script src="../bulid/tools/dom.js"></script>
 	<script>
+		var arr1 = Array.from(dom.$$('.box')[0].children);
 
-		function onceFn(callback) {
-			if (!window.isOnce && typeof callback === 'function') {
-				return function () {
-					var result = callback.apply(this, arguments);
-					window.isOnce = true;
-					return result;
+		var hasNone = function (arr) {
+			var len = 0;
+			for (var i = 0; i < arr.length; i++) {
+				var item = arr[i];
+				if (item.classList.contains('none')) {
+					len++;
 				}
-			} else {
-				return function () {};
 			}
-		};
-
-		document.querySelector('.btn').onclick = function () {
-			onceFn(func)();
-		}
-
-		function log(num) {
-			console.log('只执行' + num + '次');
+			return arr.length - len;
 
 		}
-		var func = log(1);
+		console.log(hasNone(arr1));
+
+		var arr2 = Array.from(dom.$$('.box')[1].children);
 	</script>
 </body>
 
