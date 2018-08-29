@@ -55,37 +55,37 @@
   <div id="content">
   </div>
   <div id="more"></div>
-  <script src="../../tools/dom.js"></script>
   <script src="./js/loadMore.js"></script>
   <script src="./js/pagenationData.js"></script>
   <script>
-
-
-    loadMore.init({
+    new loadMore({
       ele: "#more",
       data: window.yichuku.list,
       totalNum: 23,
       limit: 5,
-      clickFn: func2,
-      frontendPager: true // 是否采用前端分页
+      clickFn: basPager,
+      frontendPager: true, // 是否采用前端分页
+      beforeCreat: function () {
+        console.log("beforeCreat")
+      },
+      afterCreat: function () {
+        console.log('afterCreat');
+      }
     });
 
     // 后端分页
-    function func1(current_page, max_page, totalNum) {
+    function basPager(current_page, max_page, totalNum) {
       alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
 
       // 获取第 current_page 页的数据
       // Order.queryOrderList(current_page);
     }
     // 前端分页
-    function func2(current_page, current_data, max_page, totalNum) {
+    function FrontPager(current_page, current_data, max_page, totalNum) {
 
       alert("正在加载第" + current_page + "页， 共" + max_page + "页 " + totalNum + "条数据")
       console.log(current_data)
     }
-
-
-
   </script>
 </body>
 

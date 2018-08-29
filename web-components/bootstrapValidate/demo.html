@@ -7,10 +7,10 @@
   <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
   <script src="./js/bootstrapValidate.js"></script>
   <style>
-    #defaultForm .form-control ~p {
-color:#c7254e;
+    #defaultForm .form-control~p {
+      color: #c7254e;
     }
-    </style>
+  </style>
 </head>
 
 <body>
@@ -29,32 +29,35 @@ color:#c7254e;
               <label class="col-lg-3 control-label">Username</label>
               <div class="col-lg-5">
                 <input type="text" class="form-control" name="username" data-bv-required="true" data-bv-required-message="The username is required and cannot be empty"
-                data-bv-regexp="[a-zA-Z0-9_\.]+" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore" />
+                  data-bv-regexp="[a-zA-Z0-9_\.]+" data-bv-regexp-message="The username can only consist of alphabetical, number, dot and underscore"
+                />
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-lg-3 control-label">Email</label>
               <div class="col-lg-5">
-                <input class="form-control" name="email" type="email"  data-bv-required="true" data-bv-required-message="The email is required and cannot be empty" data-bv-email="true" data-bv-email-message="The input is not a valid email address"
-                />
+                <input class="form-control" name="email" type="email" data-bv-required="true" data-bv-required-message="The email is required and cannot be empty"
+                  data-bv-email="true" data-bv-email-message="The input is not a valid email address" />
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-lg-3 control-label">Website</label>
               <div class="col-lg-5">
-                <input class="form-control" name="website" type="url"  data-bv-required="true" data-bv-required-message="The url is required and cannot be empty" data-bv-url="true" data-bv-url-message="The input is not a valid website address"
-                />
+                <input class="form-control" name="website" type="url" data-bv-required="true" data-bv-required-message="The url is required and cannot be empty"
+                  data-bv-url="true" data-bv-url-message="The input is not a valid website address" />
               </div>
             </div>
 
             <div class="form-group">
               <label class="col-lg-3 control-label">Age</label>
               <div class="col-lg-2">
-                <input type="number" class="form-control" name="age" data-bv-required="true" data-bv-required-message="The age is required and cannot be empty" data-bv-integer="true" data-bv-integer-message="The input must be integer Number" data-bv-greaterthan="10" data-bv-greaterthan-message="The input must be greater than or equal to 10"
-                 data-bv-lessthan="100" data-bv-lessthan-message="The input must be less than 100" />
-           
+                <input type="number" class="form-control" name="age" data-bv-required="true" data-bv-required-message="The age is required and cannot be empty"
+                  data-bv-integer="true" data-bv-integer-message="The input must be integer Number" data-bv-greaterthan="10"
+                  data-bv-greaterthan-message="The input must be greater than or equal to 10" data-bv-lessthan="100" data-bv-lessthan-message="The input must be less than 100"
+                />
+
               </div>
             </div>
 
@@ -74,7 +77,7 @@ color:#c7254e;
   <script type="text/javascript">
     $(document).ready(function () {
       $('#defaultForm').bootstrapValidator({
-       trigger:'keyup'
+        trigger: 'keyup'
       });
     });
   </script>

@@ -78,8 +78,7 @@
   </p>
   <div class="pager"> </div>
 </div>
-<script src="../../tools/bom.js"></script>
-<script src="../../tools/dom.js"></script>
+<script src="../../bulid/tools/dom.js"></script>
 <script src="./js/pager.js"></script>
 <script>
   let pagers = document.querySelectorAll('.pager')
@@ -92,11 +91,12 @@
     console.log(e.detail.page)
   })
 
-  new Pager({
+  /* new Pager({
     element: pagers[1],
     currentPage: parseInt(bom.queryString.get('page'), 10),
     totalPage: 100,
     pageQuery: 'page'
-  })
+  }) */
 </script>
+
 </html>
