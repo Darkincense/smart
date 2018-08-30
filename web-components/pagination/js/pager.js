@@ -23,7 +23,51 @@
         dom.append(node, children);
       }
       return node;
-    }
+    },
+    dispatchEvent: function (element, eventType, detail) {
+      var event = new CustomEvent(eventType, {
+        detail
+      });
+      element.dispatchEvent(event);
+      return this;
+    },
+    queryString: {
+      get: function (name) {
+        var getAll = searchString => {
+          var query = searchString.replace(/^\?/, '');
+          var queryObject = {};
+          var queryArray = query.split('&').filter(i => i).forEach((string, index) => {
+            var parts = string.split('=');
+            queryObject[parts[0]] = decodeURIComponent(parts[1]);
+          });
+          return queryObject;
+        }
+        if (arguments.length === 0) {
+          return getAll(location.search);
+        } else {
+          return getAll(location.search)[name];
+        }
+      },
+      set: function (name, value) {
+        var set = (search, name, value) => {
+          var regex = new RegExp(`(${encodeURIComponent(name)})=([^&]*)`, '');
+          if (regex.test(search)) {
+            return search.replace(regex, (match, c1, c2) => `${c1}=${encodeURIComponent(value)}`);
+          } else {
+            return search.replace(/&?$/, `&${encodeURIComponent(name)}=${encodeURIComponent(value)}`);
+          }
+        }
+        if (arguments.length === 1 && typeof name === 'object' && name !== null) {
+          var search = location.search;
+          for (var key in arguments[0]) {
+            search = set(search, key, arguments[0][key])
+          }
+          location.search = search;
+        } else {
+          location.search = set(location.search, name, value);
+        }
+      },
+    },
   };
 
   function Pager(options) {
@@ -60,19 +104,19 @@
     },
     bindEvents: function () {
       util.on(this.options.element, 'click', 'ol[data-role="pageNumbers"]>li', (e, el) => {
-        this.goToPage(parseInt(el.dataset.page, 10))
+        this.goToPage(parseInt(el.dataset.page, 10));
       });
       this.domRefs.first.addEventListener('click', () => {
         this.goToPage(1);
       });
       this.domRefs.last.addEventListener('click', () => {
-        this.goToPage(this.options.totalPage)
+        this.goToPage(this.options.totalPage);
       });
       this.domRefs.prev.addEventListener('click', () => {
-        this.goToPage(this.currentPage - 1)
+        this.goToPage(this.currentPage - 1);
       });
       this.domRefs.next.addEventListener('click', () => {
-        this.goToPage(this.currentPage + 1)
+        this.goToPage(this.currentPage + 1);
       });
     },
 
@@ -81,7 +125,7 @@
         return;
       }
       if (this.options.pageQuery) {
-        bom.queryString.set(this.options.pageQuery, page)
+        util.queryString.set(this.options.pageQuery, page);
       }
       this.currentPage = page;
       this.options.element.dispatchEvent(new CustomEvent('pageChange', {
@@ -100,10 +144,10 @@
     },
     initHtml: function () {
       var pager = (this.domRefs.pager = document.createElement('nav'));
-      this.domRefs.first = dom.create(this.options.templates.first);
-      this.domRefs.prev = dom.create(this.options.templates.prev);
-      this.domRefs.next = dom.create(this.options.templates.next);
-      this.domRefs.last = dom.create(this.options.templates.last);
+      this.domRefs.first = util.create(this.options.templates.first);
+      this.domRefs.prev = util.create(this.options.templates.prev);
+      this.domRefs.next = util.create(this.options.templates.next);
+      this.domRefs.last = util.create(this.options.templates.last);
       this._checkButtons();
       this.domRefs.numbers = this._createNumbers();
       pager.appendChild(this.domRefs.first);

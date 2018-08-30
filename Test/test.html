@@ -6,45 +6,12 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Document</title>
-	<style>
-		.box {
-			border: 1px solid #000;
-			padding-bottom: 10px;
-		}
-
-		.none {
-			display: none;
-		}
-	</style>
 </head>
 
 <body>
-	<div class="box">
-		<li>1</li>
-		<li>3</li>
-		<li class="none">4</li>
-	</div>
-	<div class="box">
-		<li>2</li>
-	</div>
-	<script src="../bulid/tools/dom.js"></script>
 	<script>
-		var arr1 = Array.from(dom.$$('.box')[0].children);
-
-		var hasNone = function (arr) {
-			var len = 0;
-			for (var i = 0; i < arr.length; i++) {
-				var item = arr[i];
-				if (item.classList.contains('none')) {
-					len++;
-				}
-			}
-			return arr.length - len;
-
-		}
-		console.log(hasNone(arr1));
-
-		var arr2 = Array.from(dom.$$('.box')[1].children);
+	console.log(1);
+	
 	</script>
 </body>
 

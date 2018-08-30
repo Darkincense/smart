@@ -8,7 +8,34 @@ var util = {
     var index = array.indexOf(element);
     return index;
   },
+  isLength: function (value) {
+    var MAX_SAFE_INTEGER = 9007199254740991;
+    return typeof value == 'number' &&
+      value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
+  },
+  isArrayLike: function (value) {
+    return value != null && typeof value != 'function' && this.isLength(value.length);
+  },
+  each: function (obj, callback) {
+    var length, i = 0;
 
+    if (this.isArrayLike(obj)) {
+      length = obj.length;
+      for (; i < length; i++) {
+        if (callback.call(obj[i], i, obj[i]) === false) {
+          break;
+        }
+      }
+    } else {
+      for (i in obj) {
+        if (callback.call(obj[i], i, obj[i]) === false) {
+          break;
+        }
+      }
+    }
+
+    return obj;
+  },
   // 将一组类数组转换为数组
   toArray: function (obj) {
     return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj);
@@ -142,7 +169,7 @@ function getArrayNum(arr, n1, n2) {
 
 // 去除重复的数据
 function dedupe(client, hasher) {
-  hasher = hasher || JSON.stringify
+  hasher = hasher || JSON.stringify;
 
   var clone = [],
     lookup = {};

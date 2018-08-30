@@ -11,4 +11,5 @@
 - [fh5co](https://freehtml5.co/author/fh5co/) 快速建站 /[推荐网站](http://www.chinaz.com/website/) /[网站排行](http://top.chinaz.com/)
 - [nodeppt](https://github.com/ksky521/nodeppt) - This is probably the best web presentation tool so far! http://js8.in/nodeppt
 - [svg to png](https://svgtopng.com/zh/)
+- [神器！解放你的双手——UI设计稿全自动切图和标注的工具推荐](https://github.com/jawil/blog/issues/11)
 
