@@ -50,13 +50,17 @@ function removeDuplicatedItem3(ar) {
 
     return ret;
 }
-// alert(removeDuplicatedItem3(arr));
+console.log(removeDuplicatedItem3(arr));
 
 //最简便的
-var aaa = arr.filter(function(val,i,arr){
-    return arr.indexOf(val)==i;
-})
-console.log(aaa)
+var a =  [1, 1, '1', '2', 1]
+function unique(arr) {
+    return arr.filter(function(ele,index,array){
+        return array.indexOf(ele) === index//很巧妙,这样筛选一对一的,过滤掉重复的
+    })
+}
+console.log(unique(a))
+
 //es6
 function newArr(arr){
     return Array.from(new Set(arr))
