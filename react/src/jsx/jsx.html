@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<head>
+  <title>React</title>
+  <script src="../../build/react.js"></script>
+  <script src="../../build/react-dom.js"></script>
+  <script src="../../build/browser.min.js"></script>
+
+</head>
+
+<body>
+
+  <fieldset>
+    <legend>
+      <h3>JSXComponent</h3>
+    </legend>
+    <div id="div1"></div>
+  </fieldset>
+
+
+</body>
+
+<script type="text/babel">
+class JSXComponent extends React.Component {
+      constructor(){
+        super()
+        this.state = {
+         name:'yueyue'
+       }
+      }
+    render(){
+     var arr = ["Hello,world!","React is awesome."];
+     var style = {
+       fontSize:"16px",
+       color:"green"
+     };
+
+     var wrapper = React.Fragment;
+      return (
+        <wrapper>
+        {/*在这里写注释*/}
+          <ul style={style}>
+            {
+              /*多行
+                注释
+              */
+          arr.map(function(value,index){
+            return <li key={index}>{value}</li>
+          })  
+        }
+        </ul>
+        </wrapper>
+      )
+    }
+   
+  }
+
+   ReactDOM.render(<JSXComponent />,document.getElementById('div1'))
+
+  </script>
+
+</html>

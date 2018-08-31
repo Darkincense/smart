@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body ng-app="myApp" ng-controller="demoCtrl">
+	<input type="text" ng-model="val"> {{ val }}
+	<button ng-click="setValue()">设置值</button>
+	<button ng-click="getValue()">获取值</button>
+	<script src="../bulid/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+
+			.controller('demoCtrl', ['$scope', function ($scope) {
+
+				$scope.val = '我是默认值';
+
+				$scope.setValue = function () {
+
+					$scope.val = '我是设置之后的值';
+				}
+
+				$scope.getValue = function () {
+
+					alert($scope.val)
+				}
+
+			}])
+	</script>
+</body>
+
+</html>

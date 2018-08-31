@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body>
+  <a href="#index">首页</a>
+  <a href="#list">列表页</a>
+  <div id="box"></div>
+</body>
+
+</html>
+<script>
+	/*
+		1.获取点击的页面对应的锚点值
+		2.根据锚点值获取对应的数据
+
+		onhashchange  监控锚点值的变化
+
+	 */
+  // 当锚点值发生变化的时候 执行对应的 事件处理函数
+  window.onhashchange = function () {
+
+    if (location.hash == "#index") {
+
+      // 获取首页的数据
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('get', './source/a.html', true);
+      //该属性用来指定xhr对象状态改变时的事件函数
+      xhr.onreadystatechange = function () {
+
+        if (xhr.readyState == 4 && xhr.status == 200) {
+
+          document.getElementById('box').innerHTML = xhr.responseText
+
+        }
+
+      }
+
+      xhr.send();
+
+
+
+    } else if (location.hash == "#list") {
+
+      // 获取列表页的数据
+      // 获取首页的数据
+      var xhr = new XMLHttpRequest();
+
+      xhr.open('get', './source/b.html', true);
+
+      xhr.onreadystatechange = function () {
+
+        if (xhr.readyState == 4 && xhr.status == 200) {
+
+          document.getElementById('box').innerHTML = xhr.responseText
+
+        }
+
+      }
+
+      xhr.send();
+
+    }
+
+  }
+</script>

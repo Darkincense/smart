@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+
+<body ng-app="myApp" ng-controller="demoCtrl">
+  {{ phone | phonestar}}
+  <script src="../../bulid/angular/angular.js"></script>
+  <script>
+		/*
+			自定义过滤器的语法
+
+				模块对象.filter('过滤器名字',[function(){
+					
+					return function(value){
+						
+						// value 要处理的数据
+
+						// 将处理完的数据return出去
+
+					}
+
+				}])
+
+		 */
+    angular.module('myApp', [])
+
+      .controller('demoCtrl', ['$scope', function ($scope) {
+
+        $scope.phone = '18598768444';
+
+      }])
+
+      .filter('phonestar', [function () {
+
+        return function (value) {
+
+          // 处理数据
+          // 1.截取前三位
+          var front = value.substr(0, 3);
+          // 2.截取后四位
+          var back = value.substr(7)
+          // 3.拼接字符串 并且将处理好的数据return出去
+          return front + '****' + back;
+
+        }
+
+      }])
+  </script>
+</body>
+
+</html>

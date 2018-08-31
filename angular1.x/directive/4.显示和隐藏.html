@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body ng-app="myApp" ng-controller="demoCtrl">
+	<!--
+		ng-show 控制元素的显示和隐藏 通过样式的方式控制
+
+			ng-show="true或者false"
+			
+		ng-hide 控制元素的显示和隐藏 通过样式的方式控制
+
+			ng-hide="true或者false"
+
+		ng-if 控制元素的显示和隐藏 通过DOM节点的添加和删除来达到显示和隐藏的目的
+
+			ng-if="true或者false"
+
+	-->
+
+	<button ng-click="showHide=true">按钮1</button>
+	<button ng-click="showHide=false">按钮2</button>
+
+	<div ng-if="showHide">按钮一对应的内容</div>
+	<div ng-if="!showHide">按钮二对应的内容</div>
+	<script src="../bulid/angular/angular.js"></script>
+	<script>
+		angular.module('myApp', [])
+
+			.controller('demoCtrl', ['$scope', function ($scope) {
+
+				$scope.showHide = true;
+
+
+			}])
+
+	</script>
+</body>
+
+</html>

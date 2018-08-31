@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<head>
+  <title>React</title>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="../build/browser.min.js"></script>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+<div id="root"></div>
+
+<body>
+  <script type="text/babel">
+  class Demo extends React.Component {
+    onClickBox(){
+      alert('normal onClick')
+    }
+    onClickBox2(e){
+      console.log(this);
+      console.dir(e);
+      console.dir(e.clientX);
+      
+      alert('refNode onClick')
+    }
+   render(){
+     return (
+       <div className="box" ref={(ref) => { this.Box = ref }} onClick={this.onClickBox2.bind(this)}>
+        box
+       </div>
+     )
+   }
+  }
+  ReactDOM.render(
+    <Demo />,document.getElementById('root'));
+</script>
+</body>
+
+</html>

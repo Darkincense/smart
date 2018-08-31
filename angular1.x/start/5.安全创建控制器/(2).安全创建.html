@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app="myApp">
+
+	<div class="sideBar" ng-controller="demoCtrl">
+		
+		{{ name }}
+
+	</div>
+	<script src="../../bulid/angular/angular.js"></script>
+	<script>
+		
+		/*
+			以安全的方式创建控制器的语法
+
+				模块对象.controller('控制器名称',['$scope',function($scope){
+					
+
+
+				}])
+
+			压缩工具是不会压缩字符串
+
+
+
+		 */
+		
+
+		var myApp = angular.module('myApp',[])
+
+
+		myApp.controller('demoCtrl',['$scope',function($scope){
+
+			$scope.name = '张三';
+
+		}])
+
+		/*var myApp=angular.module("myApp",[]);myApp.controller("demoCtrl",["$scope",function(a){a.name="张三"}]);*/
+
+
+		
+
+	</script>
+</body>
+</html>

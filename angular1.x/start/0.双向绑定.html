@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>angular demo</title>
+</head>
+
+<body ng-app="myApp" ng-controller="demoCtrl">
+  <input type="text" ng-model="value">
+  <button ng-click="clickFn()">按钮</button>
+  {{ value }}
+  <script src="../bulid/angular/angular.js"></script>
+  <script>
+    /*
+    			angular可以为我们实现双向数据绑定 前提是我们要按照angular提供的规则写代码才可以
+
+    			表单才能实现双向数据绑定
+
+    			html =>  JS
+
+    			js => html
+
+    		 */
+
+    angular.module('myApp', [])
+
+      .controller('demoCtrl', ['$scope', function ($scope) {
+
+        $scope.value = '';
+
+        // 监控当前控制器中某一个值的变化
+        // 只要当值发生了更改 对应的处理函数就会执行
+        $scope.$watch('value', function (newValue, oldValue) {
+
+          // 当前html中将值做了更改之后 JS当中也有相应的变化
+          console.log($scope.value)
+
+        })
+
+        $scope.clickFn = function () {
+
+          $scope.value = "456";
+
+        }
+
+      }])
+  </script>
+</body>
+
+</html>

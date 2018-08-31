@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl">
+
+	<!-- <select>
+		<option value="001">足球</option>
+		<option value="002">篮球</option>
+	</select> -->
+
+	<!--
+		ng-options 专门用来循环下来菜单的 需要配合ng-model指令
+
+			<select ng-options="item.value as item.name for item in balls"></select>
+
+			item.name for  for是固定语法 item.name 显示在option标签内的值 用户显示
+
+			item.value as  as是固定语法 item.value 显示在option标签中的value属性中
+
+			ng-model 表示选中项 也可以用来设置默认值
+	-->
+
+	<select ng-model="ball" ng-options="item.value as item.name for item in balls"></select>
+	<script src="../bulid/angular/angular.js"></script>
+	<script>
+		var myApp = angular.module('myApp', [])
+
+		myApp.controller('myCtrl', ['$scope', function ($scope) {
+
+			$scope.ball = "002";
+
+			$scope.balls = [
+				{
+					name: '足球',
+					value: '001'
+				},
+				{
+					name: '篮球',
+					value: '002'
+				},
+				{
+					name: '橄榄球',
+					value: '003'
+				},
+				{
+					name: '排球',
+					value: '004'
+				},
+				{
+					name: '乒乓球',
+					value: '005'
+				}
+			];
+
+		}])
+	</script>
+</body>
+
+</html>

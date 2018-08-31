@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<head>
+  <title>React</title>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="../build/browser.min.js"></script>
+
+</head>
+<div id="root"></div>
+
+<body>
+  <script type="text/babel">
+ class Clock extends React.Component{
+   constructor(props){
+     super(props);
+     this.state = {date:new Date()}
+   }
+  componentDidMount(){
+this.timeID = setInterval(()=>this.tick(),1000);
+  }
+  componentWillunUnmount(){
+clearInterval(this.timeID);
+  }
+
+  tick(){
+    this.setState({
+      date:new Date()
+    })
+  }
+   render(){
+     return (
+       <div>
+       <h1>Hellow,world!</h1>
+       <h2>It is {this.state.date.toLocaleTimeString() }</h2>
+       </div>
+     )
+   }
+ }
+
+ ReactDOM.render(
+   <Clock/>,
+   document.getElementById('root')
+ )
+  </script>
+</body>
+
+</html>

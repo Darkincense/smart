@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title ng-bind="title"></title>
+</head>
+<link rel="stylesheet" href="./css/base.css">
+<link rel="stylesheet" href="./css/bootstrap.css">
+
+<body ng-app="myApp">
+    <nav class="navbar navbar-default" ng-controller="commonCtrl">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">movieCat</a>
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ng-click=" currentClass = 'in_theaters' " ng-class="{'active' : currentClass == 'in_theaters'}">
+                        <a href="#!/in_theaters/1">正在热映</a>
+                    </li>
+
+                    <li ng-click=" currentClass = 'coming_soon' " ng-class="{'active' : currentClass == 'coming_soon'}">
+                        <a href="#!/coming_soon/1">即将上映</a>
+                    </li>
+
+                    <li ng-click=" currentClass = 'Top250' " ng-class="{'active' : currentClass == 'Top250'}">
+                        <a href="#!/top250/1">Top250</a>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="请输入搜索内容" ng-model="search_text">
+                    </div>
+                    <button type="button" class="btn btn-default" ng-click="search()">搜索</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+    <div ng-view></div>
+    <script src="../../bulid/angular/angular.js"></script>
+    <script src="../../bulid/angular-route/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="in_theaters/in_theatersCtrl.js"></script>
+    <script src="coming_soon/coming_soonCtrl.js"></script>
+    <script src="top250/top250Ctrl.js"></script>
+    <script src="search/searchCtrl.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/route.js"></script>
+    <script>
+        /*
+            1.引入angular文件
+            2.引入路由模块
+            3.创建主模块myApp
+            4.将路由模块名字作为主模块的依赖模块
+            5.路由的具体配置
+            6.创建正在热映的控制器
+                (1) 将控制器文件引入到页面中
+                (2) 将控制器名字写在主模块的第二个参数中
+            7.获取数据并且展示数据
+            8.浏览了豆瓣API
+            9.回顾什么是跨域
+            10.跨域的原理
+            11.通过跨域的方式获取豆瓣的数据
+            12.豆瓣不支持angular默认生成的callback名字
+            13.封装了自己的jsonp方法
+            14.将jsonp方法以服务的形式和项目进行整合
+
+            15.实现分页
+
+            16.实现 即将上映 top250
+
+                前提:样式布局和正在热映是一样
+
+                (1) 复制正在热映文件夹并改名字 及模块文件中的 模块名字 控制器名字 接口地址 分页的跳转链接 
+
+                (2) 将新的模块文件引入到页面中
+
+                (3) 将当前模块作为主模块的依赖模块
+
+                (4) 增加路由
+
+                (5) 更改导航链接
+
+            17.实现搜索
+
+                (1) 获取用户输入的搜索内容
+
+                (2) 点击搜索按钮 跳转到搜索页面 
+                并且将用户输入的内容传到搜索页面
+
+                    1.配置搜索页面的路由
+
+                        templateUrl controller
+
+                    2.创建搜索页面及控制器模块
+
+                    3.将搜索控制器模块文件引入到页面中
+
+                    4.将搜索模块作为主模块的以来模块
+
+                (3) 在搜索页面的控制器内 根据传递过来的搜索内容 调用接口 获取数据
+
+            18 实现选中状态
+
+         */
+    </script>
+</body>
+
+</html>

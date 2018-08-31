@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="../bulid/angular/angular.js"></script>
+  <script src="../bulid/angular-sanitize.min.js"></script>
+</head>
+
+<body>
+
+  <div ng-app="myApp" ng-controller="myCtrl">
+
+    <p ng-bind-html="myText"></p>
+
+  </div>
+
+  <script>
+    var app = angular.module("myApp", ['ngSanitize']);
+    app.controller("myCtrl", function ($scope) {
+      $scope.myText = "My name is: <h1>John Doe</h1>";
+    });
+  </script>
+
+  <p>
+    <b>注意:</b> 该实例包含了 "angular-sanitize.js" 文件, 该文件移除 HTML 中的危险代码。</p>
+
+</body>
+
+</html>

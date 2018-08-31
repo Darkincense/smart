@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Angular demo</title>
+  <link rel="stylesheet" href="./styles/index.css">
+  <link rel="stylesheet" href="./styles/bootstrap.css">
+  <link rel="stylesheet" href="./styles/font-awesome/font-awesome.min.css">
+  <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <div ng-app="myApp">
+    <!-- header -->
+    <div ng-include="'./component/layout/header.html'"></div>
+
+    <div ui-view></div>
+
+    <!-- footer -->
+    <div ng-include="'./component/layout/footer.html'"></div>
+
+  </div>
+
+
+  <script src="./bulid/angular/angular.js"> </script>
+  <script src="./bulid/angular-ui-router/angular-ui-router.min.js"></script>
+  <script src="./bulid/angular-sanitize.min.js"></script>
+  <script src="./bulid/angular-pagination.js"></script>
+
+  <script src="./app.js"></script>
+  <script src="./service.js"></script>
+  <script src="./router.js"></script>
+  <script src="./controller.js"></script>
+  <script src="./derectives.js"></script>
+  <script src="./filter.js"></script>
+  <script src="./common.js"></script>
+
+  <script src="./component/movie/coming_soon/coming_soonCtrl.js"></script>
+  <script src="./component/movie/in_theaters/in_theatersCtrl.js"></script>
+  <script src="./component/movie/search/searchCtrl.js"></script>
+  <script src="./component/movie/top250/top250Ctrl.js"></script>
+
+</body>
+
+</html>

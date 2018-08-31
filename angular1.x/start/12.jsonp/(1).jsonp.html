@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<!--
+		link img script iframe
+
+			步骤:1.在全局准备一个函数 用来接收数据
+				 2.在请求的时候将你准备的函数的名字传递给后端
+				 3.返回函数的调用 并且将数据通过参数的形式传递过来
+				 4.处理数据
+	-->
+	<script>
+	function fnname(data){
+
+		console.log(data)
+
+	}
+	</script>
+	<!-- <script src="http://www.example.com?callback=fnname"></script> -->
+	<script>
+
+		fnname({name:'zhangsan',age:18})
+
+		/*
+			jsonp: json with padding
+
+		 */
+	</script>
+</body>
+</html>

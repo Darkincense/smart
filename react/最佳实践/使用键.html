@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+  <title>React</title>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="../build/browser.min.js"></script>
+</head>
+<div id="root"></div>
+
+<body>
+  <script type="text/babel">
+
+const posts = [
+  { id: 1, title: 'Hello World', content: 'Welcome to learning React!' },
+  { id: 2, title: 'Installation', content: 'You can install React from npm.' },
+];
+
+function Blog(props) {
+  const sidebar = (
+    <ul>
+     {props.posts.map((v)=>
+    <li key={v.id}>{v.title}</li>
+    )}
+    </ul>
+  )
+  const content = props.posts.map((post) =>
+  <div key={post.id}>
+    <h3>{post.title}</h3>
+    <p>{post.content}</p>
+  </div>
+);
+  return (
+    <div>
+        {sidebar}
+    <hr/>
+    {content}
+      </div>
+  )
+}
+
+ReactDOM.render(
+  <Blog posts={posts} />,
+  document.getElementById('root')
+)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>angular demo</title>
+</head>
+
+<body ng-app="myApp">
+    <a href="#!/index">首页</a>
+    <a href="#!/list">列表页</a>
+    <div ui-view></div>
+    <script src="../../bulid/angular/angular.js"></script>
+    <script src="../../bulid/angular-ui-router/angular-ui-router.min.js"></script>
+    <script>
+    /*
+    			1.将路由模块引入到页面当中
+    			2.将路由模块的名字(ui.router)作为主模块的依赖模块
+
+    			模块对象.config(['$stateProvider',function($stateProvider){
+    				
+    				$stateProvider
+    					.state({
+    						url:'/index',
+    						name:'index',
+    						templateUrl:'./tpl/index.html'
+    					})
+
+    			}])
+    	
+    			<a ui-sref="index">首页</a>
+
+    				ui-sref指令的作用 根据当前的路由名字生成正确的链接地址
+
+
+    		 */
+    angular.module('myApp', ['ui.router'])
+
+    .config(['$stateProvider', function($stateProvider) {
+
+        $stateProvider
+            .state({
+                url: '/index',
+                name: 'index',
+                templateUrl: './tpl/index.html'
+            },{
+                url: '/list',
+                name: 'list',
+                templateUrl: './tpl/list.html'
+            })
+
+     }])
+    </script>
+</body>
+
+</html>
