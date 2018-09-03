@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.richfit.bjsop.entity.CusOrgLink">
+
+  <resultMap id="BaseResultMap" type="com.richfit.bjsop.entity.CusOrgLink">
+    <id column="LINK_ID" jdbcType="VARCHAR" property="linkId" />
+    <result column="CUS_ID" jdbcType="VARCHAR" property="cusId" />
+    <result column="BAS_ORG_ID" jdbcType="VARCHAR" property="basOrgId" />
+    <result column="DEL_FLAG" jdbcType="INTEGER" property="delFlag" />
+    
+    <result column="ORG_NAME" jdbcType="VARCHAR" property="orgName" />
+    <result column="CREATE_ID" jdbcType="VARCHAR" property="createId" />
+    <result column="UPDATE_ID" jdbcType="VARCHAR" property="updateId" />
+    <result column="STATE" jdbcType="VARCHAR" property="state" />
+    <result column="CREATE_DATE"  property="createDate" />
+    <result column="UPDATE_DATE"  property="updateDate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LINK_ID, CUS_ID, BAS_ORG_ID, DEL_FLAG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cus_org_link
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </select>
+  <insert id="insert" parameterType="com.richfit.bjsop.entity.CusOrgLink">
+    insert into cus_org_link (LINK_ID, CUS_ID, BAS_ORG_ID, 
+      DEL_FLAG)
+    values (#{linkId,jdbcType=VARCHAR}, #{cusId,jdbcType=VARCHAR}, #{basOrgId,jdbcType=VARCHAR}, 
+      #{delFlag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.richfit.bjsop.entity.CusOrgLink">
+    insert into cus_org_link
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="linkId != null">
+        LINK_ID,
+      </if>
+      <if test="cusId != null">
+        CUS_ID,
+      </if>
+      <if test="basOrgId != null">
+        BAS_ORG_ID,
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="linkId != null">
+        #{linkId,jdbcType=VARCHAR},
+      </if>
+      <if test="cusId != null">
+        #{cusId,jdbcType=VARCHAR},
+      </if>
+      <if test="basOrgId != null">
+        #{basOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.richfit.bjsop.entity.CusOrgLink">
+    update cus_org_link
+    <set>
+      <if test="cusId != null">
+        CUS_ID = #{cusId,jdbcType=VARCHAR},
+      </if>
+      <if test="basOrgId != null">
+        BAS_ORG_ID = #{basOrgId,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+    </set>
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </update>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from cus_org_link
+    where LINK_ID = #{linkId,jdbcType=VARCHAR}
+  </delete>
+ 
+  
+  <!-- 修改删除状态 -->
+  <update id="delMyCompany" parameterType="Object" >
+    update cus_org_link
+    set DEL_FLAG = '1'
+    where BAS_ORG_ID = #{basOrgId,jdbcType=VARCHAR} and cus_id =#{cusId}
+  </update>
+  <!-- 根据cusId查询 -->
+    <select id="queryById" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    BAS_ORG_ID,create_id,create_date,state,link_id
+    from cus_org_link
+    where CUS_ID = #{cusId,jdbcType=VARCHAR} and DEL_FLAG = #{delFlag,jdbcType=INTEGER}
+  </select>
+  <!-- app根据cusId查询 -->
+    <select id="queryByIdName" resultMap="BaseResultMap" parameterType="Map" >
+    select 
+    a.BAS_ORG_ID,b.org_name,a.state,a.create_id,a.create_date
+    from cus_org_link a left join bas_org b on a.BAS_ORG_ID = b.ORG_ID
+    where CUS_ID = #{cusId,jdbcType=VARCHAR} and a.DEL_FLAG = #{delFlag,jdbcType=INTEGER}
+  </select>
+  <!-- 根据cusId和basOrgId查询 -->
+    <select id="selectCompany" resultMap="BaseResultMap" parameterType="Map" >
+    select LINK_ID
+    from cus_org_link
+    where CUS_ID = #{cusId,jdbcType=VARCHAR} and BAS_ORG_ID = #{basOrgId,jdbcType=VARCHAR} and DEL_FLAG='0'
+  </select>
+  <!-- 添加所属分公司 -->
+    <insert id="addCompany" parameterType="Map" >
+    insert into cus_org_link (LINK_ID, CUS_ID, BAS_ORG_ID,create_id,create_date,
+    update_id,update_date,state
+      )
+    values (#{linkId,jdbcType=VARCHAR}, #{cusId,jdbcType=VARCHAR}, #{basOrgId,jdbcType=VARCHAR},#{createId},
+    #{createDate},#{updateId},#{updateDate},#{state}
+      )
+  </insert>
+  <!-- 根据cusId查询所属分公司 -->
+  <select id="checkCompany" parameterType="Map" resultMap="BaseResultMap" >
+  	select LINK_ID, CUS_ID, BAS_ORG_ID, DEL_FLAG,state,create_id,create_date,
+  	(select ORG_NAME from bas_org b where b.ORG_ID = a.BAS_ORG_ID) as ORG_NAME
+  	from cus_org_link a
+  	where CUS_ID = #{cusId,jdbcType=VARCHAR} and DEL_FLAG =#{delFlag,jdbcType=INTEGER} and state =1
+  	<if test="linkId != null and linkId !=''">
+  		and link_Id=#{linkId}
+  	</if>
+  </select>
+  <!-- 根据cusId查询性质为全资的所属分公司 -->
+  <select id="selectAllCompany" parameterType="Map" resultMap="BaseResultMap" >
+  	select a.LINK_ID, a.CUS_ID, a.BAS_ORG_ID, a.DEL_FLAG,a.state,a.create_id,a.create_date,o.org_name,o.org_type
+  	from cus_org_link a
+  	left join bas_org o on o.del_flag=0 and o.org_id=a.BAS_ORG_ID
+  	where a.CUS_ID = #{cusId,jdbcType=VARCHAR} and a.DEL_FLAG =0 and a.state =1 and o.org_type in ('0','3')
+  </select>
+</mapper>

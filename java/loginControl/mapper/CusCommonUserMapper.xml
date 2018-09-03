@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.richfit.bjsop.entity.CusCommonUser" >
+  <resultMap id="BaseResultMap" type="com.richfit.bjsop.entity.CusCommonUser" >
+    <id column="COMMON_USER_ID" property="commonUserId" jdbcType="VARCHAR" />
+    <result column="COMMON_USER_NAME" property="commonUserName" jdbcType="VARCHAR" />
+    <result column="PHONE_NUMBER" property="phoneNumber" jdbcType="VARCHAR" />
+    <result column="CARD_ID" property="cardId" jdbcType="VARCHAR" />
+    <result column="PHOTO_PATH" property="photoPath" jdbcType="VARCHAR" />
+    <result column="DEL_FLAG" property="delFlag" jdbcType="INTEGER" />
+    <result column="CREATE_ID" property="createId" jdbcType="VARCHAR" />
+    <result column="UPDATE_DATE" property="updateDate" jdbcType="TIMESTAMP" />
+    <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="UPDATE_ID" property="updateId" jdbcType="VARCHAR" />
+    <result column="CUS_ID" property="cusId" jdbcType="VARCHAR" />
+    <result column="LOGIN_NAME" property="loginName"/>
+	<result column="LOGIN_PASSWORD" property="loginPassword"/>
+	<result column="USER_TYPE" property="userType"/>
+	<result column="STATE" property="state"/>
+    <result column="CUS_COMPANY" property="cusCompany"/>
+    <result column="CUS_AUTHORITY" property="cusAuthority"/>
+    <result column="USER_ID" property="userId"/>
+    <result column="CUS_USER_LINK_ID" property="cusUserLinkId"/>
+    <result column="DEL_FLAG_LINK" property="delFlagLink"  jdbcType="INTEGER"/>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    c.COMMON_USER_ID, c.COMMON_USER_NAME, c.PHONE_NUMBER, c.CARD_ID, c.PHOTO_PATH, c.DEL_FLAG, c.CREATE_ID, 
+    c.UPDATE_DATE, c.CREATE_DATE, c.UPDATE_ID,b.LOGIN_NAME,b.USER_TYPE,b.STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from cus_common_user
+    where COMMON_USER_ID = #{commonUserId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from cus_common_user
+    where COMMON_USER_ID = #{commonUserId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="Object" >
+    insert into cus_common_user (COMMON_USER_ID, COMMON_USER_NAME, PHONE_NUMBER, 
+      CARD_ID, PHOTO_PATH, DEL_FLAG, 
+      CREATE_ID, UPDATE_DATE, CREATE_DATE, 
+      UPDATE_ID,USER_ID)
+    values (#{commonUserId,jdbcType=VARCHAR}, #{commonUserName,jdbcType=VARCHAR}, #{phoneNumber,jdbcType=VARCHAR}, 
+      #{cardId,jdbcType=VARCHAR}, #{photoPath,jdbcType=VARCHAR}, #{delFlag,jdbcType=INTEGER}, 
+      #{createId,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateId,jdbcType=VARCHAR},#{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="Map" >
+    insert into cus_common_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="commonUserId != null" >
+        COMMON_USER_ID,
+      </if>
+      <if test="commonUserName != null" >
+        COMMON_USER_NAME,
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER,
+      </if>
+      <if test="cardId != null" >
+        CARD_ID,
+      </if>
+      <if test="photoPath != null" >
+        PHOTO_PATH,
+      </if>
+      <if test="delFlag != null" >
+        DEL_FLAG,
+      </if>
+      <if test="createId != null" >
+        CREATE_ID,
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE,
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE,
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="commonUserId != null" >
+        #{commonUserId,jdbcType=VARCHAR},
+      </if>
+      <if test="commonUserName != null" >
+        #{commonUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null" >
+        #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="Map" >
+    update cus_common_user
+    <set >
+      <if test="commonUserName != null" >
+        COMMON_USER_NAME = #{commonUserName,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneNumber != null" >
+        PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null" >
+        CARD_ID = #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="photoPath != null" >
+        PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null" >
+        DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      </if>
+      <if test="createId != null" >
+        CREATE_ID = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null" >
+        UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createDate != null" >
+        CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateId != null" >
+        UPDATE_ID = #{updateId,jdbcType=VARCHAR},
+      </if>
+       <if test="cusAuthority != null" >
+        CUS_AUTHORITY = #{cusAuthority,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where COMMON_USER_ID = #{commonUserId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="Map" >
+    update cus_common_user
+    set COMMON_USER_NAME = #{commonUserName,jdbcType=VARCHAR},
+      PHONE_NUMBER = #{phoneNumber,jdbcType=VARCHAR},
+      CARD_ID = #{cardId,jdbcType=VARCHAR},
+      PHOTO_PATH = #{photoPath,jdbcType=VARCHAR},
+      DEL_FLAG = #{delFlag,jdbcType=INTEGER},
+      CREATE_ID = #{createId,jdbcType=VARCHAR},
+      UPDATE_DATE = #{updateDate,jdbcType=TIMESTAMP},
+      CREATE_DATE = #{createDate,jdbcType=TIMESTAMP},
+      UPDATE_ID = #{updateId,jdbcType=VARCHAR}
+    where COMMON_USER_ID = #{commonUserId,jdbcType=VARCHAR}
+  </update>
+    <update id="updateBelongCompany" parameterType="Map" >
+    update cus_common_user
+    set CUS_ID = #{cusId,jdbcType=VARCHAR}
+    where COMMON_USER_ID = #{commonUserId,jdbcType=VARCHAR}
+  </update>
+    <select id="select" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+   <include refid="Base_Column_List" />
+    from cus_common_user c left join bas_user b on b.user_id=c.user_id
+    where b.del_flag = 0
+  </select>
+      <select id="selectPerson" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+   <include refid="Base_Column_List" /> ,cl.CUS_ID,
+cl.CUS_USER_LINK_ID,cl.del_flag as del_flag_link
+    from cus_common_user c left join bas_user b on b.USER_ID=c.USER_ID
+    LEFT JOIN cus_user_link cl on cl.CUS_COMMON_USER_ID = c.COMMON_USER_ID
+    where b.del_flag = 0
+    <if test="cardId != null and cardId !=''">
+	    and c.CARD_ID=#{cardId,jdbcType=VARCHAR} and c.COMMON_USER_NAME=#{commonUserName,jdbcType=VARCHAR}
+    </if>
+    <if test="cardId == null || cardId ==''">
+	    and cl.cus_id=#{cusId,jdbcType=VARCHAR}
+    </if>  
+  </select>
+    <select id="queryPersonAuthority" resultMap="BaseResultMap" parameterType="HashMap" >
+    select 
+    CL.CUS_AUTHORITY,C.COMMON_USER_ID
+    from 	cus_common_user c,cus_user_link cl WHERE
+			c.user_id = #{userId,jdbcType=VARCHAR}
+		AND cl.cus_id =  #{cusId,jdbcType=VARCHAR} 
+		and c.COMMON_USER_ID=cl.CUS_COMMON_USER_ID
+  </select>
+  <!-- 根据userId查询 -->
+    <select id="selectCommonUser" resultMap="BaseResultMap" parameterType="object" >
+    select 
+    c.*,u.login_name
+    from cus_common_user c
+    left join bas_user u on u.del_flag=0 and u.user_id=c.user_id
+    where c.user_id=#{userId}
+  </select>
+  
+  <select id="queryListByPhoneCard" parameterType="Map" resultType="HashMap">
+	select * from cus_common_user c where c.DEL_FLAG=0 
+	and (c.PHONE_NUMBER=#{loginName} or c.CARD_ID=#{loginName})
+	ORDER BY c.CREATE_DATE desc
+</select>
+</mapper>
