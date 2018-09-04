@@ -27,10 +27,11 @@
     dispatchEvent: function (element, eventType, detail) {
       var event = new CustomEvent(eventType, {
         detail
-      });
-      element.dispatchEvent(event);
-      return this;
+      })
+      element.dispatchEvent(event)
+      return this
     },
+
     queryString: {
       get: function (name) {
         var getAll = searchString => {
@@ -128,11 +129,10 @@
         util.queryString.set(this.options.pageQuery, page);
       }
       this.currentPage = page;
-      this.options.element.dispatchEvent(new CustomEvent('pageChange', {
-        detail: {
-          page
-        }
-      }));
+
+      util.dispatchEvent(this.options.element, 'pageChange', {
+        "page": page
+      });
       this.rerender();
     },
     rerender: function () {

@@ -1,32 +1,5 @@
 var dom = {
-  isObject: function (data) {
-    return Object.prototype.toString.call(data) === '[object Object]';
-  },
-  
-  // 对象合并 exrtend(true);深拷贝 依赖 isObject
-  extend: function (deep) {
-    var sources = typeof deep === 'boolean' && deep ? Array.prototype.slice.call(arguments, 1) : Array.prototype.slice.call(
-      arguments);
-    var i = 0,
-      obj = {};
-    for (; i < sources.length; i++) {
-      if (!this.isObject(sources[i])) {
-        console.error("Function[extend] parmas must be Object")
-        return false;
-      }
-      for (var key in sources[i]) {
-        if (deep === true && this.isObject(sources[i][key]) && obj[key]) {
-          obj[key] = extend(deep, obj[key], sources[i][key]);
-          continue;
-        }
-        if (sources[i].hasOwnProperty(key)) {
-          obj[key] = sources[i][key]
-        }
-
-      }
-    }
-    return obj;
-  },
+ 
 
   $: function (selector, el) {
     if (!el) {
@@ -342,7 +315,8 @@ var dom = {
     } else {
       throw new Error('you can only pass Element, array of Elements or query string as argument');
     }
-  }
+  },
+ 
 
 
 };

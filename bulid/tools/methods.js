@@ -18,7 +18,36 @@ window.onerror = function (
   });
 };
 
-var methods = {
+var util = {
+
+  isObject: function (data) {
+    return Object.prototype.toString.call(data) === '[object Object]';
+  },
+
+  // 对象合并 exrtend(true);深拷贝 依赖 isObject
+  extend: function (deep) {
+    var sources = typeof deep === 'boolean' && deep ? Array.prototype.slice.call(arguments, 1) : Array.prototype.slice.call(
+      arguments);
+    var i = 0,
+      obj = {};
+    for (; i < sources.length; i++) {
+      if (!this.isObject(sources[i])) {
+        console.error("Function[extend] parmas must be Object")
+        return false;
+      }
+      for (var key in sources[i]) {
+        if (deep === true && this.isObject(sources[i][key]) && obj[key]) {
+          obj[key] = extend(deep, obj[key], sources[i][key]);
+          continue;
+        }
+        if (sources[i].hasOwnProperty(key)) {
+          obj[key] = sources[i][key]
+        }
+
+      }
+    }
+    return obj;
+  },
 
   // 判断数据类型
   getType: function (a) {
@@ -62,20 +91,7 @@ var methods = {
     var roundNum = Math.round(number * times) / times;
     return roundNum.toFixed(fractionDigits);
   },
-  
-  // window.location.href='https://www.baidu.com';
-  // window.open("http://zkcx.bjeea.cn/zhcxxt/index.jsp");
-  // window.open("../../../portal/xgzc.html");
-  openUrl: function (url) {
-    var a = document.createElement('a');
-    a.target = '_blank';
-    a.href = url;
-    a.style.display = 'none';
-    var body = document.getElementsByTagName('body').item(0);
-    body.appendChild(a);
-    a.click();
-    body.removeChild(a);
-  }
+
 }
 
 
