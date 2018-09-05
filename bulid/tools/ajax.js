@@ -1,4 +1,9 @@
-//AJAX GET
+/**
+ * CTRL+ALT+D => document this
+ * AJAX GET
+ * @param {*} url
+ * @param {*} Func
+ */
 function getData(url, Func) {
   $.ajax({
     url: url,
@@ -16,7 +21,6 @@ function getData(url, Func) {
   });
 }
 
-// AJAX POST
 function loadData(url, param, Func) {
   $.ajax({
     url: url,
@@ -252,8 +256,8 @@ function fetch(url, setting) {
       .then(async res => {
         let data =
           dataType === "text" ?
-          await res.text() :
-          dataType === "blob" ? await res.blob() : await res.json();
+          await res.text():
+            dataType === "blob" ? await res.blob(): await res.json();
         resolve(data);
       })
       .catch(e => {

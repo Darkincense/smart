@@ -49,6 +49,8 @@ var util = {
     return obj;
   },
 
+
+
   // 判断数据类型
   getType: function (a) {
     var typeArray = Object.prototype.toString.call(a).split(" ");
@@ -94,6 +96,30 @@ var util = {
 
 }
 
+/**
+ *
+ * 在wrapdom范围内使用data key赋值（支持特殊标识符）
+ * @param {dom} wrapDom 外包含dom元素
+ * @param {obj} data 数据
+ * @param {string} special 特殊标识符号
+ */
+function renderWithObj(wrapDom, data, special) {
+  var $ = function (selector, el) {
+    if (!el) {
+      el = document;
+    }
+    return el.querySelector(selector);
+  }
+  for (var key in data) {
+    var query = special ? special + '_' + key : key;
+    var element = $('#' + query, wrapDom) || $('.' + query, wrapDom);
+    if (element) {
+      element.value = data[key];
+    } else {
+      console.error('没有 ' + query + ' 的匹配项')
+    }
+  }
+}
 
 
 //传递一个范围，返回该范围的随机数
