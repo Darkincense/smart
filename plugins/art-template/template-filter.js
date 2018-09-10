@@ -12,11 +12,18 @@
    }
    return t.split("").reverse().join("") + "." + r;
  }
+
+ function toFixed(number, fractionDigits) {
+   var times = Math.pow(10, fractionDigits);
+   var roundNum = Math.round(number * times) / times;
+   return roundNum.toFixed(fractionDigits);
+ }
+
  template.defaults.imports.OneDecimal = function (number) {
-   return number.toFixed(1);
+   return toFixed(number, 1);
  }
  template.defaults.imports.TwoDecimal = function (number) {
-   return number.toFixed(2);
+   return toFixed(number, 2);
  }
  template.defaults.imports.changeMoney = function (value) {
    return fmoney(value)

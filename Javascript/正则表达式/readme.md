@@ -7,6 +7,9 @@
 - [regexper](https://regexper.com/)
 - [regulex](https://jex.im/regulex/#!flags=&re=%5E(a%7Cb)*%3F%24)
 
+## 资源
+- [正则表达式30分钟入门教程](http://deerchao.net/tutorials/regex/common.htm)
+
 ##### 参考
 - https://2ue.github.io/2017/11/24/regex-to-something/
 ## 语法
