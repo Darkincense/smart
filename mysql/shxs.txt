@@ -1,0 +1,1 @@
+select * from bas_user WHERE LOGIN_NAME = "姜丽娜"

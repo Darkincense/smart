@@ -7,7 +7,7 @@
     .form{
                 width: 400px;
                 height: 200px;
-                #margin: 0px auto;
+                margin: 0px auto;
             }
 
             .form-item-label{
@@ -30,35 +30,35 @@
 
 <body>
 
-  <div class='form'>
+  <div class="form">
     <div class="form-item">
-      <div class='form-item-label'><span>用户名：</span></div>
-      <div class='form-item-input'><input id='userName' name='用户名' type="text"></div>
+      <div class="form-item-label"><span>用户名：</span></div>
+      <div class="form-item-input"><input id="userName" name="用户名" type="text"></div>
     </div>
 
     <div class="form-item">
-      <div class='form-item-label'><span>密码：</span></div>
-      <div class='form-item-input'><input id='password' name='密码' type="text"></div>
+      <div class="form-item-label"><span>密码：</span></div>
+      <div class="form-item-input"><input id="password" name="密码" type="text"></div>
     </div>
 
     <div class="form-item">
-      <div class='form-item-label'><span>确认密码：</span></div>
-      <div class='form-item-input'><input id='repassword' name='密码确认' type="text"></div>
+      <div class="form-item-label"><span>确认密码：</span></div>
+      <div class="form-item-input"><input id="repassword" name="密码确认" type="text"></div>
     </div>
 
     <div class="form-item">
-      <div class='form-item-label'><span>邮箱：</span></div>
-      <div class='form-item-input'><input id='mail' name='邮箱' type="text"></div>
+      <div class="form-item-label"><span>邮箱：</span></div>
+      <div class="form-item-input"><input id="mail" name="邮箱" type="text"></div>
     </div>
   </div>
 
   <br>
-  <button id='submit'>提交</button>
+  <button id="submit">提交</button>
 
   <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
-  <script type='text/javascript'>
+  <script type="text/javascript">
     $(document).ready(function () {
-      $('#submit').bind('click', doSubmit);
+      $("#submit").bind("click", doSubmit);
     });
 
     function doSubmit() {
@@ -66,31 +66,31 @@
 
       validators.importStrategies(validationStrategies);
 
-      validators.addValidationStrategy('isEqual', function (element, errMsg, value1, value2) {
+      validators.addValidationStrategy("isEqual", function (element, errMsg, value1, value2) {
         if (value1 !== value2) {
           return this.buildInvalidObj(element, errMsg, value1);
         }
       });
 
-      var eleUserName = document.getElementById('userName');
-      validators.addValidator('isNoEmpty', eleUserName, '用户名不能为空', eleUserName.value);
-      validators.addValidator('minLength:6', eleUserName, '用户名的字符个数必须是6到20个', eleUserName.value);
-      validators.addValidator('maxLength:20', eleUserName, '用户名的字符个数必须是6到20个', eleUserName.value);
+      var eleUserName = document.getElementById("userName");
+      validators.addValidator("isNoEmpty", eleUserName, "用户名不能为空", eleUserName.value);
+      validators.addValidator("minLength:6", eleUserName, "用户名的字符个数必须是6到20个", eleUserName.value);
+      validators.addValidator("maxLength:20", eleUserName, "用户名的字符个数必须是6到20个", eleUserName.value);
 
-      var elePassword = document.getElementById('password');
-      validators.addValidator('isNoEmpty', elePassword, '密码不能为空', elePassword.value);
-      validators.addValidator('minLength:6', elePassword, '密码的字符个数必须是6到20个', elePassword.value);
-      validators.addValidator('maxLength:20', elePassword, '密码的字符个数必须是6到20个', elePassword.value);
+      var elePassword = document.getElementById("password");
+      validators.addValidator("isNoEmpty", elePassword, "密码不能为空", elePassword.value);
+      validators.addValidator("minLength:6", elePassword, "密码的字符个数必须是6到20个", elePassword.value);
+      validators.addValidator("maxLength:20", elePassword, "密码的字符个数必须是6到20个", elePassword.value);
 
-      var eleRepassword = document.getElementById('repassword');
-      validators.addValidator('isNoEmpty', eleRepassword, '确认密码不能为空', eleRepassword.value);
-      validators.addValidator('minLength:6', eleRepassword, '确认密码的字符个数必须是6到20个', eleRepassword.value);
-      validators.addValidator('maxLength:20', eleRepassword, '确认密码的字符个数必须是6到20个', eleRepassword.value);
-      validators.addValidator('isEqual:' + elePassword.value, eleRepassword, '两次密码不一致', eleRepassword.value);
+      var eleRepassword = document.getElementById("repassword");
+      validators.addValidator("isNoEmpty", eleRepassword, "确认密码不能为空", eleRepassword.value);
+      validators.addValidator("minLength:6", eleRepassword, "确认密码的字符个数必须是6到20个", eleRepassword.value);
+      validators.addValidator("maxLength:20", eleRepassword, "确认密码的字符个数必须是6到20个", eleRepassword.value);
+      validators.addValidator("isEqual:" + elePassword.value, eleRepassword, "两次密码不一致", eleRepassword.value);
 
-      var eleMail = document.getElementById('mail');
-      validators.addValidator('isNoEmpty', eleMail, '邮箱不能为空', eleMail.value);
-      validators.addValidator('isMail', eleMail, '邮箱不是一个有效的格式', eleMail.value);
+      var eleMail = document.getElementById("mail");
+      validators.addValidator("isNoEmpty", eleMail, "邮箱不能为空", eleMail.value);
+      validators.addValidator("isMail", eleMail, "邮箱不是一个有效的格式", eleMail.value);
 
 
       var result = validators.check();
@@ -101,7 +101,7 @@
         return false;
       }
 
-      alert('验证通过');
+      alert("验证通过");
     }
 
     //输入验证器
@@ -157,9 +157,9 @@
     //    value: 被验证的值
     InputValidators.prototype.buildInvalidObj = function (element, errMsg, value) {
       return {
-        'value': value,
-        'element': element,
-        'errMsg': errMsg
+        "value": value,
+        "element": element,
+        "errMsg": errMsg
       };
     };
 
@@ -176,7 +176,7 @@
     //验证策略对象，包含默认的验证策略函数
     var validationStrategies = {
       isNoEmpty: function (element, errMsg, value) {
-        if (value === '') {
+        if (value === "") {
           return this.buildInvalidObj(element, errMsg, value);
         }
       },
