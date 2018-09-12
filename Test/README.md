@@ -4,6 +4,8 @@
 - [json-server](https://github.com/typicode/json-server)
 - [yapi](https://github.com/YMFE/yapi)
 - [easyapi](https://www.easyapi.com/info/doc)
+- https://www.easy-mock.com/
+- https://github.com/nuysoft/Mock
 
 ### Show-mycode
 
