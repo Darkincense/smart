@@ -65,6 +65,9 @@ var arr = ['old', 1, true, ['old1', 'old2'], {old: 1}]
 
 var new_arr = JSON.parse( JSON.stringify(arr) );
 
+// 该方法会忽略掉函数和 undefined
+// 但是在通常情况下，复杂数据都是可以序列化的，所以这个函数可以解决大部分问题，并且该函数是内置函数中处理深拷贝性能最快的
+
 console.log(new_arr);
 ````
 
