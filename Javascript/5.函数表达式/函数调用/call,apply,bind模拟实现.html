@@ -58,6 +58,9 @@
         return _this.apply(context, args.concat(...arguments))
       }
     }
+
+    alert.call(this, "123");
+    alert.myCall(this, "123");
   </script>
 </body>
 

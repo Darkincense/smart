@@ -13,9 +13,11 @@
     var name = 'xiaoyueyue',
       age = '25',
       home = 'shanxi',
-      friend = 'heizi';
+      friend = 'heizi',
+      DQ = "&quot;"; // 双引号的超文本标记语言
 
     var params = "&quot;" + name + "&quot;,&quot;" + age + "&quot;,&quot;" + home + "&quot;,&quot;" + friend + "&quot;";
+    var params2 = DQ + name + DQ + ',' + DQ + age + DQ + ',' + DQ + home + DQ + ',' + DQ + friend + DQ;
     var box = document.createElement("div");
     box.innerHTML = "<button onclick='alertInfo(" + params + ")'>点击</button>";
     console.log(box)

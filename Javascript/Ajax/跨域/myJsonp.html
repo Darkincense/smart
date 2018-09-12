@@ -9,21 +9,14 @@
 </head>
 
 <body>
-  <script src="./js/jquery.min.js"></script>
+  <script src="../../../bulid/tools/ajax.js"></script>
   <script>
-    $.ajax({
-      type: 'get',
-      url: "https://api.douban.com/v2/book/1220562",
-      dataType: 'jsonp',
-      success: function (data) {
-        callback(data);
-      }
-
+    myJsonp("https://api.douban.com/v2/movie/in_theaters", {
+      start: 1,
+      count: 10
+    }, function (res) {
+      console.log(res)
     })
-
-    function callback(data) {
-      console.log(data);
-    }
   </script>
 </body>
 

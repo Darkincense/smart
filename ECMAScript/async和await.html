@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // await 只能在 async 函数中使用
+    function sleep() {
+      return new Promise(resolve => {
+        setTimeout(() => {
+          console.log('finish')
+          resolve("sleep");
+        }, 2000);
+      });
+    }
+    async function test() {
+      let value = await sleep();
+      console.log("object");
+    }
+    test()
+  </script>
+</body>
+
+</html>
