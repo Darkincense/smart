@@ -29,7 +29,7 @@ export const decrement = () => {
 
 export const get_user = () => {
   // return dispatch => {
-  //   dispatch(fetch_user_request());
+  //   dispatch(fetch_user_request()); // 请求之前先 dispatch ， 确认isFetching 状态
   //   axios.get("https://randomuser.me/api/")
   //     .then(res => {
   //       dispatch(fetch_user(res.data.results[0]));

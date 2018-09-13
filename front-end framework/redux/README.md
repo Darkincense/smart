@@ -16,9 +16,16 @@
 
 - [官方文档](https://redux.js.org/basics/usage-with-react)  / [中文文档]()
 
+### react-saga
+- [官方文档](https://redux-saga.js.org/ )  / [中文文档](https://redux-saga-in-chinese.js.org/)
+
 ## Useful links
 - https://github.com/reduxjs/react-redux/blob/master/docs/api.md
 - https://www.jianshu.com/p/06f5285e2620
+- [Redux异步方案选型](https://segmentfault.com/a/1190000007248878)
+
+## 记录
+
 
 
 
