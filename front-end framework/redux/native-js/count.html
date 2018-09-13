@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.bootcss.com/redux/4.0.0/redux.js"></script>
+</head>
+
+<body>
+  <span></span>
+  <button class="increment">+</button>
+  <button class="decrement">-</button>
+
+  <script>
+
+    var initCount = {
+      "count": 0
+    }
+    function counter(state, action) {
+      if (!state) {
+        return initCount
+      }
+      switch (action.type) {
+        case "INCREMENT":
+          return { "count": state.count + 1 }
+        case "DECREMENT":
+          return { "count": state.count - 1 }
+        default:
+          return state;
+      }
+
+    }
+
+    var store = Redux.createStore(counter)
+
+    function renderValue() {
+      document.querySelector("span").innerHTML = store.getState().count;
+    }
+
+    renderValue();
+    //注册监听器
+    store.subscribe(renderValue);
+
+    document.querySelector('.increment').onclick = function () {
+      store.dispatch({
+        type: 'INCREMENT'
+      })
+    }
+    document.querySelector('.decrement').onclick = function () {
+      store.dispatch({
+        type: 'DECREMENT'
+      })
+    }
+
+  </script>
+</body>
+
+</html>
