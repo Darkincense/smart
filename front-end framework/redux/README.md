@@ -14,7 +14,7 @@
 
 ### react-redux
 
-- [官方文档](https://redux.js.org/basics/usage-with-react)  / [中文文档]()
+- [官方文档](https://redux.js.org/basics/usage-with-react) 
 
 ### react-saga
 - [官方文档](https://redux-saga.js.org/ )  / [中文文档](https://redux-saga-in-chinese.js.org/)
@@ -23,6 +23,7 @@
 - https://github.com/reduxjs/react-redux/blob/master/docs/api.md
 - https://www.jianshu.com/p/06f5285e2620
 - [Redux异步方案选型](https://segmentfault.com/a/1190000007248878)
+- [重谈react优势——react技术栈回顾](https://www.cnblogs.com/zhoulujun/p/9415303.html)
 
 ## 记录
 

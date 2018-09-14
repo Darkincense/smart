@@ -45,9 +45,11 @@
     store.subscribe(renderValue);
 
     document.querySelector('.increment').onclick = function () {
-      store.dispatch({
+      setTimeout(()=>{
+	  store.dispatch({
         type: 'INCREMENT'
       })
+	  },0)
     }
     document.querySelector('.decrement').onclick = function () {
       store.dispatch({
