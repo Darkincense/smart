@@ -20,16 +20,16 @@
 
     ]
 
-    var box = document.createElement("div");
+    var box = document.createElement("div"),html ='';
 
     for (var i = 0; i < data.length; i++) {
-      box.innerHTML = "<button id='btn'  onclick='alertInfo(id,\"" + data[i].name + "\",\"" + data[i].age + "\",\"" + data[i].home + "\",\"" + data[i].friend + "\")'>点击</button>";
+     html += "<button id='btn'  onclick='alertInfo(id,\"" + data[i].name + "\",\"" + data[i].age + "\",\"" + data[i].home + "\",\"" + data[i].friend + "\")'>点击</button>";
     }
-
+    box.innerHTML = html;
     document.body.appendChild(box);
 
     function alertInfo(id, name, age, home, friend) {
-      alert("我是" + name + "," + friend + "是我的好朋友")
+      alert("我是 " + name + " , " + friend + " 是我的好朋友")
     }
 
 
