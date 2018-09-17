@@ -2,6 +2,7 @@
 
 - [interview](https://github.com/andreis/interview)
 - [Interview-Notebook](https://github.com/CyC2018/Interview-Notebook)  技术面试需要掌握的基础知识整理
+- [阿里、网易、滴滴共十次前端面试碰到的问题](https://segmentfault.com/a/1190000009662029)
 - [front-end-interview-handbook](https://github.com/yangshun/front-end-interview-handbook/blob/master/Translations/Chinese/README.md) 几乎完整的答案可以用来面试潜在的候选人，测试自己或完全忽略“前端工作面试问题”
 - [node-interview](https://github.com/ElemeFE/node-interview) How to pass the Node.js interview of ElemeFE. https://elemefe.github.io/node-interview/
 - [react-interview](https://github.com/Pau1fitz/react-interview/blob/master/zh-cn.md)

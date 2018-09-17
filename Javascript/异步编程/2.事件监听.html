@@ -9,8 +9,14 @@
 </head>
 
 <body>
+  <p>Click me!</p>
+  <span></span>
+  <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
   <script>
-
+    var count = 0;
+    $("body").on("click", "p", function () {
+      $(this).after("<p>Another paragraph! " + (++count) + "</p>");
+    });
   </script>
 </body>
 
