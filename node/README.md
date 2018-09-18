@@ -3,6 +3,7 @@
 
 ## Guide
 
+- [nodejs 中文文档](http://nodejs.cn/api/)
 - [rails365.net](https://www.rails365.net/playlists)
 - [project-nodejs-express-container](https://github.com/Microsoft/project-nodejs-express-container) -示例Nodejs Express应用程序
 

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style> 
+  .f-box {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+  </style>
+</head>
+
+<body>
+  <div class="f-box">
+
+    <div class="f-box">
+      <label class="inline-block s-width t-right">发布单位</label>
+      <input type="hidden" id="rel_unit" name="rel_unit" /> <input type="text" class="input-large" id="rel_unit_name"
+        name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input type="button" class="btn btn-primary button"
+        value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+    <div class="f-box">
+      <label class="inline-block s-width t-right">发布时间</label> <input class="input-large input-w margin-l-s i-date"
+        type="text" required id="release_date" name="release_date" autocomplete="off" readonly />
+      <input type="button" value="选择" onclick="selectUserControl_yue(yue)" />
+      <span class="margin-l-s required">*</span>
+    </div>
+  </div>
+  <div class="f-box">
+    <div class="f-box">
+      <label for="name" class="inline-block s-width t-right">文件名称</label>
+      <input class="input-large input-w margin-l-s" type="text" name="name" id="name" required /> <span class="margin-l-s required">*</span>
+    </div>
+    <div class="f-box">
+      <label class="inline-block s-width t-right">文件字号</label> <input class="input-large input-w margin-l-s" type="text"
+        name="code" id="code" required /> <span class="margin-l-s required">*</span>
+    </div>
+  </div>
+  <div class="f-box">
+    <div class="f-box">
+      <label class="inline-block s-width t-right">归口部门</label> </span> <input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+    <div class="f-box">
+      <label class="inline-block s-width t-right">参与部门</label> <input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+  </div>
+  <div class="f-box">
+    <div class="f-box">
+      <label class="inline-block s-width t-right">编制人</label> </span> <input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+    <div class="f-box">
+      <label class="inline-block s-width t-right">参与单位</label><input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+  </div>
+  <div class="f-box">
+    <div class="f-box">
+      <label class="inline-block s-width t-right">制度类别</label> <input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+    <div class="f-box">
+      <label class="inline-block s-width t-right">业务能力</label><input type="hidden" id="rel_unit" name="rel_unit" />
+      <input type="text" class="input-large" id="rel_unit_name" name="rel_unit_name" readonly style="width:150px" class="validate[required]" /><input
+        type="button" class="btn btn-primary button" value="选择" onclick="selectUserControl_yue(this)" /><span class="margin-l-s required">*</span>
+    </div>
+  </div>
+  </section>
+  </div>
+</body>
+
+</html>

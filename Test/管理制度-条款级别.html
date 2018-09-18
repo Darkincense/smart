@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/epui/css/import_basic.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=path%>/epui/skins/blue/style.css" />
+<link rel="stylesheet" type="text/css" id="customSkin"
+  prePath="<%=path%>/system/layout/skin/style.css" />
+  <style>
+    .f-box input["type"="button"] {
+    height:30px;
+    }
+    .after:after {
+      content:'',
+      width:60px;
+    }
+    </style>
+<body>
+  <form id="myForm">
+    <h2>基本信息</h2>
+    <hr width="100%" />
+    <table class="tableStyle" formMode="transparent" align="center">
+      <input type="hidden" name="id" id="id" />
+      <input type="hidden" name="type" id="type" value="2" />
+      <tr>
+        <td>发布单位：</td>
+        <td>
+          <input type='hidden' id='rel_unit' name='rel_unit' />
+          <input type='text' id='rel_unit_name' name='rel_unit_name' readonly style="width:200px" class="validate[required]" /><input type="button" value="选择" onclick="selectUserControl_yue(yue)" /><span class="star">*</span>
+        </td>
+        <td>发布时间：</td>
+        <td>
+          <input type="text" id="release_date" class="validate[required] date" style="width:200px" name="release_date" autocomplete="off" /><span class="star after">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>文件名称：</td>
+        <td>
+          <input type="text" name="name" id="name" style="width:200px" class="validate[required]" /><span class="star">*</span>
+        </td>
+        <td>文件字号：</td>
+        <td>
+          <input type="text" name="code" id="code" style="width:200px" class="validate[required]" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td id="gkbm">归口部门：</td>
+        <td>
+          <input type='hidden' id='org_id' name='org_id' />
+          <input type='text' id='org_id_name' name='org_id_name' readonly style="width:200px" class="validate[required]" /><input type="button" value="选择" onclick="selectJoinOrg('org_id','getOrg','选择归口部门')" /><span class="star">*</span>
+        </td>
+        <td>参与部门：</td>
+        <td>
+          <input type="hidden" name="join_dept" id="join_dept" />
+          <input type='text' id='join_dept_name' name='join_dept_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectJoinOrg('join_dept','joinDept','选择参与部门')" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>编制人：</td>
+        <td>
+          <input type='hidden' id='editor' name='editor' />
+          <input type='text' id='editor_name' name='editor_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectUserControl_yue(this)" /><span class="star">*</span>
+        </td>
+        <td>参与单位：</td>
+        <td>
+          <input type="hidden" name="join_unit" id="join_unit" />
+          <input type='text' id='join_unit_name' name='join_unit_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectJoinOrg('join_unit','joinUnit','选择参与单位')" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>制度类别：</td>
+        <td>
+          <input type='hidden' id='rule_type' name='rule_type' />
+          <input type='text' id='rule_type_name' name='rule_type_name' readonly style="width:200px" class="validate[required]" /><input type="button" value="选择" onclick="selectUserControl_yue(this)" /><span class="star">*</span>
+        </td>
+        <td>业务能力：</td>
+        <td>
+          <input type="hidden" name="bc" id="bc" />
+          <input type='text' id='bc_name' name='bc_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectBc('bc')" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>效力等级：</td>
+        <td colspan="3">
+          <input type='hidden' id='e_level' name='e_level' />
+          <input type='text' id='e_level_name' name='e_level_name' readonly style="width:200px" class="validate[required]" /><input type="button" value="选择" onclick="selectUserControl_yue(this)" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>是否公开：</td>
+        <td>
+          <input type="radio" name="is_public" value="1" id="yes" />是 
+          <input type="radio" name="is_public" value="0" id="no" />否 
+        </td>
+        <td>文件归属：</td>
+        <td>
+          <input type="radio" name="belong_to" value="1" id="jituan" />集团公司
+          <input type="radio" name="belong_to" value="2" id="gufen" />股份公司
+        </td>
+      </tr>
+    </table>
+    <h2>文件上传</h2>
+    <hr width="100%" />
+    <div ng-app="myApp" ng-controller="ruleController" id="myApp">
+    <table class="tableStyle" formMode="transparent" align="center">
+      <tr>
+        <td width="15%">附件上传：</td>
+        <td>
+               <button type="button" ng-click="addAttach();">添加</button>
+        </td>
+      </tr>
+    </table>
+    <table width="80%" align="left" border="1" cellspacing="0" cellpadding="0" bordercolor="#E8F1FF">
+      <tr>
+        <td style="text-align: center" width="10%">序号</td>
+        <td style="text-align: center" width="45%">文件名称</td>
+        <td style="text-align: center" width="45%">文件编号</td>
+      </tr>
+      <!--遍历记录  -->
+      <tbody ng-repeat='($index2,attach) in attaches'>
+        <tr id="firstRow">
+          <td rowspan="2">
+            <img src="<%=path%>/epui/jquery-easyui-1.5/themes/icons/no.png" ng-click="removeAttach($index2)" />{{$index2+1}}
+            <input type="hidden" name="attach_id2_{{$index2}}" value="{{attach.attach_id}}" /></td>
+          </td>
+          <td><input type="text" style="width:300px" name="recordname2_{{$index2}}" ng-model="attach.recordname" class="validate[required]"/></td>
+          <td><input type="text" style="width:300px" name="recordcode2_{{$index2}}" ng-model="attach.recordcode" class="validate[required]"/></td>
+        </tr>
+        <tr id="attachUploadRow">
+          <td colspan="3">
+            <div id="attachBtn{{$index2}}"></div>
+            <div id="attachList{{$index2}}" class="file_upload_list"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tableStyle" formMode="transparent" align="center">
+      <tr>
+        <td width="15%">表单上传：</td>
+        <td colspan="4">
+               <button type="button" ng-click="addRecord();">添加</button>
+        </td>
+      </tr>
+    </table>
+    <table width="100%" align="center" border="1" cellspacing="0" cellpadding="0" bordercolor="#E8F1FF">
+      <tr align="center">
+        <td align="center" width="12%">序号</td>
+        <td align="center" width="22%">文件名称</td>
+        <td align="center" width="22%">文件编号</td>
+        <td align="center" width="22%">机构</td>
+        <td align="center" width="22%">专业</td>
+      </tr>
+      <!--遍历记录  -->
+      <tbody ng-repeat='($index1,record) in records'>
+        <tr>
+          <td rowspan="2">
+            <img src="<%=path%>/epui/jquery-easyui-1.5/themes/icons/no.png" ng-click="removeRecord($index1)" />{{$index1+1}}
+            <input type="hidden" name="attach_id_{{$index1}}" value="{{record.attach_id}}"/>
+          </td>
+          <td><input type="text" style="width:200px" name="recordcode_{{$index1}}" ng-model="record.recordcode" class="validate[required]"/></td>
+          <td><input type="text" style="width:200px" name="recordname_{{$index1}}" ng-model="record.recordname" class="validate[required]"/></td>
+          <td>
+            <div class="selectTree" id="sel_org_{{$index1}}"></div>
+            <input type="hidden" name="org_{{$index1}}" value="{{record.org}}" />
+            <input type="hidden" name="org_name_{{$index1}}" value="{{record.org_name}}" />
+          </td>
+          <td>
+            <div class="selectTree" id="sel_career_{{$index1}}"></div>
+            <input type="hidden" name="career_{{$index1}}" value="{{record.career}}" />
+            <input type="hidden" name="career_name_{{$index1}}" value="{{record.career_name}}" />
+          </td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <div id="recordBtn{{$index1}}"></div>
+            <div id="recordList{{$index1}}" class="file_upload_list"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2>建立关联</h2>
+    <hr width="100%" />
+    <table class="tableStyle" formMode="transparent" align="center">
+      <tr>
+        <td>
+          本单位管理制度：
+        </td>
+        <td>
+          <input type='hidden' id='file_id' name='file_id' />
+          <input type='text' id='file_id_name' name='file_id_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectFileId('file_id')" /><span class="star">*</span>
+        </td>
+        <td>
+          本单位操作规范：
+        </td>
+        <td>
+          <input type='hidden' id='doc_id' name='doc_id' />
+          <input type='text' id='doc_id_name' name='doc_id_name' readonly class="validate[required]" style="width:200px" /><input type="button" value="选择" onclick="selectDocId('doc_id')" /><span class="star">*</span>
+        </td>
+      </tr>
+      <tr>
+        <td>本单位风险控制流程图：</td>
+        <td colspan="3">
+          <div id="procBtn"></div>
+          <div id="procList" class="file_upload_list"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>本单位风险控制文档：</td>
+        <td colspan="3">
+          <div id="riskBtn"></div>
+          <div id="riskList" class="file_upload_list"></div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          上级管理制度：
+        </td>
+        <td colspan="3">
+          <div id="supBtn"></div>
+          <div id="supList"></div>
+          <textarea id="sup_file_id_name" name="sup_file_id_name" style="width:600px;height:50px;"></textarea>
+        </td>
+      </tr>
+    </table>
+    <table class="tableStyle" formMode="transparent" align="center">
+      <tr>
+        <td width="15%">国家规定：</td>
+        <td>
+               <button type="button" ng-click="addReg();">添加</button>
+        </td>
+      </tr>
+    </table>	
+    <table width="80%" align="left" border="1" cellspacing="0" cellpadding="0" bordercolor="#E8F1FF">
+      <tr>
+        <td style="text-align: center" width="10%">序号</td>
+        <td style="text-align: center" width="45%">文件名称</td>
+        <td style="text-align: center" width="45%">文件编号</td>
+      </tr>
+      <!--遍历记录  -->
+      <tbody ng-repeat='($index3,reg) in regs'>
+        <tr>
+          <td>
+            <img src="<%=path%>/epui/jquery-easyui-1.5/themes/icons/no.png" ng-click="removeReg($index3)" />{{$index3+1}}
+          </td>
+          <td>
+            <input type="text" style="width:300px" name="recordname3_{{$index3}}" class="validate[required]" ng-model="reg.recordname" />
+          </td>
+          <td>
+            <input type="text" style="width:300px" name="recordcode3_{{$index3}}" class="validate[required]" ng-model="reg.recordcode" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="tableStyle" formMode="transparent" align="center">
+      <tr>
+        <td colspan="4">
+          <!--<input type='hidden' id='sup_file_id' name='sup_file_id' />-->
+          <input type="hidden" name="nat_reg_id" id="nat_reg_id" />
+          <input type="hidden" name="risk_file_id" id="risk_file_id" />
+          <input type="hidden" name="risk_proc_id" id="risk_proc_id" />
+          <input type="hidden" name="recordCount" id="recordCount" value="{{records.length}}" />
+          <input type="hidden" name="regCount" id="regCount" value="{{regs.length}}" />
+          <input type="hidden" name="attachCount" id="attachCount" value="{{attaches.length}}" />
+          <input type="button" value="下一步" onclick="toSave()"/>
+          <input type="button" value="JCDP_button_cancel" onclick="closeDialog()"/>
+        </td>
+      </tr>
+    </table>
+     </div>
+  </form>
+</body>
+</html>
