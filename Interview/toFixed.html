@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // alert((11.545).toFixed(2)); // 11.54
+    // alert(toFixed(11.545, 2)); // 11.55
+
+    alert((0.075).toFixed(2)); // 0.07
+    alert(toFixed(0.075, 2)); // 0.08
+
+    alert((0.085).toFixed(2)); // 0.09
+    alert(toFixed(0.085, 2)); // 0.09
+
+    alert((0.045).toFixed(2)); // 0.04
+    alert(toFixed(0.045, 2)); // 0.05
+
+    function toFixed(number, fractionDigits) {
+      var times = Math.pow(10, fractionDigits);
+      var roundNum = Math.round(number * times) / times;
+      return roundNum.toFixed(fractionDigits);
+    }
+  </script>
+</body>
+
+</html>
