@@ -20,9 +20,10 @@
     console.dir(fun); // 唯一没有 prototype属性
     console.dir(obj)
     console.dir(foo1)
+    console.dir(foo)
     alert(foo1.__proto__ === foo.prototype) // 函数实例的的 __proto__属性指向它所在构造函数的原型
     alert(foo1.__proto__.__proto__ === Object.prototype)
-    console.dir(func.constructor) // constructor 对应着构造函数
+    console.dir(foo1.constructor) // constructor 对应着构造函数
   </script>
 </body>
 

@@ -15,7 +15,7 @@
     }
 
     var once = function (fn) {
-      var isFirst = true;
+      var isFirst = true; // isFirst不会被销毁
       return function () {
 
         console.log(isFirst); //第一次，请求外部的

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*  var counter = 0;
+
+    function add() {
+      return counter += 1;
+    }
+    add();
+    add();
+    add(); // 计数器现在为 3 */
+
+
+    // 把counter放在add函数里面不就好了么？
+
+    /* function add() {
+      var counter = 0;
+      return counter += 1;
+    }
+    add();
+    add();
+    add(); // 本意是想输出 3, 但输出的都是 1 */
+
+   // 使用闭包
+    var add = (function () {
+      var counter = 0;
+      return function () {
+        return counter += 1;
+      }
+    })();
+    add();
+    add();
+    add(); // 计数器为 3
+  </script>
+</body>
+
+</html>
