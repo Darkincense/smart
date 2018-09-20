@@ -10,6 +10,7 @@
 - 【简书】[可乐](https://www.jianshu.com/u/4152d9aab276)
 - 【Sf】 [题叶](https://segmentfault.com/u/jiyinyiyong/articles)
 - 【颜海镜】http://yanhaijing.com/
+- 【谢杨易 -CSDN】(https://blog.csdn.net/u013510838)
 
 ## Github
 
