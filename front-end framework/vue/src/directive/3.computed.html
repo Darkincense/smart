@@ -5,30 +5,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Title</title>
-  <!--引入vue-->
   <script src="../../build/vue.min.js"></script>
 </head>
 
 <body>
-  <!--定义一个坑-->
   <div id="app">
-    <input type="text" v-model="msg">
-    <br>
-    <!-- 差值表达式 -->
-    {{msg}}
-
+    <div id="example">
+      <p>Original message: "{{ message }}"</p>
+      <p>Computed reversed message: "{{ reversedMessage }}"</p>
+    </div>
   </div>
   <script>
-    //        创建vue对象
     var vm = new Vue({
       el: '#app',
       data: {
-        msg: '欢迎来到这里'
+        message: 'hello'
+      },
+      computed: {
+        reversedMessage: function () {
+          return this.message.split('').reverse().join('');
+        }
       }
     })
-
-
-    console.dir(vm)
   </script>
 </body>
 

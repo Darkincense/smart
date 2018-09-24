@@ -5,20 +5,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>Title</title>
-  <script src="../build/vue.min.js"></script>
+  <script src="../../build/vue.min.js"></script>
 </head>
 
 <body>
   <div id="app">
-    <a href="" v-bind:title="title" v-bind:sjdiosfew="title">这是个a标签</a>
-    <a href="" :title="title" :sjdiosfew="title">这是个a标签</a>
+    <a :href="href" :id="'href-'+title">百度一下</a>
     <button :disabled="isTrue" @click="btnClicked">按钮</button>
   </div>
   <script>
     var vm = new Vue({
       el: '#app',
       data: {
-        title: '这是个标题',
+        title:'baidu',
+        href: 'http://baidu.com',
         isTrue: false
       },
       methods: {

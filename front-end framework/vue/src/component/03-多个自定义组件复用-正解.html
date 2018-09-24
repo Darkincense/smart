@@ -23,7 +23,7 @@
   <script type="text/javascript">
     Vue.component('my-component', {
       template: '<button @click ="counter++">{{counter}}</button>',
-      data: function () {
+      data: function () { // 必须是一个函数，每个实例就可以维护一份被返回对象的独立的拷贝
         return {
           counter: 0
         }
