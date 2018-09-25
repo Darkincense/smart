@@ -3,6 +3,9 @@
 <head>
 <meta charset="utf-8">
 <script src="../bulid/angular/angular.js"></script>
+<style>
+   .ng-cloak{display:none;} 
+</style>
 </head>
 <body>
 
@@ -10,7 +13,7 @@
 
 <p ng-cloak>{{ 5 + 5 }}</p>
 
-<p><b>注意：</b> 该实例只是演示了指令的应用。</p>
+<p><b>注意：</b> 避免指令加载完毕前的闪动使用 ng-cloak 指令。</p>
 
 </div>
 

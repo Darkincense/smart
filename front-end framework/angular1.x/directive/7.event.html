@@ -26,30 +26,20 @@
 
 			.controller('demoCtrl', ['$scope', function ($scope) {
 
-
-				$scope.clickFn = function (ev, str) {
-
-					console.log(ev)
-					alert(str)
-					alert('clcik')
-
+				$scope.clickFn = function (e, str) {
+					console.dir(e.target);
+					alert(str);
 				}
 
 				$scope.a = function () {
-
 					// alert('mouseover')
-
 				}
 
 				$scope.dbclickfn = function () {
-
 					alert('dbclickfn')
-
 				}
 
-
 			}])
-
 	</script>
 </body>
 

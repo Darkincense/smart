@@ -12,14 +12,21 @@
   <div ng-app="myApp" ng-controller="myCtrl">
 
     <p ng-bind-html="myText"></p>
+    <p ng-bind-html="year | yearOld"></p>
 
   </div>
 
   <script>
     var app = angular.module("myApp", ['ngSanitize']);
     app.controller("myCtrl", function ($scope) {
-      $scope.myText = "My name is: <h1>John Doe</h1>";
+      $scope.year = '25';
+      $scope.myText = "My name is: <h1>Xiaoyueyue</h1>";
     });
+    app.filter("yearOld", function () {
+      return function (value) {
+        return '<h2>' + value + '岁</h2>';
+      }
+    })
   </script>
 
   <p>

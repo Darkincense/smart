@@ -152,8 +152,20 @@ PWA
 
 </details>
 
+### 前端开发所需掌握知识点概要
 
+```
+HTML&CSS：
+    对Web标准的理解（结构、表现、行为）、浏览器内核、渲染原理、依赖管理、兼容性、CSS语法、层次关系，常用属性、布局、选择器、权重、盒模型、
+    Hack、CSS预处理器、CSS3、Flexbox、CSS Modules、Document flow、BFC、HTML5（离线 & 存储、Histoy,多媒体、WebGL\SVG\Canvas）；        
+JavaScript：
+    数据类型、运算、对象、Function、继承、闭包、作用域、事件、Prototype、RegExp、JSON、Ajax、DOM、BOM、
+    内存泄漏、跨域、异步请求、模板引擎、模块化、Flux、同构、算法、ECMAScript6、Nodejs、HTTP、
 
+其他：
+    主流MVVM框架(React\Vue\Angular)、Hybrid App\React Native\Weex、TypeScript、RESTFul、WEB安全、前端工程化、依赖管理、性能优化、
+    重构、团队协作、可维护、易用性、SEO、UED、前端技术选型、快速学习能力等；
+```
 ### 前端p级别划分
 
 p5：平均工作两年内；基础扎实、高质完成；基础过硬；熟悉浏览器等前端运行容器的工作原理；熟悉前端常用的工程工具；熟悉前端常用的框架；高质量、可维护；熟练使用类库解决业务问题，项目代码具有可维护性；具备质量意识，掌握兼容性、性能等问题的解决方法；

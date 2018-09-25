@@ -5,6 +5,7 @@
 
 - [中文文档](http://www.angularjs.net.cn) 
 - [Angular 1 Style Guide](https://github.com/johnpapa/angular-styleguide/blob/master/a1/i18n/zh-CN.md)
+- [angular菜鸟教程](http://www.runoob.com/angularjs/angularjs-tutorial.html)
 
 ## 文章
 

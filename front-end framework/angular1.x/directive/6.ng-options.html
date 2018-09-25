@@ -31,11 +31,8 @@
 		var myApp = angular.module('myApp', [])
 
 		myApp.controller('myCtrl', ['$scope', function ($scope) {
-
 			$scope.ball = "002";
-
-			$scope.balls = [
-				{
+			$scope.balls = [{
 					name: '足球',
 					value: '001'
 				},
@@ -46,17 +43,8 @@
 				{
 					name: '橄榄球',
 					value: '003'
-				},
-				{
-					name: '排球',
-					value: '004'
-				},
-				{
-					name: '乒乓球',
-					value: '005'
 				}
 			];
-
 		}])
 	</script>
 </body>

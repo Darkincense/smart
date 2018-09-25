@@ -10,24 +10,18 @@
 	<!--
 		ng-repeat="item in person "
 
-			item代表每一次循环的值
+		item代表每一次循环的值
 
 		ng-repeat="(key,value) in person "
 
-			key代表键
+			key代表键,value代表值,$index 每次循环的索引
 
-			value代表值
+		 $first 返回当前项是否是第一项 布尔类型
 
-		$index 每次循环的索引
+		 $last 返回当前项是否是最后一项 布尔类型
 
-		$first 返回当前项是否是第一项 布尔类型
+	 	$middle 返回当前项是否是中间项(除了最后一项和第一项 其他的都是中间项)
 
-		$last 返回当前项是否是最后一项 布尔类型
-
-		$middle 返回当前项是否是中间项
-
-			除了最后一项和第一项 其他的都是中间项
-		
 		$even 返回当前项是否是偶数
 
 		$odd 返回当前项是否是奇数
@@ -58,7 +52,8 @@
 	-->
 
 	<ul>
-		<li ng-repeat="item in arr track by $index" class="{{ $first ? 'first' : '' }} {{ $last ? 'last' : '' }}">{{ $index+1 }} {{item}} {{ $first }} {{$last}} {{ $middle }}</li>
+		<li ng-repeat="item in arr track by $index" class="{{ $first ? 'first' : '' }} {{ $last ? 'last' : '' }}">{{ $index+1
+			}} {{item}} {{ $first }} {{$last}} {{ $middle }}</li>
 	</ul>
 
 	<ul>
@@ -70,21 +65,14 @@
 	<script src="../bulid/angular/angular.js"></script>
 	<script>
 		angular.module('myApp', [])
-
 			.controller('demoCtrl', ['$scope', function ($scope) {
-
 				$scope.person = {
-
 					name: 'zhangsan',
 					age: 20,
 					job: 'coder',
-
 				}
-
 				$scope.arr = ['a', 'a', 'c'];
-
-				$scope.ball = [
-					{
+				$scope.ball = [{
 						name: '足球'
 					},
 					{
@@ -95,8 +83,7 @@
 					}
 				]
 
-				$scope.backer = [
-					{
+				$scope.backer = [{
 						name: '足球',
 						job: ['1', '2', '32']
 					},
@@ -111,16 +98,6 @@
 				]
 
 			}])
-
-			/*for(var i=0;i<backer.length;i++){
-
-				for(var j=0;j<backer[i].job.length;j++){
-
-					backer[i].job[j]
-
-				}
-
-			}*/
 	</script>
 </body>
 
