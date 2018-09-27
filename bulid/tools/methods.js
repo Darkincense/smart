@@ -121,6 +121,15 @@ function renderWithObj(wrapDom, data, special) {
   }
 }
 
+function splitWords(word, num) {
+  let slices = [];
+  const chars = word.split('');
+  while (chars.length > 0) {
+    slices = slices.concat(chars.splice(0, num).join(''));
+  }
+  return slices;
+}
+
 
 //传递一个范围，返回该范围的随机数
 function getRand(min, max) {
