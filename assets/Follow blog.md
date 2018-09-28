@@ -2,15 +2,15 @@
 
 ## website
 
-- 【阮一峰的网络日志】 http://www.ruanyifeng.com/blog/archives.html
+- 【阮一峰】 http://www.ruanyifeng.com/blog/archives.html
 - 【张鑫旭】 https://www.zhangxinxu.com/wordpress/
-- 【月影 —— 十年踪迹的博客】　https://www.h5jun.com/archives/　
+- 【月影】　https://www.h5jun.com/archives/　
 - 【撒网要见鱼】 http://www.dailichun.com/
 - 【知乎】[方正](https://www.zhihu.com/people/fang-zheng-3-34/posts)
 - 【简书】[可乐](https://www.jianshu.com/u/4152d9aab276)
 - 【Sf】 [题叶](https://segmentfault.com/u/jiyinyiyong/articles)
 - 【颜海镜】http://yanhaijing.com/
-- 【谢杨易 -CSDN】(https://blog.csdn.net/u013510838)
+- 【CSDN】[谢杨易](https://blog.csdn.net/u013510838)
 
 ## Github
 

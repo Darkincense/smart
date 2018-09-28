@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    .m-lineheight2 {
+  padding-left: 10%;
+}
+.box {
+  box-sizing: border-box;
+}
+
+  </style>
 </head>
+
 <body>
+  <section class="m-lineheight2">
+    <h3 class="section-title margin-b-l">处理意见</h3>
+
+    <div class="m-lineheight2">
+      <label class="inline-block s-width t-right margin-r">是否同意：</label>
+      <input class="radio-type" type="radio" name="is_pass" value="1" checked />是
+      <input class="radio-type margin-l" type="radio" name="is_pass" value="0" />否
+      <div class="">
+        <label class="inline-block s-width t-right">审批意见：</label>
+        <textarea name="comments" class="ta-large margin-b" style="width:450px;height:100px;"></textarea>
+        <span class="margin-l-s required">*</span>
+      </div>
+    </div>
+  </section>
+  <div class="c-box padding-t margin-t-l margin-b-l">
+    <input class="btn btn-large btn-primary margin-l" type="button" onclick="toSave()" value="保存" />
+    <input class="btn btn-large btn-info margin-l" type="button" value="取消" onclick="closeDialogNew()" />
+  </div>
+
   <script>
-    
+
   </script>
 </body>
+
 </html>

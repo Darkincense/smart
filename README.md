@@ -6,12 +6,13 @@
 
 - [周刊](#周刊)
 - [Show MyCode](#show-mycode)
-- [前端开发](#前端开发)
+- [F2E](#f2e)
 - [Books](#books)
 - [编码指导](#编码指导)
 
 ## 周刊
 
+- [阮一峰的网络日志](http://www.ruanyifeng.com/blog/)
 - [奇舞周刊](https://weekly.75team.com/)
 - [FEX](http://fex.baidu.com/weekly/)
 - [weekly](https://github.com/dt-fe/weekly) 前端精读周刊
@@ -23,21 +24,23 @@
 - https://freecodecamp.cn/
 - https://codesandbox.io/u/xiaoyueyue165
 
-### 前端开发
+### F2E
+
 - [learning-article](https://github.com/webproblem/learning-article) 学习资源汇总，持续更新
 - [ES5](http://yanhaijing.com/es5/) / [ES6](http://es6.ruanyifeng.com/) / [MDN](https://developer.mozilla.org/zh-CN/)
 - [Best of Javascript](https://bestof.js.org/) / [2017](https://risingstars.js.org/2017/zh) 
 - [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap) - 2018年路线图成为web开发人员
 - [f2e-awesome/knowledge](https://github.com/f2e-awesome/knowledge) 文档着重构建一个完整的「前端技术架构图谱」，方便 F2E 学习与进阶
-- [前端圈](https://fequan.com/) / [网易云课堂](https://study.163.com/)
+- [前端圈](https://fequan.com/) / 
+- [fetool](https://github.com/nieweidong/fetool) 大前端的瑞士军刀，只记录有用的
 
+### 教程类
+- [phodal/growth-ebook](https://github.com/phodal/growth-ebook) 全栈增长工程师指南 http://growth.phodal.com/
+- [菜鸟教程](http://www.runoob.com/)
+- [网易云课堂](https://study.163.com/)
 
-## Books
+### Follow blog
 
-- [free-programming-books](https://github.com/EbookFoundation/free-programming-books/blob/master/free-programming-books-zh.md) / [free-programming-books-zh_CN](https://github.com/justjavac/free-programming-books-zh_CN)  - 免费的编程书籍 
-- [You-Dont-Know-JS](https://github.com/getify/You-Dont-Know-JS) / [Functional-Light-JS](https://github.com/getify/Functional-Light-JS)
-- [booktree](https://github.com/phodal/booktree) A Book Tree http://phodal.github.io/booktree/
-- [books](https://github.com/programthink/books) 【编程随想】收藏的电子书清单（多个学科，含下载链接）
 
 ## 编码指导
 
