@@ -28,8 +28,9 @@
 - [ES5](http://yanhaijing.com/es5/) / [ES6](http://es6.ruanyifeng.com/) / [MDN](https://developer.mozilla.org/zh-CN/)
 - [Best of Javascript](https://bestof.js.org/) / [2017](https://risingstars.js.org/2017/zh) 
 - [developer-roadmap](https://github.com/kamranahmedse/developer-roadmap) - 2018年路线图成为web开发人员
-- [前端圈](https://fequan.com/)
-- [网易云课堂](https://study.163.com/)
+- [f2e-awesome/knowledge](https://github.com/f2e-awesome/knowledge) 文档着重构建一个完整的「前端技术架构图谱」，方便 F2E 学习与进阶
+- [前端圈](https://fequan.com/) / [网易云课堂](https://study.163.com/)
+
 
 ## Books
 
