@@ -19,7 +19,7 @@
 - 【徐飞】[xufei](https://github.com/xufei/blog) - my personal blog
 - 【冴羽】[mqyqingfeng](https://github.com/mqyqingfeng/Blog) - 冴羽写博客的地方，预计写四个系列：JavaScript深入系列、JavaScript专题系列、ES6系列、React系列。
 - 【张兵】[dunizb](https://github.com/dunizb/blog) -博客文章 https://dunizb.com
-- 【梁少峰】[youngwind/blog](https://github.com/youngwind/blog) - 梁少峰的个人博客
+- 【梁少峰】[youngwind](https://github.com/youngwind/blog) - 梁少峰的个人博客
 - 【微醺岁月】[jawil](https://github.com/jawil/blog/issues) - Too young, too simple. Sometimes, naive & stupid / [简书](https://www.jianshu.com/u/8b0cd8b242c0)
 - 【孙勇健】[sunyongjian](https://github.com/sunyongjian/blog/issues) - 个人博客 :stuck_out_tongue_closed_eyes::yum::smile:
 - [atian25](https://github.com/atian25/blog) - 天猪部落阁 http://atian25.github.io
