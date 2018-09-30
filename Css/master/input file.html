@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .btn {
+      display: inline-block;
+      color: #000;
+      border: 1px solid #ddd;
+      background-color: #f5f5f5;
+      padding: 6px 12px;
+      font-size: 14px;
+      border-radius: 4px;
+      line-height: 24px;
+      vertical-align: middle;
+    }
+    .btn:hover {
+      cursor: pointer;
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    }
+    .btn-blue {
+    background: #c4e0f3;
+    border: 1px solid #369ce4;
+    color: #369ce4;}
+    .btn-blue:hover{background: #369ce4; color:#fff; text-decoration:none;}
+    .btn-blue:hover .i-upload {
+      display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../imgs/icon_upload_hover.png") no-repeat;
+    background-size: 16px 16px;
+    margin-top: 4px;
+    }
+    .fileBtn {
+      position: relative;
+    }
+    .fileBtn input{
+      position: absolute;
+      left: 0px;
+      top: 0px;
+      opacity: 0;
+      -ms-filter: 'alpha(opacity=0)';
+  }
+  .i-upload {
+    display: inline-block;
+    margin-top: 4px;
+    width: 16px;
+    height: 16px;
+    background: url("../imgs/icon_upload.png") no-repeat;
+    background-size: 16px 16px;
+}
+  </style>
+</head>
+
+<body>
+  <a class="fileBtn btn btn-blue ">
+    <i class="i-upload"></i>上传
+    <input type="file">
+  </a>
+</body>
+
+</html>

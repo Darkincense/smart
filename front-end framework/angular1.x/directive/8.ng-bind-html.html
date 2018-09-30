@@ -24,9 +24,13 @@
     });
     app.filter("yearOld", function () {
       return function (value) {
-        return '<h2>' + value + '岁</h2>';
+        return '<h2 ng-click="AlertMyYear(value)">' + value + '岁</h2>';
       }
     })
+
+    function AlertMyYear(value){
+      alert(year)
+    }
   </script>
 
   <p>
