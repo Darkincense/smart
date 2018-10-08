@@ -1,37 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <style>
-  #box {
-    margin: 0 auto;
-    max-width: 40em;
-    padding: 1em;
-    line-height: 1.8'
-  }
-  h1 {
-    text-align: center;
-  }
-  #text {
-    width: 100%;
-  }
-  textarea{
-    width: 96%;
-    padding: 5px;
-    margin: 10px 0;
-  }
-  </style>
 </head>
+
 <body>
-  <div id="box">
-    <h1>小越越的blog</h1>
-    <p>这里需要注意一点：存储的data—含有大写的单词 =》这里会统一转化为小写，比如：data-orderId = “2a34fb64a13211e8a0f00050568b2fdd”，在实际取值的时候为this.dataset.orderid;</p>
-    <div id="text">
-      <textarea name="" id="" cols="30" rows="10"></textarea>
-    </div>
-  </div>
+  <input type="button" value="去哪儿">
+
+  <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
+  <script>
+    var btn = document.querySelector('input');
+    $(btn).on('click', function () {
+      alert(1)
+    })
+  </script>
 </body>
+
 </html>
