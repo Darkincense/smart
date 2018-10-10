@@ -26,7 +26,7 @@
 	-->
 
 	<select ng-model="ball" ng-options="item.value as item.name for item in balls"></select>
-	<select ng-model="ball">
+	<select ng-model="ball" onchange="alert('ball')">
 		<option ng-repeat="item in balls" value="{{item.value}}">{{item.name}}</option>
 	</select>
 	<script src="../bulid/angular/angular.js"></script>
