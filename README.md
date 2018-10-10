@@ -47,7 +47,7 @@ Github |[xufei](https://github.com/xufei/blog) / [mqyqingfeng](https://github.co
 - [fetool](https://github.com/nieweidong/fetool) 大前端的瑞士军刀，只记录有用的
 
 ### 教程类
-
+- [rails3650](https://www.rails365.net/)
 - [奇舞学院](https://t.75team.com/video) / [ppt在线](https://webzhao.github.io/fe-camp/index.html) / [声享hot](https://ppt.baomitu.com/hot)
 - [phodal/growth-ebook](https://github.com/phodal/growth-ebook) 全栈增长工程师指南 http://growth.phodal.com/
 - [菜鸟教程](http://www.runoob.com/)
