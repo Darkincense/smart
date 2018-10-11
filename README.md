@@ -4,13 +4,18 @@
 
 ## 导航栏
 
+- [Show MyCode](#show-mycode)
 - [周刊](#周刊)
 - [社区](#社区)
 - [Follow blog](#follow-blog)
 - [F2E](#f2e)
 - [教程及学习平台](#教程及学习平台)
 - [代码格式](#代码格式)
-- [Show MyCode](#show-mycode)
+### Show-mycode
+
+- https://leetcode-cn.com/xiaoyueyue165/
+- https://freecodecamp.cn/
+- https://codesandbox.io/u/xiaoyueyue165
 
 ### 周刊
 
@@ -64,10 +69,6 @@ Github |[xufei](https://github.com/xufei/blog) / [mqyqingfeng](https://github.co
 - [frontend-guidelines](https://github.com/bendc/frontend-guidelines) - Some HTML, CSS and JS best practices.
 - [TGideas](http://tguide.qq.com/main/index.htm) TGideas整体WEB解决方案 
 
-### Show-mycode
 
-- https://leetcode-cn.com/xiaoyueyue165/
-- https://freecodecamp.cn/
-- https://codesandbox.io/u/xiaoyueyue165
 
 **[⬆ 回到顶部](#smart)**
