@@ -8,7 +8,7 @@
 - [react-interview](https://github.com/Pau1fitz/react-interview/blob/master/zh-cn.md)
 - [reactjs-interview-questions](https://github.com/sudheerj/reactjs-interview-questions)
 - [CS-Interview-Knowledge-Map](https://github.com/InterviewMap/CS-Interview-Knowledge-Map)
-
+- [蚂蚁金服面试经历-前期准备](https://juejin.im/post/5bbc90e5e51d450e9e445180?utm_source=gold_browser_extension)
 ### Interview
 
 <details>

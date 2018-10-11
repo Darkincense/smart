@@ -327,39 +327,67 @@ border-box: 盒子实际大小;
     
 侧轴: 侧轴始终垂直于主轴
     
-3.调整主轴的方向
+3.调整主轴的方向  flex-direction
 
-   flex-direction:row(默认)
+子元素排列方向
+取值：row | row-reverse | column | column-reverse
+
+- flex-grow
+定义每一个子元素在盒子内的弹性
+拓展盒子剩余空间的能力
+取值：，默认 0
+
+- flex-shrink
+元素收缩的能力
+取值：，默认 1
+
+- flex-wrap
+元素在主轴方向排放时，能否换行
+取值：nowrap | wrap | wrap-reverse
+
+4.设置子元素在主轴方向的对齐方式 justify-content
+
+子元素沿主轴方向的摆放
+取值：flex-start | flex-end | center | space-between | space-around
    
-   row-reverse,colum,colum-reverse
+5.设置子元素在侧方向的对齐方式 align-items
+
+   取值:center/flex-end(结束位置对齐)/flex-start(开始位置对齐)/baseline/stretch(默认值,拉伸)/
    
-4.设置子元素在主轴方向的对齐方式
-
-   justify-content:flex-start(默认)
-   center/flex-end/space-around 有空格填充/space-between
-   
-5.设置子元素在侧方向的对齐方式
-
-   align-items:center/flex-end(结束位置对齐)/flex-start(开始位置对齐)/baseline/stretch(默认值,拉伸)/
-   
-6.设置盒子是否换行显示(flex-wrap)
-
-   flex-wrap:nowrap;(默认不换行) wrap 换行显示
-   
-7.设置盒子换行后的显示对齐方式
-
-  align-content: stretch(默认拉伸),flex-start/center/flex-end/space-around/space-beween
-  注意:1.该属性必须配合flex-wrap
-          2.该属性设置的是元素在换行后在侧轴的对齐方式
-
-8.设置伸缩盒子中子元素的属性
+6.设置伸缩盒子中子元素的属性
 
    align-self:center/flex-end/strech/flex-start/stretch/
-   注意:该属性是给单独的子元素设置在侧轴方向的对齐方式
+   注意:该属性是给单独或多个的子元素设置在侧轴方向的对齐方式
    order
    注意:设置元素的显示顺序(值越大显示顺序越靠后)
+   
+7.多行内容在容器内侧轴方向的对齐 align-content
 
-  
+取值: stretch(默认拉伸),flex-start/center/flex-end/space-around/space-beween
+  注意:1.该属性必须配合flex-wrap
+          2.该属性设置的是元素在换行后在侧轴的对齐方式          
+8. order
+指定摆放时的顺序，从小到大
+取值：，默认 0
+
+Flexbox 语法变化
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: horizontal;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  -webkit-align-content: stretch;
+  align-content: stretch;
+}
+
 
 多列布局
 column-count 设置列数
