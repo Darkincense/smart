@@ -10,6 +10,7 @@
 - [Follow blog](#follow-blog)
 - [F2E](#f2e)
 - [教程及学习平台](#教程及学习平台)
+- [优秀的文章](#优秀的文章)
 - [代码格式](#代码格式)
 ### Show-mycode
 
@@ -54,11 +55,22 @@ Github |[xufei](https://github.com/xufei/blog) / [mqyqingfeng](https://github.co
 ### 教程及学习平台
 
 - [rails365](https://www.rails365.net/)
+- [Frontend Masters 2018 前端学习手册](https://frontendmasters.com/books/front-end-handbook/2018/)
 - [U学在线](http://www.buptict.cn/index)
 - [奇舞学院](https://t.75team.com/video) / [ppt在线](https://webzhao.github.io/fe-camp/index.html) / [声享hot](https://ppt.baomitu.com/hot)
 - [phodal/growth-ebook](https://github.com/phodal/growth-ebook) 全栈增长工程师指南 http://growth.phodal.com/
 - [菜鸟教程](http://www.runoob.com/)
 - [网易云课堂](https://study.163.com/)
+
+### 优秀的文章
+
+- [2015前端组件化框架之路](https://github.com/xufei/blog/issues/19) by [xufei](https://github.com/xufei)
+- [为什么整个互联网行业都缺前端工程师？](https://zhuanlan.zhihu.com/p/20598089)
+- [如何在疲劳的JS世界中持续学习](https://github.com/ProtoTeam/blog/blob/master/201805/1.md)
+- [我如何零基础转行成为一个自信的前端](https://juejin.im/post/5bb9aed1e51d451a3f4c3923?utm_source=gold_browser_extension)
+- [工作五年，后面四年重复着第一年的活儿？](https://www.barretlee.com/blog/2016/07/21/donnot-repeat-yourself/)
+- [页面可视化搭建工具前生今世](https://zhuanlan.zhihu.com/p/37171897)
+
 
 ### 代码格式
 
