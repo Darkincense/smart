@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集团公司综合管理体系信息平台</title>
+<!-- 通用样式 -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<!-- 动态菜单CSS -->
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<link href="css/sec.css" rel="stylesheet" type="text/css">
+<!--弹出框控件CSS-->
+<link href="css/dialog.css" rel="stylesheet" type="text/css" />
+<!-- jquery引入 -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<!-- 动态菜单JS -->
+<script type="text/javascript" src="js/menu.js"></script>
+
+<!--弹出框控件JS-->
+<script type="text/javascript" src="js/dialog.js"></script>
+
+</head>
+
+<body>
+<div class="wrapper" style="min-width:1360px;">
+	<!--内容主体start-->
+	<div class="content-wrapper main clearfix">
+		<div class="left-menu-wrapper left">
+			<!--二级左侧菜单-->
+			<div class="left-menu">
+				<div class="top-menu clearfix">
+					<p class="menu-title">分类查询</p>
+				</div>
+				
+				<div class="menu-list">
+					<ul>
+						<li class="">
+							<p class="sub-title">企管法规处</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">处室领导</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">综合管理科</a>	
+								</dd>
+								<dd class="menu-item">
+									<a href="#">企业管理科</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">经营管理科</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="">
+							<p class="sub-title">人事处</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">体系手册</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">管理制度</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">临时文件</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">专属文件</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="">
+							<p class="sub-title">设备物资处</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">部门1</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">部门2</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">部门3</a>
+								</dd>
+							</dl>
+						</li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+		<!--岗位信息start-->
+		<div class="temp-wrapper margin-l m-height temp-width4 left">
+			<div class="temp-wrapper-header">
+				<h3>岗位信息</h3>
+			</div>
+			<div class="temp-content-wrapper">
+
+				<div class="margin-t-l clearfix">
+					<div class="right">
+						<a class="btn btn-large btn-blue margin-l" href="#" id="btnDialog1"><i class="i-small inline-block margin-t-s margin-r-ss i-new left"></i>新增岗位</a>
+					</div>
+				</div>
+				<div>
+					<table class="comm-table margin-t-l" width="100%">
+						<thead>
+							<tr>
+								<th>岗位名称</th>
+								<th>岗位编码</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>经营管理岗</td>
+								<td>001</td>
+								<td>
+									<a class="link margin-r" href="#">查看</a>
+									<a class="link margin-r" href="#">修改</a>
+									<a class="link margin-r" href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>年度绩效数据提供岗</td>
+								<td>002</td>
+								<td>
+									<a class="link margin-r" href="#">查看</a>
+									<a class="link margin-r" href="#">修改</a>
+									<a class="link margin-r" href="#">删除</a>
+								</td>
+							</tr>
+							<tr>
+								<td>年度绩效数据提供岗</td>
+								<td>003</td>
+								<td>
+									<a class="link margin-r" href="#">查看</a>
+									<a class="link margin-r" href="#">修改</a>
+									<a class="link margin-r" href="#">删除</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!--岗位信息end-->
+	
+		<!--人员信息start-->
+		<div class="temp-wrapper margin-l m-height temp-width4 left">
+			<div class="temp-wrapper-header">
+				<h3>人员信息</h3>
+			</div>
+			<div class="temp-content-wrapper">
+				<div class="margin-t-l clearfix">
+					<div class="right">
+						<a class="btn btn-large btn-blue margin-l" href="#" id="btnDialog2"><i class="i-small inline-block margin-t-s margin-r-ss i-new left"></i>添加人员</a>
+					</div>
+				</div>
+				<div>
+					<table class="comm-table margin-t-l" width="100%">
+						<thead>
+							<tr>
+								<th>姓名</th>
+								<th>办公电话</th>
+								<th>职级</th>
+								<th>状态</th>
+								<th>操作</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>张三</td>
+								<td>010-88190042</td>
+								<td></td>
+								<td></td>
+								<td>
+									<a class="link margin-r" href="#">解除关联</a>
+								</td>
+							</tr>
+							<tr>
+								<td>张三</td>
+								<td>010-88190042</td>
+								<td></td>
+								<td></td>
+								<td>
+									<a class="link margin-r" href="#">解除关联</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>	
+			</div>
+		</div>
+		<!--人员信息end-->
+	</div>
+</div>
+<!--内容主体end-->
+</div>
+<script>
+$(document).ready(function () {
+	 $("#btnDialog1").click(function () {
+            $.DialogNew.Dialog({ Width: 800, Height: 600, Title: "新增岗位信息", URL: 'dialog_position_new.html' });
+        })
+	 $("#btnDialog2").click(function () {
+		$.DialogNew.Dialog({ Width: 800, Height: 560, Title: "添加人员信息", URL: 'dialog_user_new.html' });
+	})
+	
+})
+ 
+</script>
+</body>
+</html>

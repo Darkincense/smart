@@ -1,0 +1,555 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集团公司综合管理体系信息平台</title>
+<!-- 通用样式 -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<!-- 动态菜单CSS -->
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<!-- jquery引入 -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<!-- 动态菜单JS -->
+<script type="text/javascript" src="js/menu.js"></script>
+<!--日期控件JS-->
+<script type="text/javascript" src="jeDate/jedate.js"></script>
+<script type="text/javascript">
+$(function(){	
+	//顶部导航切换
+	$(".act-list li a").click(function(){
+		$(".act-list li a.selected").removeClass("selected")
+		$(this).addClass("selected");
+	})	
+})	
+</script>
+
+</head>
+
+<body>
+<div class="wrapper">
+<!--页头公共部分start-->
+<div class="common-wrapper clearfix">
+	<div class="top-wrapper">
+		<div class="main clearfix">
+			<div class="top-left left">
+				<div class="logo-system clearfix">
+					<p class="left">集团公司综合管理体系信息平台</p>
+				</div>
+			
+			</div>
+			<div class="top-right right">
+				<ul class="act-list">
+					<li><a href="#" target="rightFrame">登录</a></li>
+					<li><a href="#">修改密码</a></li>
+					<li><a href="#">帮助</a></li>
+					<li><a href="#">联系我们</a></li>
+					<li><a href="#">意见中心</a></li>
+					<li><a href="#">单位导航</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="head-wrapper">
+		<div class="main clearfix">
+			<div class="logo left">
+				<a href="#"><img src="images/logo.png" title="集团公司综合管理体系信息平台" /></a>
+			</div>
+			<div class="search right">
+				<form class="" action="">
+					<input class="input-large" type="text">
+					<input class="btn btn-primary" type="submit" value="搜索">
+					<input class="btn btn-sec" type="reset" value="重置">
+				</form>
+			</div>
+		</div>
+		<div class="nav-wrapper">
+			<ul class="nav main clearfix">
+				<li class="nav-item left"><a href="#" target="" class="selected">首页</a></li>
+				<li class="nav-item left"><a class="down" href="#">文件维护</a>
+					<dl class="submenu">
+						<dd><a href="#" target="">体系手册</a></dd>
+						<dd><a href="#" target="">管理制度</a></dd>
+						<dd><a href="#" target="">操作规范</a></dd>
+						<dd><a href="#" target="">临时文件</a></dd>
+						<dd><a href="#" target="">专属文件</a></dd>
+						<dd><a href="#" target="">业务能力架构</a></dd>
+					</dl>
+				</li>
+				<li class="nav-item left"><a href="#" class="down">体系管理</a>
+					<dl class="submenu">
+						<dd>
+							<a href="#" target="">年度制修订计划管理</a><i class="a-right"></i>
+							<ul class="menu-3rd">
+								<li><a href="#">计划申报</a><li>
+								<li><a href="#">汇总报批</a><li>
+								<li><a href="#">计划变更</a><li>
+							<ul>
+						</dd>
+						<dd><a href="#" target="">文件制定修订废止管理</a></dd>
+						<dd><a href="#" target="">体系审核</a></dd>
+						<dd><a href="#" target="">通知公告</a></dd>
+					</dl>
+				</li>
+				<li class="nav-item left"><a href="#" class="down">统计中心</a>
+					<dl class="submenu">
+						<dd><a href="#" target="">文件查阅下载统计</a><i class="a-right"></i>
+							<ul class="menu-3rd">
+								<li><a href="#">按人员部门统计</a><li>
+								<li><a href="#">按文件类型统计</a><li>
+								<li><a href="#">按主责处室统计</a><li>
+							<ul>
+						</dd>
+						<dd><a href="#" target="">体系文件数量统计</a><i class="a-right"></i>
+							<ul class="menu-3rd">
+								<li><a href="#">按主责处室统计</a><li>
+								<li><a href="#">按文件类型统计</a><li>
+							<ul>
+						</dd>
+						<dd><a href="#" target="">问题中心数量统计</a><i class="a-right"></i>
+							<ul class="menu-3rd">
+								<li><a href="#">按类型统计</a><li>
+								<li><a href="#">按部门统计</a><li>
+							<ul>
+						</dd>
+						<dd><a href="#" target="">发布/废止申请统计</a></dd>
+						<dd><a href="#" target="">平台登录次数统计</a></dd>
+						<dd><a href="#" target="">失效/历史文件查询</a></dd>
+					</dl>
+				</li>
+				<li class="nav-item left"><a href="#" class="down">意见中心</a>
+					<dl class="submenu">
+						<dd><a href="#" target="">我的提问</a></dd>
+						<dd><a href="#" target="">问题分发</a></dd>
+						<dd><a href="#" target="">我的回答</a></dd>
+						<dd><a href="#" target="">问题查询</a></dd>
+					</dl>
+				</li>
+				
+				<li class="nav-item-right right clearfix"><i class="left i-normal i-user"></i><a href="#" class="down">个人中心</a>
+					<dl class="submenu">
+						<dd><a href="#" target="">我的待办</a></dd>
+						<dd><a href="#" target="">我的已办</a></dd>
+						<dd><a href="#" target="">文件夹</a></dd>
+					</dl>
+				</li>
+			</ul>
+     </div>   
+    </div>
+</div>
+<!--页头公共部分end-->
+
+<!--内容主体start-->
+<div class="content-wrapper main clearfix">
+	<div class="left clearfix">
+		<div class="left-menu-wrapper left clearfix">
+			<div class="left-menu left">
+				<div class="top-menu clearfix">
+					<p class="menu-title">分类查询</p>
+					<!--<button id="showLeftPush" class="btn-nobg cursor-p inline-block right"><i class="i-small i-left"></i></button> -->
+				</div>
+				<div class="menu-list">
+					<ul>
+						<li class="">
+							<p class="sub-title">归口部门</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#"><span class="inline-block m-width">办公室</span><i class="a-right"></i></a>
+									<!--二级左侧菜单-->
+									<ul class="sec-left-menu b-shadow">
+										<li class="sub-title"><a href="#">管理制度</a></li>
+										<li class="sub-title"><a href="#">操作规范</a></li>
+										<li class="sub-title"><a href="#">临时文件</a></li>
+										<li class="sub-title"><a href="#">专属文件</a></li>
+									</ul>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">企业法规处</a>	
+								</dd>
+								<dd class="menu-item">
+									<a href="#">科技信息处</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">规划计划处</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">财务资产处</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">人事处</a>
+								</dd>
+								<dd class="menu-item"> 
+									<a href="#">设备物资处</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">市场开发处</a>
+								</dd>
+								<dd class="menu-item"> 
+									<a href="#">设备物资处</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="">
+							<p class="sub-title">文件类型</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">体系手册</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">管理制度</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#"><span class="inline-block m-width">操作规范</span><i class="a-right"></i></a>
+										<!--二级左侧菜单-->
+										<ul class="sec-left-menu b-shadow">
+											<li class="sub-title">
+												<a href="#"><span class="inline-block m-width">专业类别1</span><i class="a-right"></i></a>
+												<dl class="sec-left-menu2 b-shadow">
+													<dd><a href="#">操作规程</a></dd>
+													<dd><a href="#">作业规范</a></dd>
+													<dd><a href="#">应急处置程序</a></dd>
+													<dd><a href="#">企业技术标准</a></dd>
+												</dl>
+											</li>
+											<li class="sub-title"><a href="#">专业类别2</a></li>
+											<li class="sub-title"><a href="#">专业类别3</a></li>
+											<li class="sub-title"><a href="#">专业类别4</a></li>
+										</ul>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">临时文件</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">专属文件</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#"><span class="inline-block m-width">记录表单</span><i class="a-right"></i></a>
+									<!--二级左侧菜单-->
+									<ul class="sec-left-menu b-shadow">
+										<li class="sec-title">归口部门</li>
+										<li class="sub-title">
+											<a href="#"><span class="inline-block m-width">办公室</span><i class="a-right"></i></a>
+											<dl class="sec-left-menu2 b-shadow">
+												<dd class="sec-title">专业分类</dd>
+												<dd><a href="#">专业类别1</a></dd>
+												<dd><a href="#">专业类别2</a></dd>
+												<dd><a href="#">专业类别3</a></dd>
+												<dd><a href="#">专业类别4</a></dd>
+											</dl>
+										</li>
+										<li class="sub-title"><a href="#">企管法规处</a></li>
+										<li class="sub-title"><a href="#">规划计划处</a></li>
+										<li class="sub-title"><a href="#">科技信息处</a></li>
+										<li class="sub-title"><a href="#">财务资产处</a></li>
+										<li class="sub-title"><a href="#">人事处</a></li>
+										<li class="sub-title"><a href="#">设备物资处</a></li>
+										<li class="sub-title"><a href="#">市场开发处</a></li>
+										<li class="sec-title">专业分类</li>
+										<li class="sub-title">
+											<a href="#"><span class="inline-block m-width">专业类别1</span><i class="a-right"></i></a>
+											<dl class="sec-left-menu2 b-shadow">
+												<dd class="sec-title">归口部门</dd>
+												<dd><a href="#">办公室</a></dd>
+												<dd><a href="#">企管法规处</a></dd>
+												<dd><a href="#">规划计划处</a></dd>
+												<dd><a href="#">科技信息处</a></dd>
+												<dd><a href="#">财务资产处</a></dd>
+												<dd><a href="#">人事处</a></dd>
+												<dd><a href="#">设备物资处</a></dd>
+												<dd><a href="#">市场开发处</a></dd>
+											</dl>
+										</li>
+										<li class="sub-title"><a href="#">专业类别2</a></li>
+										<li class="sub-title"><a href="#">专业类别3</a></li>
+										<li class="sub-title"><a href="#">专业类别4</a></li>
+									</ul>
+								</dd>
+							</dl>
+						</li>
+						<li class="">
+							<p class="sub-title">业务能力</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">业务能力子菜单1</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">业务能力子菜单2</a>
+								</dd>
+								<dd class="menu-item">
+									<a href="#">业务能力子菜单3</a>
+								</dd>
+							</dl>
+						</li>
+						<li class="">
+							<p class="sub-title">高级搜索</p>
+							<i class="i-small i-down"></i>
+							<dl class="menu3">
+								<dd class="menu-item">
+									<a href="#">高级搜索</a>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+		
+		<!--搜索结果start-->
+		<div class="temp-wrapper file-content margin-l right" id="searchResult">
+			<div class="temp-wrapper-header clearfix">
+				<h3 class="left">文件内容</h3>
+			</div>
+			<div class="temp-content-wrapper ">
+				<form class="" action="">
+					<div class="search content-search c-width padding-a">
+						<input class="input-large" type="text" placeholder="文件名称">
+						<input class="btn btn-primary" type="submit" value="搜索">
+						<input class="btn btn-sec" type="reset" value="重置">
+					</div>
+					<div class="search-type clearfix">
+						<table class="table-ie">
+							<tr>
+								<td class="f-bold s-width">文件类型</td>
+								<td>
+									<input class="margin-l-s" type="checkbox" name="" value="">体系手册
+									<input class="margin-l-s" type="checkbox" name="" value="">管理制度
+									<input class="margin-l-s" type="checkbox" name="" value="">操作规范
+									<input class="margin-l-s" type="checkbox" name="" value="">临时文件
+									<input class="margin-l-s" type="checkbox" name="" value="">专属文件
+									<input class="margin-l-s" type="checkbox" name="" value="">记录表单
+								</td>
+							</tr>
+							<tr>
+								<td class="f-bold s-width">关键词位于</td>
+								<td>
+									<input type="radio" name="position" value="" checked>标题
+									<input type="radio" name="position" value="">全文
+								</td>
+							</tr>
+							<tr>
+								<td class="f-bold s-width" style="vertical-align:top;">数据项</td>
+								<td>
+									<div class="left">
+										<div class="clearfix">
+											<div class="left">
+												<label>发布单位</label>
+												<select class="input-large select-w margin-l-s">
+													<option value="">办公室</option>
+													<option value="">企管法规处</option>
+													<option value="">规划计划处</option>
+													<option value="">科技信息处</option>
+												</select>
+											</div>
+											<div class="left clearfix">
+												<label class="left s-width t-right">文件归属</label>
+												<div class="left margin-l">
+													<input type="radio" name="belongto" value="" checked>集团公司
+													<input type="radio" name="belongto" value="">股份公司
+												</div>
+											</div>
+										</div>
+										<div class="gap"></div>
+										<div>
+											<label>发布时间</label>
+											<input class="input-large input-w margin-l-s i-date" id="dateinfo1" type="text" name="" value="" readonly>
+											<label class="inline-block s-width t-right">至</label>
+											<input class="input-large input-w margin-l-s i-date" id="dateinfo2" type="text" name="" value="" readonly>
+										</div>
+										<div class="gap"></div>
+										<div>
+											<label>手册字号</label>
+											<input class="input-large input-w margin-l-s" type="text" name="" value="">
+											<label class="inline-block s-width t-right">参与部门</label>
+											<select class="input-large select-w margin-l-s">
+												<option value="">办公室</option>
+												<option value="">企管法规处</option>
+												<option value="">规划计划处</option>
+												<option value="">科技信息处</option>
+											</select>
+										</div>
+										<div class="gap"></div>
+										<div>
+											<label>手册名称</label>
+											<input class="input-large input-w margin-l-s" type="text" name="" value="">
+											<label class="inline-block s-width t-right">参与单位</label>
+											<select class="input-large select-w margin-l-s">
+												<option value="">办公室</option>
+												<option value="">企管法规处</option>
+												<option value="">规划计划处</option>
+												<option value="">科技信息处</option>
+											</select>
+										</div>
+										<div class="gap"></div>
+										<div>
+											<label>归口部门</label>
+											<select class="input-large select-w margin-l-s">
+												<option value="">办公室</option>
+												<option value="">企管法规处</option>
+												<option value="">规划计划处</option>
+												<option value="">科技信息处</option>
+											</select>
+											<label class="inline-block s-width t-right">编制人</label>
+											<input class="input-large input-w margin-l-s" type="text" name="" value="">
+										</div>
+									</div>
+								</td>
+							</tr>
+						</table>
+						
+						
+					</div>
+				
+				</form>
+			</div>
+		</div>
+		<!--搜索结果end-->
+	</div>
+	
+	
+	<div class="right-content right">
+		<!--通知公告start-->
+		<div class="temp-wrapper bulletin">
+			<div class="temp-wrapper-header clearfix">
+				<h3 class="left">通知公告</h3>
+				<a href="#"><i class="i-small i-more right"></i></a>
+			</div>
+			<div class="temp-content-wrapper">
+				<table class="temp-table" width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于2015年第85届SEG年会论文征稿的通知</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于举办公司“12.4”国家宪法日暨全国法制宣…</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">东方地球物理公司HSE提升工作周报（第194期）</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于召开公司12月份生产会的通知</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">东方地球物理公司2014年HSE信息周报（第47期）</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于CNPC电子邮件系统切换手机客户端配置</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--通知公告end-->
+		
+		<!--文件动态start-->
+		<div class="temp-wrapper">
+			<div class="temp-wrapper-header clearfix">
+				<h3 class="left">文件动态</h3>
+				<a href="#"><i class="i-small i-more right"></i></a>
+			</div>
+			<div class="temp-content-wrapper">
+				<table class="temp-table" width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于2015年第85届SEG年会论文征稿的通知</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于举办公司“12.4”国家宪法日暨全国法制宣…</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">东方地球物理公司HSE提升工作周报（第194期）</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于召开公司12月份生产会的通知</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">东方地球物理公司2014年HSE信息周报（第47期）</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+					<tr class="item">
+						<td><i class="i-dot"></i></td>
+						<td class="item-info">
+							<a href="#">关于CNPC电子邮件系统切换手机客户端配置</a>
+						</td>
+						<td class="item-date">2018/06/28</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<!--文件动态end-->
+		
+	</div>
+</div>
+<!--内容主体end-->
+</div>
+<script>
+ $(document).ready(function(){
+		var tempWidth =  document.body.clientWidth - 609;
+		$("#searchResult").width(tempWidth);
+	});	
+$(".menu-item > a").mouseover(function(){
+  var tempheight = document.body.clientHeight - document.body.scrollHeight - 36;
+  $(".sec-left-menu").css("margin-top", tempheight +"px");
+}); 
+jeDate({
+		dateCell:"#dateinfo1",
+		format:"YYYY-MM-DD",
+		isinitVal:true,
+		isTime:false, //isClear:false,
+		minDate:"2014-09-19"	
+	})
+jeDate({
+		dateCell:"#dateinfo2",
+		format:"YYYY-MM-DD",
+		isinitVal:true,
+		isTime:false, //isClear:false,
+		minDate:"2014-09-19"
+	})	
+</script>
+</body>
+</html>

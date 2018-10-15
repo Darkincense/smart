@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>集团公司综合管理体系信息平台</title>
+<!-- 通用样式 -->
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<link href="css/common.css" rel="stylesheet" type="text/css" />
+<link href="css/sec.css" rel="stylesheet" type="text/css" />
+<link href="css/dialog.css" rel="stylesheet" type="text/css" />
+<!-- jquery引入 -->
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+
+<!--弹出框控件JS-->
+<script type="text/javascript" src="js/dialog.js"></script>
+</head>
+
+<body>
+<!--内容主体start-->
+<div class="pop-window sec-page content-wrapper clearfix">
+	<!--搜索结果start-->
+	<div class="temp-wrapper">
+		<form class="" action="">
+			<div class="temp-content-wrapper f-box">
+				<div class="c-height">
+					<div class="margin-t-l clearfix">
+						<div class="left">
+							<label class="inline-block t-right">文件名称</label>
+							<input class="input-large input-w margin-l-s" type="text" name="" value="">
+						</div>
+						<div class="left">
+							<label class="inline-block margin-l t-right">文件字号</label>
+							<input class="input-large input-w margin-l-s" type="text" name="" value="">
+						</div>
+					</div>
+					<div class="clearfix margin-t">
+						<div class="left">
+							<label class="inline-block t-right">归口部门</label>
+							<select class="input-large select-w margin-l-s">
+								<option value="">办公室</option>
+								<option value="">企管法规处</option>
+								<option value="">规划计划处</option>
+								<option value="">科技信息处</option>
+							</select>
+						</div>
+						<div class="left margin-l">
+							<input class="btn btn-large btn-primary" type="submit" value="查询">
+						</div>
+					</div>
+					<section class="clearfix">
+						<table class="comm-table margin-t-l right" width="100%">
+							<thead>
+								<tr>
+									<th><input class="margin-l-s" type="checkbox" name="" value=""></th>
+									<th>文件名称</th>
+									<th>文件字号</th>
+									<th>归口部门</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册</td>
+									<td>AAAA-BBBB</td>
+									<td>审核中</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-01</td>
+									<td>生效</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-02</td>
+									<td>生效</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-03</td>
+									<td>生效</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-04</td>
+									<td>生效</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-05</td>
+									<td>生效</td>
+								</tr>
+								<tr>
+									<td><input class="margin-l-s" type="checkbox" name="" value=""></td>
+									<td>体系手册（财务手册）</td>
+									<td>AAAA-BBBB-06</td>
+									<td>生效</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<div class="clear"></div>
+					<div class="page-wrapper margin-t clearfix"[>
+						<div class="left">
+							<a class="left margin-t-ss" href="#"><i class="i-small i-page1"></i></a>
+							<a class="left margin-t-ss margin-l-s" href="#"><i class="i-small i-page2"></i></a>
+							<span class="left margin-l-s margin-r">
+							第<input type="text" class="input-small margin-l-s margin-r-ss" value="1">页，共9页
+							</span>
+							<a class="left margin-t-ss margin-l-s" href="#"><i class="i-small i-page3"></i></a>
+							<a class="left margin-t-ss margin-l-s" href="#"><i class="i-small i-page4"></i></a>
+							<a class="left margin-t-ss margin-l-s" href="#"><i class="i-small i-refresh"></i></a>
+						</div>
+						<span class="right margin-t-ss">显示1到10，共81条记录</span>	
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<!--搜索结果end-->
+</div>
+<!--内容主体end-->
+<script>
+$(document).ready(function () {
+	$("#btnAlert").click(function () {
+		$.DialogNew.Alert({ Width: 350, Height: 200, Title: "提示信息", Content: '你好，这是弹出提示，即JS中的alert'});
+	})
+	$("#btnConfirm2").click(function () {
+		$.DialogNew.Confirm({ Width: 350, Height: 200, Title: "提示信息", Content: '是否废止【体系手册1，体系手册2】，并发布新文件？'});
+	})
+})
+ 
+</script>
+</body>
+</html>

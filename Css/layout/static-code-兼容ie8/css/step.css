@@ -1,0 +1,14 @@
+﻿@charset "utf-8";
+.step fieldset{
+	border: 1px solid #ccc;
+	padding: 10px;
+}
+.step fieldset legend{
+	font-size: 14px;
+}
+.step-wrapper{line-height:34px;background:#d5e6ff;color:#0b4388;}
+.step-wrapper li{width:108px; text-align: center;}
+.step-wrapper li.active{
+	background: url(../images/step_bg.png) no-repeat;	
+	color: #fff;
+}
