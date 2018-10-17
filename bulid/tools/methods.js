@@ -17,6 +17,12 @@ window.onerror = function (
     alert(JSON.stringify(rst, null, 10));
   });
 };
+// 判断是否是整数，兼容ie
+Number.isInteger = Number.isInteger || function (value) {
+  return typeof value === "number" &&
+    isFinite(value) &&
+    Math.floor(value) === value;
+};
 
 var util = {
 
@@ -67,7 +73,7 @@ var util = {
     return Object.prototype.toString.call(obj) === "[object Number]";
   },
 
-  // 判断是否为数字
+  // 判断是否是有效的正整数
   isDigit: function (value) {
     var patrn = /^[0-9]*$/;
     if (patrn.exec(value) == null || value == "") {

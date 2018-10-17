@@ -3,7 +3,7 @@
 ## 资源站
 
 - [Front-end-tutorial](https://github.com/windiest/Front-end-tutorial) 😺猫的前端回忆录 
-- [wohugb](https://github.com/wohugb/wohugb.github.com) 巴别塔----------大鼻子文档分享 http://wohugb.github.io/
+- [fks](https://github.com/JacksonTian/fks) 前端技能汇总 Frontend Knowledge Structure http://html5ify.com/fks/
 - [Awsome-Front-End-learning-resource](https://github.com/helloqingfeng/Awsome-Front-End-learning-resource) - [:octocat:GitHub最全的前端资源汇总仓库（包括前端学习、开发资源、求职面试等）](https://helloqingfeng.github.io/front-end-index/index.html)
 - [awesome-javascript-cn](https://github.com/jobbole/awesome-javascript-cn) / [伯乐在线](https://github.com/jobbole/) 伯乐JavaScript
 
