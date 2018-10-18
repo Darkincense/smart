@@ -13,6 +13,7 @@
 
     <p ng-bind-html="myText"></p>
     <p ng-bind-html="year | yearOld"></p>
+    <p ng-bind-html="year | change"></p>
 
   </div>
 
@@ -24,11 +25,17 @@
     });
     app.filter("yearOld", function () {
       return function (value) {
-        return '<h2 ng-click="AlertMyYear(value)">' + value + '岁</h2>';
+        return '<h2>' + 12 + '岁</h2>';
       }
     })
+    app.filter("change", ['$sce', function ($sce) {
+      return function (input) {
+        var dom = '<h2 onclick="AlertMyYear(\'' + input + '\')">' + input + '岁</h2>';
+        return $sce.trustAsHtml(dom);
+      }
+    }])
 
-    function AlertMyYear(value){
+    function AlertMyYear(year) {
       alert(year)
     }
   </script>

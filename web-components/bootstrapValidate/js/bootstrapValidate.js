@@ -16,6 +16,17 @@
   var utils = {
     toArray: function (obj) {
       return Array.from ? Array.from(obj) : Array.prototype.slice.call(obj);
+    },
+    once: function (fn) {
+      return function () {
+        if (typeof fn === "function") {
+          var ret = fn.apply(this, arguments);
+          fn = null;
+          return ret;
+        } else {
+          throw new TypeError('Expected a function')
+        }
+      }
     }
   }
   // 规则
@@ -44,9 +55,12 @@
     }
   }
 
+  var isOnce = true;
+
   $.fn[plug] = function (options) {
+    var __This = this;
     $.extend(this, defaultOptions, options)
-    var $fileds = this.find('input').not('[type=button],[type=reset],[type=submit]');
+    var $fileds = this.find('input').not('[type=button],[type=reset],[type=submit],[type=hidden]');
 
     $fileds.on(this.trigger, function () {
       var $current = $(this); // 被验证的目标对象
@@ -79,20 +93,33 @@
 
       }
     })
+    // 考虑点击input后弹窗选值
+    $(this.el).on('click', function (event) {
+      /*  event.preventDefault();
+       for (var i = 0; i < $fileds.length; i++) {
+         var $item = $($fileds[i]);
+         $item.val() ? $item.removeClass('error') : null;
+       } */
+    })
 
     $(this.el).on('submit', function (event) {
       event.preventDefault();
       for (var i = 0; i < $fileds.length; i++) {
         var $item = $($fileds[i]);
-        $item.next().remove();
+        $item.removeClass('error');
+        $item.next().hasClass("required") ? null : $item.next().remove(); // 下一个子元素没有required属性删除
         var result = true;
         $.each(__RULES, function (rule, validator) {
           if ($item.data('bv-' + rule)) {
             console.log($item.attr('name') + '需要验证' + rule + '规则');
             result = validator.call($item);
             if (!result) {
+              if (isOnce) {
+                __This.callback.call(this, false);
+                isOnce = false;
+              }
               //  console.log(rule+'验证失败','原因是'+$current.data('bv-'+rule+'-message'))
-              $item.after('<p>' + $item.data('bv-' + rule + '-message') + '</p>');
+              $item.data('bv-' + rule + '-message') && $item.after('<p>' + $item.data('bv-' + rule + '-message') + '</p>');
               $item.addClass('error');
               return false;
             }

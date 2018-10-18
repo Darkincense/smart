@@ -13,6 +13,9 @@
 <script src="../../bulid/jquery.1.11.1.js"></script>
 <script src="./js/bootstrapValidate.js"></script>
 <style>
+  .transparent-border {
+    border:1px solid transparent;
+  }
   #defaultForm .form-control~p {
       color: #c7254e;
     }
@@ -82,11 +85,19 @@
   </div>
 
   <script type="text/javascript">
-
+    var isValid = true;
     $(document).ready(function () {
       $('#defaultForm').bootstrapValidator({
         trigger: 'keyup',
-        el: '#defaultForm'
+        el: '#defaultForm',
+        callback: function (Response) {
+          console.log(Response);
+          isValid = Response;
+
+          if(!Response){
+            alert("验证出错，请检查！")
+          }
+        }
       });
     });
   </script>
