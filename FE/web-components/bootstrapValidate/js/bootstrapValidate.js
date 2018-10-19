@@ -2,10 +2,6 @@
   return factory(root.jQuery, plug);
 })(window, function ($, plug) {
 
-  var defaultOptions = {
-    trigger: "change",
-    automatic: false
-  }
 
   Number.isInteger = Number.isInteger || function (value) {
     return typeof value === "number" &&
@@ -28,7 +24,7 @@
         }
       }
     }
-  }
+  };
   // 规则
   var __RULES = {
     required: function () {
@@ -55,11 +51,42 @@
     }
   }
 
-  var isOnce = true;
+  var isOnce_out = true;
+
+  $.fn.valid = function () {
+    
+    var $fileds = $(this).find('input').not('[type=button],[type=reset],[type=submit],[type=hidden]');
+    for (var i = 0; i < $fileds.length; i++) {
+      var $item = $($fileds[i]);
+      var isOnce_in = true;
+      $.each(__RULES, function (rule, validator) {
+        if ($item.data('bv-' + rule)) {
+          console.log($item.attr('name') + '需要验证' + rule + '规则');
+          var result = validator.call($item);
+          if (!result) {
+            if (isOnce_in) {
+              isOnce_in = false;
+            }
+            return false;
+          }
+          return result;
+        }
+      })
+    }
+    return (isOnce_in ? true : false)
+
+  }
+
 
   $.fn[plug] = function (options) {
-    var __This = this;
-    $.extend(this, defaultOptions, options)
+    var __This = this,
+      defaultOptions = {
+        trigger: "change",
+        automatic: false,
+      };
+
+    $.extend(this, defaultOptions, options);
+
     var $fileds = this.find('input').not('[type=button],[type=reset],[type=submit],[type=hidden]');
 
     $fileds.on(this.trigger, function () {
@@ -93,30 +120,22 @@
 
       }
     })
-    // 考虑点击input后弹窗选值
-    $(this.el).on('click', function (event) {
-      /*  event.preventDefault();
-       for (var i = 0; i < $fileds.length; i++) {
-         var $item = $($fileds[i]);
-         $item.val() ? $item.removeClass('error') : null;
-       } */
-    })
 
     $(this.el).on('submit', function (event) {
       event.preventDefault();
+      var $fileds = $(this).find('input').not('[type=button],[type=reset],[type=submit],[type=hidden],[type=radio]');
       for (var i = 0; i < $fileds.length; i++) {
         var $item = $($fileds[i]);
         $item.removeClass('error');
         $item.next().hasClass("required") ? null : $item.next().remove(); // 下一个子元素没有required属性删除
-        var result = true;
         $.each(__RULES, function (rule, validator) {
           if ($item.data('bv-' + rule)) {
             console.log($item.attr('name') + '需要验证' + rule + '规则');
-            result = validator.call($item);
+            var result = validator.call($item);
             if (!result) {
-              if (isOnce) {
+              if (isOnce_out) {
                 __This.callback.call(this, false);
-                isOnce = false;
+                isOnce_out = false;
               }
               //  console.log(rule+'验证失败','原因是'+$current.data('bv-'+rule+'-message'))
               $item.data('bv-' + rule + '-message') && $item.after('<p>' + $item.data('bv-' + rule + '-message') + '</p>');

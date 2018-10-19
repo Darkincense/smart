@@ -73,7 +73,7 @@
 
             <div class="form-group">
               <div class="col-lg-9 col-lg-offset-3">
-                <input type="submit" class="btn btn-primary" value="提交">
+                <input type="submit" class="btn btn-primary" onclick="toSave()" value="提交">
                 <input type="reset" class="btn btn-primary" value="重置">
               </div>
             </div>
@@ -86,20 +86,18 @@
 
   <script type="text/javascript">
     var isValid = true;
-    $(document).ready(function () {
-      $('#defaultForm').bootstrapValidator({
-        trigger: 'keyup',
-        el: '#defaultForm',
-        callback: function (Response) {
-          console.log(Response);
-          isValid = Response;
-
-          if(!Response){
-            alert("验证出错，请检查！")
-          }
-        }
-      });
+    $('#defaultForm').bootstrapValidator({
+      trigger: 'keyup',
+      el: '#defaultForm',
+      callback: function (response) {
+        console.log("response:" + response);
+      }
     });
+
+
+    function toSave() {
+      alert($('#defaultForm').valid())
+    }
   </script>
 </body>
 
