@@ -52,7 +52,7 @@ class Records extends Component {
     });
   }
 
-  credits(){
+  credits(){ // 收入
     let credits = this.state.records.filter((record)=>{
        return record.amount >=0;
       }
@@ -63,7 +63,7 @@ class Records extends Component {
     },0)
   }
 
-  debits(){
+  debits(){ // 支出
     let credits = this.state.records.filter((record)=>{
       return record.amount <0;
      }
@@ -74,7 +74,7 @@ class Records extends Component {
    },0)
   }
 
-  balance(){
+  balance(){ // 余额
     return this.credits() + this.debits();
   }
 
