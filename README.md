@@ -81,6 +81,73 @@ Github |[xufei](https://github.com/xufei/blog) / [mqyqingfeng](https://github.co
 - [frontend-guidelines](https://github.com/bendc/frontend-guidelines) - Some HTML, CSS and JS best practices.
 - [TGideas](http://tguide.qq.com/main/index.htm) TGideas整体WEB解决方案 
 
+#### git commit log
+优雅的提交，为 git 设置 commit template, 每次 git commit 的时候在 vim 中带出, 时刻提醒自己:
+
+1.修改 ~/.gitconfig, 添加:
+````bash
+[commit]
+template = ~/.gitmessage
+````
+2.新建 ~/.gitmessage 
+````bash
+  touch .gitmessage
+````
+**内容可以如下:**
+````bash
+* 简短的描述干了什么？
+What: 
+
+* 我为什么要这么做？
+Why:
+
+* 我是怎么做的？这么做会有什么副作用？
+How:
+
+````
+or
+````bash
+* Head
+  * type: feat, fix, docs, style, refactor, test, chore
+  * scope:影响范围，可省略
+  * subject:简短的提交信息
+* Body
+  * what：详细做了什么
+  * why：为什么这样做
+  * how：有什么后果
+* Footer
+       相关链接
+
+````
+名称 | 说明
+---|---
+type | commit 的类型
+feat | 新特性
+fix |修改问题
+refactor| 代码重构
+docs| 文档修改
+style| 代码格式修改, 注意不是 css 修改
+test|测试用例修改
+chore| 其他修改, 比如构建流程, 依赖管理.
+scope| commit 影响的范围, 比如: route, component, utils, build...
+subject| commit 的概述, 建议符合 50/72 formatting
+body|commit 具体修改内容, 可以分为多行, 建议符合 50/72 formatting
+footer| 一些备注, 通常是 BREAKING CHANGE 或修复的 bug 的链接.
+###### 参考
+- https://zhuanlan.zhihu.com/p/34223150
+- https://zhuanlan.zhihu.com/p/26791124
+- https://www.oschina.net/news/69705/git-commit-message-and-changelog-guide
+
+3.在vscode中使用`git commit log`模板
+
+##### 官方自定义
+![image](https://xiaoyueyue165.github.io/static/questions/gitPush.png)
+
+这条消息是笔者在[vscode](https://github.com/Microsoft/vscode)提交的`issues`答案，与上面的配置完全一致，配置的时候注意`关闭重启vscode`就没有问题了。
+- https://www.github.com/Microsoft/vscode/issues/39048
+
+##### 模板设置好后
+![image](https://xiaoyueyue165.github.io/static/questions/gitCommitOk.png)
 
 
 **[⬆ 回到顶部](#smart)**
