@@ -20,7 +20,7 @@
 
 ## UI框架理解提升
 
-Rc 是 Ant design 的底
+Rc 是 Ant design 的底层
 - Ant design
 
 ### 视屏教程
@@ -29,6 +29,7 @@ Rc 是 Ant design 的底
 - https://www.rails365.net/playlists
 - http://haoduoshipin.com/
 - https://nodelover.me/
+
 #### 参考
 - https://www.zhihu.com/question/268622554/answer/384881779
 - https://www.zhihu.com/question/277068649
