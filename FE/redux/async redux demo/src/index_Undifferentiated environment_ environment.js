@@ -17,11 +17,13 @@ const error = store => next => action => {
     console.log('error', e)
   }
 }
+
+
 // const logger = function(store) {
 //   return function(next) {
 //     return function(action) {
 //       console.log("dispatching...",action);
-//       let result = next(action);
+//       let result = next(action); // 返回下一个中间件
 //       console.log("next State",store.getState());
 //       return result;
 //     }

@@ -54,6 +54,7 @@ Github |[xufei](https://github.com/xufei/blog) / [mqyqingfeng](https://github.co
 
 ### 教程及学习平台
 
+- [alligator.io](https://alligator.io/explore/)
 - [rails365](https://www.rails365.net/)
 - [Frontend Masters 2018 前端学习手册](https://frontendmasters.com/books/front-end-handbook/2018/)
 - [U学在线](http://www.buptict.cn/index)
