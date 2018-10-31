@@ -1,10 +1,10 @@
-
 /* ---------------------------------------base--------------------000 */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
- /*最小设备以及公共padding与margin的控制*/
- .container {
+
+/*最小设备以及公共padding与margin的控制*/
+.container {
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -13,27 +13,30 @@
 
 @media (min-width: 768px) {
   .container {
-      width:750px
+    width: 750px
   }
 }
 
 @media (min-width: 992px) {
   .container {
-      width:970px
+    width: 970px
   }
 }
 
 @media (min-width: 1200px) {
   .container {
-      width:1170px;
+    width: 1170px;
   }
 }
+
 .w100 {
   width: 100%;
 }
+
 .h100 {
   height: 100%;
 }
+
 .fl {
   float: left;
 }
@@ -47,6 +50,7 @@
   margin-left: auto;
   margin-right: auto;
 }
+
 .pr {
   position: relative;
 }
@@ -58,6 +62,7 @@
 .pf {
   position: fixed;
 }
+
 .block {
   display: block !important;
 }
@@ -73,9 +78,11 @@
 .hide {
   display: none !important;
 }
+
 .hidden {
   visibility: hidden !important;
 }
+
 .clearfix:after {
   content: "";
   display: block;
@@ -88,28 +95,77 @@
   *zoom: 1;
   /* ie67专用 */
 }
+
 .nowrap {
   white-space: nowrap;
 }
+
 .break-all {
   word-break: break-all;
 }
+
+/* -----------------------------------------flex---------------------- */
+.f-box {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.c-box {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.f-box-s {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.f-box-start {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.f-box-end {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.f-box-col {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 /* -----------------------------------------box---------------------- */
 .box {
   display: -webkit-box !important;
   display: box !important;
   position: relative;
 }
+
 /*元素垂直排列*/
 .box-ver {
   -webkit-box-orient: vertical;
   box-orient: vertical;
 }
+
 /*水平*/
 .box-h {
   box-orient: horizontal;
   -webkit-box-orient: horizontal;
 }
+
 /*元素反序排列*/
 .box-rev {
   -webkit-box-direction: reverse;
@@ -146,21 +202,25 @@
   -webkit-box-align: center;
   box-align: center;
 }
+
 /*位于底边*/
 .box-ae {
   -webkit-box-align: end;
   box-align: end;
 }
+
 /*水平居中*/
 .box-pc {
   -webkit-box-pack: center;
   box-pack: center;
 }
+
 /*位于末尾*/
 .box-pe {
   -webkit-box-pack: end;
   box-pack: end;
 }
+
 /*两端对齐*/
 .box-pj {
   -webkit-box-pack: justify;
@@ -184,16 +244,19 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* 定义背景图像横向平铺 */
 .img2 {
   background-repeat: repeat-x;
   background-size: auto 100%;
 }
+
 /* 定义背景图像纵向平铺 */
 .img3 {
   background-repeat: repeat-y;
   background-size: 100% auto;
 }
+
 /* 定义背景图像横向100%，纵向自适应; */
 .img4 {
   -webkit-background-size: 100% auto;
@@ -201,6 +264,7 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* 定义背景图像横向自适应，纵向为100% */
 .img5 {
   -webkit-background-size: auto 100%;
@@ -208,11 +272,13 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /* 定义背景图像居中显示 */
 .img6 {
   background-repeat: no-repeat;
   background-position: center;
 }
+
 /*---------------------------------盒子宽---------------------------------------------*/
 
 .w3 {
@@ -310,4 +376,3 @@
 .fs42 {
   font-size: 42px;
 }
-

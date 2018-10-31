@@ -20,8 +20,10 @@ function checkType(str) {
 			return /^(https|http):\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/.test(str);
 		case 'english':
 			return /^[a-zA-Z]+$/.test(str);
-		case 'chinese':
-			return /^[\u4E00-\u9FA5]+$/.test(str);
+		case 'allChinese':
+			return /^[\u4E00-\u9FA5]+$/.test(str); 
+		case 'hasChinese':
+			return /^[\u4E00-\u9FA5]/.test(str); 
 		case 'lower':
 			return /^[a-z]+$/.test(str);
 		case 'upper':
