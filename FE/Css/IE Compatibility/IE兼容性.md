@@ -1,111 +1,180 @@
-CSS hack主要有三种:ie条件注释法,CSS属性前缀,选择器前缀法.
+# IE兼容性
+> 仅考虑ie8+
 
-##1.IE条件注释法
+## 了解浏览器支持情况
 
-      判断IE浏览器的范围： lt是小于  lte是小于或等于
-                         gt是高于  gte 高于或等于
-                         !是不等于
-      语法：
-      <!--[if gte ie 版本号]>要执行的代码<![endif]-->
+* [caniuse.com](http://caniuse.com/)
+* [MDN CSS Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference)
+* [Codrops CSS Reference](https://tympanus.net/codrops/css_reference/)
+* [QuirksMode.org CSS](http://www.quirksmode.org/css/index.html)
+* 了解浏览器市场份额
+  * 日志分析
+  * [百度统计](http://tongji.baidu.com/data/browser)、[NetMarketShare](https://www.netmarketshare.com/browser-market-share.aspx?qprid=2&qpcustomd=0)
+## 兼容性写法
 
+### 1. 条件注释法
 
-      <!--[if gte ie 5]>
-          <link rel="stylesheet" type="text/css" href="css/c.css">
+判断IE浏览器的范围： 
+- `lt`: less than是小于  
+- `lte`: less than or equal 是小于或等于
+- `gt`：greater than是高于 
+- `gte`: greater than or equal高于或等于
+- `!`: 是不等于,选择条件版本以外所有版本，无论高低
+
+ #### 例子  
+ 
+```html
+ <!--ie 8，9支持-->
+ <!--[if gte ie 8]> 
+          <link rel="stylesheet" type="text/css" href="./style.css">
       <![endif]-->
+```
       
-   > 注:只能采用外链的样式书写css代码
+> 注:只能采用外链的样式书写css代码
 
-##2.CSS前缀hack	针对的浏览器
-      _color:red;	IE6 专属
-      *color	IE7 及其以下版本
-      CSS后缀hack	针对的浏览器
-      color:red\9;	IE6-IE10版本(不包含ie11 以下同样如此)
-      color:red\0;	IE8/IE9/IE10版本
-      color:red\9\0;	IE9/IE10
-      color:red!important	IE7/IE8/IE9/IE10及其他非ie
+### 2.行内后缀
 
-##3.选择器前缀法
-      IE6(含)以下的版本识别  *div {color:red;}
-      IE7可识别             *+div {color:red;}
+CSS style | 针对的浏览器
+---|---
+color:red\9; |	IE8-IE10
+color:red\0; |	IE8-IE10,Edge
+color:red\9\0; |	IE9/IE10
+color:red!important;|	所有浏览器除了IE6
+  
+      
+#### 例子
+````css
+ #box {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      background-color: purple\9\0;
+      background-color: red !important;
+    }
+````
+> ie11 未测试，edge使用ie模拟器测试，ie11均未测试
 
-      媒体查询的写法（了解）
+## 3.选择器前缀
 
-      @media screen\9{body { background: red; }}	只对IE6/7生效
-      @media \0screen {body { background: red; }}	只对IE8生效
-      @media \0screen\,screen\9{body { background: blue; }}	只对IE6/7/8有效
-      @media screen\0 {body { background: green; }}	只对IE8/9/10有效
-      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body { background: orange; }}	只对IE10有效
+- 媒体查询
 
-       总结兼容性
+```css
+ @media \0screen {body { background: red; }}  /*IE8 专属*/
+ 
+ @media screen\0 {body { background: green; }} /* IE8-IE10,Edge*/
+ 
+ @media screen {body {background-color: blue;}}/* IE8-IE10,Edge，IE11*/
+ 
+ _::selection,body { background-color: blue; } /*IE9，IE10*/
+ 
+ @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {body { background: orange; }} /*IE10,Edge*/
+ 
+  _:-ms-lang(x),body { background-color: blue;} /*IE10*/
+```
 
-       其实，最好的兼容性还是要写符合标准的代码， 注意前面讲过的特殊属性，比如外边距合并，浮动脱标等等。
+##### 参考链接
+- [IE10、IE11和Microsoft Edge的Hack](https://www.cnblogs.com/limeiky/p/6170738.html)
 
-       非要使用css hack的话，要注意顺序千万不要乱，因为当出现重复定义时，浏览器默认按最后一下渲染，所以一定要先正常，再*，最后_。（先大后小或者 先全局后局部）
+     
+## 其他
 
-###1.IE6双外边距浮动bug
-  最常见且最容易发现的一个bug是ie6和更低版本中的双外边距bug.这个windows bug 会使任何浮动元素上的外边距加倍.
-  解决方式:(1) display:inline,因为元素是浮动的,设置过后实际不会影响显示方式.每当对具有水平外边距的元素进行浮动的时候,都应和自然的将display属性设置为inline,以防备外边距将来被放大. (2) _margin-left:5px;
+### CSS3 选择器兼容性
 
-  同样的bug: 行内属性标签,为了设置宽高,设置成为disply:block;这样一来就产生了上面的问题
-  解决办法:添加display;inline;但是这样一来就不能设置宽高了,所以需要再添加个display:table;
-###2.IE6下元素最小高度的问题
-   如果想把元素例如div设置成10px以下的高度设置不了,因为它有默认高度
-   解决方法:  (1)overflow:hidden;(2) font-size:0; (3) line-height:0;
-###3. IE7及更早浏览器下当li中出现2个或以上的浮动时，li之间产生的空白间隙的BUG
+* CSS3 中的大部分选择器，兼容性是 IE9+
+* 例如 `:target :empty :nth-child :nth-of-type
+  :checked :disabled` 无法在 IE6-8 用
+* 移动端支持绝大多数 CSS3 选择器
 
-   解决方法:vertical-align:top; (middle | bottom 等都可以)
-###4.IE6中奇数宽高的BUG
-   子绝父相定位的盒子中父盒子的宽高为奇数会有1px的空白距离
-  解决方案:将外部相对定位的div宽度改成偶数
-###5.了解ie6盒子会撑高的特性
-  ie下面的盒子， 即使你给与了宽度和高度，但是内容超过大小的时候，盒子还会撑大，解决方法就是添加overflow:hidden;
-###6.3px 文本偏移bug
-  windows上IE和IE6上的文本偏移3px的bug,当文本与一个浮动元素相邻的时候,这个bug就会表现出来.
-  例如:假设一个元素向左浮动,并且不希望相邻段落中的文本环绕浮动元素,在段落上设置一个左外边距,其宽度等于浮动元素的宽度.
-       这么做,在文本和浮动元素之间就会出现莫名其妙的3px的间隙,一旦浮动停止,3px像素的间隙也会消失.
-  解决方法:(1) p { height:1%; margin-left:0}   .myFloat {margin-right:-3px;}
-          (2) .myFloat { display:inline-block;} 
-###7.外边距合并问题
-     上下外边距重合问题
-     解决方法:尽量避免此类设置布局
-     嵌套块元素垂直外边距合并问题
-     对于两个嵌套关系的的块元素,如果父元素没有上内边距和边框,则父元素的上外边距会和子元素的上外边距发生合并,合并后的外边距为两者中的较大者,即使父元素的上外边距为0,也会发生合并.
-     解决方法:(1) 父元素定义1px 的上边框和上外边距
-             (2) 为父元素加 overflow:hidden;
+### IE差异
+- 清除浮动
+- 盒子模型
+- 透明 `opacity` =》`filter: alpha(opacity=50)`
+- `flex` IE10+
 
-### 8.min-height不兼容
-     .box ( min-height:100px;height:auto!important;height:100px;overflow:visible;s)
-### 9.链接访问  L-V-H-A (爱恨原则)
-### 10.chrome下默认会将小于12px的文本强制按照12px来解析
-     解决办法:-webkit-text-size-adjust:none;
+### IE8 支持
 
-### 11.ie盒子模式和w3c标准模式
+- `box-sizing`
+- `outline`
+- `background-position`
 
-   ie6下的盒子模型的宽度高度都将padding,border,margin计算入盒子的宽高当中
-   w3c标准下的盒子模型只有内容区
-   比较设计而言ie的设计更科学,
-      (1) 面板式界面设计 ie的盒子模型中,确立了盒子的尺寸之后,不论怎样调整padding和margin,都不会影响面板本身的结构.
-                        w3c的盒子模型中,调整padding和margin,都会影响盒子模型的尺寸,在调整页面内容摆放位置时,极有可能打乱面板本身的结构.
-      (2) 百分比级尺寸+像素边界的问题
-                        w3c盒子模型下在一个不确定的宽度的容器,想在里面放置两个相同大小的盒子,最合理的办法是设置每个盒子的宽度为50%,这样两个盒子都可以自适应宽度,但前提是不要设置任何padding或border,而且为了防止两个盒子中的内容互相挨得太近,你肯定要设置padding,一旦设置了padding,就会发现容器撑破了.
-                        ie盒子不需要多费周折,不管如何设置padding和border,都不会撑破容器
+### IE8不支持
+- `border-radius`
+- `box-shadow`
+- `opacity`
+- `background-size`
 
-                        因此,在CSS3中,我们看到了box-sizing这个属性
-                        其中的两个可选值,一个是默认的content-box,一个是border-box,选用后者,盒子模型将按照ie6的方式进行处理.
+```css
+   /*使用固定宽高布局*/
+    .i-upload {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("../imgs/icon_upload.png") no-repeat;
+    background-position: -2000px -2000px\9;
+    background-size: 16px 16px;
+    filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../imgs/icon_upload.png',  sizingMethod='scale');
+}
+```
+
+### IE9 不支持
+
+- `transition` 与 `animation`
+  + 可以接受的降级
+  + 实在不能接收就用 JavaScript
+  
+### 控制 IE 模式(<=10)
+
+- Doctype有无控制是否进入怪异模式
+- meta 标签控制进入哪种文档模式
+
+```html
+  <!-- 使用IE7模式渲染 -->
+  <meta http-equiv="X-UA-Compatible" content="IE=7">
+
+  <!-- 使用最新引擎 -->
+  <meta http-equiv="x-ua-compatible" content="IE=edge" >
+```
+## media query
+
+* 基本的媒体（all/print/screen/speech）都支持
+* 媒体特性（width/height/orientation...）IE9 及以上
+  * 还是建议 IE8 及以下使用固定宽度布局
+
+## 语义化的 HTML5 标签
+- ie8不支持
+```html
+<style>
+  article, main, nav, aside, section,
+  header, footer, figure, figcaption {
+    display: block;
+  }
+</style>
+
+<!--[if lte IE 8]>
+  <script src="html5shiv.js"></script>
+<![endif]-->
+```
 
 
-###12.css控制透明度的问题
-      opacity:0.6;   IE就fillter:alpha(opacity=60);
-      ie6下:filter:progid;DXImageTransform.Microsoft.Alpha(style=0,opacity=60);
-      实现ie6下png图片透明问题
-      filter:progid;DXImageTransform.Microsoft.AlphaImageLoader(src='png图片路径',sizingMethord='crop)
-### 13.图片下方有一条空隙
-    解决方法:
-    给img vertical-align:middle | top等等, 让图片不要和基线对齐。
-    给img 添加 display：block; 转换为块级元素就不会存在问题了。
-###14.清除浮动,解决父级元素因为子级浮动引起内部高度为0的问题;
-     (1) 额外标签法 在浮动元素的末尾添加一个空标签,如<div style="clear:both;"></div>,或其他标签br等亦可以
-     (2) 父级添加 overflow:hidden; (auto | scroll 都可)
-     (3) 使用伪元素清除 :after
-          .clear:after {content:''; display:block: height:0; clear:both; visbility:hidden;}
-          .clear { *Zoom:1}    ie67专用
+## 浏览器前缀
+
+* 浏览器厂商为了实验新特性，在属性名前加前缀
+* Chrome/Safari/Opera: `-webkit-`
+* Microsoft: `-ms-`
+* Mozilla: `-moz-`
+
+## 测试兼容性
+
+* 虚拟机
+* [BrowserStack](https://www.browserstack.com/)
+
+## Polyfill
+
+- 使用代码帮助浏览器实现它尚未支持的特性
+- 使用（未来）标准写法
+- CSS Polyfills
+  * [selectivizr](http://selectivizr.com/)
+  * [CSS3 PIE](http://css3pie.com/)
+  * [box-sizing-polyfill](https://github.com/Schepp/box-sizing-polyfill)
+  * [flexibility](https://github.com/jonathantneal/flexibility)
+  * [cssSandpaper](https://github.com/zoltan-dulac/cssSandpaper)
