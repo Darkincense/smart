@@ -18,9 +18,6 @@
 
 
   <script>
-
-    
-
     window['name'] = "the window object";
     alert(window.name)
 
@@ -28,14 +25,16 @@
     function func(value) {
       alert(value)
     }
+
     function scopeTest() {
       alert(this.name)
     }
     var foo = {
       name: "the foo object!",
-      otherScopeTest: function () { return this.name },
-      func2: function () {
-      }
+      otherScopeTest: function () {
+        return this.name
+      },
+      func2: function () {}
     }
     //->calling the function in global scope: 
     // scopeTest();
@@ -57,10 +56,6 @@
     }
 
     scopeTest.binds(foo)();
-
-
-
-
   </script>
 </body>
 

@@ -10,17 +10,14 @@
 
 <body>
 
-  <script> 
-    
-
-
+  <script>
     dom = {};
     dom.bind = function (fn, context) {
       if (arguments.length < 2 && context === undefined) return fn;
       var method = fn,
         slice = Array.prototype.slice,
         args = slice.call(arguments, 2); // 取出第三个开始的所有参数
-      return function () {//这里传入原fn的参数 
+      return function () { //这里传入原fn的参数 
         var array = slice.call(arguments, 0);
         method.apply(context, args.concat(array))
       }
@@ -32,7 +29,7 @@
       }
     };
     var fx2 = dom.bind(obj.fx, obj, 1, 2, 3);
-    fx2(4, 5); // Alerts the proper name, then "1, 2, 3, 4, 5" 
+    fx2(4, 5); // Alerts the proper name, then "1, 2, 3, 4, 5"
   </script>
 </body>
 

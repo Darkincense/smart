@@ -52,11 +52,12 @@
       } */
 
     for (var i = 0; i < liArr.length; i++) {
-      liArr[i].onclick = (function () {
-        return function () {
-          alert('xiaoyueyue')
+      (function (j) {
+        liArr[i].onclick = function () {
+          alert(j)
         }
-      })()
+      })(i)
+
     }
   </script>
 </body>
