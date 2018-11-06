@@ -10,17 +10,8 @@
 
 <body>
   <div id="oDiv">点击我</div>
-
+  <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
   <script>
-    function closure() {
-      var oDiv = document.getElementById('oDiv'); //oDiv用完后一直驻留在内存中
-
-      oDiv.onclick = function () {
-        alert(oDiv.innerHTML); //这里使用oDiv导致内存泄漏
-      }
-    }
-
-    closure();
   
   </script>
 </body>

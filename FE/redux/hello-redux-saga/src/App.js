@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 
+import logo from './logo.svg';
+import './App.css';
+import { connect } from 'react-redux';
+import { increment } from "./actions/counter";
+
 class App extends Component {
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
-     const props = {
-      user: {
-          posts: [
-              { title: 'Foo', comments: [ 'Good one!', 'Interesting...' ] },
-              { title: 'Bar', comments: [ 'Ok' ] },
-              { title: 'Baz', comments: []}
-          ],
-          comments: []
-      }
-  }
-  const get = (p, o) => p.reduce((xs, x) => (xs && xs[x]) ? xs[x] : null, o)
-
-  console.log(get(['user', 'posts', 0, 'comments'], props))
+ 
     return (
-      <div>
-       hello,xiaoyueyue!
+      <div className="App">
+      <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1 className="App-title">Welcome to React</h1>
+        </header>
+        <p className="App-intro">
+        { this.props.counter }
+        </p>
+        <p>
+          <button onClick={this.props.increment}>++</button>
+        </p>
       </div>
     );
   }
 }
 
-export default App;
+function mapStateToProps(state , ownProps ){
+  return {
+    counter: state.counter
+  }
+}
+
+export default connect(mapStateToProps, { increment })(App);
