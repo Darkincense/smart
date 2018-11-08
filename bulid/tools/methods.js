@@ -54,9 +54,6 @@ var util = {
     }
     return obj;
   },
-
-
-
   // 判断数据类型
   getType: function (a) {
     var typeArray = Object.prototype.toString.call(a).split(" ");
@@ -212,17 +209,7 @@ function getSelIds(inputName) {
   return ids;
 }
 
-// 回车事件
-function ListenEnter(func) {
-  document.onkeydown = function (event) {
-    var e = event || window.event || arguments.callee.caller.arguments[0];
-    if (e && e.keyCode == 13) { // enter 键
 
-      func();
-    }
-  };
-
-}
 
 // 超过范围的值只取最大范围
 function rangval(val, min, max) {

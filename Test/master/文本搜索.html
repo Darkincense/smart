@@ -18,6 +18,9 @@
       height: 20px;
       padding:  10px;
     }
+    .current {
+      background-color: orange !important;
+    }
   </style>
 </head>
 
@@ -45,46 +48,123 @@
   <script>
     $('button[type="submit"]').click(function (e) {
       e.preventDefault();
-      searchControl.init();
+      searchControl.donSearch();
     })
+
+    //replaceAll替换函数
+    String.prototype.replaceAll = function (a, b) {
+      return this.replace(new RegExp(a, 'gm'), b);
+    }
 
     var Util = {
       isContains: function (str, substr) {
         return str.indexOf(substr) >= 0;
+      },
+      arrayIndex: function (element, array) {
+        var index = array.indexOf(element);
+        return index;
+      },
+      listenKeys: function (number, func) {
+        document.addEventListener('keydown', function (event) {
+          var e = event || window.event || arguments.callee.caller.arguments[0];
+          console.log(e.keyCode);
+
+          if (e && e.keyCode == number) {
+            func();
+          }
+        })
+
       }
     }
 
     var searchControl = {
       init: function () {
         var y = this;
-        y.htmlStr = y.getHTmlStr('#content');
-        y.donSearch();
+        y.containerSelector = "#content"; // 搜索范围选择器
+        y.htmlStr = y.getHTmlStr(y.containerSelector); // 搜索字符串
+        y.matchStr = ""; // 搜索关键字
+        y.matchLen = 0; // 匹配到数量
+        y.matchArr = [];
       },
       getHTmlStr: function (dom) {
-        var htmlStr = '',
-          str = $(dom).html();
-        var contentHtmlTemp = str.replace(/<\/?.+?>/g, "");
-        htmlStr = contentHtmlTemp.replace(/ /g, "");
-        return htmlStr;
+        // var contentHtmlTemp = str.replace(/<\/?.+?>/g, "");
+        // htmlStr = contentHtmlTemp.replace(/ /g, "");
+        return $(dom).html();
       },
       donSearch: function (text) {
-        var y = this;
-        var matchStr = text || $("#searchText").val();
+        var y = this,
+          html = y.htmlStr;
+        var matchStr = y.matchStr = text || $("#searchText").val();
         if (matchStr == "") {
-          alert('请输入需要搜索的文字')
-        } else if (!Util.isContains(y.htmlStr, matchStr)) {
+          document.getElementById("content").innerHTML = y.html;
+          return false;
+        } else if (!Util.isContains(html, matchStr)) {
+          //清除上次搜索
           $("#result").html("&nbsp;<span>未找到关键词</span>");
-        }else {
-            matchLen = matchStr.length;
-            console.log(matchLen);
-            
-            matchArr.length = 0;
-            firstStart = 0;
-            str = contentHtml;
-            len = str.length;
+          document.getElementById('content').innerHTML = y.oldHtml;
+        } else {
+          // 匹配
+          y.matchFn(html, matchStr);
         }
-      }
+      },
+      matchFn: function (html, val) {
+        var y = this;
+        var newHtml = html.replaceAll(val, '<font class="yellow" style="background-color:yellow;">' + val +
+          '</font>');
+        document.getElementById('content').innerHTML = newHtml;
+        $(".yellow:first").addClass("current")
+        var number = y.matchLen = $(".yellow").length;
+        if (y.matchLen >= 1) {
+          $("#result").html("<span>共找到" + number + "个</span>");
+          // 存入匹配
+          var arr = y.matchArr;
+          $(".yellow").each(function (index, ele) {
+            arr.push(ele);
+          })
+          console.log(arr);
+          // 监听按键
+          y.listenEnter(arr);
+        }
+      },
+      listenEnter: function (arr) {
+
+
+        // 上一个
+        Util.listenKeys('38', function () {
+          var index = Util.arrayIndex($(".current")[0], arr);
+          console.log(index);
+          if (index - 1 >= 0) {
+            $(arr[index]).removeClass("current");
+            $(arr[index - 1]).addClass("current");
+          } else {
+            $(arr[index]).removeClass("current");
+            $(arr[arr.length - 1]).addClass("current");
+
+          }
+        });
+
+        // 下一个 回车键
+        Util.listenKeys("40", function () {
+          var index = Util.arrayIndex($(".current")[0], arr);
+          console.log(index);
+          if (index + 1 != arr.length) {
+            $(arr[index]).removeClass("current");
+            $(arr[index + 1]).addClass("current");
+          } else {
+            $(arr[index]).removeClass("current");
+            $(arr[0]).addClass("current");
+
+          }
+
+        });
+
+
+      },
+
+
     }
+
+    searchControl.init();
   </script>
 </body>
 
