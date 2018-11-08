@@ -81,7 +81,7 @@
       init: function () {
         var y = this;
         y.containerSelector = "#content"; // 搜索范围选择器
-        y.htmlStr = y.getHTmlStr(y.containerSelector); // 搜索字符串
+        y.oldHtml = y.getHTmlStr(y.containerSelector); // 旧的html
         y.matchStr = ""; // 搜索关键字
         y.matchLen = 0; // 匹配到数量
         y.matchArr = [];
@@ -92,11 +92,14 @@
         return $(dom).html();
       },
       donSearch: function (text) {
+        
         var y = this,
-          html = y.htmlStr;
+          html = y.htmlStr = y.getHTmlStr(y.containerSelector); // 搜索字符串
         var matchStr = y.matchStr = text || $("#searchText").val();
-        if (matchStr == "") {
-          document.getElementById("content").innerHTML = y.html;
+        y.reset();
+        if (matchStr == "" || matchStr == undefined) {
+          document.getElementById("content").innerHTML = y.oldHtml;
+          $("#result").html("");
           return false;
         } else if (!Util.isContains(html, matchStr)) {
           //清除上次搜索
@@ -104,7 +107,7 @@
           document.getElementById('content').innerHTML = y.oldHtml;
         } else {
           // 匹配
-          y.matchFn(html, matchStr);
+          y.matchFn(y.oldHtml, matchStr);
         }
       },
       matchFn: function (html, val) {
@@ -160,6 +163,14 @@
 
 
       },
+      reset: function () {
+        var y = this;
+        document.getElementById("content").innerHTML = "";
+        document.getElementById("content").innerHTML = y.oldHtml;
+        $("#result").html("");
+        y.matchArr = [];
+        y.matchLen = 0;
+      }
 
 
     }
