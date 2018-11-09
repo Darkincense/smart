@@ -11,6 +11,7 @@
 <body>
   <script>
     var num = 0.452;
+
     function saveTwoDecimal(num) {
       num = parseFloat(num)
       if (isNaN(num)) {
@@ -19,7 +20,7 @@
       num = Math.round(num * 100) / 100
       var pos_point = num.toString().indexOf('.')
       if (pos_point < 0) {
-       var  tmp = num.toString().length
+        var tmp = num.toString().length
         num += '.'
       }
       while (num.length <= tmp + 2) {
@@ -27,10 +28,10 @@
       }
       return num
     }
-   console.log(saveTwoDecimal(num));
+    console.log(saveTwoDecimal(num));
   </script>
 
- 
+
 </body>
 
 </html>
