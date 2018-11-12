@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import { helloSaga } from './sagas';
+import rootSaga from './sagas';
 import registerServiceWorker from './registerServiceWorker';
 
 import { createStore, applyMiddleware } from 'redux'
@@ -19,7 +19,7 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 )
 
-sagaMiddleware.run(helloSaga)
+sagaMiddleware.run(rootSaga)
 
 ReactDOM.render(
   <Provider store={ store }>

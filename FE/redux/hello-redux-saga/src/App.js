@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-
-import logo from './logo.svg';
 import './App.css';
 import { connect } from 'react-redux';
-import { increment } from "./actions/counter";
+import { increment, increment_ASYNC } from "./actions/counter";
+import { get_user } from "./actions/user";
 
 class App extends Component {
   
@@ -11,15 +10,15 @@ class App extends Component {
  
     return (
       <div className="App">
-      <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
         <p className="App-intro">
         { this.props.counter }
         </p>
         <p>
-          <button onClick={this.props.increment}>++</button>
+          <button onClick={this.props.increment}>+</button>
+          <br/>
+          <button onClick={this.props.increment_ASYNC}>Async +</button>
+          <br/>
+          <button onClick={this.props.get_user}>GET USER +</button>
         </p>
       </div>
     );
@@ -32,4 +31,4 @@ function mapStateToProps(state , ownProps ){
   }
 }
 
-export default connect(mapStateToProps, { increment })(App);
+export default connect(mapStateToProps, { increment,increment_ASYNC, get_user })(App);

@@ -1,5 +1,5 @@
 var dom = {
- 
+
 
   $: function (selector, el) {
     if (!el) {
@@ -41,9 +41,9 @@ var dom = {
     return -1;
   },
 
-  getIndexByClass: function (param) {
-    var element = param.classname ? param : param.target;
-    var className = element.classname;
+  getIndexByClass: function (param, rule) {
+    var element = param.className ? param : param.target;
+    var className = element.className;
     var domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
     for (var index = 0; index < domArr.length; index++) {
       if (domArr[index] === element) {
@@ -316,7 +316,7 @@ var dom = {
       throw new Error('you can only pass Element, array of Elements or query string as argument');
     }
   },
- 
+
 
 
 };

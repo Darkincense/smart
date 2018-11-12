@@ -29,7 +29,9 @@
       }
 
     }
-    btn.onclick = throttle(fn.clickFunc, 3000, false)
+    btn.onclick = throttle(fn.clickFunc, 3000, {
+      "leading": false
+    }) // 禁用第一次执行，只执行最后一次触发
 
 
     // 第一种 时间戳

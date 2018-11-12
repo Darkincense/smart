@@ -9,13 +9,29 @@
 </head>
 
 <body>
-  <div title="hui" id="oDiv">点击我</div>
+  <div title="hui" class="oDiv">点击我</div>
+  <div title="hui" class="oDiv">记录表单</div>
+  <div title="hui" class="oDiv">点击我</div>
   <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
   <script>
-    $("#oDiv").attr("title", "yue");
-    console.log($("#oDiv").attr("id"));
-    // console.log($("#oDiv")[0].setAttribute("title","yue"));
-    
+    var dom = $.makeArray($(".oDiv")).filter(function (val, index) {
+      return val.innerHTML.trim() === "记录表单";
+    })
+
+    function getIndexByClass(param) {
+      var element = param.className ? param : param.target;
+      var className = element.className;
+      var domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
+
+      for (var index = 0; index < domArr.length; index++) {
+        if (domArr[index] === element) {
+          return index;
+        }
+      }
+      return -1;
+    }
+    var currIndex = getIndexByClass(dom[0]);
+    $('.oDiv').eq(currIndex).html('yue')
   </script>
 </body>
 
