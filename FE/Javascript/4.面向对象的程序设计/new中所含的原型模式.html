@@ -10,7 +10,14 @@
 
 <body>
   <script>
-    function create() {
+    function Person(name) {
+      this.name = name;
+    };
+    Person.prototype.getName = function () {
+      return this.name;
+    };
+
+    function objectFactory() {
       // 创建一个空的对象
       let obj = new Object()
       // 获得构造函数
@@ -22,6 +29,16 @@
       // 确保 new 出来的是个对象
       return typeof result === 'object' ? result : obj
     }
+
+    /* var a = objectFactory(Person, 'sven');
+    console.log(a.name); // 输出：sven
+    console.log(a.getName()); // 输出：sven
+    console.log(Object.getPrototypeOf(a) === Person.prototype); */
+
+    var a = objectFactory(Person, 'sven');
+    console.dir(a);
+    var b = new Person('sven');
+    console.dir(b);
   </script>
 </body>
 
