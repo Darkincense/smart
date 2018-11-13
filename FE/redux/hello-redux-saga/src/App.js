@@ -7,7 +7,21 @@ import { get_user } from "./actions/user";
 class App extends Component {
   
   render() {
- 
+    console.log(this.props.user);
+    
+    const { isFetching, error,user } = this.props.user;
+    console.log(isFetching);
+    
+    let data;
+    if(isFetching){
+      data = 'Loading...';
+    }else if(error){
+      data = error;
+    }else {
+      data = user && user.data[0].name
+    }
+
+
     return (
       <div className="App">
         <p className="App-intro">
@@ -20,6 +34,7 @@ class App extends Component {
           <br/>
           <button onClick={this.props.get_user}>GET USER +</button>
         </p>
+        <h1>{ data}</h1>
       </div>
     );
   }
@@ -27,7 +42,8 @@ class App extends Component {
 
 function mapStateToProps(state , ownProps ){
   return {
-    counter: state.counter
+    counter: state.counter,
+    user:state.user
   }
 }
 

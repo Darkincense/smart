@@ -1,5 +1,5 @@
 export const get_user = () => {
   return {
-    type: "FECTH_USER_REQUEST"
+    type: "FETCH_USER_REQUEST"
   }
 };
