@@ -1,1 +1,0 @@
-## [文档](https://github.com/nuysoft/Mock/wiki)
