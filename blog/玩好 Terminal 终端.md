@@ -62,6 +62,7 @@
 - `ctrl+tab+左/右箭头` 切换标签栏(左右箭头辅助，可以不要)
 - `ctrl+R` 重命名活动窗口页
 - `pwd` git bash 显示当前所在路径
+- `{powershell} -cur_console:n` `{Bash::Git bash} -cur_console:n`配置鼠标右键快捷键打开 [参考](https://blog.csdn.net/zhizunbao84/article/details/53318203)
 
 ## chrome
 

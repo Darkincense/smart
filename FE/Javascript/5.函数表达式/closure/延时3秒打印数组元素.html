@@ -32,12 +32,12 @@
      })();*/
 
     //错误写法
-   /*  for (var i = 0; i < arr.length; i++) {
+    /*  for (var i = 0; i < arr.length; i++) {
 
-      setTimeout(function () {
-        console.log('The index of this number is: ' + i);
-      }, 3000);
-    } */
+       setTimeout(function () {
+         console.log('The index of this number is: ' + i);
+       }, 3000);
+     } */
     //错误分析: setTimeout函数创建了一个访问外部作用域的函数(闭包),就是包含i的那个循环.3秒之后,函数开始执行打印i的值,而此时的循环已经结束,i的值已经遍历完毕,为5.
 
     //解决方法1
@@ -61,10 +61,20 @@
     //使用let作用域定义变量i,使得在setTimeout中可以访问到i
 
     // 解决方法3
-     for (var i = 0; i < arr.length; i++) {
+    /*  for (var i = 0; i < arr.length; i++) {
       setTimeout(function (j) {
         console.log('The index of this number is: ' + j)
       }, 3000,i)
+
+    } */
+  // 解决方法4 立即执行的函数表达式
+    for (var i = 0; i < arr.length; i++) {
+      (function (j) {
+        setTimeout(function () {
+          console.log('The index of this number is: ' + j)
+        }, 3000)
+      })(i);
+
 
     }
   </script>
