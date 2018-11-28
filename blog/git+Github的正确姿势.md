@@ -290,6 +290,12 @@ Suggested solution:
 [http]
 postBuffer = 524288000
 ````
+## .gitignore
+
+```bash
+# git-忽略版本控制内某些文件的修改
+git update-index --assume-unchanged application/Everything/Everything.ini
+````
 ##### 参考
 - https://blog.csdn.net/zcmain/article/details/76855595
 ## 附录
