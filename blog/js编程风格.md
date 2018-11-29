@@ -139,5 +139,6 @@ if (foo) bar(); ==> foo&&bar();
 if (!foo) bar(); ==> foo||bar(); 
 ```
 #### 参考
-- http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html
-- https://zhuanlan.zhihu.com/p/38066626
+- [Javascript编程风格](http://www.ruanyifeng.com/blog/2012/04/javascript_programming_style.html)
+- [js代码常见技巧总结](https://zhuanlan.zhihu.com/p/38066626)
+- [看看这些被同事喷的JS代码风格你写过多少](https://github.com/jackiewillen/blog/issues/14）
