@@ -31,6 +31,9 @@
 - https://jsfiddle.net/
 - https://www.hackerrank.com/
 
+### 文档
+- [深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/)
+
 ### 站点素材
 
 - 优灵 http://yoolin.cc/
