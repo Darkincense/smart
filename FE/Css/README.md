@@ -10,6 +10,7 @@
 * [HTML5 Please Use the new and shiny responsibly](http://html5please.com/)
 * [兼容性速查](https://caniuse.com/)
 * [在线配色选择器](http://www.peise.net/tools/web/)
+* [CSS3动画编辑](https://www.w3cways.com/css3-animation-tool)
 
 ## html和css的掌握程度
 

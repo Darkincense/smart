@@ -1,6 +1,7 @@
 ## 安装
 - [pandoc 官方文档](https://pandoc.org/getting-started.html)
 - [pandoc’s download page](https://github.com/jgm/pandoc/releases/tag/2.1.3)
+- [最佳方案 - typora](https://www.typora.io/)
 ## 命令
 ### markdown转换为html
 ````bash
