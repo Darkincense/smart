@@ -1,6 +1,6 @@
 ### 1. 在全局环境中使用时候
 
-在全局中使用，this就代表全局对象Global（在浏览器中为window）
+在全局中使用，this就代表全局对象Global（在浏览器中为window，但是在严格模式下'use strict'，this的值为undefined）
 
 ````js
 document.write(this);  //[object Window]

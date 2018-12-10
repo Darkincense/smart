@@ -1,20 +1,12 @@
 ﻿水平居中
    1.若是行内元素,给其父元素设置text-align:center,即可实现行内元素水平居中.
    2.若是块级元素,给元素设置margin:0 auto;即可.
-   3.若子元素包含float:left属性,为了让子元素水平居中,则可让父元素宽度设置为fit-content,并且配合margin,作如下设置:
-          .parent {
-                     width:-moz-fit-content;
-                     width:-webkit-fit-content;
-                     width:fit-content;
-                     margin:0 auto;
-               }
-           fit-content是css3中给width属性新加的一个属性值,它配合margin可以轻松实现水平居中,目前他只支持chrome和Firefox浏览器;
-   4.使用flex 2012年版本布局,可以轻松实现水平居中,子元素设置如下:
+   3.使用flex 2012年版本布局,可以轻松实现水平居中,子元素设置如下:
                .son {
                        display:flex;
                        justify-content:center;
                }
-   5.使用css3新增的transform属性,子元素设置如下:
+   4.使用css3新增的transform属性,子元素设置如下:
                .son {
                        position:absolute;
                        left:50%;

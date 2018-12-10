@@ -1,3 +1,5 @@
+## React
+
 1. 它是什么？能做什么？
 React 是专注于复杂 UI 层业务的前端框架， 基于 Virtual DOM 的 diff 渲染以最小的代价来更新dom(高效渲染)。
 
@@ -21,7 +23,7 @@ React 是专注于复杂 UI 层业务的前端框架， 基于 Virtual DOM 的 d
 
 4. 它怎么用？最佳实践是什么？
 5. 它的原理是什么？
-本身相当于 mvc 结构中的 v 层,并非 MVVM ，借助自建的事件机制和单项数据流实现更新，Virtual DOM 应用 + jsx  
+本身相当于 mvc 结构中的 v 层,并非 MVVM ，借助自建的事件机制和单向数据流实现更新，Virtual DOM 应用 + jsx  
 
 
 ### 参考链接
