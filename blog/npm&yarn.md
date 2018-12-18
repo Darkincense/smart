@@ -144,7 +144,7 @@ npm update -D
 ## yarn
 
 1. 下载地址
-- https://yarn.bootcss.com/docs/install.html
+- https://yarn.bootcss.com/
 
 2. 配置淘宝镜像
 
