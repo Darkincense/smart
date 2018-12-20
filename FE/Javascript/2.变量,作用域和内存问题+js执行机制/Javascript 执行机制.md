@@ -6,7 +6,11 @@
 
 执行栈中的代码（同步任务），总是在读取"任务队列"（异步任务）之前执行
 
-
+需要知道的专业名词术语：synchronous：同步任务、asynchronous：异步任务、task queue/callback queue：任务队列、execution context stack：执行栈、heap：堆、stack：栈、macro-task：宏任务、micro-task：微任务
+event-loop 事件循环
+链接：https://juejin.im/post/5b498d245188251b193d4059
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
 ## 宏任务与微任务
 
 宏任务一般是：包括整体代码script，setTimeout，setInterval。
@@ -22,12 +26,12 @@
 ## 执行上下文
 -   https://yuchengkai.cn/docs/zh/frontend/#%E6%89%A7%E8%A1%8C%E4%B8%8A%E4%B8%8B%E6%96%87
 
+
+
+
 ###### 参考
 - [Philip Roberts: What the heck is the event loop anyway?](https://2014.jsconf.eu/speakers/philip-roberts-what-the-heck-is-the-event-loop-anyway.html)
 - [JavaScript 运行机制详解：再谈Event Loop](http://www.ruanyifeng.com/blog/2014/10/event-loop.html)
-
-##### 其他
-
 - [Javascript的异步和回调](https://segmentfault.com/a/1190000002999668)
 - [10分钟理解JS引擎的执行机制](https://segmentfault.com/a/1190000012806637?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly)
 - [从浏览器多进程到JS单线程，JS运行机制最全面的一次梳理](https://segmentfault.com/a/1190000012925872?utm_source=weekly&utm_medium=email&utm_campaign=email_weekly)
