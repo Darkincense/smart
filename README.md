@@ -1,6 +1,11 @@
 # smart
-
 > :octocat: 日常代码库
+### docs
+
+- [MDN](https://developer.mozilla.org/zh-CN/)
+- [W3C](https://www.w3.org/TR/)
+- [ECMA-262 6th](https://www.ecma-international.org/ecma-262/6.0/) / [es5](https://yanhaijing.com/es5/) / [es6.ruanyifeng](http://es6.ruanyifeng.com/)
+- [ES7](http://www.ecma-international.org/ecma-262/7.0/index.html) / [ES8](http://www.ecma-international.org/ecma-262/8.0/index.html)
 
 ### Git commit log
 * Head

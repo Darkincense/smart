@@ -1,3 +1,1 @@
-- 队列
-- 堆栈 先进后出
-- Event Loop
+## 单线程的Javascript
