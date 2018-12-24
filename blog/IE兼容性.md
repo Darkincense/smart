@@ -101,7 +101,7 @@ color:red!important;|	所有浏览器除了IE6
 - `border-radius`
 - `box-shadow`
 - `opacity`
-- `background-size`
+- `background-size` 建议 IE8 及以下使用固定宽度布局
 
 ```css
    /*使用固定宽高布局*/
@@ -139,7 +139,6 @@ color:red!important;|	所有浏览器除了IE6
 * 基本的媒体（all/print/screen/speech）都支持 
 * [Respond](https://github.com/scottjehl/Respond) - A fast & lightweight polyfill for min/max-width CSS3 Media Queries (for IE 6-8, and more)
 * 媒体特性（width/height/orientation...）IE9 及以上
-  * 还是建议 IE8 及以下使用固定宽度布局
 
 ## 语义化的 HTML5 标签
 - ie8不支持
