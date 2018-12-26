@@ -7,7 +7,17 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    imgUrls: [
+      '../../assets/banner.png',
+      '../../assets/banner.png',
+      '../../assets/banner.png'
+    ],
+    indicatorDots: false,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
+    swiperCurrent: 0
   },
   //事件处理函数
   bindViewTap: function() {
@@ -15,7 +25,19 @@ Page({
       url: '../logs/logs'
     })
   },
+  swiperChange:function(e){
+    // console.log(e)
+    this.setData({
+      swiperCurrent:e.detail.current
+    })
+  },
+  selectCarouselByIndex:function(e){
+    this.setData({
+      swiperCurrent: e.currentTarget.id
+    })
+  },
   onLoad: function () {
+    var that = this;
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
@@ -42,11 +64,30 @@ Page({
         }
       })
     }
+
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          clientHeight: res.windowHeight
+        });
+      }
+    });
+  },
+  onReady:function(){
+   wx.request({
+     url: 'https://api.github.com/search/repositories?q=javascript&sort=stars',
+     success:function(res){
+       console.log(res);
+     }
+   })
+  },
+  onShow:function(){
+   console.log("show")
   },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    this.setData({
+    that.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })

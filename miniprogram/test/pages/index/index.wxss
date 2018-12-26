@@ -1,21 +1,39 @@
 /**index.wxss**/
-.userinfo {
+.Carousel {
+  width: 750rpx;
+  height: 312rpx;
+  background-color: purple;
+  position: relative;
+}
+.Carousel .slide-image,.Carousel image{
+  height: 312rpx;
+  width: 750rpx;
+}
+.Carousel swiper {
+  height: 312rpx;
+}
+#MainSelect {
+  padding: 32rpx;
+  height: 212rpx;
+  background: purple;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
+#boxCell {
+  position: fixed;
+  right: 22rpx;
+  top:286rpx;
+  width: 76rpx;
+  height: 20rpx;
+}
+.dot{
+  float: left;
+  width: 16rpx;
+  height: 16rpx;
+  background:rgba(255,255,255,1);
   border-radius: 50%;
+  margin-left: 8rpx;
 }
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
+.active {
+  background:rgba(27,90,141,1);
 }
