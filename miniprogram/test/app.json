@@ -8,5 +8,30 @@
     "navigationBarBackgroundColor": "#DCF6FF",
     "navigationBarTitleText": "首页",
     "navigationBarTextStyle":"black"
-  }
+  },
+  "tabBar": {
+    "backgroundColor": "#fff",
+    "color": "#DEDEDE",
+    "selectedColor": "#1B5A8D",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "胶囊胃镜",
+        "iconPath":"assets/product.png",
+        "selectedIconPath": "assets/product_light.png"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "text": "日志",
+        "iconPath": "assets/product.png",
+        "selectedIconPath": "assets/product_light.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true
 }

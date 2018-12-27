@@ -44,7 +44,8 @@ Page({
 })
 ````
 
-
+## 待做
+- appid
 ## Userful Links
 - [快速了解小程序](http://ssh.today/blog/hello-min-app)
 - [从零开始一个微信小程序版知乎](https://juejin.im/post/5a61b6a1518825732739af03)

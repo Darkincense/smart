@@ -74,12 +74,12 @@ Page({
     });
   },
   onReady:function(){
-   wx.request({
-     url: 'https://api.github.com/search/repositories?q=javascript&sort=stars',
-     success:function(res){
-       console.log(res);
-     }
-   })
+  //  wx.request({
+  //    url: 'https://api.github.com/search/repositories?q=javascript&sort=stars',
+  //    success:function(res){
+  //      console.log(res);
+  //    }
+  //  })
   },
   onShow:function(){
    console.log("show")
