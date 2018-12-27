@@ -1,10 +1,91 @@
-/**app.wxss 全局css样式**/ 
+/**app.wxss 全局css样式**/
+
 .container {
   height: 100%;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-} 
-.test {
-  color:pink;
+}
+
+.gap {
+  width: 750rpx;
+  background: rgba(243, 243, 247, 1);
+}
+
+/*单行文字截断*/
+
+.ellipsis {
+  word-wrap: normal;
+  /* for IE */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*多行文字截断*/
+
+.line-clamp {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* 这里修改为要显示的行数*/
+  -webkit-box-orient: vertical;
+}
+
+/* 颜色 */
+
+.gray {
+  color: #9f9f9f;
+}
+
+.fff {
+  color: #fff;
+}
+
+.black1 {
+  color: #1e1e1e;
+}
+
+.black {
+  color: #000;
+}
+
+/* 字号 */
+
+.smFont {
+  color: rgba(159, 159, 159, 1);
+  font-size: 20rpx;
+  line-height: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+
+.yahei {
+  font-family: "微软雅黑";
+}
+
+/* flex布局 */
+
+.manyLine {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.levelLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.oneLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
