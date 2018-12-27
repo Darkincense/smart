@@ -12,17 +12,17 @@
   <ul>
     <li class="item-1">Item 1 content</li>
     <li class="item-2">Item 2 content</li>
-    <li class="item-3">Item 3 content Item 3 content Item 3 content
-      Item 3 content</li>
+    <li class="item-3">Item 3 content</li>
   </ul>
 
   <style>
     ul {
+      height: 300px;
       display: flex;
+      flex-direction: column-reverse;
+      justify-content: space-between;
       padding: 0;
       background: lightgray;
-      align-items: stretch
-      align-items: center;
     }
 
     li {
@@ -32,12 +32,10 @@
 
     .item-1 {
       background: lightblue;
-      flex-shrink: 0
     }
 
     .item-2 {
       background: lightgreen;
-      flex-shrink: 0
     }
 
     .item-3 {

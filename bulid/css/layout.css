@@ -104,47 +104,133 @@
   word-break: break-all;
 }
 
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+.vt {
+  vertical-align: top;
+}
+
+.vb {
+  vertical-align: bottom;
+}
+
 /* -----------------------------------------flex---------------------- */
-.f-box {
+/* 单行居中 */
+.oneLineCenter {
   display: flex;
   display: -webkit-flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.c-box {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
-.f-box-s {
+/* 单行向左 */
+.oneLineStart {
   display: flex;
   display: -webkit-flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.f-box-start {
-  display: flex;
-  display: -webkit-flex;
-  flex-direction: row;
   justify-content: flex-start;
+  align-items: center;
 }
 
-.f-box-end {
+/* 单行向右 */
+.oneLineEnd {
   display: flex;
   display: -webkit-flex;
-  flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
 }
 
-.f-box-col {
+/* 单行保持间距 */
+.oneLineAround {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 单行两端对齐 */
+.oneLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 换行显示 */
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+/* 多轴线方向，一般配合  wrap 使用 */
+.mulitLineStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-start
+}
+
+.mulitLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.mulitLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.mulitLineAround {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+/* 改变主轴方向的排列 */
+.columnStart {
   display: flex;
   display: -webkit-flex;
   flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.columnEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.columnAround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.columnBetween {
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 /* -----------------------------------------box---------------------- */
