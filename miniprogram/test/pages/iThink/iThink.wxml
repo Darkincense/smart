@@ -1,0 +1,2 @@
+<!--pages/iThink/iThink.wxml-->
+<text>{{text}}</text>

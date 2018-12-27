@@ -1,6 +1,18 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/whereCanSearch/whereCanSearch",
+    "pages/iThink/iThink",
+    "pages/doctorTalk/doctorTalk",
+    "pages/doctorTalk_detail/doctorTalk_detail",
+    "pages/forYouAnswer/forYouAnswer",
+    "pages/forYouAnswer_askQ/forYouAnswer_askQ",
+    "pages/inquiryResearch/inquiryResearch",
+    "pages/inquiryResearch_detail/inquiryResearch_detail",
+    "pages/lastestNews/lastestNews",
+    "pages/lastestNews_detail/lastestNews_detail",
+    "pages/mediaCoverage/mediaCoverage",
+    "pages/product_detail/product_detail",
     "pages/logs/logs"
   ],
   "window":{
@@ -18,14 +30,20 @@
       {
         "pagePath": "pages/index/index",
         "text": "胶囊胃镜",
-        "iconPath":"assets/product.png",
-        "selectedIconPath": "assets/product_light.png"
+        "iconPath":"assets/tabIcon/product.png",
+        "selectedIconPath": "assets/tabIcon/product_light.png"
       },
       {
-        "pagePath": "pages/logs/logs",
-        "text": "日志",
-        "iconPath": "assets/product.png",
-        "selectedIconPath": "assets/product_light.png"
+        "pagePath": "pages/whereCanSearch/whereCanSearch",
+        "text": "哪里能查",
+        "iconPath": "assets/tabIcon/whereCanSearch.png",
+        "selectedIconPath": "assets/tabIcon/whereCanSearch_light.png"
+      },
+      {
+        "pagePath": "pages/iThink/iThink",
+        "text": "我想",
+        "iconPath": "assets/tabIcon/iThink.png",
+        "selectedIconPath": "assets/tabIcon/iThink_light.png"
       }
     ]
   },

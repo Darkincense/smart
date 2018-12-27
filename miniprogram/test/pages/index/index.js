@@ -1,7 +1,7 @@
 //index.js
 //获取应用实例
-const app = getApp()
-
+const app = getApp();
+const api = require("../../utils/api.js");
 Page({
   data: {
     motto: 'Hello World',
@@ -74,6 +74,7 @@ Page({
     });
   },
   onReady:function(){
+    console.log(api.adUrl)
   //  wx.request({
   //    url: 'https://api.github.com/search/repositories?q=javascript&sort=stars',
   //    success:function(res){
