@@ -3,6 +3,7 @@
 const app = getApp();
 const api = require("../../utils/api.js");
 const adData = require("../../mock/ad.js");
+const util = require("../../utils/util.js");
 
 Page({
   data: {
@@ -87,12 +88,27 @@ Page({
     }, 500);
 
   },
-  toForYouAnswer:function(){
-    wx.navigateTo({ url: '../forYouAnswer/forYouAnswer' });
+  toForYouAnswer: function() {
+    wx.navigateTo({
+      url: '../forYouAnswer/forYouAnswer'
+    });
   },
 
-  onLoad:function(option){
+  onLoad: function(option) {
     console.log(option);
+    var Storage = util.Storage;
+    Storage.setItem("name", "yue");
+    console.log("Load")
+
+  },
+  onShow: function() {
+
+  },
+  testApi: function() {
+    var Storage = util.Storage;
+    var data = "";
+    console.log(Storage.getItem("name"));
+ 
   },
   onReady: function() {
     this.getAdData();

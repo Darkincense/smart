@@ -22,7 +22,7 @@
       <image src="../../assets/cheet.png" mode='aspectFit' style='width:100rpx;height:100rpx;'></image>
     </view>
     <view class='list1'>
-      <view class='doctorTalk oneLineAround wh'>
+      <view class='doctorTalk oneLineAround wh' bindtap='testApi'>
         <image src="../../assets/list_doctorTalk.png" mode='aspectFit' class='listImg'></image>
         <text class='black'>名医访谈</text>
       </view>

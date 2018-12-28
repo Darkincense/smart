@@ -43,6 +43,9 @@
   display: flex;
   justify-content: space-between;
 }
+.forYouAnswer,.list1,.list2 {
+  width: 30%；
+}
 
 #MainSelect .forYouAnswer {
   display: flex;
