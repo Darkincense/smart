@@ -17,17 +17,17 @@
 
 ## 工作计划
 
-- 首页 index  swiper 胃镜专线 名医访谈，胃你简答各四条数据展示
-  + 胃镜产品详情 product_detail
-- 胃你解答 forYouAnswer 
-  + 我要提问 forYouAnswer_askQ
+- 首页 index  swiper 胃镜专线 名医访谈，胃你简答各四条数据展示 ok
+  + 胃镜产品详情 product_detail 
+- 胃你解答 forYouAnswer ok
+  + 我要提问 forYouAnswer_askQ ok
 - 名医访谈 doctorTalk
   + 详情 doctorTalk_detail 视频播放
-- 哪里能查 whereCanSearch 腾讯地图
+- 哪里能查 whereCanSearch 腾讯地图 ok
 - 媒体报道 mediaCoverage
-  + 报道详情 mediaCoverage_detail
+  + 报道详情 mediaCoverage_detail 主渲染
 - 循证研究 inquiryResearch
-  + 详情 inquiryResearch_detail pdf预览？下载？
+  + 详情 inquiryResearch_detail pdf预览？下载？ 主渲染
 - 我想 iThink 手机号授权获取？
 
 
