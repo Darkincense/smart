@@ -1,0 +1,221 @@
+/* pages/whereCanSearch/whereCanSearch.wxss */
+
+.city {
+  width: 72rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+  line-height: 34rpx;
+}
+
+.searchBar {
+  height: 80rpx;
+}
+
+.location {
+  width: 174rpx;
+  height: 80rpx;
+  float: left;
+}
+
+.inputBox {
+  float: left;
+  position: relative;
+  width: 480rpx;
+  height: 72rpx;
+  background: rgba(248, 248, 248, 1);
+  border-radius: 10rpx;
+}
+
+.place {
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+  line-height: 72rpx;
+  padding-left: 10rpx;
+}
+
+.inputBox .searchTxt {
+  width: 480rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  line-height: 40rpx;
+  padding-left: 50rpx;
+  box-sizing: border-box;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 20rpx;
+  top: 22rpx;
+  z-index: 10;
+}
+
+.deleteIcon {
+  position: absolute;
+  left: 432rpx;
+  top: 23rpx;
+  z-index: 10;
+}
+
+.searchBox {
+  width: 96rpx;
+  height: 80rpx;
+}
+
+.searchBox text {
+  width: 56rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(13, 132, 244, 1);
+  line-height: 40rpx;
+}
+
+.routeLineBox {
+  width: 750rpx;
+}
+
+.route_item {
+  height: 164rpx;
+  padding: 32rpx 32rpx 32rpx 34rpx;
+  border: 1px solid #ccc;
+}
+
+.name {
+  width: 210rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(74, 74, 74, 1);
+  line-height: 36rpx;
+}
+
+.distance {
+  width: 76rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(159, 159, 159, 1);
+  line-height: 40rpx;
+}
+
+.caption {
+  width: 486rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(92, 92, 92, 1);
+  line-height: 36rpx;
+}
+
+.textBox {
+  width: 480rpx;
+  height: 142rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.imgBox {
+  position: relative;
+  width: 66rpx;
+  height: 66rpx;
+  background: rgba(13, 132, 244, 1);
+  border-radius: 50%;
+}
+
+.imgBox image {
+  position: absolute;
+  left: 14rpx;
+  top: 14rpx;
+}
+
+.line {
+  width: 48rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(13, 132, 244, 1);
+  line-height: 34rpx;
+}
+
+/* 附近位置及其他位置开始 */
+
+.locationArea {
+  position: relative;
+  box-sizing: border-box;
+  width: 750rpx;
+  height: 108rpx;
+  padding: 0 30rpx;
+  border-bottom: 1px solid #fafafc;
+}
+
+.locationArea text {
+  width: 110rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+  line-height: 36rpx;
+  white-space: nowrap;
+}
+
+.reLocation .text {
+  width: 102rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(13, 132, 244, 1);
+  line-height: 36rpx;
+}
+
+.reLocation .location {
+  position: absolute;
+  left: 568rpx;
+  top: 42rpx;
+}
+
+.nearbyAd {
+  width: 750rpx;
+  padding: 48rpx 30rpx 0 30rpx;
+}
+
+.nearbyAd .title {
+  width: 94rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(155, 155, 155, 1);
+  line-height: 34rpx;
+}
+
+.list_item {
+  height: 96rpx;
+  border-bottom: 1px solid #fafafc;
+}
+
+.list_item .key {
+  width: 200px;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(74, 74, 74, 1);
+  line-height: 40rpx;
+  white-space: nowrap;
+}

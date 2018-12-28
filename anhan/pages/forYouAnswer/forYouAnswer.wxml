@@ -1,0 +1,95 @@
+<!--pages/iThink/iThink.wxml-->
+<view>
+  <view class='navBar oneLineBetween'>
+    <view class="product center {{isActive == 0  ? 'active' : 'normal'}}" data-index="0" bindtap="setActive">
+      <text>产品简答</text>
+    </view>
+    <view class="condition center {{isActive == 1  ? 'active' : 'normal'}}" data-index="1" bindtap="setActive">
+      <text>病情解答</text>
+    </view>
+  </view>
+  <view class='searchBar'>
+    <input type="text" placeholder="请输入关键字" placeholder-class="place" class='searchTxt vam' bindfocus="xuanZhong" bindinput='chooseTextInput' bindblur="finishiInput">
+    </input>
+    <block wx:if="{{!isEdit}}">
+      <image class="searchIcon" src="../../assets/search.png" style="width:30rpx;height:30rpx;"></image>
+    </block>
+    <block wx:if="{{isEdit}}">
+      <image class='deleteIcon' bindtap='deleteFn' src="../../assets/delete.png" style="width:24rpx;height:24rpx;"></image>
+    </block>
+    <text class='search' data-text="{{keyWord}}" bindtap='searchText'>搜索</text>
+  </view>
+
+  <view class="articleBox {{isActive == 0 ? 'show' : 'hide'}}">
+    <!-- 产品简答 -->
+    <view class='artcle'>
+      <!-- 标题 -->
+      <view class='titleBox oneLineEnd'>
+        <view class='avator'>
+          <text>问</text>
+        </view>
+        <view class='contentBox columnBetween'>
+          <view class='titleText'>爱胃爱健康，从一颗磁控胶囊胃镜开始从一颗磁控胶囊胃镜开始？</view>
+          <view class='oneLineBetween' style='height:28rpx;width:634rpx;margin-top:6rpx;'>
+            <text class='date nowrap'>2018-11-06</text>
+            <text class='starNum'>32</text>
+          </view>
+        </view>
+      </view>
+      <view class='answerMen'>
+        <view class='answerBox oneLineStart'>
+          <view class='avator2'></view>
+          <text class='name'>董志强</text>
+        </view>
+        <view class='contentArticlesBox'>
+          <text class='career'>北京协和医院 副主任医师 副教授</text>
+          <view class='context line-clamp'>
+            胃病，作为一种现代人司空见惯的疾病之一，你是否有真正重视过？当你发生呕吐、恶心的时候，它可能在提醒你要养胃了。那么，胃病的原因是什么呢？ 其实，胃病是一种多病因疾病，诸如遗传、环境、饮食、药物，细菌以及吸烟，过度饮酒等都可引起胃病。上述这
+          </view>
+        </view>
+        <view class="loadMore {{isShow === true?'show':'hide'}}">
+          <text>展开查看</text>
+        </view>
+      </view>
+
+    </view>
+    <view class='askQ' bindtap='askQ'>
+      <view class='wen'></view>
+      <text>我要提问</text>
+    </view>
+    <view class='gap' style='height:16rpx;'></view>
+  </view>
+  <view class="tab-content {{isActive == 1 ? 'show' : 'hide'}}">
+    <!-- 病情简答 -->
+    <view class='artcle'>
+      <!-- 标题 -->
+      <view class='titleBox oneLineEnd'>
+        <view class='avator'>
+          <text>问</text>
+        </view>
+        <view class='contentBox columnBetween'>
+          <view class='titleText'>爱胃爱健康，从一颗磁控胶囊胃镜开始从一颗磁控胶囊胃镜开始？</view>
+          <view class='oneLineBetween' style='height:28rpx;width:634rpx;margin-top:6rpx;'>
+            <text class='date nowrap'>2018-11-06</text>
+            <text class='starNum'>32</text>
+          </view>
+        </view>
+      </view>
+      <view class='answerMen'>
+        <view class='answerBox oneLineStart'>
+          <view class='avator2'></view>
+          <text class='name'>董志强</text>
+        </view>
+        <view class='contentArticlesBox'>
+          <text class='career'>北京协和医院 副主任医师 副教授</text>
+          <view class='context line-clamp'>
+            胃病，作为一种现代人司空见惯的疾病之一，你是否有真正重视过？当你发生呕吐、恶心的时候，它可能在提醒你要养胃了。那么，胃病的原因是什么呢？ 其实，胃病是一种多病因疾病，诸如遗传、环境、饮食、药物，细菌以及吸烟，过度饮酒等都可引起胃病。上述这
+          </view>
+        </view>
+      </view>
+      <view class='gap' style='height:16rpx;'></view>
+    </view>
+
+  </view>
+
+</view>

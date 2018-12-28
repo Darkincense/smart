@@ -1,0 +1,231 @@
+/**app.wxss 全局css样式**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.gap {
+  width: 750rpx;
+  background: rgba(243, 243, 247, 1);
+}
+
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+/*单行文字截断*/
+
+.ellipsis {
+  word-wrap: normal;
+  /* for IE */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*多行文字截断*/
+
+.line-clamp {
+ display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp:3;
+}
+
+/* 颜色 */
+
+.gray {
+  color: #9f9f9f;
+}
+
+.fff {
+  color: #fff;
+}
+
+.black1 {
+  color: #1e1e1e;
+}
+
+.black {
+  color: #000;
+}
+
+/* 字号 */
+
+.smFont {
+  color: rgba(159, 159, 159, 1);
+  font-size: 20rpx;
+  line-height: 28rpx;
+  font-family: PingFangSC-Regular;
+}
+
+.yahei {
+  font-family: "微软雅黑";
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* -----------------------------------------flex---------------------- */
+
+.manyLine {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.levelLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.oneLine {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单行居中 */
+
+.oneLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 单行向左 */
+
+.oneLineStart {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 单行向右 */
+
+.oneLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 单行保持间距 */
+
+.oneLineAround {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 单行两端对齐 */
+
+.oneLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 换行显示 */
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+/* 多轴线方向，一般配合  wrap 使用 */
+
+.mulitLineStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.mulitLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.mulitLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+.mulitLineAround {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+/* 改变主轴方向的排列 */
+
+.columnStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.columnEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.columnAround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.columnBetween {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}

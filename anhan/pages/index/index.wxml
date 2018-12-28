@@ -1,0 +1,121 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="Carousel">
+    <swiper current="{{swiperCurrent}}" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{bannerList}}" wx:key="{{index}}">
+        <swiper-item>
+          <image src="{{item.banner}}"  class="slide-image" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <view id="boxCell">
+      <block wx:for="{{bannerList}}" wx:for-index="index">
+        <view id="{{index}}" class="dot {{index === swiperCurrent ? 'active':''}}" bindtap="selectCarouselByIndex" />
+      </block>
+    </view>
+
+  </view>
+  <!-- 主导航 -->
+  <view id="MainSelect">
+    <view class='forYouAnswer' bindtap='toForYouAnswer'>
+      <text class='fff yahei'>胃你解答</text>
+      <image src="../../assets/cheet.png" mode='aspectFit' style='width:100rpx;height:100rpx;'></image>
+    </view>
+    <view class='list1'>
+      <view class='doctorTalk oneLineAround wh'>
+        <image src="../../assets/list_doctorTalk.png" mode='aspectFit' class='listImg'></image>
+        <text class='black'>名医访谈</text>
+      </view>
+      <view class='mediaCoverage oneLineAround wh'>
+        <image src="../../assets/list_news.png" mode='aspectFit' class='listImg'></image>
+        <text class='black'>媒体报道</text>
+      </view>
+    </view>
+    <view class='list2'>
+      <view class='whereCanSearch oneLineAround wh'>
+        <image src="../../assets/list_search.png" mode='aspectFit' class='listImg'></image>
+        <text class='fff'>哪里能查</text>
+      </view>
+      <view class='inquiryResearch oneLineAround wh'>
+        <image src="../../assets/list_research.png" mode='aspectFit' class='listImg'></image>
+        <text class='black'>循证研究</text>
+      </view>
+    </view>
+  </view>
+  <view class='ad'>
+    <view>
+      <image src="{{productAd[0].banner}}" style='width:712rpx;height:212rpx'></image>
+    </view>
+  </view>
+  <!-- 打电话 -->
+  <view class='callMe'>
+    <image src="../../assets/callMe_bg.gif" style='width:686rpx;height:164rpx;position:relative;'></image>
+    <image src='../../assets/doctor.png' class='doctor'></image>
+    <view class='callMeTitle'>
+      <text class='check'>想做胃镜检查？</text>
+      <text class='findUs'>找我们啊</text>
+    </view>
+    <view class='circleBox'>
+      <image src="../../assets/circle.png" class='circle'></image>
+      <image src="../../assets/tel.png" class='tel'></image>
+      <text class="loveAndCall">爱胃专线</text>
+    </view>
+  </view>
+  <!-- 名医访谈 -->
+  <view id="doctor_talk">
+    <view class='teml_title'>
+      <text class='title'>名医访谈</text>
+      <text class='more'>更多</text>
+    </view>
+    <view class='dataBox'>
+    </view>
+  </view>
+  <view class='gap' style="height:16rpx;"></view>
+  <!-- 胃你解答 -->
+  <view id="forYouAnswer">
+    <view class='teml_title'>
+      <text class='title'>胃你解答</text>
+      <text class='more'>更多</text>
+    </view>
+    <view class='dataBox'>
+      <view class='answer_item'>
+        <text class='title'>我是不是有问题？</text>
+        <text class='smFont manyLine gray'>2308 人查看</text>
+      </view>
+    </view>
+  </view>
+  <!-- 产品详情广告 -->
+  <view class='productDetail'>
+    <view class='text manyLine'>
+      <text class='rebot'>胶囊机器人</text>
+      <text class='quickCheck'>吞下一刻钟完成胃镜检查</text>
+    </view>
+    <view class='seeDetail'>
+      <text class='textA'>查看详情</text>
+    </view>
+    <image class='rebotImg' src="{{mainAd[0].banner}}"></image>
+    <text class='adText'>广告</text>
+  </view>
+  <!-- 媒体报道 -->
+  <view id="mediaCoverage">
+    <view class='teml_title'>
+      <text class='title'>媒体报道</text>
+      <text class='more'>更多</text>
+    </view>
+    <view class='dataBox'>
+      <view class='article_item levelLine'>
+        <view class='textDetail manyLine '>
+          <view>
+            <text class='title line-clamp'>我是不是有问题？标题仅限两行展示我是不是有问题？标题仅限两行展示我是不是有问题？标题仅限两行展示</text>
+          </view>
+          <view class='levelLine'>
+            <text class='smFont gray'>2018-12-25</text>
+            <text class='smFont  gray'>2308 人查看</text>
+          </view>
+        </view>
+        <view class='imgBox'>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

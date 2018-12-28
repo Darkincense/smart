@@ -1,0 +1,60 @@
+<view>
+  <view class='searchBar'>
+    <view class="location oneLineCenter">
+      <text class="city">北京市</text>
+    </view>
+    <view class='inputBox'>
+      <input type="text" placeholder="输入位置" placeholder-class="place" class='searchTxt' bindfocus="xuanZhong" bindinput='chooseTextInput' bindblur="finishiInput">
+      </input>
+      <block wx:if="{{!isEdit}}">
+        <image class="searchIcon" src="../../assets/search.png" style="width:30rpx;height:30rpx;"></image>
+      </block>
+      <block wx:if="{{isEdit}}">
+        <image class='deleteIcon' bindtap='deleteFn' src="../../assets/delete.png" style="width:24rpx;height:24rpx;"></image>
+      </block>
+    </view>
+    <view class='oneLineCenter searchBox'>
+      <text>搜索</text>
+    </view>
+  </view>
+  <view class='gap' style='height:20rpx;'> </view>
+  <view class='locationList'>
+  <!-- 附近位置定位 -->
+  <view>
+  <view class='locationArea oneLineBetween'>
+      <text>六州大厦</text>
+      <view class='reLocation'>
+        <image class='location' src="../../assets/startLocation.png" mode ="aspectFit" style='width:36rpx;height:36rpx;'></image>
+        <text class='text'>重新定位</text>
+      </view>
+    </view>
+  </view>
+  <view class='nearbyAd'>
+  <text class='title'>附近地址</text>
+  <view class='listBox'>
+  <view class='list_item oneLineStart'>
+  <text class='key'>高碑店</text>
+  </view>
+  </view>
+  </view>
+  </view>
+    
+  <view class='routeLineBox'>
+
+    <view class='route_item'>
+      <view class='content oneLineBetween'>
+        <view class='textBox'>
+          <text class='name'>北京大学第三医院</text>
+          <text class='distance'>5.0km</text>
+          <text class='caption'>北京海淀区花园北路49号</text>
+        </view>
+        <view class='imgBigBox'>
+          <view class='imgBox'>
+            <image src="../../assets/map.png" style='width:34rpx;height:38rpx;' mode="aspectFit"></image>
+          </view>
+          <text class='line'>路线</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
