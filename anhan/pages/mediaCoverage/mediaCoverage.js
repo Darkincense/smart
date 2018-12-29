@@ -21,6 +21,9 @@ Page({
   onReady: function () {
 
   },
+  toDetail:function(){
+    wx.navigateTo({ url: '../mediaCoverage_detail/mediaCoverage_detail' });
+  },
 
   /**
    * 生命周期函数--监听页面显示

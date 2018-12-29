@@ -1,2 +1,43 @@
 <!--pages/iThink/iThink.wxml-->
-<text>{{text}}</text>
+<view class='iThink'>
+ <view class='userCenter'>
+   <view class='avatorBox'> 
+  <view class='inAvatorBox'> 
+   <!-- <image class='avator'></image> -->
+  </view>
+    </view>
+    <text class='userName'>大鱼</text>
+    <text class='phoneNumber'>账号： 13520646170</text>
+ </view>
+
+ <view class='mainAd'>
+ <image class='logo' src='../../assets/logo.png' mode ="aspectFit"></image>
+ <image class='rebotText' src='../../assets/rebotText.png' mode ="aspectFit"></image>
+ <image class='logoTitle' src="../../assets/logoTitle.png" mode ="aspectFit"></image>
+ <image class='Rectangle' src="../../assets/Rectangle.png" mode ="aspectFit"></image>
+ <image class='RectangleText' src='../../assets/RectangleText.png' mode ="aspectFit"></image>
+ </view>
+
+ <view class='nav'>
+  <view class='navItem1 oneLineBetween'>
+   <view class='item'>
+   <image class='goLearn navImg' src='../../assets/learn.png' mode ="aspectFit"> </image>
+   <text class='navTitle'>学知识</text>
+   </view>
+    <view class='item'>
+   <image class='askDoctor navImg' src='../../assets/askDoctor.png' mode ="aspectFit"></image>
+    <text class='navTitle'>问医生</text>
+   </view>
+  </view>
+  <view class='navItem2 oneLineBetween'>
+  <view class='item'>
+  <image mode ="aspectFit" class='searchHospital navImg' src='../../assets/searchHospital.png'></image>
+   <text class='navTitle'>找医院</text>
+  </view>
+  <view  class='item'>
+  <image mode ="aspectFit" class='seePaper navImg' src='../../assets/seePaper.png'></image>
+   <text class='navTitle'>看论文</text>
+  </view>
+  </view>
+ </view>
+</view>

@@ -10,6 +10,11 @@
 - `wx.navigateTo({url: '../logs/logs'})` 
 保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 wx.navigateBack 可以返回到原页面。
 - `wx.switchTab(Object object)`
+````js
+ wx.switchTab({
+      url: '../whereCanSearch/whereCanSearch'
+    })
+````
 跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面
 - `wx.reLaunch(Object object)` 关闭所有页面，打开到应用内的某个页面
 

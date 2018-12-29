@@ -4,7 +4,7 @@
     <swiper current="{{swiperCurrent}}" bindchange="swiperChange" indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
       <block wx:for="{{bannerList}}" wx:key="{{index}}">
         <swiper-item>
-          <image src="{{item.banner}}"  class="slide-image" />
+          <image src="{{item.banner}}" class="slide-image" />
         </swiper-item>
       </block>
     </swiper>
@@ -22,21 +22,21 @@
       <image src="../../assets/cheet.png" mode='aspectFit' style='width:100rpx;height:100rpx;'></image>
     </view>
     <view class='list1'>
-      <view class='doctorTalk oneLineAround wh' bindtap='testApi'>
+      <view class='doctorTalk oneLineAround wh' data-name="doctorTalk" bindtap='toDoctorTalk'>
         <image src="../../assets/list_doctorTalk.png" mode='aspectFit' class='listImg'></image>
         <text class='black'>名医访谈</text>
       </view>
-      <view class='mediaCoverage oneLineAround wh'>
+      <view class='mediaCoverage oneLineAround wh' bindtap='toMediaCoverage'>
         <image src="../../assets/list_news.png" mode='aspectFit' class='listImg'></image>
         <text class='black'>媒体报道</text>
       </view>
     </view>
     <view class='list2'>
-      <view class='whereCanSearch oneLineAround wh'>
+      <view class='whereCanSearch oneLineAround wh' bindtap='toWhereCanSearch'>
         <image src="../../assets/list_search.png" mode='aspectFit' class='listImg'></image>
         <text class='fff'>哪里能查</text>
       </view>
-      <view class='inquiryResearch oneLineAround wh'>
+      <view class='inquiryResearch oneLineAround wh' bindtap='toInquiryResearch'>
         <image src="../../assets/list_research.png" mode='aspectFit' class='listImg'></image>
         <text class='black'>循证研究</text>
       </view>
@@ -44,7 +44,7 @@
   </view>
   <view class='ad'>
     <view>
-      <image src="{{productAd[0].banner}}" style='width:712rpx;height:212rpx'></image>
+      <image src="{{productAd[0].banner}}" style='width:712rpx;height:212rpx' bindtap='toProductDetail'></image>
     </view>
   </view>
   <!-- 打电话 -->

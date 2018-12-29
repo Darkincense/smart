@@ -1,1 +1,74 @@
 /* pages/iThink/iThink.wxss */
+
+.coverageBox {
+  width: 750rpx;
+  height: 194rpx;
+  padding: 12rpx 32rpx 14rpx;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+.contentBox {
+  height: 144rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contentBox .title {
+  width: 474rpx;
+  height: 72rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(30, 30, 30, 1);
+  line-height: 36rpx;
+}
+
+.imgBox {
+  width: 190rpx;
+  height: 144rpx;
+  background: pink;
+}
+
+.otherDetail .date {
+  width: 102rpx;
+  height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(159, 159, 159, 1);
+  line-height: 28rpx;
+  white-space: nowrap;
+}
+
+.otherDetail .seeNum {
+  width: 82rpx;
+  height: 28rpx;
+  font-size: 20rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(159, 159, 159, 1);
+  line-height: 28rpx;
+   white-space: nowrap;
+}
+
+
+/*底部 */
+.bottomBox {
+  position: relative;
+  width: 750rpx;
+  height: 174rpx;
+  background: rgba(243, 243, 247, 1);
+}
+
+.isBottom {
+  position: absolute;
+  left: 322rpx;
+  top: 20rpx;
+  width: 104rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(222, 222, 222, 1);
+  line-height: 36rpx;
+}

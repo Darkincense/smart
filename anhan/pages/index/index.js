@@ -3,7 +3,6 @@
 const app = getApp();
 const api = require("../../utils/api.js");
 const adData = require("../../mock/ad.js");
-const util = require("../../utils/util.js");
 
 Page({
   data: {
@@ -88,27 +87,28 @@ Page({
     }, 500);
 
   },
-  toForYouAnswer: function() {
-    wx.navigateTo({
-      url: '../forYouAnswer/forYouAnswer'
-    });
+  toForYouAnswer:function(){
+    wx.navigateTo({ url: '../forYouAnswer/forYouAnswer' });
   },
-
-  onLoad: function(option) {
+  toDoctorTalk:function(){
+    wx.navigateTo({ url: '../doctorTalk/doctorTalk' });
+  },
+  toWhereCanSearch: function () {
+    wx.switchTab({
+      url: '../whereCanSearch/whereCanSearch'
+    })
+  },
+  toMediaCoverage: function () {
+    wx.navigateTo({ url: '../mediaCoverage/mediaCoverage' });
+  },
+  toInquiryResearch:function(){
+    wx.navigateTo({ url: '../inquiryResearch/inquiryResearch' });
+  },
+  toProductDetail:function(){
+    wx.navigateTo({ url: '../product_detail/product_detail' });
+  },
+  onLoad:function(option){
     console.log(option);
-    var Storage = util.Storage;
-    Storage.setItem("name", "yue");
-    console.log("Load")
-
-  },
-  onShow: function() {
-
-  },
-  testApi: function() {
-    var Storage = util.Storage;
-    var data = "";
-    console.log(Storage.getItem("name"));
- 
   },
   onReady: function() {
     this.getAdData();

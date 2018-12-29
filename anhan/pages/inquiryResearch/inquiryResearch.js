@@ -28,6 +28,9 @@ Page({
   onShow: function () {
 
   },
+  toInquiryResearch_detail:function(){
+    wx.navigateTo({ url: '../inquiryResearch_detail/inquiryResearch_detail' });
+  },
 
   /**
    * 生命周期函数--监听页面隐藏

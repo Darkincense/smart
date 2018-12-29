@@ -1,2 +1,12 @@
 <!--pages/iThink/iThink.wxml-->
-<text>{{text}}</text>
+<view class='detail'>
+  <view class='renderBox'>无数据暂时填充</view>
+  <view class='gap' style='height:16rpx;'></view>
+  <view class='downLoad'>
+    <view class='lookForPdf'>
+      点击查看PDF
+    </view>
+    <text class='triangle'></text>
+    <view class='file'>安翰“磁控胶囊胃镜”系统医疗质量控制技术规范.PDF</view>
+  </view>
+</view>

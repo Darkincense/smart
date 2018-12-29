@@ -1,1 +1,58 @@
 /* pages/iThink/iThink.wxss */
+
+.taleItem {
+  height: 600rpx;
+  width: 750rpx;
+}
+
+.content {
+  padding: 32rpx 32rpx 40rpx 32rpx;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.taleItem video {
+  width: 686rpx;
+  height: 386rpx;
+}
+
+.taleItem .articleTitle {
+  width: 686rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: #000;
+  line-height: 40rpx;
+}
+
+.taleItem .introduction {
+  width: 686rpx;
+  height: 68rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(151, 151, 151, 1);
+  line-height: 36rpx;
+  margin-top: 28rpx;
+}
+
+.bottomBox {
+  position: relative;
+  width: 750rpx;
+  height: 202rpx;
+  background: rgba(243, 243, 247, 1);
+}
+
+.isBottom {
+  position: absolute;
+  left: 324rpx;
+  top: 24rpx;
+  width: 104rpx;
+  height: 36rpx;
+  font-size: 26rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(222, 222, 222, 1);
+  line-height: 36rpx;
+}

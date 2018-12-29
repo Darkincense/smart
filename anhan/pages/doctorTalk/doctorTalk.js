@@ -35,6 +35,9 @@ Page({
   onHide: function () {
 
   },
+  toDoctorTalk_detail: function () {
+    wx.navigateTo({ url: '../doctorTalk_detail/doctorTalk_detail' });
+  },
 
   /**
    * 生命周期函数--监听页面卸载

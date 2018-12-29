@@ -48,13 +48,22 @@
 
 /*多行文字截断*/
 
-.line-clamp {
- display: -webkit-box;
+.line-clamp, .line-clamp3 {
+  display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp:3;
+  -webkit-line-clamp: 3;
+}
+
+.line-clamp2 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 /* 颜色 */

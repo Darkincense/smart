@@ -12,12 +12,13 @@
     "pages/lastestNews/lastestNews",
     "pages/lastestNews_detail/lastestNews_detail",
     "pages/mediaCoverage/mediaCoverage",
+    "pages/mediaCoverage_detail/mediaCoverage_detail",
     "pages/product_detail/product_detail",
     "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#DCF6FF",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "首页",
     "navigationBarTextStyle":"black"
   },

@@ -1,1 +1,189 @@
 /* pages/iThink/iThink.wxss */
+
+.box1 {
+  width: 750rpx;
+  height: 746rpx;
+  padding: 40rpx 22rpx 0 20rpx;
+  box-sizing: border-box;
+}
+
+.box1 .content {
+  position: relative;
+  width: 686rpx;
+  height: 278rpx;
+  margin-left: 12rpx;
+}
+
+.box1 .title {
+  position: absolute;
+  left: 210rpx;
+  top: 0;
+  width: 330rpx;
+  height: 48rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(74, 74, 74, 1);
+  line-height: 48rpx;
+}
+
+.box1 .intro1 {
+  position: absolute;
+  left: 140rpx;
+  top: 102rpx;
+  width: 468rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(13, 132, 244, 1);
+  line-height: 40rpx;
+}
+
+.box1 .intro2 {
+  position: absolute;
+  left: 236rpx;
+  top: 160rpx;
+  width: 280rpx;
+  height: 40rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(245, 166, 35, 1);
+  line-height: 40rpx;
+}
+
+.manyBox {
+  position: absolute;
+  top: 214rpx;
+  left: 0rpx;
+  width: 686rpx;
+  height: 50rpx;
+}
+
+.manyBox .item {
+  width: 100rpx;
+  height: 50rpx;
+  background: rgba(215, 246, 255, 0.52);
+  border-radius: 4rpx;
+  border: 1px solid rgba(13, 132, 244, 1);
+}
+
+.manyBox .item text {
+  width: 48rpx;
+  height: 34rpx;
+  font-size: 24rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(13, 132, 244, 1);
+  line-height: 34rpx;
+}
+
+.manyBox .lastItem text {
+  width: 72rpx !important;
+}
+
+.boxImg1 {
+  height: 408rpx;
+  width: 708rpx;
+}
+
+.box2 {
+  width: 750rpx;
+  height: 1100rpx;
+  padding: 40rpx 22rpx 66rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.common {
+  position: relative;
+}
+
+.common .title {
+  position: absolute;
+  left: 160rpx;
+  top: 40rpx;
+  width: 432rpx;
+  height: 96rpx;
+  font-size: 34rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(74, 74, 74, 1);
+  line-height: 48rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.common .instro {
+  height: 80rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Semibold;
+  font-weight: 600;
+  color: rgba(151, 151, 151, 1);
+  line-height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 60rpx;
+}
+
+.common .imgBox {
+  position: absolute;
+  left: 20rpx;
+  top: 196rpx;
+  width: 708rpx;
+  height: 436rpx;
+  background: rgba(238, 238, 238, 1);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 16rpx;
+}
+
+.common .textarea {
+  position: absolute;
+  left: 32rpx;
+  bottom: 66rpx;
+  width: 708rpx;
+  height: 324rpx;
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  font-weight: 400;
+  color: rgba(151, 151, 151, 1);
+  line-height: 40rpx;
+  word-break: break-all;
+}
+
+view, text {
+  word-break: break-all;
+}
+
+.box3 {
+  width: 750rpx;
+  height: 1100rpx;
+}
+
+.box4 {
+  width: 750rpx;
+  height: 970rpx;
+}
+
+.box5 {
+  width: 750rpx;
+  height: 884rpx;
+}
+.mainAd {
+  width: 750rpx;
+  height: 212rpx;
+  display: block;
+  }
+
+/* 覆盖重写 */
+
+.box4 .textarea {
+  height: 278rpx !important;
+}
+
+.box5 .textarea {
+  height: 202rpx !important;
+  bottom: 30rpx !important;
+}

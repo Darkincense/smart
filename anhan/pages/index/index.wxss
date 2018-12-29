@@ -3,7 +3,6 @@
 .Carousel {
   width: 750rpx;
   height: 312rpx;
-  background-color: purple;
   position: relative;
 }
 
@@ -46,7 +45,6 @@
 .forYouAnswer,.list1,.list2 {
   width: 30%；
 }
-
 #MainSelect .forYouAnswer {
   display: flex;
   flex: 1;
@@ -91,7 +89,7 @@
 .wh {
   height: 50rpx;
   border-radius: 10rpx;
-  box-shadow: 1px 1px 1px 1px #ccc;
+  box-shadow: 1px 1px 1px 1px #f1f1f1;
   padding: 20rpx;
 }
 
