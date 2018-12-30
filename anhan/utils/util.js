@@ -30,7 +30,7 @@ function sendRequest(path, data, callback) {
 }
 
 function promiseRequest(url, data = {}) {
-  return new Promise(function (resolve, reject) {
+  return new Promise(function(resolve, reject) {
     wx.request({
       url: url,
       data: data,
@@ -54,6 +54,25 @@ function promiseRequest(url, data = {}) {
   });
 }
 
+const Storage = {
+  setItem: function(key, obj) {
+    wx.setStorage({
+      key: key,
+      data: obj
+    })
+  },
+  getItem: function(key) {
+    return wx.getStorageSync(key);
+  },
+  removeItem: function(key) {
+    wx.removeStorage({
+      key: key
+    })
+  }
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  sendRequest,sendRequest,
+  Storage: Storage
 }
