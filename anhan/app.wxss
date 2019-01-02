@@ -48,13 +48,14 @@
 
 /*多行文字截断*/
 
-.line-clamp, .line-clamp3 {
+
+.line-clamp {
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
   overflow: hidden;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
 }
 
 .line-clamp2 {
@@ -65,7 +66,14 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-
+.line-clamp3 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
 /* 颜色 */
 
 .gray {

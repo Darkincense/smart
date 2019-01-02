@@ -1,6 +1,8 @@
 /* pages/whereCanSearch/whereCanSearch.wxss */
 
 .city {
+  position: absolute;
+  left: 66rpx;
   width: 72rpx;
   height: 34rpx;
   font-size: 24rpx;
@@ -15,9 +17,17 @@
 }
 
 .location {
+  position: relative;
   width: 174rpx;
   height: 80rpx;
   float: left;
+}
+.locationIcon {
+  position: absolute;
+  left: 32rpx;
+  bottom: 22rpx;
+  width: 24rpx;
+  height: 34rpx;
 }
 
 .inputBox {
@@ -80,16 +90,17 @@
 
 .routeLineBox {
   width: 750rpx;
+  height: 800rpx;
 }
 
 .route_item {
   height: 164rpx;
   padding: 32rpx 32rpx 32rpx 34rpx;
-  border: 1px solid #ccc;
+  border-top: 1px solid #ccc;
 }
 
 .name {
-  width: 210rpx;
+  width: 486rpx;
   height: 36rpx;
   font-size: 26rpx;
   font-family: PingFangSC-Semibold;
@@ -99,7 +110,7 @@
 }
 
 .distance {
-  width: 76rpx;
+  width: 150rpx;
   height: 40rpx;
   font-size: 28rpx;
   font-family: PingFangSC-Regular;
@@ -218,4 +229,8 @@
   color: rgba(74, 74, 74, 1);
   line-height: 40rpx;
   white-space: nowrap;
+}
+/* 地图map */
+.map {
+  width: 750rpx;
 }

@@ -43,7 +43,7 @@
         </view>
         <view class='contentArticlesBox'>
           <text class='career'>北京协和医院 副主任医师 副教授</text>
-          <view class='context line-clamp'>
+          <view class='context line-clamp3'>
             胃病，作为一种现代人司空见惯的疾病之一，你是否有真正重视过？当你发生呕吐、恶心的时候，它可能在提醒你要养胃了。那么，胃病的原因是什么呢？ 其实，胃病是一种多病因疾病，诸如遗传、环境、饮食、药物，细菌以及吸烟，过度饮酒等都可引起胃病。上述这
           </view>
         </view>

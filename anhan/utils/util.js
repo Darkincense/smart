@@ -29,6 +29,18 @@ function sendRequest(path, data, callback) {
   })
 }
 
+function toFixed(number, fractionDigits) {
+  var times = Math.pow(10, fractionDigits);
+  var roundNum = Math.round(number * times) / times;
+  return roundNum.toFixed(fractionDigits);
+}
+
+function parseDistance(number) {
+  var distance = number / 1000;
+  return toFixed(distance,1);
+}
+
+
 function promiseRequest(url, data = {}) {
   return new Promise(function(resolve, reject) {
     wx.request({
@@ -54,25 +66,7 @@ function promiseRequest(url, data = {}) {
   });
 }
 
-const Storage = {
-  setItem: function(key, obj) {
-    wx.setStorage({
-      key: key,
-      data: obj
-    })
-  },
-  getItem: function(key) {
-    return wx.getStorageSync(key);
-  },
-  removeItem: function(key) {
-    wx.removeStorage({
-      key: key
-    })
-  }
-}
-
 module.exports = {
   formatTime: formatTime,
-  sendRequest,sendRequest,
-  Storage: Storage
+  parseDistance: parseDistance
 }
