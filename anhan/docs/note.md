@@ -11,9 +11,21 @@
 - video,image与view上下有间隙， dispaly:block
 - `"navigationStyle": "custom"` 自定义小程序导航栏
 - `<view> \n</view>`文本换行
+- 模拟数据 https://www.easy-mock.com
+
+## 地图导航
+
+- [腾讯位置服务](https://lbs.qq.com/console/customized/log/?console=customizedLog)
+- [微信小程序之 map 地图使用总结，了解一下？](https://www.jianshu.com/p/5b2f95a16fce)
   ## 遗留
+
   - 爱胃专线 蓝色椭圆背景 
    + 导航栏加用户中心渐变色背景直接使用
   - 我想用户中心背景颜色 椭圆图案
   - 胃你解答 展开查看上下，爱心
   - 产品中心图片
+
+  ## 记录
+
+  - appid `wx429614b3258abe8d`
+  - 腾讯定位`T4NBZ-CRBCX-QSJ4Q-Z6NAY-CMT4Q-VWFTW`
