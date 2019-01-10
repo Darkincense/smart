@@ -18,6 +18,32 @@
  `onLoad(Object query)` onLoad 的参数中获取打开当前页面路径中的参数。
 
 ## snippets
+- 固定顶部
+````js
+// wxml
+<import src="../../component/fixed_normal_head.wxml" />
+
+<scroll-view class='posScroll' scroll-y style="height: {{scrollHeight}};">
+</scroll-view>
+// 或者
+<view class='exceptHeader'></view>
+.exceptHeader {
+  position: absolute;
+  top: 128rpx;
+}
+// js
+
+````js
+ data: scrollHeight: ''
+ onLoad:
+  var that = this;
+  app.setHeight(height => {
+      that.setData({
+        scrollHeight: (height - 128) + 'px'
+      })
+    })
+
+````
 - dataset
  `var data = e.currentTarget.dataset;`
 - load

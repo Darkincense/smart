@@ -8,19 +8,25 @@
 </head>
 <body>
     <script>
+        var str = "医生,护士";
+        function zhiChen(str){
+         var hasComma = str.indexOf(",") === -1;
+         if(hasComma){
+            var reg=/,/gi; 
+str=str.replace(reg,""); 
+             
+         }
+        }
+
+       var newStr =  zhiChen(str)
+       console.log(newStr);
+       var str="a,b,c,d," 
+var reg=/,/gi; 
+str=str.replace(reg,""); 
+alert(str); 
+       
         
-        var obj = {
-            data:[],
-            detail:{}
-        }
-
-        function printDetail(name,data){
-            
-            console.log(name+ '--------------');
-            console.dir(data);
-        }
-
-        printDetail("obj参数",obj)
+        
         </script>
 </body>
 </html>
