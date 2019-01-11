@@ -18,6 +18,20 @@
  `onLoad(Object query)` onLoad 的参数中获取打开当前页面路径中的参数。
 
 ## snippets
+- setData
+````js
+ changeItemInArray() {
+    // 对于对象或数组字段，可以直接修改一个其下的子字段，这样做通常比修改整个对象或数组更好
+    this.setData({
+      'array[0].text': 'changed data'
+    })
+  },
+  changeItemInObject() {
+    this.setData({
+      'object.text': 'changed data'
+    })
+  },
+````
 - 固定顶部
 ````js
 // wxml

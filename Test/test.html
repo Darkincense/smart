@@ -1,57 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
 </head>
+
 <body>
-    <script>
-// console.log((new Date(dateStr)).formate("yyyy-MM-dd"))
-Date.prototype.formate = function (format) {
-  const o = {
-    "M+": this.getMonth() + 1, // month
-    "d+": this.getDate(), // day
-    "h+": this.getHours(), // hour
-    "m+": this.getMinutes(), // minute
-    "s+": this.getSeconds(), // second
-    "q+": Math.floor((this.getMonth() + 3) / 3), // quarter
-    S: this.getMilliseconds()
-    // millisecond
-  };
-
-  if (/(y+)/.test(format)) {
-    format = format.replace(
-      RegExp.$1,
-      `${this.getFullYear()}`.substr(4 - RegExp.$1.length)
-    );
-  }
-
-  for (const k in o) {
-    if (new RegExp(`(${k})`).test(format)) {
-      format = format.replace(
-        RegExp.$1,
-        RegExp.$1.length == 1 ? o[k] : `00${o[k]}`.substr(`${o[k]}`.length)
-      );
-    }
-  }
-  return format;
-};
-
-function parseCtime(str) {
-  var temp = str;
-  if (typeof temp === "string") {
-    temp = Number(str);
-  }
-  return new Date(temp).formate("yyyy-MM-dd");
-}
-       console.log(parseCtime(1547111698));
-       
-        console.log(new Date(1547111698*1000));
-        console.log(new Date(1398250549490));
-        
-        
-        </script>
+  <script>
+   
+  </script>
 </body>
+
 </html>
