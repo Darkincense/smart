@@ -165,7 +165,13 @@ function getArrayNum(arr, n1, n2) {
   return arr1;
 }
 
-
+  // 数组对象根据某一个相同的键去重
+  function uniqueArrayObj(arr, name) {
+    var hash = {};
+    return arr.reduce(function(item, next) {
+      hash[next[name]] ? '' : hash[next[name]] = true && item.push(next);
+      return item;
+    }, []);
 
 // 去除重复的数据
 function dedupe(client, hasher) {

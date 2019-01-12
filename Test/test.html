@@ -10,6 +10,20 @@
 
 <body>
   <script>
+    
+  var ObjArr = [{name:'1',key:'2'},{name:'3',key:'2'},{name:'1',key:'3'}]
+    function arrayUnique2(arr, name) {
+      var hash = {};
+      return arr.reduce(function (item, next) {
+        hash[next[name]] ? '' : hash[next[name]] = true && item.push(next);
+        return item;
+      }, []);
+    }
+
+console.log(arrayUnique2(ObjArr,'name'));
+
+ 
+   
    
   </script>
 </body>
