@@ -1,0 +1,412 @@
+/**app.wxss 全局css样式**/
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.borderBox {
+  box-sizing: border-box;
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.clearfix {
+  *zoom: 1;
+  /* ie67专用 */
+}
+
+.jiantou {
+  width: 0;
+  height: 0;
+  border-top: 14px solid rgba(74, 74, 74, 1);
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+}
+
+/* ------------------------------------------------------------------font------------------------------------ */
+/* font-family: PingFangSC-Regular; */
+
+/* ---------------------------------------------------------------块变化------------------------------- */
+.block {
+  display: block !important;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+/* ---------------------------------------------------显示隐藏------------------------------------------------------------- */
+.show {
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+.hidden {
+  visibility: hidden !important;
+}
+
+/* -----------------------------------------------------------------text--------------------------------------------------------------- */
+.nowrap {
+  white-space: nowrap;
+}
+
+.break-all {
+  word-break: break-all;
+}
+
+.tac {
+  text-align: center;
+}
+
+.tal {
+  text-align: left;
+}
+
+.tar {
+  text-align: right;
+}
+
+.vm {
+  vertical-align: middle;
+}
+
+.vt {
+  vertical-align: top;
+}
+
+.vb {
+  vertical-align: bottom;
+}
+
+/*多行文字截断*/
+
+.line-clamp {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp2 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.line-clamp3 {
+  display: -webkit-box;
+  word-break: break-all;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+/* ---------------------------------------------------color------------------------------------- */
+
+.gray {
+  color: #9f9f9f;
+}
+
+.fff {
+  color: #fff;
+}
+
+.black1 {
+  color: #1e1e1e;
+}
+
+.black {
+  color: #000;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.jiantou {
+  width: 0;
+  height: 0;
+  border-top: 14rpx solid rgba(74, 74, 74, 1);
+  border-left: 14rpx solid transparent;
+  border-right: 14rpx solid transparent;
+}
+
+/* -------------------------------------------------------------flex------------------------------------------------------- */
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 单行水平垂直 */
+
+.oneLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向左 */
+
+.oneLineStart {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平向右 */
+
+.oneLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 单行垂直居中，水平保持间距 */
+
+.oneLineAround {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 单行垂直居中，两端对齐 */
+
+.oneLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 超过单行设置的最大宽度，允许换行显示 */
+
+.f-wrap {
+  flex-wrap: wrap;
+}
+
+/* 多轴线方向，一般配合  wrap 使用 */
+/* 宽度不足换行后，垂直方向靠上排列 */
+
+.mulitLineStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+/* 宽度不足换行后，垂直方向居中排列 */
+.mulitLineCenter {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+/* 宽度不足换行后，垂直方向上靠上下两侧间隔排列 */
+.mulitLineEnd {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: flex-end;
+}
+
+/* 宽度不足换行后，垂直方向上保持间隔排列 */
+.mulitLineAround {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+/* 纵轴变主轴，垂直靠上，水平居中 */
+
+.columnStart {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直考下，水平居中 */
+
+.columnEnd {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直居中，水平居中 */
+
+.columnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直间隔排列，水平居中 */
+
+.columnAround {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 纵轴变主轴，垂直上下两侧按间隔排列，水平居中 */
+
+.columnBetween {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*---------------------------------盒子宽---------------------------------------------*/
+
+.w3 {
+  width: 33.333%;
+}
+
+.w2 {
+  width: 50%;
+}
+
+.w1 {
+  width: 100%;
+}
+
+.w4 {
+  width: 25%;
+}
+
+/* -----------------------------------------12栅格-------------------------- */
+.col-12 {
+  width: 100%;
+}
+
+.col-11 {
+  width: 91.66666667%;
+}
+
+.col-10 {
+  width: 83.33333333%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-8 {
+  width: 66.66666667%;
+}
+
+.col-7 {
+  width: 58.33333333%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-5 {
+  width: 41.66666667%;
+}
+
+.col-4 {
+  width: 33.33333333%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-2 {
+  width: 16.66666667%;
+}
+
+.col-1 {
+  width: 8.33333333%;
+}
+
+/* --------------------------------------images-------------------------- */
+
+/* 将背景图像等比缩放到宽度或高度与容器的宽度或高度相等，背景图像始终包含在容器内 */
+.img {
+  -webkit-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 定义将背景图片等比例缩放到完全覆盖容器，背景图像有可能超过容器 */
+.img1 {
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 定义背景图像横向平铺 */
+.img2 {
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+}
+
+/* 定义背景图像纵向平铺 */
+.img3 {
+  background-repeat: repeat-y;
+  background-size: 100% auto;
+}
+
+/* 定义背景图像横向100%，纵向自适应; */
+.img4 {
+  -webkit-background-size: 100% auto;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 定义背景图像横向自适应，纵向为100% */
+.img5 {
+  -webkit-background-size: auto 100%;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* 定义背景图像居中显示 */
+.img6 {
+  background-repeat: no-repeat;
+  background-position: center;
+}
