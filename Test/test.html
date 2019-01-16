@@ -1,46 +1,89 @@
 <!DOCTYPE html>
 <html>
-<head>
-<style> 
-#main {
-  width: 350px;
-  height: 350px;
-  border: 1px solid #c3c3c3;
-  display: flex;
-  flex-direction: row;
-   justify-content: flex-start;
-  align-items: center;
-}
 
-#main div {
-  width: 50px;
-  height: 50px;
-}
-</style>
+<head>
+  <style>
+    #main {
+      width: 350px;
+      height: 350px;
+      border: 1px solid #c3c3c3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #main div {
+      width: 100px;
+      height: 100px;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="main">
-  <div style="background-color:coral;">A</div>
-  <div style="background-color:lightblue;">B</div>
-  <div style="background-color:khaki;">C</div>
-  <div style="background-color:pink;">D</div>
-  <div style="background-color:lightgrey;">E</div>
-  <div style="background-color:lightgreen;">F</div>
-</div>
+  <div id="main">
+    <div id="box" style="background-color:green;">debounce</div>
+  </div>
 
-<p>点击“尝试一下”按钮设置 flexDirection 属性的值为 "column-reverse"。</p>
+  <p>防抖，一定时间内频繁触发只允许执行一次，setTimeout 函数被不断替换迭代</p>
 
-<button onclick="myFunction()">尝试一下</button>
 
-<script>
-function myFunction()
-{
-document.getElementById("main").style.flexDirection = "column";
-}
-</script>
+  <script>
+    var dom = document.getElementById("box");
+    // box.onclick = function () {
+    //   console.log(this);
+    // }
+    box.onclick = debounce(function (e) {
+      console.log(this);
+      console.log(e)
+    }, 1000, true)
 
-<p><b>注意：</b>Internet Explorer 和 Safari 不支持 flexDirection 属性。</p>
+
+    /*  function debounce(func, wait) {
+       var timeout;
+       console.log(timeout)
+       console.log('debounce内部:' + this);
+       return function () {
+         console.log('timeout name:' + timeout)
+         var context = this;
+         var args = arguments;
+         // console.log(this);
+         // console.log(arguments)
+         clearTimeout(timeout);
+         timeout = setTimeout(() => {
+           func.apply(context, args)
+         }, wait);
+       }
+     } */
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function () {
+        console.log('timeout name:' + timeout)
+        var context = this;
+        var args = arguments;
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+          var canApply = !timeout;
+          timeout = setTimeout(function () {
+            timeout = null; // 在 wait 时间后防抖函数才可以再次被触发
+          }, wait)
+          console.log('canApply:' + canApply);
+          if (canApply) func.apply(context, args) // 第一次 !undefined 执行
+        } else {
+          timeout = setTimeout(() => {
+            func.apply(context, args)
+          }, wait);
+        }
+
+      }
+    }
+  </script>
+
 
 </body>
+
 </html>
