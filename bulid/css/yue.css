@@ -161,6 +161,7 @@
   justify-content: center;
 }
 
+
 /* 单行水平垂直 */
 
 .oneLineCenter {
@@ -213,6 +214,7 @@
 }
 
 /* 多轴线方向，一般配合  wrap 使用 */
+
 /* 宽度不足换行后，垂直方向靠上排列 */
 
 .mulitLineStart {
@@ -223,6 +225,7 @@
 }
 
 /* 宽度不足换行后，垂直方向居中排列 */
+
 .mulitLineCenter {
   display: flex;
   display: -webkit-flex;
@@ -230,7 +233,8 @@
   align-content: center;
 }
 
-/* 宽度不足换行后，垂直方向上靠上下两侧间隔排列 */
+/* 宽度不足换行后，垂直方向靠下排列 */
+
 .mulitLineEnd {
   display: flex;
   display: -webkit-flex;
@@ -239,6 +243,7 @@
 }
 
 /* 宽度不足换行后，垂直方向上保持间隔排列 */
+
 .mulitLineAround {
   display: flex;
   display: -webkit-flex;
@@ -246,6 +251,14 @@
   align-content: space-around;
 }
 
+/* 宽度不足换行后，垂直方向上靠两侧最顶开始间隔排列 */
+
+.mulitLineBetween {
+  display: flex;
+  display: -webkit-flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+}
 /* 纵轴变主轴，垂直靠上，水平居中 */
 
 .columnStart {
@@ -256,7 +269,7 @@
   align-items: center;
 }
 
-/* 纵轴变主轴，垂直考下，水平居中 */
+/* 纵轴变主轴，垂直靠下，水平居中 */
 
 .columnEnd {
   display: flex;
