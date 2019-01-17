@@ -3,50 +3,84 @@
 
 <head>
   <style>
-    @keyframes bouncing-loader {
-      to {
-        opacity: 0.1;
-        transform: translate3d(0, -1rem, 0);
-      }
-    }
-
-    .bouncing-loader {
+    #main {
+      width: 350px;
+      height: 350px;
+      border: 1px solid #c3c3c3;
       display: flex;
       justify-content: center;
+      align-items: center;
     }
 
-    .bouncing-loader>div {
-      width: 1rem;
-      height: 1rem;
-      margin: 3rem 0.2rem;
-      background: #8385aa;
-      border-radius: 50%;
-      animation: bouncing-loader 0.6s infinite alternate;
-    }
-
-    .bouncing-loader>div:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-
-    .bouncing-loader>div:nth-child(3) {
-      animation-delay: 0.4s;
+    #main div {
+      width: 100px;
+      height: 100px;
+      color: #fff;
+      text-align: center;
+      line-height: 100px;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="bouncing-loader">
-    <div></div>
-    <div></div>
-    <div></div>
+  <div id="main">
+    <div id="box" style="background-color:green;">debounce</div>
   </div>
 
+  <p>防抖，一定时间内频繁触发只允许执行一次，setTimeout 函数被不断替换迭代</p>
+
+
   <script>
-    function myFunction() {
-      document.getElementById("main").style.flexDirection = "column";
+    var dom = document.getElementById("box");
+    // box.onclick = function () {
+    //   console.log(this);
+    // }
+    box.onclick = debounce(function (e) {
+      console.log(this);
+      console.log(e)
+    }, 1000, true)
+
+
+    /*  function debounce(func, wait) {
+       var timeout;
+       console.log(timeout)
+       console.log('debounce内部:' + this);
+       return function () {
+         console.log('timeout name:' + timeout)
+         var context = this;
+         var args = arguments;
+         // console.log(this);
+         // console.log(arguments)
+         clearTimeout(timeout);
+         timeout = setTimeout(() => {
+           func.apply(context, args)
+         }, wait);
+       }
+     } */
+
+    function debounce(func, wait, immediate) {
+      var timeout;
+      return function () {
+        console.log('timeout name:' + timeout)
+        var context = this;
+        var args = arguments;
+        if (timeout) clearTimeout(timeout);
+        if (immediate) {
+          var canApply = !timeout;
+          timeout = setTimeout(function () {
+            timeout = null; // 在 wait 时间后防抖函数才可以再次被触发
+          }, wait)
+          console.log('canApply:' + canApply);
+          if (canApply) func.apply(context, args) // 第一次 !undefined 执行
+        } else {
+          timeout = setTimeout(() => {
+            func.apply(context, args)
+          }, wait);
+        }
+
+      }
     }
-    
   </script>
 
 
