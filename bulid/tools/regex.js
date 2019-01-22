@@ -1,5 +1,5 @@
 //checkType('165226226326','phone')
-function checkType(str) {
+function checkType(str, type) {
 	switch (type) {
 		case 'email':
 			return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
@@ -21,9 +21,9 @@ function checkType(str) {
 		case 'english':
 			return /^[a-zA-Z]+$/.test(str);
 		case 'allChinese':
-			return /^[\u4E00-\u9FA5]+$/.test(str); 
+			return /^[\u4E00-\u9FA5]+$/.test(str);
 		case 'hasChinese':
-			return /^[\u4E00-\u9FA5]/.test(str); 
+			return /^[\u4E00-\u9FA5]/.test(str);
 		case 'lower':
 			return /^[a-z]+$/.test(str);
 		case 'upper':

@@ -1,9 +1,24 @@
 ## 技巧
-#### 在`index.css`中使用导入方法引入`reset`文件
+
+1. opacity 透明度继承问题
+- 使用 background: rgba 的第四个参数设置透明程度
+````css
+.Mask {
+  position: fixed;
+  width: 750rpx;
+  height: 100%;
+  background: #000;
+  opacity: 0.5;
+  z-index: 999;
+}
 ````
-@import "reset.css";
-...
+
+````css
+.Mask {
+  background: rgba(0, 0, 0, .5);
+}
 ````
+
 ## 在线工具
 
 * [base64 图片](http://tool.chinaz.com/tools/imgtobase)
