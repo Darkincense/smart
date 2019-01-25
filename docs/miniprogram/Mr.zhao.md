@@ -57,7 +57,6 @@
 ## 购物车
 - 配送时间选择 
 - 商品列表 `shoppingCart_productList` co
-- 支付弹窗 在商品列表做
 - 支付成功 `shoppingCart_paySuccess` co
 - 订单详情 `shoppingCart_orderDetail`
 - 优惠券 co
@@ -71,6 +70,3 @@
 - 添加收货地址 `my_addShippingAddress` co
 - 选择地址 `selectAddress` co
 
-### 小程序测试号信息
-AppID wx429614b3258abe8d
-AppSecret d2579d4e63ced4c21d9e38895d18da5d
