@@ -1,4 +1,11 @@
-//checkType('165226226326','phone')
+
+/**
+ * 按类型校验字符串
+ *
+ * @param {*} str
+ * @param {*} type
+ * @returns
+ */
 function checkType(str, type) {
 	switch (type) {
 		case 'email':

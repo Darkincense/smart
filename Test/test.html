@@ -32,55 +32,17 @@
 
 
   <script>
-    var dom = document.getElementById("box");
-    // box.onclick = function () {
-    //   console.log(this);
-    // }
-    box.onclick = debounce(function (e) {
-      console.log(this);
-      console.log(e)
-    }, 1000, true)
+    var str = "防抖，一定时间内频繁触发只允许执行一次，setTimeout 函数被不断替换迭代";
 
-
-    /*  function debounce(func, wait) {
-       var timeout;
-       console.log(timeout)
-       console.log('debounce内部:' + this);
-       return function () {
-         console.log('timeout name:' + timeout)
-         var context = this;
-         var args = arguments;
-         // console.log(this);
-         // console.log(arguments)
-         clearTimeout(timeout);
-         timeout = setTimeout(() => {
-           func.apply(context, args)
-         }, wait);
-       }
-     } */
-
-    function debounce(func, wait, immediate) {
-      var timeout;
-      return function () {
-        console.log('timeout name:' + timeout)
-        var context = this;
-        var args = arguments;
-        if (timeout) clearTimeout(timeout);
-        if (immediate) {
-          var canApply = !timeout;
-          timeout = setTimeout(function () {
-            timeout = null; // 在 wait 时间后防抖函数才可以再次被触发
-          }, wait)
-          console.log('canApply:' + canApply);
-          if (canApply) func.apply(context, args) // 第一次 !undefined 执行
-        } else {
-          timeout = setTimeout(() => {
-            func.apply(context, args)
-          }, wait);
-        }
-
+    function splitWords(word, num) {
+      let slices = [];
+      const chars = word.split('');
+      while (chars.length > 0) {
+        slices = slices.concat(chars.splice(0, num).join(''));
       }
+      return slices;
     }
+    console.log(splitWords(str, 10));
   </script>
 
 

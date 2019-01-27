@@ -1,71 +1,4 @@
 var bom = {
-	queryString: {
-		get: function (name) {
-			var getAll = searchString => {
-				var query = searchString.replace(/^\?/, '');
-				var queryObject = {};
-				var queryArray = query.split('&').filter(i => i).forEach((string, index) => {
-					var parts = string.split('=');
-					queryObject[parts[0]] = decodeURIComponent(parts[1]);
-				});
-				return queryObject;
-			}
-			if (arguments.length === 0) {
-				return getAll(location.search);
-			} else {
-				return getAll(location.search)[name];
-			}
-		},
-		set: function (name, value) {
-			var set = (search, name, value) => {
-				var regex = new RegExp(`(${encodeURIComponent(name)})=([^&]*)`, '');
-				if (regex.test(search)) {
-					return search.replace(regex, (match, c1, c2) => `${c1}=${encodeURIComponent(value)}`);
-				} else {
-					return search.replace(/&?$/, `&${encodeURIComponent(name)}=${encodeURIComponent(value)}`);
-				}
-			}
-			if (arguments.length === 1 && typeof name === 'object' && name !== null) {
-				var search = location.search;
-				for (var key in arguments[0]) {
-					search = set(search, key, arguments[0][key]);
-				}
-				location.search = search;
-			} else {
-				location.search = set(location.search, name, value);
-			}
-		},
-	},
-};
-
-function scroll() {
-	return {
-		left: window.pageXOffset || document.documentElement.scrollLeft,
-		top: window.pageYOffset || document.documentElement.scrollTop
-	};
-}
-
-//封装一个方法，兼容获取浏览器可视区域的宽高；
-function client() {
-	if (window.innerWidth !== undefined) {
-		return {
-			width: window.innerWidth,
-			height: window.innerHeight
-		};
-	} else if (document.compatMode === "CSS1Compat") {
-		return {
-			width: document.documentElement.clientWidth,
-			height: document.documentElement.clientHeight
-		};
-	} else {
-		return {
-			width: document.body.clientWidth,
-			height: document.body.clientHeight
-		};
-	}
-}
-
-var device = {
 	/**
 	 * 获取页面最大高度
 	 * @return 属性样式
@@ -138,8 +71,4 @@ var device = {
 		while (e = e.offsetParent) t += e.offsetTop;
 		return t;
 	}
-}
-
-function goBack() {
-	history.back();
 }

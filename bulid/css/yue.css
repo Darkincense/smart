@@ -96,7 +96,7 @@
 
 /*多行文字截断*/
 
-.line-clamp {
+.line {
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -105,7 +105,7 @@
   -webkit-line-clamp: 1;
 }
 
-.line-clamp2 {
+.line2 {
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -114,7 +114,7 @@
   -webkit-line-clamp: 2;
 }
 
-.line-clamp3 {
+.line3 {
   display: -webkit-box;
   word-break: break-all;
   text-overflow: ellipsis;
@@ -259,6 +259,7 @@
   flex-wrap: wrap;
   align-content: space-between;
 }
+
 /* 纵轴变主轴，垂直靠上，水平居中 */
 
 .columnStart {

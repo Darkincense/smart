@@ -4,6 +4,7 @@
 // (new Date()).formate("yyyy-MM-dd hh:mm:ss")   ==>  2018-07-18 10:01:49
 // (new Date()).formate("yyyy-MM-dd hh:mm:ss.S") ==>  2018-07-18 10:10:01.956
 // (new Date()).formate("yyyy-M-d h:m:s.S")      ==>  2018-7-18 10:11:9.724
+
 Date.prototype.formate = function (format) {
   const o = {
     "M+": this.getMonth() + 1, // month
