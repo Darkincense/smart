@@ -1,4 +1,3 @@
-
 /**
  * 按类型校验字符串
  *
@@ -8,6 +7,8 @@
  */
 function checkType(str, type) {
 	switch (type) {
+		case 'empty':
+			return (str == null || str == '' || str == undefined || typeof (str) == typeof (undefined));
 		case 'email':
 			return /^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/.test(str);
 		case 'phone':

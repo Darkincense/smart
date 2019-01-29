@@ -28,21 +28,11 @@
     <div id="box" style="background-color:green;">debounce</div>
   </div>
 
-  <p>防抖，一定时间内频繁触发只允许执行一次，setTimeout 函数被不断替换迭代</p>
 
 
   <script>
-    var str = "防抖，一定时间内频繁触发只允许执行一次，setTimeout 函数被不断替换迭代";
-
-    function splitWords(word, num) {
-      let slices = [];
-      const chars = word.split('');
-      while (chars.length > 0) {
-        slices = slices.concat(chars.splice(0, num).join(''));
-      }
-      return slices;
-    }
-    console.log(splitWords(str, 10));
+    var str = "/Upload/image/2019-01-23/5c483cb3d2938.jpeg";
+    console.log(str.indexOf('/'))
   </script>
 
 

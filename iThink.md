@@ -1,6 +1,8 @@
 # 我想
 
-- 还原设计稿，细心，细心，再细心
+- 细心，细心，再细心
+ + bindtap='starFn'
+ + res.data.respone_data.lists
 - function 单一职责原则,入口，出口
 - 一遍写过，避免重构
 - 异步把控
