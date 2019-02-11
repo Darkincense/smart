@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Interview = function (obj) {
+            var F = function () {}
+            F.prototype.willAnswerInterview = function () {
+                console.log('开始答题之前');
+            }
+            F.prototype.didAnswerInterview = function () {
+                console.log('答题过后');
+            }
+            F.prototype.interviewerSay = obj.interviewerSay || function () {
+                throw new Error('子类必须重写 interviewerSay 方法');
+            }
+            F.prototype.waitNotice = function () {
+                console.log('等通知。。。');
+            }
+            F.prototype.interviewResult = obj.interviewResult || function () {
+                throw new Error('子类必须重写 result 方法');
+            }
+            F.prototype.init = function () {
+                this.willAnswerInterview();
+                this.didAnswerInterview();
+                this.interviewerSay();
+                this.waitNotice();
+                this.interviewResult();
+            }
+            return F;
+        };
+
+        var XiaomiInterview = Interview({
+            interviewerSay() {
+                console.log('异步知识点不过关');
+            },
+            interviewResult() {
+                console.log('回去等通知');
+            }
+        });
+        var xiaomiInterview = new XiaomiInterview;
+        xiaomiInterview.init();
+    </script>
+</body>
+
+</html>

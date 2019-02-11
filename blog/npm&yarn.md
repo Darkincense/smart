@@ -72,6 +72,8 @@ npm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.j
 npm init -y | 省略项目初始化需要填写的信息
 npm config list  | 查看自己npm的配置信息
 script **执行命令** | npm run 去执行这个命令。
+npm list -g --depth 0 | 查看已全局安装的依赖
+npm prefix -g | 查看全局node模块的安装路径
 
 ### 4. 切换淘宝源
 ````
@@ -189,6 +191,18 @@ yarn upgrade [package]@[tag]
 - 移除一个依赖
 ````bash
 yarn remove [package]
+````
+- 查看yarn全局安装路径
+````bash
+yarn global bin
+````
+- 从全局移除一个依赖
+````bash
+yarn global remove @tarojs/cli
+````
+- 查看全局安装的列表
+````bash
+yarn global list
 ````
 
 
