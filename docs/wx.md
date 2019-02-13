@@ -75,6 +75,19 @@
  <scroll-view scroll-y style="white-space: nowrap;height:100%;" bindscrolltolower="updateData">
  </scroll-view>
 ````
+- 事件绑定与事件冒泡 
+bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以阻止冒泡事件向上冒泡。
+````js
+<view id="outer" bindtap="handleTap1">
+  outer view
+  <view id="middle" catchtap="handleTap2">
+    middle view
+    <view id="inner" bindtap="handleTap3">
+      inner view
+    </view>
+  </view>
+</view>
+````
 ## 六、case
 - class
   + `<view wx:for="{{mediaData}}" class="coverageBox {{(index < mediaData.length -1) ? 'border_bottom':''  }}" data-index ="{{index}}"  ></view>`
