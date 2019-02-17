@@ -13,6 +13,7 @@
 ## 一、我的
 - wx.yue = Event; // 注册发布订阅模式
 - wx.Storage = Storage;   // 注册 storage
+- async await
 - flexStyle
 
 ## 二、component
@@ -35,9 +36,25 @@
 
 - onLoad
  `onLoad(Object query)` onLoad 的参数中获取打开当前页面路径中的参数。
- - 页面跳转传递参数 
+ - 页面跳转传递参数 (不支持 tabbar页面)
   + `wx.navigateTo({ url: `../mediaCoverage_detail/mediaCoverage_detail?id=${target.id}`});`
-
+  + `wx.reLaunch` 关闭所有页面，打开到应用内的某个页面(支持所有页面)
+````js
+toSortPage(e) {
+        var data = e.currentTarget.dataset;
+        wx.reLaunch({
+            url: '../sort/sort?id=' + data.id + '&type=' + data.type + '&index=' + data.index
+        })
+    },
+````
+- setData  函数用于将数据从逻辑层发送到视图层（异步），同时改变对应的 this.data 的值（同步）
+````js
+ this.setData({
+      text: 'changed data'
+    },function(){
+      // setData引起的界面更新渲染完毕后的回调函数
+    })
+````
 ## 四、路由
 - 返回上一页
 ````bash
@@ -59,7 +76,10 @@
     })
 ````
 
-- `wx.reLaunch(Object object)` 关闭所有页面，打开到应用内的某个页面
+- `redirectTo` 与 `navigateTo` 
+  +  均支持非 tabbar页面的 路由跳转传参
+  + `redirectTo` 关闭当前的页面再跳转
+  + `navigateTo` 保留当前的页面，使用 wx.navigateBack 可以返回到原页面(最多10层)
 
 ## 五、事件与生命周期
 - 下拉刷新
@@ -96,6 +116,23 @@ bind事件绑定不会阻止冒泡事件向上冒泡，catch事件绑定可以�
 - 公共头部
   + `<import src="../../component/normal_head.wxml" />`
   + `<template is="head" data="{{title: '哪里能查',color:'black'}}" />`
+- 获取视图dom元素信息
+function getEle(domStr, callback) {
+    const query = wx.createSelectorQuery();
+    query.select(domStr).boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(function (res) {
+        callback(res)
+    })
+}
+-  没有 `mode="widthFix"`
+````html
+ <view class='offerPrice nowrap'>¥{{item.plus_price}}
+        <image class='youhuiBox' src="../../assets/youhuiBox.png">
+            <view class='youhuiText'>会员{{item.plus}}折</view>
+        </image>
+</view>
+````
 ## 七、snippets
 - dataset
  `var data = e.currentTarget.dataset;`
@@ -337,6 +374,7 @@ data:{hidden:true}
 ````
 ## 十、生态圈
 - [taro](https://github.com/NervJS/taro) 多端开发的小程序，h5框架
+  + [更多案例](https://github.com/NervJS/taro/issues/244)
 
 ## Userful Links
 - [快速了解小程序](http://ssh.today/blog/hello-min-app)
