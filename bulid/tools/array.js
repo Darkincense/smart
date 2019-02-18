@@ -119,3 +119,17 @@ function addKey(arr, obj, filterFn) {
   })
   return temp;
 }
+
+/**
+ * 指定数组对象排序的比较函数
+ * 
+ * @param {*} property
+ * @returns
+ */
+function compare(property) {
+  return function (obj1, obj2) {
+    var value1 = obj1[property];
+    var value2 = obj2[property];
+    return value1 - value2; // 升序
+  }
+}

@@ -121,3 +121,6 @@ String.prototype.subCHString = function (start, end) {
 String.prototype.subCHStr = function (start, length) {
   return this.subCHString(start, start + length);
 };
+
+// 字符串去空格
+console.log('134 3478 8909'.replace(/\s+/g, ""));
