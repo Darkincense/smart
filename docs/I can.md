@@ -1,6 +1,6 @@
 ## I can use
 
--  [caniuse.com](http://caniuse.com/)
+- [caniuse.com](http://caniuse.com/)
 - [cssreference.io](https://cssreference.io/) - A free visual guide to CSS.
 - [CSS 2.1](http://www.ayqy.net/doc/css2-1/cover.html)
 - [MDN](https://developer.mozilla.org/zh-CN/) /  [ES5](https://yanhaijing.com/es5/#about) / [ES6](http://es6.ruanyifeng.com/)
