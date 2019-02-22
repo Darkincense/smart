@@ -22,7 +22,7 @@ class Parent extends React.Component {
       value:''
     }
   }
-  handleChange(e){
+  handleChange(e,key){
     this.value = e.target.value;
     // 调用子组件的方法
     this.refs.c1.changeChild(this.value);
@@ -37,7 +37,7 @@ class Parent extends React.Component {
     return (
       <div>
         我是parent
-        <input onChange={this.handleChange.bind(this)} />
+        <input onChange={this.handleChange.bind(this,'key')} />
         <button className="button" onClick={this.handleClick.bind(this)}>通知</button>
         <div>
           <br />
