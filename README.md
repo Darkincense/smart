@@ -18,3 +18,22 @@
   * how： 有什么后果
 * Footer
   * 相关链接
+  
+### 设计原则
+- 单一功能原则
+- 接口隔离原则
+- 开闭扩展原则
+- 单向数据流
+- DRY(Don’t Repeat Yourself)
+- clean code
+  + 先让读代码的过程变得简单(读:写>10:1)
+  + 有意义的命名
+  
+ ### At work iThink
+ - 细心，细心，再细心
+   + bindtap='starFn'
+   + res.data.respone_data.lists
+ - 一遍写过，避免重构
+ - 异步把控
+ - 不使用不可信任的前端数据
+ - 细细的想，慢慢的说，不随片时的感情色彩
