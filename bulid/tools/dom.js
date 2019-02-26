@@ -532,3 +532,12 @@ function stopBubble(e) {
     window.event.cancelBubble = true;
   }
 }
+
+function getCheckBoxVal(domArr) {
+  var result = [];
+  domArr.forEach(v => {
+    v.checked ? result.push(v.value) : '';
+  })
+  return result.join(',')
+
+}

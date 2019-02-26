@@ -42,28 +42,28 @@ function setUrlPrmt(obj) {
   return _rs.join('&');
 }
 
-/**
- *
- * @desc   url参数转对象
- * @param  {String} url  default: window.location.href
- * @return {Object}
- */
-function parseQueryString(url) {
-  url = url == null ? window.location.href : url;
-  var search = url.substring(url.lastIndexOf("?") + 1);
 
-  if (!search) {
-    return {};
+/**
+ * url 参数转对象
+ *
+ * @param {*} url
+ * @returns
+ */
+function parseParam(url) {
+  var paramArr = decodeURI(url).split("?")[1].split("&"),
+    obj = {};
+  for (var i = 0; i < paramArr.length; i++) {
+    var item = paramArr[i];
+    if (item.indexOf("=") != -1) {
+      var tmp = item.split("=");
+      obj[tmp[0]] = tmp[1];
+    } else {
+      obj[item] = true;
+    }
+
   }
-  return;
-  JSON.parse(
-    '{"' +
-    decodeURIComponent(search)
-    .replace(/"/g, '\\"')
-    .replace(/&/g, '","')
-    .replace(/=/g, '":"') +
-    '"}'
-  );
+  return obj;
+
 }
 
 /**
@@ -165,7 +165,7 @@ function serialize(form) {
         if (!field.checked) {
           break;
         }
-        /* falls through */
+      /* falls through */
 
       default:
         //don't include form fields without names

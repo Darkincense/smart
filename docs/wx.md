@@ -15,6 +15,7 @@
 - wx.Storage = Storage;   // 注册 storage
 - async await
 - flexStyle
+- 弱网调试 Fast 3G
 
 ## 二、component
 ### 1. image
