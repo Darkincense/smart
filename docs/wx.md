@@ -381,3 +381,16 @@ data:{hidden:true}
 - [快速了解小程序](http://ssh.today/blog/hello-min-app)
 - [从零开始一个微信小程序版知乎](https://juejin.im/post/5a61b6a1518825732739af03)
 - [首个微信小程序开发教程！](https://juejin.im/entry/57e34d6bd2030900691e9ad7)
+
+## 其他记录
+- 小程序部分不支持
+````js
+ <block wx:elif="{{Info.score > jifenShouldOver}}">
+                <view class='name'>当前可用{{Info.score}}积分抵现</view>
+                <view class='content selectJF' bindtap='useJifen' data-score="{{Info.score}}">
+                    {{userJifenNum == 0? '':'- ￥' + userJifenNum/100}}
+                    <image mode="widthFix" src="{{default_useJifen ? checked:normal}}" style='width:30rpx;'></image>
+     </view>
+ </block>
+- 图片不显示问题(严格区分大小写)
+`<image class='rightIcon' src="../../assets/icon/addressRight.png"></image>` =>  `addressRight.png`
