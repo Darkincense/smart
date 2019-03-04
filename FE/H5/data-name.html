@@ -109,7 +109,6 @@
         </section>
     </div>
     <script>
-
         (function (key) {
 
             var liAll = document.querySelectorAll('nav a');
@@ -146,68 +145,66 @@
 
 
 
-    /*(function(key){
-     var labA = document.querySelectorAll("a");
-     var active,id;
+        /*(function(key){
+         var labA = document.querySelectorAll("a");
+         var active,id;
 
-     for(var i=0;i<labA.length;i++)
-     {
-     if(i==key)
-     {
-     labA[i].classList.add("active");
-     id = labA[i].dataset["id"];
-     document.querySelector("#"+id).classList.remove("cont");
-     }
+         for(var i=0;i<labA.length;i++)
+         {
+         if(i==key)
+         {
+         labA[i].classList.add("active");
+         id = labA[i].dataset["id"];
+         document.querySelector("#"+id).classList.remove("cont");
+         }
 
-     // 绑定事件
-     labA[i].onclick = function(){
-     // 点击标签的时候获取之前的 一些信息
-     active = document.querySelector(".active");
-     id = active.dataset["id"];
-
-
-     active.classList.remove("active");
-
-     // document.querySelector("#id");
-     // document.querySelector("#local")
-     // "#local" = "#" +"local";
-     // "#local" = "#" + id;
-     document.querySelector("#"+id).classList.add("cont");
-
-     // 给自己添加样式
-     this.classList.add("active");
-     id = this.dataset["id"];
-     document.querySelector("#"+id).classList.remove("cont");
-     }
-     }
-     })(0)*/
-
-    //耦合 解耦
-
-    // (function(){
-    // 	alert("ddd");
-    // })()
-
-    //关键字定义
-    // function fun(){
-
-    // }
-
-    // // 字面量定义函数
-    // var fun = function(){
-
-    // }
-
-    // //匿名函数
-    // (function(){
-
-    // })
-
-    // fun()
-
-    // changeTab(1);
+         // 绑定事件
+         labA[i].onclick = function(){
+         // 点击标签的时候获取之前的 一些信息
+         active = document.querySelector(".active");
+         id = active.dataset["id"];
 
 
+         active.classList.remove("active");
+
+         // document.querySelector("#id");
+         // document.querySelector("#local")
+         // "#local" = "#" +"local";
+         // "#local" = "#" + id;
+         document.querySelector("#"+id).classList.add("cont");
+
+         // 给自己添加样式
+         this.classList.add("active");
+         id = this.dataset["id"];
+         document.querySelector("#"+id).classList.remove("cont");
+         }
+         }
+         })(0)*/
+
+        //耦合 解耦
+
+        // (function(){
+        // 	alert("ddd");
+        // })()
+
+        //关键字定义
+        // function fun(){
+
+        // }
+
+        // // 字面量定义函数
+        // var fun = function(){
+
+        // }
+
+        // //匿名函数
+        // (function(){
+
+        // })
+
+        // fun()
+
+        // changeTab(1);
     </script>
 </body>
 

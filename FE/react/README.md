@@ -22,9 +22,8 @@
 - [组件渲染](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/render/render.md)
 - [生命周期](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/lifecycle/lifecycle.md)
 - [组件通信](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/communication/communication.md)
-- react-router
 - [redux](https://github.com/xiaoyueyue165/blog/issues/34)
-- react-redux
+- 状态提升
 
 ## Useful links
 

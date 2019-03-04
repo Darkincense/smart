@@ -10,6 +10,7 @@
     .red {
       color: red;
     }
+
     p {
       margin: 8px 0px;
     }
@@ -17,8 +18,8 @@
 </head>
 
 <body>
-  <script src="../../bulid/vue/vue.2.5.15.js"></script>
-  <script src="../../bulid/axios.js"></script>
+  <script src="https://cdn.bootcss.com/vue/2.5.16/vue.min.js"></script>
+  <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
 
   <div id="content">
     <h1>{{text}}</h1>
@@ -29,7 +30,7 @@
       <li v-if="githubStar===null">loading...</li>
       <li :id="gernerateId(index)" v-else-if="githubStar.length >1" v-for="(record, index) in githubStar">
         <a :href="record.html_url" :class="index<3?'red':''"> {{record.name}} </a> ({{record.stargazers_count}} stars)
-        <br/>
+        <br />
         <p v-if="index<3" style="color: #000;"> {{record.description}}</p>
         <p v-else style="color: #333;"> {{record.description}}</p>
       </li>
