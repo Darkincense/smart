@@ -14,6 +14,12 @@ class App extends Component {
     };
   }
 
+  /**
+   *
+   *
+   * @param {*} e
+   * @memberof App
+   */
   handleChange(e) {
     this.setState({
       activeIndex: parseInt(e.target.value, 10),

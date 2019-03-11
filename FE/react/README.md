@@ -1,10 +1,14 @@
-# framework-tutorial [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
-> 以自己能否写出教程来检验学习成果@react, @vue, @angular
+# README
 
 ## 说明
 
-学习前端三大框架的过程中做过一些demo，真实的项目经验写下来感觉并没有掌握的更加深入，在这里通过写教程回顾知识点，检验自己。分三个分支来写，主分支为react，开启react技术栈 !
+## 运行
 
+````js
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdn.bootcss.com/babel-core/5.8.34/browser.min.js"></script>
+````
 ## 什么是React
 
 - Pwa: 单页面应用
@@ -15,14 +19,13 @@
 
 ## 技术点
 
-- [JSX语法](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/jsx/jsx.md)
-- [数据流](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/dataflow/dataflow.md)
-- [定义组件](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/define/define.md)
-- [Dom操作](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/Dom/Dom.md)
-- [组件渲染](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/render/render.md)
-- [生命周期](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/lifecycle/lifecycle.md)
-- [组件通信](https://github.com/xiaoyueyue165/framework-tutorial/blob/master/src/communication/communication.md)
-- [redux](https://github.com/xiaoyueyue165/blog/issues/34)
+- JSX语法
+- 数据流
+- 定义组件
+- Dom操作
+- 组件渲染
+- 生命周期
+- 组件通信
 - 状态提升
 
 ## Useful links
