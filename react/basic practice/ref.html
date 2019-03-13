@@ -18,20 +18,14 @@
 <body>
   <script type="text/babel">
   class Demo extends React.Component {
-    onClickBox(){
-      alert('normal onClick')
-    }
-    onClickBox2(e){
-      console.log(this);
-      console.dir(e);
-      console.dir(e.clientX);
-      
-      alert('refNode onClick')
-    }
+   componentDidMount() {
+     this.myInput.focus();
+   }
+   
    render(){
      return (
-       <div className="box" ref={(ref) => { this.Box = ref }} onClick={this.onClickBox2.bind(this)}>
-        box
+       <div>
+       <input ref={(ele) =>{this.myInput = ele}} />
        </div>
      )
    }

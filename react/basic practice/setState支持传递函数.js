@@ -6,20 +6,20 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      count:0
+      count: 0
     }
   }
 
   componentWillMount() {
-    this.setState( (prevState) => ({count : prevState.count + 1}) )
-    this.setState( (prevState) => ({count : prevState.count + 1}) )
-    this.setState( (prevState) => ({count : prevState.count + 1}) )
+    this.setState((prevState) => ({ count: prevState.count + 1 }))
+    this.setState((prevState) => ({ count: prevState.count + 1 }))
+    this.setState((prevState) => ({ count: prevState.count + 1 }))
   }
 
   componentDidMount() {
     console.log(this.state.count);
   }
-  
+
   render() {
     return (
       <div className="App">
