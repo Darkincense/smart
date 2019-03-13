@@ -13,18 +13,19 @@
 <body>
     <script type="text/babel">
  class Child extends React.Component {
-     
+    //  组件从父组件接收到新的 props 之前调用
+    componentWillReceiveProps(nextProps) {
+        //  console.log('nextProps',nextProps);
+    }
     shouldComponentUpdate(nextProps, nextState) {
         console.log('Child nextProps',nextProps);
         return nextProps.value > 10 ? true :false;
     }
     
-     componentWillReceiveProps(nextProps) {
-        //  console.log('nextProps',nextProps);
-     }
+    
      
      render() {
-         console.log('渲染 child 组件--------------');
+         console.log('渲染 child 组件,大于10--------------');
          return (
              <div>
                  我是child {this.props.value}
@@ -37,8 +38,9 @@
     constructor(props) {
           super(props);
           this.state = {
-            defaultValue:''
+            value:''
           }
+          this.handleChange = this.handleChange.bind(this)
       }
       
    componentDidMount() {
@@ -46,21 +48,20 @@
    }
    shouldComponentUpdate(nextProps, nextState) {
         console.log('Father nextState',nextState);
-        return nextState.defaultValue > 5 ? true:false;
+        return nextState.value > 3 ? true:false;
     }
 
    handleChange(e){
        this.setState({
-        defaultValue:e.target.value
+        value:e.target.value
        })
    }
-   
    render(){
-    console.log('渲染 Father 组件--------------');
+    console.log('渲染 Father 组件，大于3--------------');
      return (
        <React.Fragment>
-        <input ref={(ele) =>{this.myInput = ele}}  onChange={this.handleChange.bind(this)} />
-        <Child value={this.state.defaultValue} />
+        <input ref={(ele) =>{this.myInput = ele}} type="text" value={this.state.value} onChange={this.handleChange} />
+        <Child value={this.state.value} />
        </React.Fragment>
      )
    }

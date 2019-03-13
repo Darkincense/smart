@@ -30,6 +30,8 @@
 
 ## Useful links
 
+- [新的生命周期](https://react.docschina.org/docs/react-component.html)
+- [React.js 小书](http://huziketang.mangojuice.top/books/react/)
 - [react-demos](https://github.com/ruanyf/react-demos) , by ruanyifeng
 - [react](https://github.com/dk-lan/react)
 - [react-fundamental](https://github.com/GuoYongfeng/react-fundamental)
