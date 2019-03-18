@@ -18,11 +18,9 @@
         //  console.log('nextProps',nextProps);
     }
     shouldComponentUpdate(nextProps, nextState) {
-        console.log('Child nextProps',nextProps);
+        // console.log('Child nextProps',nextProps);
         return nextProps.value > 10 ? true :false;
     }
-    
-    
      
      render() {
          console.log('渲染 child 组件,大于10--------------');
@@ -38,22 +36,29 @@
     constructor(props) {
           super(props);
           this.state = {
-            value:''
+            value:'',
+            year:20
           }
           this.handleChange = this.handleChange.bind(this)
+          this.handleChangeAge = this.handleChangeAge.bind(this)
       }
       
    componentDidMount() {
      this.myInput.focus();
    }
-   shouldComponentUpdate(nextProps, nextState) {
-        console.log('Father nextState',nextState);
-        return nextState.value > 3 ? true:false;
-    }
+//    shouldComponentUpdate(nextProps, nextState) {
+//         console.log('Father nextState',nextState);
+//         return nextState.value > 3 ? true:false;
+//     }
 
    handleChange(e){
        this.setState({
         value:e.target.value
+       })
+   }
+   handleChangeAge(e){
+       this.setState({
+           year:e.target.value
        })
    }
    render(){
@@ -61,6 +66,7 @@
      return (
        <React.Fragment>
         <input ref={(ele) =>{this.myInput = ele}} type="text" value={this.state.value} onChange={this.handleChange} />
+        <input  type="text" value={this.state.year} onChange={this.handleChangeAge} />
         <Child value={this.state.value} />
        </React.Fragment>
      )
