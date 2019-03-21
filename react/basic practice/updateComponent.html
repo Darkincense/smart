@@ -18,7 +18,8 @@
         //  console.log('nextProps',nextProps);
     }
     shouldComponentUpdate(nextProps, nextState) {
-        // console.log('Child nextProps',nextProps);
+        console.log('Child self Props', this.props);
+        console.log('Child nextProps',nextProps);
         return nextProps.value > 10 ? true :false;
     }
      
