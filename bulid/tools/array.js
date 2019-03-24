@@ -53,8 +53,8 @@ var util = {
       resIndex = -1,
       result = [],
       len = arr ?
-      arr.length :
-      0;
+        arr.length :
+        0;
     while (++index < len) {
       var value = arr[index];
       if (value) {
@@ -121,15 +121,13 @@ function addKey(arr, obj, filterFn) {
 }
 
 /**
- * 指定数组对象排序的比较函数
- * 
- * @param {*} property
+ *
+ * 数组对象根据某属性排序
+ * @param {*} props
  * @returns
  */
-function compare(property) {
-  return function (obj1, obj2) {
-    var value1 = obj1[property];
-    var value2 = obj2[property];
-    return value1 - value2; // 升序
+function sortBy(props) {
+  return function (a, b) {
+    return a[props] - b[props];
   }
 }
