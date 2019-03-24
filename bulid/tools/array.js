@@ -110,7 +110,7 @@ Array.prototype.remove = function (val) {
  * @param {*} filterFn
  * @returns
  */
-function addKey(arr, obj, filterFn) {
+export function addKey(arr, obj, filterFn) {
   var temp = arr.forEach((v, index, arr) => {
     typeof filterFn === 'function' ? filterFn(v, index) : '';
     for (var key in obj) {
@@ -126,7 +126,7 @@ function addKey(arr, obj, filterFn) {
  * @param {*} props
  * @returns
  */
-function sortBy(props) {
+export function sortBy(props) {
   return function (a, b) {
     return a[props] - b[props];
   }
