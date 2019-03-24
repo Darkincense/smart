@@ -53,8 +53,8 @@ var util = {
       resIndex = -1,
       result = [],
       len = arr ?
-      arr.length :
-      0;
+        arr.length :
+        0;
     while (++index < len) {
       var value = arr[index];
       if (value) {
@@ -110,7 +110,7 @@ Array.prototype.remove = function (val) {
  * @param {*} filterFn
  * @returns
  */
-function addKey(arr, obj, filterFn) {
+export function addKey(arr, obj, filterFn) {
   var temp = arr.forEach((v, index, arr) => {
     typeof filterFn === 'function' ? filterFn(v, index) : '';
     for (var key in obj) {
@@ -126,7 +126,8 @@ function addKey(arr, obj, filterFn) {
  * @param {*} property
  * @returns
  */
-function compare(property) {
+
+export function compare(property) {
   return function (obj1, obj2) {
     var value1 = obj1[property];
     var value2 = obj2[property];
