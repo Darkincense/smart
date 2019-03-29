@@ -51,7 +51,8 @@ align-items:flex-start;
   background: rgba(0, 0, 0, .5);
 }
 ````
-
+- 4. first-child 不生效
+- https://segmentfault.com/q/1010000000141546
 ## 在线工具
 
 * [base64 图片](http://tool.chinaz.com/tools/imgtobase)

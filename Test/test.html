@@ -6,34 +6,65 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-
   <style>
-    #root {
-      width: 23.4375rem;
-      height: 41.6875rem;
-      background: pink;
+    #content {
+      margin: 0 auto;
+      width: 1200px;
+      box-sizing: border-box;
+      border: 1px solid #000;
+      overflow: hidden;
     }
 
-    #content {}
+    .item {
+      margin-right: 29px;
+      float: left;
+      width: 380px;
+      height: 200px;
+      background: pink;
+      margin-bottom: 20px;
+    }
+
+    .item:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    .green {
+      background: green;
+    }
   </style>
 </head>
-<div id="root">
-  <div id="content">
-  </div>
-</div>
-<script>
-  function DOMContentLoaded() {
-    var vM = 750;
-    var vfontSize = 16;
-    var html = document.documentElement;
-    var newfontSize = vfontSize * html.clientWidth / vM;
-    html.style.fontSize = newfontSize + 'px';
-  };
-  document.addEventListener('DOMContentLoaded', DOMContentLoaded, false);
-</script>
 
 <body>
+  <ul id="topMenu1">
+    <li>
+      未定义
+    </li>
+    <li>
+      未定义
+    </li>
+    <li>
+      未定义
+    </li>
+    <li>
+      未定义
+    </li>
+    <li>
+      未定义
+    </li>
 
+  </ul>
+  <script>
+    var Item = document.querySelectorAll("ul#topMenu1 li");
+    var itemArr = Array.from(Item);
+    itemArr.forEach(v => {
+      v.addEventListener('click', function () {
+        // v.style.background = 'green'
+        // v.className = v.className + " green"
+        v.classList.add("green");
+      })
+    })
+
+  </script>
 </body>
 
 </html>

@@ -40,3 +40,12 @@
  - **知识分类**
     + 标准化
     + 在变化的
+ - 请求状态处理
+ ````js
+    state = {
+      error: null,
+      isLoaded: false,
+      result: []
+    }
+ ````
+   

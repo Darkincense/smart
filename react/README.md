@@ -4,11 +4,7 @@
 
 ## 运行
 
-````js
-  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-  <script src="https://cdn.bootcss.com/babel-core/5.8.34/browser.min.js"></script>
-````
+
 ## 什么是React
 
 - Pwa: 单页面应用
