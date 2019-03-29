@@ -31,7 +31,7 @@ align-items:flex-start;
       flex: auto;
     }
   ````
-
+  + .item:nth-child(3n){ margin-right:0 !important;}
 
 - 3. opacity 透明度继承问题
 使用 background: rgba 的第四个参数设置透明程度
@@ -53,6 +53,7 @@ align-items:flex-start;
 ````
 - 4. first-child 不生效
 - https://segmentfault.com/q/1010000000141546
+
 ## 在线工具
 
 * [base64 图片](http://tool.chinaz.com/tools/imgtobase)
