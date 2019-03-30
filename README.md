@@ -1,5 +1,6 @@
 # smart
 > :octocat: 日常代码库
+
 ### docs
 
 - [MDN](https://developer.mozilla.org/zh-CN/)
@@ -8,6 +9,7 @@
 - [ES7](http://www.ecma-international.org/ecma-262/7.0/index.html) / [ES8](http://www.ecma-international.org/ecma-262/8.0/index.html)
 
 ### Git commit log
+
 * Head
   * type: feat 新特性, fix 修改问题, docs 文档, style 格式, refactor 重构, test 测试用例, chore 其他修改, 比如构建流程, 依赖管理.
   * scope:影响范围， 比如: route, component, utils, build... 可省略
@@ -20,6 +22,7 @@
   * 相关链接
   
 ### Design Principles
+
 - 单一功能原则
 - 接口隔离原则
 - 开闭扩展原则
@@ -30,6 +33,7 @@
   + 有意义的命名
   
  ### I'm thinking
+
  - 细心，细心，再细心
    + bindtap='starFn'
    + res.data.respone_data.lists
@@ -48,4 +52,7 @@
       result: []
     }
  ````
-   
+ ### Wind vane
+ 
+- [bestofjs](https://bestofjs.org/)
+- [The State of JavaScript 2018](https://2018.stateofjs.com/)
