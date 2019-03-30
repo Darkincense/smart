@@ -12,6 +12,7 @@
 
     <button>我要读书啦</button>
     <script src="./pubsub.js"></script>
+    <script src="./regex.js"> </script>
     <script>
         // 先订阅后发布
         // Event.sub("readBook", function (name) {
@@ -24,13 +25,16 @@
         // }
 
 
-        Event.pub('readBook', '代码整洁之道')
+        // Event.pub('readBook', '代码整洁之道')
 
-        document.querySelector('button').onclick = function () {
-            Event.sub("readBook", function (name) {
-                console.log('读书' + "《" + name + "》");
-            })
-        }
+        // document.querySelector('button').onclick = function () {
+        //     Event.sub("readBook", function (name) {
+        //         console.log('读书' + "《" + name + "》");
+        //     })
+        // }
+
+        console.log(checkType('12562', 'Vcode'));
+
 
     </script>
 </body>

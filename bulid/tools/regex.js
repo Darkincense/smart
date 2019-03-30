@@ -17,13 +17,16 @@ function checkType(str, type) {
 			return /^(0\d{2,3}-\d{7,8})(-\d{1,4})?$/.test(str);
 		case 'number':
 			return /^[0-9]$/.test(str);
-			/**
-			 * 校验邮政编码
-			 * @param {string} str 字符串
-			 * @return {bool}
-			 */
+		/**
+		 * 校验邮政编码
+		 * @param {string} str 字符串
+		 * @return {bool}
+		 */
 		case 'isZipCode':
 			return /^(\d){6}$/.test(str);
+		// 验证码校验
+		case 'Vcode':
+			return !(isNaN(str) || str.length != 6);
 		case 'isURL':
 			return /^(https|http):\/\/[A-Za-z0-9-_]+\.[A-Za-z0-9]+[\/=\?%\-&_~`@[\]\':+!]*([^<>\"\"])*$/.test(str);
 		case 'english':
