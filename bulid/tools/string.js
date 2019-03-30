@@ -124,3 +124,19 @@ String.prototype.subCHStr = function (start, length) {
 
 // 字符串去空格
 console.log('134 3478 8909'.replace(/\s+/g, ""));
+
+/**
+ * 按数量分割字符串
+ *
+ * @param {*} word
+ * @param {*} num 按多少个字符分割
+ * @returns array
+ */
+function splitWords(word, num) {
+  let slices = [];
+  const chars = word.split('');
+  while (chars.length > 0) {
+    slices = slices.concat(chars.splice(0, num).join(''));
+  }
+  return slices;
+}

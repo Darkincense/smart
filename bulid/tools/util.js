@@ -10,31 +10,6 @@ function getType(a) {
 }
 
 /**
- * 判断变量是否为空
- * @param val
- * @returns {boolean}
- */
-function isempty(val) {
-  return (val == null || val == '' || val == undefined || typeof (val) == typeof (undefined));
-}
-
-/**
- * 按数量分割字符串
- *
- * @param {*} word
- * @param {*} num 按多少个字符分割
- * @returns array
- */
-function splitWords(word, num) {
-  let slices = [];
-  const chars = word.split('');
-  while (chars.length > 0) {
-    slices = slices.concat(chars.splice(0, num).join(''));
-  }
-  return slices;
-}
-
-/**
  * 四舍五入 格式化数字
  *
  * @param {*} number 8440.55

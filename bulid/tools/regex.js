@@ -43,6 +43,14 @@ function checkType(str, type) {
 			return true;
 	}
 }
+/**
+ * 判断变量是否为空
+ * @param val
+ * @returns {boolean}
+ */
+function isEmpty(val) {
+	return (val == null || val == '' || val == undefined || typeof (val) == typeof (undefined));
+}
 
 /**
  * 是否身份证号码

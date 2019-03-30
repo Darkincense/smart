@@ -82,7 +82,7 @@ class StorageFn {
 
   /*获取sessionStorage*/
   getSession(key) {
-    if (key) return JSON.parse(this.ss.getItem(key));
+    if (key) return this.ss.getItem(key);
     return null;
   }
 

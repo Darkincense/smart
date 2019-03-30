@@ -11,8 +11,9 @@
 <body>
 
     <button>我要读书啦</button>
-    <script src="./pubsub.js"></script>
     <script src="./regex.js"> </script>
+    <script srx="./utils/pubsub.js"></script>
+    <script src="./utils/storage.js"></script>
     <script>
         // 先订阅后发布
         // Event.sub("readBook", function (name) {
@@ -33,8 +34,12 @@
         //     })
         // }
 
-        console.log(checkType('12562', 'Vcode'));
+        // console.log(checkType('12562', 'Vcode'));
 
+        var S = new StorageFn();
+        S.setLocal('yue', JSON.stringify({ 'name': 'yue' }))
+        console.log(JSON.parse(S.getLocal('yue')).name);
+        
 
     </script>
 </body>

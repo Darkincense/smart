@@ -1,23 +1,3 @@
-// -----------------------------slide-----------------------------
-function setWidth(obj, val) {
-  obj.style.width = parseInt(val) + "px";
-}
-
-function setHeight(obj, val) {
-  obj.style.height = parseInt(val) + "px";
-}
-
-function slide(obj) {
-  var val = 0;
-  var t = setInterval(function () {
-    if (val >= 300) {
-      clearInterval(t);
-    }
-    setWidth(obj, val);
-    setHeight(obj, val);
-    val += 10;
-  }, 80);
-}
 //封装一个方法,传递过去三个参数,元素/属性/值!
 function animate(ele, json, fn) {
   clearInterval(ele.timer);
