@@ -31,7 +31,10 @@
   border-left: 14px solid transparent;
   border-right: 14px solid transparent;
 }
-
+/* 无法选中 */
+.cantSelect {
+  user-select: none;
+}
 /* ------------------------------------------------------------------font------------------------------------ */
 /* font-family: PingFangSC-Regular; */
 
