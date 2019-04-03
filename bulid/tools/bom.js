@@ -39,8 +39,8 @@ var bom = {
 	getWinHeight: function () {
 		return (window.innerHeight) ? window.innerHeight :
 			(document.documentElement && document.documentElement.clientHeight) ?
-			document.documentElement.clientHeight :
-			document.body.offsetHeight;
+				document.documentElement.clientHeight :
+				document.body.offsetHeight;
 	},
 
 	/**
@@ -70,5 +70,11 @@ var bom = {
 		var t = e.offsetTop;
 		while (e = e.offsetParent) t += e.offsetTop;
 		return t;
+	},
+	getScrollLeft: function () {
+		return window.pageXOffset || document.documentElement.scrollLeft
+	},
+	getScrollTop: function () {
+		return window.pageYOffset || document.documentElement.scrollTop
 	}
 }

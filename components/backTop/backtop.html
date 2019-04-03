@@ -8,14 +8,15 @@
   <title>Document</title>
   <style>
     .backtop {
-      display: none;
-      background: transparent;
       position: fixed;
-      right: 40px;
-      bottom: 68px;
-      width: 40px;
-      height: 40px;
-      border-radius: 20px;
+      bottom: 5em;
+      right: 1em;
+      cursor: pointer;
+    }
+
+    .backtop img {
+      width: 50px;
+      height: 50px;
     }
 
     #content {
@@ -107,14 +108,13 @@
     <br> 风吹马尾千条线,雨打龙鳞万点金...
     <br>
   </div>
-  <div class="backtop" onclick="backtotop();">
-    <img src="../../bulid/static/backtop.png" alt="" width="60px" height="60px">
+  <div class="backtop" onclick="backtotop();" style="display: none;">
+    <img src="../../assets/components/scrollup.png" alt="">
   </div>
-  <script src="../../tools/func.js">
-  </script>
-  <script src="../../tools/dom.js"></script>
-  <script src="../../tools/bom.js"></script>
+  <script src="../../bulid/tools/index.js"></script>
+  <script src="../../bulid/tools/bom.js"></script>
   <script>
+
 
     function backtotop() {
       var target = 0;
@@ -122,12 +122,19 @@
       var timer = null;
       var backtop = document.querySelector('.backtop');
 
-      if (scroll().top > 500) {
-        backtop.style.display = "block";
+      if (bom.getScrollTop() > 500) {
+        setStyle(backtop, {
+          "display": "block",
+          "opacity": "1",
+          "transition": "opacity 0.7s"
+        })
       } else {
-        backtop.style.display = "";
+        setStyle(backtop, {
+          "opacity": "0",
+          "transition": "opacity 0.7s"
+        })
       }
-      leader = scroll().top;
+      leader = bom.getScrollTop()
       console.log(leader)
 
       backtop.onclick = function () {

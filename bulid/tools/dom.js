@@ -1,6 +1,4 @@
 var dom = {
-
-
   $: function (selector, el) {
     if (!el) {
       el = document;
@@ -14,7 +12,6 @@ var dom = {
     }
     return Array.prototype.slice.call(el.querySelectorAll(selector));
   },
-
 
   // 将NodeList转为数组
   convertToArray: function (nodeList) {
@@ -188,12 +185,12 @@ var dom = {
     }
   },
 
-  setStyle: function (e, a) {
-    for (var i in a) {
-      e.style[i] = a[i]
+  css: function (target, cssObj) {
+    for (var prop in cssObj) {
+      target.style[prop] = cssObj[prop];
     }
+    return target;
   },
-
   // http://stackoverflow.com/a/35385518/1262580
   create: function (html, children) {
     var template = document.createElement("template");
@@ -227,25 +224,6 @@ var dom = {
       }
     }
     return parent;
-  },
-
-  css: function (target, cssObj) {
-    for (var prop in cssObj) {
-      target.style[prop] = cssObj[prop];
-    }
-    return target;
-  },
-
-  show: function (target) {
-    this.css(target, {
-      display: 'block'
-    });
-  },
-
-  hide: function (target) {
-    this.css(target, {
-      display: 'none'
-    });
   },
   setOpacity: function (obj, val) {
     if (document.documentElement.filters) {
@@ -322,51 +300,6 @@ var dom = {
 };
 
 
-
-// ---------------------------·····class -------------------------
-
-function getByClass(oParent, sClass) {
-  var aEle = oParent.getElementsByTagName('*');
-  var aResult = [];
-  var re = new RegExp('\\b' + sClass + '\\b', 'i');
-  var i = 0;
-  for (i = 0; i < aEle.length; i++) {
-    if (re.test(aEle[i].className)) {
-      aResult.push(aEle[i]);
-    }
-  }
-  return aResult;
-}
-
-function $C(classname, ele, tag) {
-  var returns = [];
-  ele = ele || document;
-  tag = tag || '*';
-  if (ele.getElementsByClassName) {
-    var eles = ele.getElementsByClassName(classname);
-    if (tag != '*') {
-      for (var i = 0, L = eles.length; i < L; i++) {
-        if (eles[i].tagName.toLowerCase() == tag.toLowerCase()) {
-          returns.push(eles[i]);
-        }
-      }
-    } else {
-      returns = eles;
-    }
-  } else {
-    eles2 = ele.getElementsByTagName(tag);
-    var pattern = new RegExp("(^|\\s)" + classname + "(\\s|$)");
-    for (var i = 0, L = eles2.length; i < L; i++) {
-      if (pattern.test(eles2[i].className)) {
-        returns.push(eles2[i]);
-      }
-    }
-  }
-  return returns;
-}
-
-
-
 // 另一套，使用时放开 {}
 var ClassList = {
   // el can be an Element, NodeList or selector
@@ -424,9 +357,6 @@ var ClassList = {
     return flag;
   }
 }
-
-
-
 
 
 function insertAfter(newEl, targetEl) {
@@ -513,23 +443,53 @@ function removeEvent(a, b, c, d) {
   a.removeEventListener ? a.removeEventListener(b, c, d) : a.detachEvent("on" + b, c)
 }
 
+var Event = {
+  //阻止事件冒泡 
+  stopBubble: function (event) {
+    if (event.stopPropagation) {
+      event.stopPropagation();
+    } else {
+      event.cancelBubble = true; //IE阻止事件冒泡，true代表阻止 
+    }
+  },
+  //阻止事件默认行为 
+  stopDefault: function (event) {
+    if (event.preventDefault) {
+      event.preventDefault();
+    } else {
+      event.returnValue = false; //IE阻止事件冒泡，false代表阻止 
+    }
+  },
+  //获得事件元素 
+  //event.target--非IE 
+  //event.srcElement--IE 
+  getTarget: function (event) {
+    return event.target || event.srcElement;
+  },
+  // 回车事件
+  listenEnter: function (func) {
+    document.onkeydown = function (event) {
+      var e = event || window.event || arguments.callee.caller.arguments[0];
+      if (e && e.keyCode == 13) { // enter 键
+        func();
+      }
+    };
 
-//取消浏览器默认行为
-function stopDefault(e) {
-  if (e && e.preventDefault) {
-    e.preventDefault();
-  } else {
-    window.event.returnValue = false;
-  }
+  },
+  listenKeys: function (number, func) {
+    var obj = {
+      "38": "上",
+      "40": "下"
+    }
+    document.addEventListener('keydown', function (event) {
+      var e = event || window.event || arguments.callee.caller.arguments[0];
+      console.log(e.keyCode);
 
-  return false;
-}
-// 阻止事件冒泡
-function stopBubble(e) {
-  if (e && e.stopPropagation) {
-    e.stopPropagation();
-  } else if (window.event) {
-    window.event.cancelBubble = true;
+      if (e && e.keyCode == number) {
+        func();
+      }
+    })
+
   }
 }
 
