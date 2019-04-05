@@ -204,6 +204,17 @@ yarn global remove @tarojs/cli
 ````bash
 yarn global list
 ````
+- node-sass 安装
+````bash
+SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install # 首次安装所有依赖直接指向
+
+set SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ # 先 set ，后 install
+npm install node-sass 
+````
+
+#### 参考链接
+
+- [安装 node-sass 的正确姿势 ](https://github.com/lmk123/blog/issues/28)
 
 
 
