@@ -97,7 +97,8 @@ app.js
 默认 head 指向 master,就会把 master 中的提交的代码拿到工作区
 
 * `git reset --hard 提交的id`
-* `git reset --hard 53bd6a3cd5b9ff5782af4837985c1e3023412d23`
+* `git reset --hard 53bd6a3cd5b9ff5782af4837985c1e3023412d23` // 本地更新
+* `git push -f origin master` // 推送至远端更新
 
 *注意，如果是回退到最近的一次提交的状态，不需要添加 commit_id*
 _git reset --hard head
@@ -136,11 +137,15 @@ _git reset --hard head
     git add -A, git commit -m //一样是这两个命令功能完成之后回到 master 分支
     git checkout master
     git merge dev
-    # 删除本地 dev分支和远程的dev分支
-    git branch -d dev
-    git push origin --delete dev
+    git branch -d dev   # 删除本地 dev分支
+    git push origin --delete dev # 删除远端 dev 分支
+
+````
+- 将本项目下的 dist 文件夹内容发布到远端的 `gh-pages` 分支
+````bash
+git subtree push --prefix=dist origin gh-pages
 ````
 
-## git常用命令速查表
+#### 参考
 
-![image](https://xiaoyueyue165.github.io/static/blog/Git-common-commands.jpg)
+- [如何用Github的gh-pages分支展示自己的项目](https://www.cnblogs.com/MuYunyun/p/6082359.html)
