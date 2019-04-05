@@ -146,6 +146,3 @@ _git reset --hard head
 git subtree push --prefix=dist origin gh-pages
 ````
 
-#### 参考
-
-- [如何用Github的gh-pages分支展示自己的项目](https://www.cnblogs.com/MuYunyun/p/6082359.html)
