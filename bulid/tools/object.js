@@ -78,3 +78,21 @@ function pairs(obj) {
     }
     return pairs;
 }
+
+/**
+ * 递归实现深拷贝
+ *
+ * @param {*} o
+ * @returns
+ */
+function clone( o ) {
+    var temp = {};
+    for( var k in o ) {
+        if( typeof o[ k ] == 'object' ){
+             temp[ k ] = clone( o[ k ] );
+        } else {
+             temp[ k ] = o[ k ];
+        }
+    }
+    return temp;
+}

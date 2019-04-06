@@ -31,9 +31,9 @@
 
     var btn = document.querySelectorAll('button');
     // 添加一个适当的事件监听器
-    // util.addEvent(btn[0], "cat", function (e) {
-    //   console.log(e.detail)
-    // })
+    util.addEvent(btn[0], "cat", function (e) {
+      console.log(e.detail)
+    })
 
     // 创建并分发事件
     var event = new CustomEvent("cat", {
@@ -41,7 +41,10 @@
         "cat": "猫神"
       }
     })
-    btn[0].dispatchEvent(event);
+    btn[0].dispatchEvent(event); // 直接触发
+    // btn[0].onclick = function () {
+    //   btn[0].dispatchEvent(event); // 直接触发
+    // }
     btn[1].onclick = function () {
       util.dispatchEvent(btn[1], 'dog', {
         'name': "伪装"

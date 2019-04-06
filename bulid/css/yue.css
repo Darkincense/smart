@@ -126,38 +126,6 @@
   -webkit-line-clamp: 3;
 }
 
-/* ---------------------------------------------------color------------------------------------- */
-
-.gray {
-  color: #9f9f9f;
-}
-
-.fff {
-  color: #fff;
-}
-
-.black1 {
-  color: #1e1e1e;
-}
-
-.black {
-  color: #000;
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-.jiantou {
-  width: 0;
-  height: 0;
-  border-top: 14rpx solid rgba(74, 74, 74, 1);
-  border-left: 14rpx solid transparent;
-  border-right: 14rpx solid transparent;
-}
-
-
-
 /*---------------------------------盒子宽---------------------------------------------*/
 
 .w3 {
