@@ -10,6 +10,7 @@
 
 <body>
   <div id="root"></div>
+  <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
   <script>
 
     var obj = [
@@ -35,6 +36,9 @@
       return '<li>' + v.name + " : " + (mp[obj[i]['marriage'] - 1] || '婚姻状况：未知') + '</li>'
     })
     document.getElementById("root").innerHTML = '<ol>' + MarryLiList.join('') + '</ol>'
+
+    console.log(window);
+    console.log(React.Fragment);
 
 
   </script>
