@@ -1,4 +1,4 @@
-import { addKey } from "../bulid/tools/array";
+import { addKey } from "../bulid/tools/array.js";
 let arr = [
     {
         id: 1,
