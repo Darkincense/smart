@@ -30,6 +30,26 @@
         #my-player {
             background: #f7f7f7;
         }
+
+        .video-js .vjs-big-play-button {
+            font-size: 2.5em;
+            line-height: 2.3em;
+            width: 199px;
+            height: 199px;
+            margin-top: -100px;
+            margin-left: -1.75em;
+            background: transparent;
+            background: url('../../../assets/plugins/video_PlayIcon.png') no-repeat;
+            border: 0;
+        }
+
+        .video-js:hover .vjs-big-play-button {
+            background: url('../../../assets/plugins/video_PlayIcon.png') no-repeat !important;
+        }
+
+        .vjs-big-play-button span {
+            display: none;
+        }
     </style>
 </head>
 
@@ -38,7 +58,7 @@
     <!-- https://www.awaimai.com/2053.html -->
     <div class="main-preview-player">
         <video id="my-player"
-            class="video-js vjs-fluid vjs-paused preview-player-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-user-active vjs-mux vjs-big-play-centered"
+            class="video-js vjs-fluid vjs-paused preview-player-dimensions vjs-controls-enabled vjs-workinghover vjs-v7 vjs-user-active vjs-big-play-centered "
             controls preload="auto" poster="https://vjs.zencdn.net/v/oceans.png" data-setup='{}'>
             <source class="videoSource" src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
             </source>

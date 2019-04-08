@@ -433,8 +433,14 @@ function htmlToElements(html) {
 
 //----------------------------------------- 事件相关------------------------------------------
 
-// addEvent(objWin, 'scroll', fixIECenter)
-// d参数默认false=》冒泡，true为捕获
+/**
+ *
+ *
+ * @param {*} a dom 元素
+ * @param {*} b 事件类型 click change scroll
+ * @param {*} c function 
+ * @param {*} d  参数默认false=》冒泡，true为捕获
+ */
 function addEvent(a, b, c, d) {
   a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent("on" + b, c)
 }
@@ -500,4 +506,42 @@ function getCheckBoxVal(domArr) {
   })
   return result.join(',')
 
+}
+
+/**
+ *
+ * @param {*} file input.files[0]
+ * @returns 本地缓存 blob 路径
+ */
+function getFileURL(file) {
+  var url = null;
+  if (window.createObjectURL != undefined) { // basic
+    url = window.createObjectURL(file);
+  } else if (window.URL != undefined) { // mozilla(firefox)
+    url = window.URL.createObjectURL(file);
+  } else if (window.webkitURL != undefined) { // webkit or chrome
+    url = window.webkitURL.createObjectURL(file);
+  }
+  return url;
+}
+
+
+/**
+ * 监听dom 元素属性变化 ie11+
+ *
+ * @param {*} ele dom 元素
+ * @param {*} callback(beforeDom, afterDom) 
+ */
+function listenDom(ele, callback) {
+  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+  var observer = new MutationObserver(function (mutations) {
+    mutations.forEach(function (mutation) {
+      if (mutation.type == "attributes") {
+        callback(ele, mutation.target)
+      }
+    });
+  });
+  observer.observe(ele, {
+    attributes: true,  //configure it to listen to attribute changes,
+  });
 }

@@ -141,9 +141,14 @@ function once(fn) {
 }
 
 //----------------------------------------- 事件相关------------------------------------------
-
-// addEvent(objWin, 'scroll', fixIECenter)
-// d参数默认false=》冒泡，true为捕获
+/**
+ *
+ *
+ * @param {*} a dom 元素
+ * @param {*} b 事件类型 click change scroll
+ * @param {*} c function 
+ * @param {*} d  参数默认false=》冒泡，true为捕获
+ */
 function addEvent(a, b, c, d) {
   a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent("on" + b, c)
 }
