@@ -30,12 +30,12 @@ function timestampToTime(timestamp, hasHour) {
     addZero = function (str) {
       return Number(str) < 10 ? '0' + str : str
     };
-  Y = date.getFullYear() + '-';
-  M = addZero(date.getMonth() + 1) + '-';
-  D = addZero(date.getDate());
-  h = date.getHours() + ':';
-  m = date.getMinutes() + ':';
-  s = date.getSeconds();
+  var Y = date.getFullYear() + '-',
+    M = addZero(date.getMonth() + 1) + '-',
+    D = addZero(date.getDate()),
+    h = date.getHours() + ':',
+    m = date.getMinutes() + ':',
+    s = date.getSeconds();
 
   if (hasHour) {
     return Y + M + D + h + m + s;
