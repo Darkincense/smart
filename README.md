@@ -1,4 +1,12 @@
 # smart
+
+[![LICENSE](https://img.shields.io/badge/license-MIT%20(The%20996%20Prohibited%20License)-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE) 
+
+![GitHub stars](https://img.shields.io/github/stars/xiaoyueyue165/smart.svg)
+![GitHub forks](https://img.shields.io/github/forks/xiaoyueyue165/smart.svg)
+![GitHub last commit (branch)](https://img.shields.io/github/last-commit/xiaoyueyue165/smart.svg) [![996.icu](https://img.shields.io/badge/link-996.icu-red.svg)](https://996.icu)
+
+## 说明
 > :octocat: 日常代码库
 
 ### docs
