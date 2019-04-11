@@ -62,20 +62,20 @@
  ````
  ### 文件结构
  ````bash
- assets  # 静态资源
- api     # 接口地址
+ assets      # 静态资源
+ api         # 接口地址
  environment # 环境切换
- mock    #本地模拟数据
+ mock        # 本地模拟数据
  components  # 组件库
- layouts #布局库
- styles  # 全局公共分类样式
- views   # 页面
- utils   #方法
+ layouts     # 布局库
+ styles      # 全局公共分类样式
+ views       # 页面
+ utils       # 方法
 
  # 可以省略
- libs    #第三方SDK
- routes  #路由管理
- store   # 状态管理
+ libs        # 第三方SDK
+ routes      # 路由管理
+ store       # 状态管理
  ````
  ### Wind vane
  
