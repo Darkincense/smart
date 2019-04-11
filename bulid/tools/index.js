@@ -1,3 +1,25 @@
+
+/**
+ * 对象扩展
+ *
+ * @param {*} target
+ * arguments obj ...
+ * @returns obj
+ */
+function extend(target) {
+  for (var i = 1, len = arguments.length; i < len; i++) {
+    for (var prop in arguments[i]) {
+      if (arguments[i].hasOwnProperty(prop)) {
+        target[prop] = arguments[i][prop];
+      }
+    }
+  }
+  return target;
+}
+
+function isFunction(obj) {
+  return {}.toString.call(obj).split(" ")[1].slice(0, -1) === 'Function'
+}
 /**
  * 判断数据类型
  *

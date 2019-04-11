@@ -12,6 +12,11 @@
   <div id="root"></div>
   <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
   <script>
+    function isFunction(obj) {
+      return {}.toString.call(obj).split(" ")[1].slice(0, -1) === 'Function'
+    }
+    console.log(isFunction(function () { }));
+    console.log(isFunction({}));
 
   </script>
 </body>
