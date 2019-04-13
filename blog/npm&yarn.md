@@ -7,7 +7,6 @@ npm install -g n --force
 n stable //升级到最新稳定版本
 n lastest // 升级到最新版本
 n 8.9.3 //升级到指定版本：
-
 ````
 
 ## npm
@@ -35,7 +34,7 @@ npm i -g npm to update
 
 4. 指定版本号下载
 
-```
+```bash
 npm install webpack@3.10.0 -g
 ```
 5. 开发依赖及运行依赖
@@ -55,13 +54,11 @@ npm uninstall -g <package>
 ```
 **删除本地模块**
 ```bash
-
 npm uninstall 模块
  
 npm uninstall 模块：删除模块，但不删除模块留在package.json中的对应信息
 npm uninstall 模块 --save 删除模块，同时删除模块留在package.json中dependencies下的对应信息
 npm uninstall 模块 --save-dev 删除模块，同时删除模块留在package.json中devDependencies下的对应信息
- 
 ```
 
 
@@ -79,7 +76,10 @@ npm prefix -g | 查看全局node模块的安装路径
 ````
 npm config set registry https://registry.npm.taobao.org --global 
 npm config set disturl https://npm.taobao.org/dist --global
-
+````
+**还原npm官方仓库**
+````bash
+npm config set registry=http://registry.npmjs.org
 ````
 ### 5.版本
 [官方计算版本范围](https://semver.npmjs.com/)
@@ -134,6 +134,7 @@ npm config delete proxy // 取消
 ````
 ##### 参考
 - [设置 git/npm/bower/gem 镜像或代理的方法](https://segmentfault.com/a/1190000002435496)
+
 ### 7.依赖版本升级
 1. package.json中会记录各个依赖的版本，如果想要更新依赖，可以使用npm update，但是这样更新后，新版依赖的版本号在package.json中并不会作出相应的更新。使用下面的更新保存到配置文件中
 ````
@@ -143,6 +144,15 @@ npm update -D
 2. 其他方式
 
 [npm模块升级工具npm-check，提供命令行下的图形界面，可以手动选择升级哪些模块](https://cnodejs.org/topic/5705cd70c5f5b4a959e9192a)
+
+### 8. npm 发包
+````bash
+npm config list # 本地配置需修改为官方的仓库
+npm config set registry=http://registry.npmjs.org # 还原为官方仓库
+npm login #登录
+
+npm unpublish --force #撤回已经发布的包(在 npm 包目录下)
+````
 ## yarn
 
 1. 下载地址
