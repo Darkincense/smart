@@ -210,6 +210,10 @@ yarn global bin
 ````bash
 yarn global remove @tarojs/cli
 ````
+- 全局更新至最新的版本
+````bash
+yarn global add  @tarojs/cli@latest
+````
 - 查看全局安装的列表
 ````bash
 yarn global list
