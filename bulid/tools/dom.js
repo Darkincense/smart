@@ -1,12 +1,12 @@
 var dom = {
-  $: function (selector, el) {
+  $: function(selector, el) {
     if (!el) {
       el = document;
     }
     return el.querySelector(selector);
   },
 
-  $$: function (selector, el) {
+  $$: function(selector, el) {
     if (!el) {
       el = document;
     }
@@ -14,21 +14,21 @@ var dom = {
   },
 
   // 将NodeList转为数组
-  convertToArray: function (nodeList) {
+  convertToArray: function(nodeList) {
     var array = null;
     try {
       // IE8-NodeList是COM对象
-      array = Array.prototype.slice.call(nodeList, 0)
+      array = Array.prototype.slice.call(nodeList, 0);
     } catch (err) {
       array = [];
       for (var i = 0, len = nodeList.length; i < len; i++) {
-        array.push(nodeList[i])
+        array.push(nodeList[i]);
       }
     }
     return array;
   },
 
-  index: function (element) {
+  index: function(element) {
     var siblings = element.parentNode.children;
     for (var index = 0; index < siblings.length; index++) {
       if (siblings[index] === element) {
@@ -38,10 +38,12 @@ var dom = {
     return -1;
   },
 
-  getIndexByClass: function (param, rule) {
+  getIndexByClass: function(param, rule) {
     var element = param.className ? param : param.target;
     var className = element.className;
-    var domArr = Array.prototype.slice.call(document.querySelectorAll('.' + className));
+    var domArr = Array.prototype.slice.call(
+      document.querySelectorAll("." + className)
+    );
     for (var index = 0; index < domArr.length; index++) {
       if (domArr[index] === element) {
         return index;
@@ -50,25 +52,27 @@ var dom = {
     return -1;
   },
 
-  every: function (nodeList, fn) {
+  every: function(nodeList, fn) {
     for (var i = 0; i < nodeList.length; i++) {
       fn.call(null, nodeList[i], i);
     }
     return nodeList;
   },
 
-  siblings: function (obj) {
+  siblings: function(obj) {
     var a = [];
     var p = obj.previousSibling;
-    while (p) { //先取o的哥哥们 判断有没有上一个哥哥元素，如果有则往下执行 p表示previousSibling 
+    while (p) {
+      //先取o的哥哥们 判断有没有上一个哥哥元素，如果有则往下执行 p表示previousSibling
       if (p.nodeType === 1) {
         a.push(p);
       }
-      p = p.previousSibling; //最后把上一个节点赋给p 
+      p = p.previousSibling; //最后把上一个节点赋给p
     }
-    a.reverse() //把顺序反转一下 这样元素的顺序就是按先后的了 
-    var n = obj.nextSibling; //再取o的弟弟 
-    while (n) { //判断有没有下一个弟弟结点 n是nextSibling的意思 
+    a.reverse(); //把顺序反转一下 这样元素的顺序就是按先后的了
+    var n = obj.nextSibling; //再取o的弟弟
+    while (n) {
+      //判断有没有下一个弟弟结点 n是nextSibling的意思
       if (n.nodeType === 1) {
         a.push(n);
       }
@@ -77,7 +81,7 @@ var dom = {
     return a;
   },
 
-  siblings2: function (ele) {
+  siblings2: function(ele) {
     var newArr = [];
     var arr = ele.parentNode.children; //ie678中无法取出注释节点;
     for (var i = 0; i < arr.length; i++) {
@@ -94,11 +98,11 @@ var dom = {
    * @param index
    * @returns {*|HTMLElement}
    */
-  getSibEleOfIndex: function (ele, index) {
+  getSibEleOfIndex: function(ele, index) {
     return ele.parentNode.children[index];
   },
 
-  uniqueClass: function (element, className) {
+  uniqueClass: function(element, className) {
     dom.every(element.parentNode.children, el => {
       el.classList.remove(className); // 排他
     });
@@ -106,30 +110,30 @@ var dom = {
     return element;
   },
 
-  hasClass: function (obj, classStr) {
-    var arr = obj.className.split(/\s+/); //这个正则表达式是因为class可以有多个,判断是否包含 
-    return (arr.indexOf(classStr) == -1) ? false : true;
+  hasClass: function(obj, classStr) {
+    var arr = obj.className.split(/\s+/); //这个正则表达式是因为class可以有多个,判断是否包含
+    return arr.indexOf(classStr) == -1 ? false : true;
   },
 
-  addClass: function (obj, classStr) {
+  addClass: function(obj, classStr) {
     if (!this.hasClass(obj, classStr)) {
       obj.className += " " + classStr;
     }
   },
 
-  removeClass: function (obj, classStr) {
+  removeClass: function(obj, classStr) {
     if (this.hasClass(obj, classStr)) {
-      var reg = new RegExp('(\\s|^)' + classStr + '(\\s|$)');
-      obj.className = obj.className.replace(reg, '');
+      var reg = new RegExp("(\\s|^)" + classStr + "(\\s|$)");
+      obj.className = obj.className.replace(reg, "");
     }
   },
 
-  replaceClass: function (obj, newName, oldName) {
+  replaceClass: function(obj, newName, oldName) {
     removeClass(obj, oldName);
     addClass(obj, newName);
   },
 
-  on: function (element, eventType, selector, fn) {
+  on: function(element, eventType, selector, fn) {
     element.addEventListener(eventType, e => {
       var el = e.target;
       while (!el.matches(selector)) {
@@ -144,7 +148,7 @@ var dom = {
     return element;
   },
 
-  onSwipe: function (element, fn) {
+  onSwipe: function(element, fn) {
     var x0, y0;
     element.addEventListener("touchstart", e => {
       x0 = e.touches[0].clientX;
@@ -175,24 +179,24 @@ var dom = {
     });
   },
 
-  getStyle: function (ele, attr) {
+  getStyle: function(ele, attr) {
     if (ele.currentStyle !== undefined) {
       return ele.currentStyle[attr];
     } else {
-      return window.getComputedStyle(ele, null)[attr] ?
-        window.getComputedStyle(ele, null)[attr] :
-        ele.getAttribute(attr);
+      return window.getComputedStyle(ele, null)[attr]
+        ? window.getComputedStyle(ele, null)[attr]
+        : ele.getAttribute(attr);
     }
   },
 
-  css: function (target, cssObj) {
+  css: function(target, cssObj) {
     for (var prop in cssObj) {
       target.style[prop] = cssObj[prop];
     }
     return target;
   },
   // http://stackoverflow.com/a/35385518/1262580
-  create: function (html, children) {
+  create: function(html, children) {
     var template = document.createElement("template");
     template.innerHTML = html.trim();
     var node = template.content.firstChild;
@@ -202,7 +206,7 @@ var dom = {
     return node;
   },
 
-  append: function (parent, children) {
+  append: function(parent, children) {
     if (children.length === undefined) {
       children = [children];
     }
@@ -212,7 +216,7 @@ var dom = {
     return parent;
   },
 
-  prepend: function (parent, children) {
+  prepend: function(parent, children) {
     if (children.length === undefined) {
       children = [children];
     }
@@ -225,23 +229,23 @@ var dom = {
     }
     return parent;
   },
-  setOpacity: function (obj, val) {
+  setOpacity: function(obj, val) {
     if (document.documentElement.filters) {
       obj.style.filter = "alpha(opacity=" + val + ")";
     } else {
       obj.style.opacity = val / 100;
     }
   },
-  fadeIn: function (obj) {
+  fadeIn: function(obj) {
     var val = 10;
-    var setOpacity = function (obj, val) {
+    var setOpacity = function(obj, val) {
       if (document.documentElement.filters) {
         obj.style.filter = "alpha(opacity=" + val + ")";
       } else {
         obj.style.opacity = val / 100;
       }
     };
-    var t = setInterval(function () {
+    var t = setInterval(function() {
       if (val >= 100) {
         clearInterval(t);
       }
@@ -250,26 +254,27 @@ var dom = {
     }, 250);
   },
 
-  fadeOut: function (target) {
+  fadeOut: function(target) {
     var opacity = 100;
     var timer = null;
     var _this = this;
-    timer = setInterval(function () {
+    timer = setInterval(function() {
       opacity -= opacity / 20;
-      opacity < 80 && _this.css(target, {
-        opacity: opacity / 100
-      });
+      opacity < 80 &&
+        _this.css(target, {
+          opacity: opacity / 100
+        });
       if (opacity <= 5) {
         clearInterval(timer);
         _this.css(target, {
-          display: 'none',
+          display: "none",
           opacity: 1
         });
       }
     }, 10);
   },
 
-  removeChildren: function (element) {
+  removeChildren: function(element) {
     while (element.hasChildNodes()) {
       element.removeChild(element.lastChild);
     }
@@ -277,8 +282,8 @@ var dom = {
   },
 
   // el can be an Element, NodeList or query string
-  remove: function (el) {
-    if (typeof el === 'string') {
+  remove: function(el) {
+    if (typeof el === "string") {
       [].forEach.call(document.querySelectorAll(el), node => {
         node.parentNode.removeChild(node);
       });
@@ -291,21 +296,19 @@ var dom = {
         node.parentNode.removeChild(node);
       });
     } else {
-      throw new Error('you can only pass Element, array of Elements or query string as argument');
+      throw new Error(
+        "you can only pass Element, array of Elements or query string as argument"
+      );
     }
-  },
-
-
-
+  }
 };
-
 
 // 另一套，使用时放开 {}
 var ClassList = {
   // el can be an Element, NodeList or selector
   addClass(el, className) {
-    if (typeof el === 'string') el = document.querySelectorAll(el);
-    var els = (el instanceof NodeList) ? [].slice.call(el) : [el];
+    if (typeof el === "string") el = document.querySelectorAll(el);
+    var els = el instanceof NodeList ? [].slice.call(el) : [el];
 
     els.forEach(e => {
       if (this.hasClass(e, className)) {
@@ -315,22 +318,28 @@ var ClassList = {
       if (e.classList) {
         e.classList.add(className);
       } else {
-        e.className += ' ' + className;
+        e.className += " " + className;
       }
     });
   },
 
   // el can be an Element, NodeList or selector
   removeClass(el, className) {
-    if (typeof el === 'string') el = document.querySelectorAll(el);
-    var els = (el instanceof NodeList) ? [].slice.call(el) : [el];
+    if (typeof el === "string") el = document.querySelectorAll(el);
+    var els = el instanceof NodeList ? [].slice.call(el) : [el];
 
     els.forEach(e => {
       if (this.hasClass(e, className)) {
         if (e.classList) {
           e.classList.remove(className);
         } else {
-          e.className = e.className.replace(new RegExp('(^|\\b)' + className.split(' ').join('|') + '(\\b|$)', 'gi'), ' ');
+          e.className = e.className.replace(
+            new RegExp(
+              "(^|\\b)" + className.split(" ").join("|") + "(\\b|$)",
+              "gi"
+            ),
+            " "
+          );
         }
       }
     });
@@ -338,16 +347,16 @@ var ClassList = {
 
   // el can be an Element or selector
   hasClass(el, className) {
-    if (typeof el === 'string') el = document.querySelector(el);
+    if (typeof el === "string") el = document.querySelector(el);
     if (el.classList) {
       return el.classList.contains(className);
     }
-    return new RegExp('(^| )' + className + '( |$)', 'gi').test(el.className);
+    return new RegExp("(^| )" + className + "( |$)", "gi").test(el.className);
   },
 
   // el can be an Element or selector
   toggleClass(el, className) {
-    if (typeof el === 'string') el = document.querySelector(el);
+    if (typeof el === "string") el = document.querySelector(el);
     var flag = this.hasClass(el, className);
     if (flag) {
       this.removeClass(el, className);
@@ -356,8 +365,7 @@ var ClassList = {
     }
     return flag;
   }
-}
-
+};
 
 function insertAfter(newEl, targetEl) {
   var parent = targetEl.parentNode;
@@ -384,7 +392,7 @@ function appendHTML(el, html) {
   el.appendChild(fragment);
   nodes = null;
   fragment = null;
-};
+}
 
 function prependHTML(el, html) {
   var divTemp = document.createElement("div"),
@@ -401,7 +409,7 @@ function prependHTML(el, html) {
   // 内存回收？
   nodes = null;
   fragment = null;
-};
+}
 
 // http://stackoverflow.com/a/35385518/1262580
 /**
@@ -409,7 +417,7 @@ function prependHTML(el, html) {
  * @return {Element}
  */
 function htmlToElement(html) {
-  var template = document.createElement('template');
+  var template = document.createElement("template");
   html = html.trim(); // Never return a text node of whitespace as the result
   template.innerHTML = html;
   return template.content.firstChild;
@@ -420,16 +428,15 @@ function htmlToElement(html) {
 
 /**
  * @param {String} HTML representing any number of sibling elements
- * @return {NodeList} 
+ * @return {NodeList}
  */
 function htmlToElements(html) {
-  var template = document.createElement('template');
+  var template = document.createElement("template");
   template.innerHTML = html;
   return template.content.childNodes;
 }
 
 // var rows = htmlToElements('<tr><td>foo</td></tr><tr><td>bar</td></tr>');
-
 
 //----------------------------------------- 事件相关------------------------------------------
 
@@ -438,74 +445,74 @@ function htmlToElements(html) {
  *
  * @param {*} a dom 元素
  * @param {*} b 事件类型 click change scroll
- * @param {*} c function 
+ * @param {*} c function
  * @param {*} d  参数默认false=》冒泡，true为捕获
  */
 function addEvent(a, b, c, d) {
-  a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent("on" + b, c)
+  a.addEventListener ? a.addEventListener(b, c, d) : a.attachEvent("on" + b, c);
 }
 // removeEvent(objOverLay, 'click', eMsgClose)
 function removeEvent(a, b, c, d) {
-  a.removeEventListener ? a.removeEventListener(b, c, d) : a.detachEvent("on" + b, c)
+  a.removeEventListener
+    ? a.removeEventListener(b, c, d)
+    : a.detachEvent("on" + b, c);
 }
 
 var Event = {
-  //阻止事件冒泡 
-  stopBubble: function (event) {
+  //阻止事件冒泡
+  stopBubble: function(event) {
     if (event.stopPropagation) {
       event.stopPropagation();
     } else {
-      event.cancelBubble = true; //IE阻止事件冒泡，true代表阻止 
+      event.cancelBubble = true; //IE阻止事件冒泡，true代表阻止
     }
   },
-  //阻止事件默认行为 
-  stopDefault: function (event) {
+  //阻止事件默认行为
+  stopDefault: function(event) {
     if (event.preventDefault) {
       event.preventDefault();
     } else {
-      event.returnValue = false; //IE阻止事件冒泡，false代表阻止 
+      event.returnValue = false; //IE阻止事件冒泡，false代表阻止
     }
   },
-  //获得事件元素 
-  //event.target--非IE 
-  //event.srcElement--IE 
-  getTarget: function (event) {
+  //获得事件元素
+  //event.target--非IE
+  //event.srcElement--IE
+  getTarget: function(event) {
     return event.target || event.srcElement;
   },
   // 回车事件
-  listenEnter: function (func) {
-    document.onkeydown = function (event) {
+  listenEnter: function(func) {
+    document.onkeydown = function(event) {
       var e = event || window.event || arguments.callee.caller.arguments[0];
-      if (e && e.keyCode == 13) { // enter 键
+      if (e && e.keyCode == 13) {
+        // enter 键
         func();
       }
     };
-
   },
-  listenKeys: function (number, func) {
+  listenKeys: function(number, func) {
     var obj = {
       "38": "上",
       "40": "下"
-    }
-    document.addEventListener('keydown', function (event) {
+    };
+    document.addEventListener("keydown", function(event) {
       var e = event || window.event || arguments.callee.caller.arguments[0];
       console.log(e.keyCode);
 
       if (e && e.keyCode == number) {
         func();
       }
-    })
-
+    });
   }
-}
+};
 
 function getCheckBoxVal(domArr) {
   var result = [];
   domArr.forEach(v => {
-    v.checked ? result.push(v.value) : '';
-  })
-  return result.join(',')
-
+    v.checked ? result.push(v.value) : "";
+  });
+  return result.join(",");
 }
 
 /**
@@ -515,33 +522,38 @@ function getCheckBoxVal(domArr) {
  */
 function getFileURL(file) {
   var url = null;
-  if (window.createObjectURL != undefined) { // basic
+  if (window.createObjectURL != undefined) {
+    // basic
     url = window.createObjectURL(file);
-  } else if (window.URL != undefined) { // mozilla(firefox)
+  } else if (window.URL != undefined) {
+    // mozilla(firefox)
     url = window.URL.createObjectURL(file);
-  } else if (window.webkitURL != undefined) { // webkit or chrome
+  } else if (window.webkitURL != undefined) {
+    // webkit or chrome
     url = window.webkitURL.createObjectURL(file);
   }
   return url;
 }
 
-
 /**
  * 监听dom 元素属性变化 ie11+
  *
  * @param {*} ele dom 元素
- * @param {*} callback(beforeDom, afterDom) 
+ * @param {*} callback(beforeDom, afterDom)
  */
 function listenDom(ele, callback) {
-  var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
-  var observer = new MutationObserver(function (mutations) {
-    mutations.forEach(function (mutation) {
+  var MutationObserver =
+    window.MutationObserver ||
+    window.WebKitMutationObserver ||
+    window.MozMutationObserver;
+  var observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
       if (mutation.type == "attributes") {
-        callback(ele, mutation.target)
+        callback(ele, mutation.target);
       }
     });
   });
   observer.observe(ele, {
-    attributes: true,  //configure it to listen to attribute changes,
+    attributes: true //configure it to listen to attribute changes,
   });
 }

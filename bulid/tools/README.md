@@ -1,7 +1,9 @@
 # Tools
+
 > CTRL+ALT+2D => document this
 
 ## fix
+
 - array
 - request
 - util
@@ -10,6 +12,7 @@
 - storage
 
 ## todo
+
 - localStorage 加入时间控制
 - dom
 - event

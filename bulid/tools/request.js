@@ -1,15 +1,19 @@
 function myJsonp(url, data, callback) {
-  var fnName = 'myJsonp_' + Math.random().toString().replace('.', '');
+  var fnName =
+    "myJsonp_" +
+    Math.random()
+      .toString()
+      .replace(".", "");
   window[fnName] = callback;
-  var querystring = '';
+  var querystring = "";
   for (var attr in data) {
-    querystring += attr + '=' + data[attr] + '&';
+    querystring += attr + "=" + data[attr] + "&";
   }
-  var script = document.createElement('script');
-  script.src = url + '?' + querystring + 'callback=' + fnName;
-  script.onload = function () {
+  var script = document.createElement("script");
+  script.src = url + "?" + querystring + "callback=" + fnName;
+  script.onload = function() {
     document.body.removeChild(script);
-  }
+  };
   document.body.appendChild(script);
 }
 
@@ -35,13 +39,12 @@ function GetQueryString(name) {
 function setUrlPrmt(obj) {
   let _rs = [];
   for (let p in obj) {
-    if (obj[p] != null && obj[p] != '') {
-      _rs.push(p + '=' + obj[p])
+    if (obj[p] != null && obj[p] != "") {
+      _rs.push(p + "=" + obj[p]);
     }
   }
-  return _rs.join('&');
+  return _rs.join("&");
 }
-
 
 /**
  * url 参数转对象
@@ -50,7 +53,9 @@ function setUrlPrmt(obj) {
  * @returns
  */
 function parseParam(url) {
-  var paramArr = decodeURI(url).split("?")[1].split("&"),
+  var paramArr = decodeURI(url)
+      .split("?")[1]
+      .split("&"),
     obj = {};
   for (var i = 0; i < paramArr.length; i++) {
     var item = paramArr[i];
@@ -60,10 +65,8 @@ function parseParam(url) {
     } else {
       obj[item] = true;
     }
-
   }
   return obj;
-
 }
 
 /**
@@ -76,12 +79,12 @@ function qsStringify(obj) {
   var pairs = [];
   for (var key in obj) {
     var value = obj[key];
-    if (typeof (value) === 'function') {
+    if (typeof value === "function") {
       continue;
     }
     if (value instanceof Array) {
       for (var i = 0; i < value.length; ++i) {
-        pairs.push((key + "[" + i + "]") + "=" + value[i]);
+        pairs.push(key + "[" + i + "]" + "=" + value[i]);
       }
       continue;
     }
@@ -107,18 +110,25 @@ function serialize(form) {
     switch (field.type) {
       case "select-one":
       case "select-multiple":
-
         if (field.name.length) {
           for (j = 0, optLen = field.options.length; j < optLen; j++) {
             option = field.options[j];
             if (option.selected) {
               optValue = "";
               if (option.hasAttribute) {
-                optValue = (option.hasAttribute("value") ? option.value : option.text);
+                optValue = option.hasAttribute("value")
+                  ? option.value
+                  : option.text;
               } else {
-                optValue = (option.attributes["value"].specified ? option.value : option.text);
+                optValue = option.attributes["value"].specified
+                  ? option.value
+                  : option.text;
               }
-              parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(optValue));
+              parts.push(
+                encodeURIComponent(field.name) +
+                  "=" +
+                  encodeURIComponent(optValue)
+              );
             }
           }
         }
@@ -141,7 +151,11 @@ function serialize(form) {
       default:
         //don't include form fields without names
         if (field.name.length) {
-          parts.push(encodeURIComponent(field.name) + "=" + encodeURIComponent(field.value));
+          parts.push(
+            encodeURIComponent(field.name) +
+              "=" +
+              encodeURIComponent(field.value)
+          );
         }
     }
   }

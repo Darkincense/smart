@@ -1,47 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <button>我要读书啦</button>
-    <script src="./regex.js"> </script>
+    <script src="./regex.js"></script>
     <script srx="./utils/pubsub.js"></script>
     <script src="./utils/storage.js"></script>
     <script>
-        // 先订阅后发布
-        // Event.sub("readBook", function (name) {
-        //   console.log('读书' + "《" + name + "》");
+      // 先订阅后发布
+      // Event.sub("readBook", function (name) {
+      //   console.log('读书' + "《" + name + "》");
 
-        // })
+      // })
 
-        // document.querySelector('button').onclick = function () {
-        //   Event.pub('readBook', '代码整洁之道')
-        // }
+      // document.querySelector('button').onclick = function () {
+      //   Event.pub('readBook', '代码整洁之道')
+      // }
 
+      // Event.pub('readBook', '代码整洁之道')
 
-        // Event.pub('readBook', '代码整洁之道')
+      // document.querySelector('button').onclick = function () {
+      //     Event.sub("readBook", function (name) {
+      //         console.log('读书' + "《" + name + "》");
+      //     })
+      // }
 
-        // document.querySelector('button').onclick = function () {
-        //     Event.sub("readBook", function (name) {
-        //         console.log('读书' + "《" + name + "》");
-        //     })
-        // }
+      // console.log(checkType('12562', 'Vcode'));
 
-        // console.log(checkType('12562', 'Vcode'));
-
-        var S = new StorageFn();
-        S.setLocal('yue', JSON.stringify({ 'name': 'yue' }))
-        console.log(JSON.parse(S.getLocal('yue')).name);
-        
-
+      var S = new StorageFn();
+      S.setLocal("yue", JSON.stringify({ name: "yue" }));
+      console.log(JSON.parse(S.getLocal("yue")).name);
     </script>
-</body>
-
+  </body>
 </html>

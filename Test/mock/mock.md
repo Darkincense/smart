@@ -8,13 +8,24 @@
 - https://github.com/nuysoft/Mock
 - [jsonplaceholder](https://github.com/typicode/jsonplaceholder) A simple online fake REST API server https://jsonplaceholder.typicode.com
 
+**公共 API**
 
-**公共API**
-````js
+```js
 // github
-$.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars',function(data){})
+$.getJSON(
+  "https://api.github.com/search/repositories?q=javascript&sort=stars",
+  function(data) {}
+);
 // cnode
-$.getJSON('https://cnodejs.org/api/v1/topics',function(data){console.log( data )})
+$.getJSON("https://cnodejs.org/api/v1/topics", function(data) {
+  console.log(data);
+});
 // 豆瓣电影
-$.get('https://api.douban.com/v2/movie/in_theaters',function(data){console.log( data )},'jsonp')
-````
+$.get(
+  "https://api.douban.com/v2/movie/in_theaters",
+  function(data) {
+    console.log(data);
+  },
+  "jsonp"
+);
+```

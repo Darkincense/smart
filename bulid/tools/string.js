@@ -1,30 +1,35 @@
 var util = {
-
-  strlen: function (str) {
-    return (BROWSER.ie && str.indexOf('\n') != -1) ? str.replace(/\r?\n/g, '_').length : str.length;
+  strlen: function(str) {
+    return BROWSER.ie && str.indexOf("\n") != -1
+      ? str.replace(/\r?\n/g, "_").length
+      : str.length;
   },
 
   // 字符转实体
-  xssFilter: function (str) {
+  xssFilter: function(str) {
     str = str.replace(/<br\/*>/gi, "");
-    str = str.replace(/</gi, '&lt;');
-    str = str.replace(/>/gi, '&gt;');
+    str = str.replace(/</gi, "&lt;");
+    str = str.replace(/>/gi, "&gt;");
 
     return str;
   },
 
-  htmlspecialchars: function (str) {
-    return preg_replace(['&', '<', '>', '"'], ['&amp;', '&lt;', '&gt;', '&quot;'], str);
+  htmlspecialchars: function(str) {
+    return preg_replace(
+      ["&", "<", ">", '"'],
+      ["&amp;", "&lt;", "&gt;", "&quot;"],
+      str
+    );
   },
 
   //字符串替换(字符串,要替换的字符,替换成什么)
-  replaceAll: function (str, AFindText, ARepText) {
+  replaceAll: function(str, AFindText, ARepText) {
     raRegExp = new RegExp(AFindText, "g");
     return str.replace(raRegExp, ARepText);
   },
 
   // 字符串长度截取,多余的用...代替
-  cutstr: function (str, len) {
+  cutstr: function(str, len) {
     var temp,
       icount = 0,
       patrn = /[^\x00-\xff]/,
@@ -45,33 +50,32 @@ var util = {
     return strre + "...";
   }
 };
-String.prototype.trim = function () {
+String.prototype.trim = function() {
   return this.replace(/(^\s*)|(\s*$)/g, "");
 };
 // 替换全部
-String.prototype.replaceAll = function (s1, s2) {
+String.prototype.replaceAll = function(s1, s2) {
   return this.replace(new RegExp(s1, "gm"), s2);
 };
 
-
 //判断一个字符串是否被包含在另一字符串
-String.prototype.iscontains = function (str, value) {
+String.prototype.iscontains = function(str, value) {
   return str.indexOf(value) > -1 ? true : false;
 };
 
 // 判断是否以某个字符串开头
-String.prototype.startWith = function (s) {
+String.prototype.startWith = function(s) {
   return this.indexOf(s) == 0;
 };
 
 // 判断是否以某个字符串结束
-String.prototype.endWith = function (s) {
+String.prototype.endWith = function(s) {
   var d = this.length - s.length;
-  return (d >= 0 && this.lastIndexOf(s) == d);
+  return d >= 0 && this.lastIndexOf(s) == d;
 };
 
 //计算字符串长度
-String.prototype.strLen = function () {
+String.prototype.strLen = function() {
   var len = 0;
   for (var i = 0; i < this.length; i++) {
     if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) len += 2;
@@ -80,9 +84,8 @@ String.prototype.strLen = function () {
   return len;
 };
 
-
 //将字符串拆成字符，并存到数组中
-String.prototype.strToChars = function () {
+String.prototype.strToChars = function() {
   var chars = [];
   for (var i = 0; i < this.length; i++) {
     chars[i] = [this.substr(i, 1), this.isCHS(i)];
@@ -92,38 +95,32 @@ String.prototype.strToChars = function () {
 };
 
 //判断某个字符是否是汉字
-String.prototype.isCHS = function (i) {
-  if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0)
-    return true;
-  else
-    return false;
+String.prototype.isCHS = function(i) {
+  if (this.charCodeAt(i) > 255 || this.charCodeAt(i) < 0) return true;
+  else return false;
 };
 
 //截取字符串（从start字节到end字节）
-String.prototype.subCHString = function (start, end) {
+String.prototype.subCHString = function(start, end) {
   var len = 0;
   var str = "";
   this.strToChars();
   for (var i = 0; i < this.length; i++) {
-    if (this.charsArray[i][1])
-      len += 2;
-    else
-      len++;
-    if (end < len)
-      return str;
-    else if (start < len)
-      str += this.charsArray[i][0];
+    if (this.charsArray[i][1]) len += 2;
+    else len++;
+    if (end < len) return str;
+    else if (start < len) str += this.charsArray[i][0];
   }
   return str;
 };
 
 //截取字符串（从start字节截取length个字节）
-String.prototype.subCHStr = function (start, length) {
+String.prototype.subCHStr = function(start, length) {
   return this.subCHString(start, start + length);
 };
 
 // 字符串去空格
-console.log('134 3478 8909'.replace(/\s+/g, ""));
+console.log("134 3478 8909".replace(/\s+/g, ""));
 
 /**
  * 按数量分割字符串
@@ -134,9 +131,9 @@ console.log('134 3478 8909'.replace(/\s+/g, ""));
  */
 function splitWords(word, num) {
   let slices = [];
-  const chars = word.split('');
+  const chars = word.split("");
   while (chars.length > 0) {
-    slices = slices.concat(chars.splice(0, num).join(''));
+    slices = slices.concat(chars.splice(0, num).join(""));
   }
   return slices;
 }

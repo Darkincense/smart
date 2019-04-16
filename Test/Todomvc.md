@@ -1,4 +1,5 @@
 # todomvc [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg)](LICENSE)
+
 > Template • TodoMVC
 
 这仅仅是一个模板，可以直接使用
@@ -16,5 +17,6 @@
 - 10. 修改任务名称
 
 ##### 参考
+
 - https://github.com/tastejs/todomvc
 - https://github.com/tastejs/todomvc-app-template

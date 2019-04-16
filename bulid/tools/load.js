@@ -3,18 +3,18 @@ function loadScript(url, callback, charset) {
   var script = document.createElement("script");
   script.type = "text/javaScript";
   if (charset) {
-    script.setAttribute("charset", charset)
+    script.setAttribute("charset", charset);
   }
   if (script.readyState) {
     //IE
-    script.onreadystatechange = function () {
+    script.onreadystatechange = function() {
       if (script.readyState == "loaded" || script.readyState == "complete") {
         script.onreadystatechange = null;
         callback();
       }
     };
   } else {
-    script.onload = function () {
+    script.onload = function() {
       callback();
     };
   }
@@ -33,8 +33,8 @@ function delay_script(A) {
 }
 // 兼容IE动态添加script方法
 function loadScriptString(code) {
-  var script = document.createElement('script')
-  script.type = 'text/javascript';
+  var script = document.createElement("script");
+  script.type = "text/javascript";
   try {
     script.appendChild(document.createTextNode(code));
   } catch (e) {
@@ -48,14 +48,13 @@ function loadScriptString(code) {
 如果不使用 async 且 defer="defer"：脚本将在页面完成解析时执行
 如果既不使用 async 也不使用 defer：在浏览器继续解析页面之前，立即读取并执行脚本 */
 
-
 /* api设计
 $.Loader.advScript({
      name: "sharejs",
      url: SHARE + "?v=" + VIPSHOP.jsVer
  }) */
 function getScript(src, func) {
-  var script = document.createElement('script');
+  var script = document.createElement("script");
   script.async = "async";
   script.charset = "utf-8";
   script.src = src;
@@ -64,7 +63,6 @@ function getScript(src, func) {
   }
   document.getElementsByTagName("head")[0].appendChild(script);
 }
-
 
 function delay_js(url) {
   var type = url.split("."),
@@ -80,12 +78,14 @@ function delay_js(url) {
       tp = "text/javascript";
   obj.setAttribute(lnk, url);
   obj.setAttribute("type", tp);
-  file == "css" ? document.getElementsByTagName("head")[0].appendChild(obj) : document.body.appendChild(obj);
+  file == "css"
+    ? document.getElementsByTagName("head")[0].appendChild(obj)
+    : document.body.appendChild(obj);
   return obj;
 }
 // 清除脚本内容
 function stripscript(s) {
-  return s.replace(/<script.*?>.*?<\/script>/ig, '');
+  return s.replace(/<script.*?>.*?<\/script>/gi, "");
 }
 
 //页面加载自执行函数
@@ -95,10 +95,10 @@ function addload(func) {
   if (typeof window.onload != "function") {
     window.onload = func;
   } else {
-    window.onload = function () {
+    window.onload = function() {
       old();
       func();
-    }
+    };
   }
 }
 
@@ -107,7 +107,7 @@ function addsize(func) {
   if (typeof window.onresize != "function") {
     window.onresize = func;
   } else {
-    window.onresize = function () {
+    window.onresize = function() {
       old();
       func();
     };
