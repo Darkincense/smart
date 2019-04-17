@@ -5,6 +5,14 @@
   align-items: center;
   justify-content: center;
 }
+.hCenter {
+  display: flex;
+  align-items: center;
+}
+.wCenter {
+  display: flex;
+  justify-content: center;
+}
 
 /* 单行水平垂直 */
 

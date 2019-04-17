@@ -1,98 +1,118 @@
 > webpack 3
+
 ## 入门命令
-> 随后会用webpack-dev-server替代
-基本构建
-````bash
+
+> 随后会用 webpack-dev-server 替代
+> 基本构建
+
+```bash
 webpack src/app.js dist/app.bundle.js
-````
+```
+
 开发环境实时构建
-````bash
-webpack --watch 
-````
+
+```bash
+webpack --watch
+```
+
 生产环境中构建
-````bash
+
+```bash
 webpack -p
-````
+```
+
 ### 其他
+
 - webpack -d – 包含资源地图
 - webpack --colors - 让编译的输出内容带有颜色
 
+## html-webpack-plugin
 
-## html-webpack-plugin 
-> 自动生成html文件，指定模板，添加hash，mini
-````bash
+> 自动生成 html 文件，指定模板，添加 hash，mini
+
+```bash
 $ npm install html-webpack-plugin --save-dev
-````
+```
 
-
-````js
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+```js
+var HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: './src/app.js',
+  entry: "./src/app.js",
   output: {
-    path: __dirname + '/dist',
-    filename: 'app.bundle.js'
+    path: __dirname + "/dist",
+    filename: "app.bundle.js"
   },
-  plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
-    filename: 'index.html',
-    minify: {
-      collapseWhitespace: true,
-    },
-    hash: true,
-  })]
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+      filename: "index.html",
+      minify: {
+        collapseWhitespace: true
+      },
+      hash: true
+    })
+  ]
 };
-````
+```
+
 ## css-loader
-````bash
+
+```bash
 $ npm install --save-dev css-loader style-loader
-````
-````js
- module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
-      }
-    ]
-  }
-````
+```
+
+```js
+module: {
+  rules: [
+    {
+      test: /\.css$/,
+      use: ["style-loader", "css-loader"]
+    }
+  ];
+}
+```
+
 - sass-loader
 
-````bash
+```bash
 $ npm install sass-loader node-sass --save-dev
 # 安装（中间可能要下载二进制包，要耐心等待）
-````
-````js
-import css from './app.scss';
-````
+```
 
-````js
+```js
+import css from "./app.scss";
+```
+
+```js
  rules: [
       {
         test: /\.scss$/,
         use: [ 'style-loader', 'css-loader', 'sass-loader' ]
       }
-````
+```
 
 - extract-text-webpack-plugin
-> 用 extract-text-webpack-plugin 把 CSS 分离成文件
+  > 用 extract-text-webpack-plugin 把 CSS 分离成文件
 
 有时候我们要把 SASS 或 CSS 处理好后，放到一个 CSS 文件中，用这个插件就可以实现。
 
-````js
+```js
 $ npm install --save-dev extract-text-webpack-plugin
-````
+```
+
 ## webpack-dev-server
-````bash
+
+```bash
 # 先全局安装
 $ npm install -g webpack-dev-server@2.9.1
 $ npm install webpack-dev-server@2.9.1 --save-dev
 $ npm install webpack-cli -D
-````
+```
+
 自动打开，切换端口号
-````js
+
+```js
 module.exports = {
   entry: './src/app.js',
   ...
@@ -102,25 +122,26 @@ module.exports = {
   },
   ...
 };
-````
+```
 
 然后运行命令：
 
-````bash
+```bash
 $ webpack-dev-server
-````
+```
 
 ## webpack 和 babel 配置 react 开发环境
-
 
 ### 3.在 webpack 使用 babel-loader
 
 最后我们需要在 webpack 中使用一个 loader 来转化 react 的代码。
 首先，安装。
-````bash
+
+```bash
 $ npm install --save-dev babel-loader
-````
-````js
+```
+
+```js
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -143,57 +164,67 @@ module.exports = {
     ]
   }
 };
-````
+```
+
 ### 4. 写 react 组件
+
 **src/index.html**
-````html
+
+```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Hello World</title>
-</head>
-<body>
-  <div id="root"></div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
-````
+```
+
 **src/app.js**
-````js
-import css from './app.scss';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Root from './Root';
+```js
+import css from "./app.scss";
 
-ReactDOM.render(
-  <Root></Root>,
-  document.getElementById('root')
-);
-````
+import React from "react";
+import ReactDOM from "react-dom";
+import Root from "./Root";
+
+ReactDOM.render(<Root />, document.getElementById("root"));
+```
+
 **src/Root.js**
-````js
-import React from 'react';
+
+```js
+import React from "react";
 
 export default class Root extends React.Component {
   render() {
     return (
-      <div style={{textAlign: 'center'}}>
+      <div style={{ textAlign: "center" }}>
         <h1>Hello World</h1>
-      </div>);
+      </div>
+    );
   }
 }
-````
+```
+
 ## 用 clean-webpack-plugin 来清除文件
-生产环境每次执行`npm run build`都会在dist文件目录生成新的`app.bundle.d01ae8858971a17f8ed2.js `，再多运行几次，生成的带 hash 的 app.bundle.js 文件就会很多。
+
+生产环境每次执行`npm run build`都会在 dist 文件目录生成新的`app.bundle.d01ae8858971a17f8ed2.js`，再多运行几次，生成的带 hash 的 app.bundle.js 文件就会很多。
 
 这些带 hash 的 app.bundle.js 只有最新的才有用，其他的都没用，我们要在 build 之前把它们全清空：
-````bash
+
+```bash
 $ npm i clean-webpack-plugin --save-dev
 
-````
+```
+
 **webpack.config.js**
-````js
+
+```js
 const path = require('path')
 ...
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -219,17 +250,20 @@ module.exports = {
   ...
 };
 
-````
+```
+
 现在运行 npm run build 试试，只有下面的文件：
-````
+
+```
 dist
 ├── app.bundle.0e380cea371d050137cd.js
 ├── index.html
 └── style.css
-````
+```
 
 ## 配置多个 HTML 文件
-````js
+
+```js
 module.exports = {
   entry: {
     "app.bundle": './src/app.js',
@@ -263,17 +297,21 @@ module.exports = {
   ],
   ...
 };
-````
+```
+
 上面的 excludeChunks 指的是不包含， chunks 代表的是包含。
 
 ## 使用 pug (jade) 作为 HTML 的模板
-> pug,nodejs的html模板
 
-````bash
+> pug,nodejs 的 html 模板
+
+```bash
 npm install --save-dev pug pug-html-loader raw-loader
-````
+```
+
 **src/index.pug**
-````js
+
+```js
 doctype html
 html(lang="en")
   head
@@ -291,9 +329,11 @@ html(lang="en")
       p.
         Pug is a terse and simple templating language with a
         strong focus on performance and powerful features.
-````
+```
+
 **webpack.config.js**
-````js
+
+```js
 
 module.exports = {
   ...
@@ -312,21 +352,26 @@ module.exports = {
     ]
   }
 };
-````
+```
 
 我们来试试 pug 的 include 功能，就是可以包含子模板。
-````js
+
+```js
 ...
   body
     include includes/header.pug
     ...
-````
+```
+
 **src/includes/header.pug**
-````js
+
+```js
   h1 from header pug file
-````
+```
+
 目录结构是这样的：
-````
+
+```
 src
 ├── Root.js
 ├── app.js
@@ -336,28 +381,34 @@ src
 ├── includes
 │   └── header.pug
 └── index.pug
-````
+```
+
 ## 如何使用模块热替换 HMR 来处理 CSS
 
 ### 1.启用 HMR
 
 **webpack.config.js**
-````js
+
+```js
   devServer: {
     port: 9000,
     open: true,
   }
-````
+```
+
 改成下面这样：
-````js
+
+```js
  devServer: {
     port: 9000,
     open: true,
     hot: true
   }
-````
+```
+
 **webpack.config.js**
-````js
+
+```js
 ...
 const webpack = require('webpack');
 
@@ -387,17 +438,22 @@ module.exports = {
   ...
 };
 
-````
+```
+
 **报错！！！文件名还不能用 chunkhash 了，它说要用 hash 来代替 chunkhash。**
 
-chunkhash是每个文件都使用不同的hash值
-````js
-filename: '[name].[chunkhash].js'
-````
-hash指每个文件使用相同的hash值
-````js
-filename: '[name].[hash].js'
-````
+chunkhash 是每个文件都使用不同的 hash 值
+
+```js
+filename: "[name].[chunkhash].js";
+```
+
+hash 指每个文件使用相同的 hash 值
+
+```js
+filename: "[name].[hash].js";
+```
+
 ### 2.处理 extract-text-webpack-plugin
 
 现在你试一下改变 src/app.scss 的内容，你会发现页面不动了，你无论怎么改，页面都不会改变，也不会刷新。
@@ -407,19 +463,23 @@ filename: '[name].[hash].js'
 用一个参数 disable: true 就可以关闭掉。
 
 **webpack.config.js**
-````js
-new ExtractTextPlugin("style.css")
-````
+
+```js
+new ExtractTextPlugin("style.css");
+```
+
 变成
-````js
+
+```js
 new ExtractTextPlugin({
   filename: 'style.css',
   disable: true
 }),
-````
+```
 
 然后把处理 scss 文件的 loader 部分变成类似下面这样：
-````js
+
+```js
 ...
   test: /\.scss$/,
   use: ExtractTextPlugin.extract({
@@ -429,14 +489,17 @@ new ExtractTextPlugin({
   })
 ...
 
-````
+```
+
 变成
-````js
+
+```js
 ...
   test: /\.scss$/,
   use: ['style-loader', 'css-loader', 'sass-loader']
 ...
-````
+```
+
 再试试，能够生效。
 
 为什么要关闭呢这个插件呢？
@@ -452,31 +515,34 @@ new ExtractTextPlugin({
 其实原理很简单，只要能区分出哪个是开发环境，哪个是生产环境就可以，只要判断是生产环境的时候就用，不是的话...
 
 ### 1. 增加环境变量
+
 首先来看一下之前的开发环境和生产环境分别使用的编译命令：
 
 **webpack.config.js**
-````js
+
+```js
 "scripts": {
   "dev": "webpack-dev-server",
   "prod": "webpack -p"
 },
-````
+```
+
 分别是开发环境使用的 npm run dev 命令和生产环境使用的 npm run prod 命令。
 
 我们把它改成下面这样：
 
-````js
+```js
 "scripts": {
   "dev": "webpack-dev-server",
   "prod": "NODE_ENV=production webpack -p"
 },
-````
+```
 
 开发环境的部分不变，生产环境的加了一个环境变量：
 
-````js
-NODE_ENV=production
-````
+```js
+NODE_ENV = production;
+```
 
 很简单，NODE_ENV 是变量名，而 production 是 NODE_ENV 是这个变量的值，这些都不是固定的，你可以改成你想要的任意内容，只要能引用到就行了。
 
@@ -488,13 +554,15 @@ NODE_ENV=production
 
 在 webpack.config.js 文件中：
 
-````js
-var isProd = process.env.NODE_ENV === 'production'; // true or false
-````
-process.env.NODE_ENV 就能得到之前设置的变量，如果运行的是 npm run prod，那么 process.env.NODE_ENV为true
+```js
+var isProd = process.env.NODE_ENV === "production"; // true or false
+```
+
+process.env.NODE_ENV 就能得到之前设置的变量，如果运行的是 npm run prod，那么 process.env.NODE_ENV 为 true
 
 上一节，我们有类似下面这样的两段关于 extract-text-webpack-plugin 这个插件的代码。
-````js
+
+```js
 new ExtractTextPlugin({
   filename: 'style.css',
   disable: false
@@ -502,9 +570,11 @@ new ExtractTextPlugin({
 
   test: /\.scss$/,
   use: ['style-loader', 'css-loader', 'sass-loader']
-````
+```
+
 我们把 webpack.config.js 中的代码更改如下：
-````js
+
+```js
 ...
 // 线上线下切换 css-loder
 var isProd = process.env.NODE_ENV === 'production'; // true or false
@@ -539,27 +609,31 @@ module.exports = {
 };
 
 
-````
+```
+
 只要能区别出不同的环境，使用不同的配置内容就可以了。
 
 现在就可以放心地使用 npm run dev 和 npm run prod 命令了，再也不用临时关掉一些插件了。
 
-### 3.window平台使用
-windows平台：不能直接使用NODE_ENV, 步骤如下：
+### 3.window 平台使用
+
+windows 平台：不能直接使用 NODE_ENV, 步骤如下：
 
 1.npm install cross-env --save-dev
 
-2.命令改为 
+2.命令改为
 "prod": "cross-env NODE_ENV=production webpack -p"
 
 ## 如何打包图片
+
 **src/app.scss**
-````js
+
+```js
 body {
   background: url('./images/logo.png') 0 0 no-repeat;
   ...
 }
-````
+```
 
 然后 npm run dev，你会发现类似下面的错误：
 只要找到适合的 loader 来处理扩展名为 png 的图片文件即可。
@@ -569,13 +643,16 @@ body {
 > [file-loader](https://github.com/webpack-contrib/file-loader)
 
 安装
-````js
+
+```js
 $ npm install --save-dev file-loader
-````
+```
+
 ### 2. file-loader 的参数
 
 其实，file-loader 是可以带参数的，例如下面这样：
-````js
+
+```js
 test: /\.(gif|png|jpe?g|svg)$/i,
 use: [
   {
@@ -585,36 +662,38 @@ use: [
       outputPath: 'images/'
     }
   },
-````
+```
+
 `/\.(gif|png|jpe?g|svg)$/i` 表示可以处理好多图片的格式，毕竟不只是 png 才是图片，别的扩展名的文件也可能是图片嘛。
 
 `[name]` 代表文件名，`[ext]` 代表文件扩展名，`outputPath` 是输出的路径。
 
 ### 3.解析 html 代码里面 img 的标签
+
 忘了一个重要的地方，之前我们是在 CSS 里引用图片作为背景的，但是，我们经常是在 html 直接使用 src 标签
 
 例如下面这样：
 
-
-````js
+```js
 <img src="./images/money-bag.svg" alt="" height=50>
-````
+```
 
 **src/index.html**
-````html
+
+```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-</head>
-<body>
-  <img src="./images/money-bag.svg" alt="" height=50>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+  </head>
+  <body>
+    <img src="./images/money-bag.svg" alt="" height="50" />
+  </body>
 </html>
-````
+```
 
-然而结果是这样的：**404了，文件找不到，没有成功。**
+然而结果是这样的：**404 了，文件找不到，没有成功。**
 
 其实缺少了一个在 html 代码里处理 img 标签的 loader。
 
@@ -628,13 +707,13 @@ use: [
 
 现在我们来加上这个 loader。
 
-
 先安装。
-````bash
-$ npm install --save-dev html-loader
-````
 
-````js
+```bash
+$ npm install --save-dev html-loader
+```
+
+```js
 ...
 {
   test: /\.(gif|png|jpe?g|svg)$/i,
@@ -659,10 +738,12 @@ $ npm install --save-dev html-loader
   }],
 }
 ...
-````
+```
+
 再试试发现就可以了。
 
 ### 4. 压缩图片
+
 有时候图片太大，我们输出到生产环境的时候，希望可以让图片文件的体积小点，webpack 也可以轻易办到，就是自动压缩图片，然后生产环境拿到的图片就会很小。
 
 还是用一个插件，这个插件叫 [image-webpack-loader](https://github.com/tcoopman/image-webpack-loader)。
@@ -671,12 +752,13 @@ $ npm install --save-dev html-loader
 
 安装。
 
-````bash
+```bash
 $  npm install image-webpack-loader --save-dev
-````
+```
 
 **webpack.config.js**
-````js
+
+```js
 {
   test: /\.(gif|png|jpe?g|svg)$/i,
   use: [
@@ -704,34 +786,36 @@ $  npm install image-webpack-loader --save-dev
     }
   }],
 }
-````
+```
 
 源文件的图片大小情况是这样的：
-````js
+
+```js
 $ ls -lh src/images
 total 256
 -rw-r--r--@ 1 hfpp2012  staff   112K Nov  3 23:10 logo.png
 -rw-r--r--@ 1 hfpp2012  staff    11K Dec  4 16:32 money-bag.svg
-````
+```
 
 而压缩后（npm run prod）：
-````js
+
+```js
 $ ls -lh dist/images
 total 96
 -rw-r--r--  1 hfpp2012  staff    33K Dec  4 21:34 logo.png
 -rw-r--r--  1 hfpp2012  staff   8.5K Dec  4 21:34 money-bag.svg
-````
+```
 
 由上面的对比可知，压缩后体积减少了一些。
 
 当然这个插件，肯定还有更多的用法，具体查看 readme 文档吧。
 
-
-
 #### 参考
+
 - https://www.rails365.net/playlists/webpack-3-ling-ji-chu-ru-men-shi-pin-jiao-cheng
 - https://github.com/ruanyf/webpack-demos
 - https://github.com/meishadevs/webpack-demos/blob/master/README.md
 
 #### 补充
+
 - https://www.jianshu.com/p/c0bec50ec385

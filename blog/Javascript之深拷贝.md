@@ -14,62 +14,65 @@
 
 简单的浅拷贝可以使用数组的`concat`和`slice`做到：
 
-````js
-var arr = ['old', 1, true, null, undefined];
+```js
+var arr = ["old", 1, true, null, undefined];
 var new_arr = [].concat(arr);
 
-new_arr[0] = 'new';
+new_arr[0] = "new";
 
-console.log(arr);    //['old',1 ,true, null, undefined]
-console.log(new_arr);//['new',1, true, null, undefined]
-````
+console.log(arr); //['old',1 ,true, null, undefined]
+console.log(new_arr); //['new',1, true, null, undefined]
+```
+
 查看第一个例子后可能以为`concat`是深拷贝了实例，下面接着看复杂一些的数组能不能做到：
-````js
-var arr = [{ old: 'old' }, ['old']];
+
+```js
+var arr = [{ old: "old" }, ["old"]];
 
 var new_arr = arr.concat();
 
-arr[0].old = 'new';
-arr[1][0] = 'new';
+arr[0].old = "new";
+arr[1][0] = "new";
 
-console.log(arr) // [{old: 'new'}, ['new']]
-console.log(new_arr) // [{old: 'new'}, ['new']]
-````
-在这里看到`concat`对于复杂的例子是无法完成深拷贝的，更改实例1后实例2也进行了相同的变化，还有`slice`，它们完成的是浅拷贝。
+console.log(arr); // [{old: 'new'}, ['new']]
+console.log(new_arr); // [{old: 'new'}, ['new']]
+```
+
+在这里看到`concat`对于复杂的例子是无法完成深拷贝的，更改实例 1 后实例 2 也进行了相同的变化，还有`slice`，它们完成的是浅拷贝。
 
 > 源对象拷贝实例，其属性对象拷贝引用。
 
 这种情况，外层源对象是拷贝实例，如果其属性元素为复杂数据类型时，内层元素拷贝引用。
 对源对象直接操作，不影响另外一个对象，但是对其属性操作时候，会改变另外一个对象的属性的值。
 
-````js
-var arr = [{ old: 'old' }, ['old']];
+```js
+var arr = [{ old: "old" }, ["old"]];
 
 var new_arr = arr.concat();
 
-arr[0] = 'new';
+arr[0] = "new";
 
-console.log(arr) // ['new', ['old']]
-console.log(new_arr) // [{old: 'old'}, ['old']]
-````
+console.log(arr); // ['new', ['old']]
+console.log(new_arr); // [{old: 'old'}, ['old']]
+```
 
-常用方法为：Object.assign(target, sources...),Array.prototype.slice(), Array.prototype.concat(), jQury的$.extend({},obj)...
-
+常用方法为：Object.assign(target, sources...),Array.prototype.slice(), Array.prototype.concat(), jQury 的\$.extend({},obj)...
 
 ## 深拷贝
 
-深拷贝后，两个对象，包括其内部的元素互不干扰。常见方法有JSON.parse(JSON.stringify(obj));，jQury的$.extend(true,{},obj)，lodash的_.cloneDeep和_.clone(value, true)。例：
+深拷贝后，两个对象，包括其内部的元素互不干扰。常见方法有 JSON.parse(JSON.stringify(obj));，jQury 的\$.extend(true,{},obj)，lodash 的*.cloneDeep 和*.clone(value, true)。例：
 
-````js
-var arr = ['old', 1, true, ['old1', 'old2'], {old: 1}]
+```js
+var arr = ["old", 1, true, ["old1", "old2"], { old: 1 }];
 
-var new_arr = JSON.parse( JSON.stringify(arr) );
+var new_arr = JSON.parse(JSON.stringify(arr));
 
 console.log(new_arr);
-````
+```
 
 ## 浅拷贝的实现
-````js
+
+```js
     // 只拷贝对象
     if (typeof obj !== 'object') return;
     // 根据obj的类型判断是新建一个数组还是对象
@@ -82,83 +85,92 @@ console.log(new_arr);
     }
     return newObj;
 }
-````
-## 深拷贝的实现
-如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
-````js
-var deepCopy = function(obj) {
-    if (typeof obj !== 'object') return;
-    var newObj = obj instanceof Array ? [] : {};
-    for (var key in obj) {
-        if (obj.hasOwnProperty(key)) {
-            newObj[key] = typeof obj[key] === 'object' ? deepCopy(obj[key]) : obj[key];
-        }
-    }
-    return newObj;
-}
-````
-#### 补充：数组的原型指向
-```js
-  console.log(Array.__proto__ === Function.prototype) // true
-  console.log(Function.prototype.__proto__ === Object.prototype) // true
-  console.log(Array.prototype.__proto__ == Object.prototype) // true
 ```
+
+## 深拷贝的实现
+
+如何实现一个深拷贝呢？说起来也好简单，我们在拷贝的时候判断一下属性值的类型，如果是对象，我们递归调用深拷贝函数不就好了~
+
+```js
+var deepCopy = function(obj) {
+  if (typeof obj !== "object") return;
+  var newObj = obj instanceof Array ? [] : {};
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] =
+        typeof obj[key] === "object" ? deepCopy(obj[key]) : obj[key];
+    }
+  }
+  return newObj;
+};
+```
+
+#### 补充：数组的原型指向
+
+```js
+console.log(Array.__proto__ === Function.prototype); // true
+console.log(Function.prototype.__proto__ === Object.prototype); // true
+console.log(Array.prototype.__proto__ == Object.prototype); // true
+```
+
 ## 方法记录
 
-````js
+```js
 // 对象深度克隆，支持[]和{}
-  Object.prototype.clone = function () {
-    var obj = this;
-    if (typeof obj !== 'object') return;
-    var newObj = obj instanceof Array ? [] : {};
-    for (var key in obj) {
-      if (obj.hasOwnProperty(key)) {
-        newObj[key] = typeof obj[key] === 'object' ? (obj[key]).clone() : obj[key];
-      }
+Object.prototype.clone = function() {
+  var obj = this;
+  if (typeof obj !== "object") return;
+  var newObj = obj instanceof Array ? [] : {};
+  for (var key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      newObj[key] = typeof obj[key] === "object" ? obj[key].clone() : obj[key];
     }
-    return newObj;
   }
-````
-````js
+  return newObj;
+};
+```
+
+```js
 /**
  * @desc 深拷贝，支持常见类型
  * @param {Any} values
  */
 function deepClone(values) {
-    var copy;
+  var copy;
 
-    // Handle the 3 simple types, and null or undefined
-    if (null == values || "object" != typeof values) return values;
+  // Handle the 3 simple types, and null or undefined
+  if (null == values || "object" != typeof values) return values;
 
-    // Handle Date
-    if (values instanceof Date) {
-        copy = new Date();
-        copy.setTime(values.getTime());
-        return copy;
+  // Handle Date
+  if (values instanceof Date) {
+    copy = new Date();
+    copy.setTime(values.getTime());
+    return copy;
+  }
+
+  // Handle Array
+  if (values instanceof Array) {
+    copy = [];
+    for (var i = 0, len = values.length; i < len; i++) {
+      copy[i] = deepClone(values[i]);
     }
+    return copy;
+  }
 
-    // Handle Array
-    if (values instanceof Array) {
-        copy = [];
-        for (var i = 0, len = values.length; i < len; i++) {
-            copy[i] = deepClone(values[i]);
-        }
-        return copy;
+  // Handle Object
+  if (values instanceof Object) {
+    copy = {};
+    for (var attr in values) {
+      if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);
     }
+    return copy;
+  }
 
-    // Handle Object
-    if (values instanceof Object) {
-        copy = {};
-        for (var attr in values) {
-        if (values.hasOwnProperty(attr)) copy[attr] = deepClone(values[attr]);
-        }
-        return copy;
-    }
-
-    throw new Error("Unable to copy values! Its type isn't supported.");
+  throw new Error("Unable to copy values! Its type isn't supported.");
 }
-````
+```
 
 #### 参考
+
 - https://github.com/mqyqingfeng/Blog/issues/32
 - https://www.jianshu.com/p/a4e1e7b6f4f8

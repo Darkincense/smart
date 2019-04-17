@@ -1,4 +1,4 @@
-#  Javascript模块化 
+# Javascript 模块化
 
 ## 前言
 
@@ -7,74 +7,81 @@
 ## 模块模式（非 es6 场合常用）
 
 使用 `jquery` 的 **getJSON** 方法来获取 github repoList 数据列表，未加 loading ...
-````html
+
+```html
 <div id="root"></div>
-````
-````js
+```
+
+```js
 var Module = {
-        init: function () {
-            var y = this;
-            y.id = "root";
-            y.error = null;
-            y.fetchOrderList();// 若有可以扩展添加结束处理的逻辑
-        },
-        fetchOrderList: function () {
-            var y = this;
-            $.getJSON('https://api.github.com/search/repositories?q=javascript&sort=stars').then(
-                value => {
-                    y.render(value);
-                },
-                error => {
-                    y.error = error; // 错误标记
-                    y._fetchDataFailed(error);
-                }
-            )
-        },
-        render: function (data) {
-            var y = this;
-            let html;
-            if (y.error === null) {
-                html = this._resolveData(data);
-            } else {
-                html = data;
-            }
-            document.getElementById(y.id).innerHTML = html;
-        },
-
-        // 需要时格式化处理
-        _resolveData: function (data) {
-            var repos = data.items;
-            var repoList = repos.map(function (repo, index) {
-                return `<li> <a href=${repo.html_url}>${repo.name}</a> (${repo.stargazers_count} stars) <br /> ${repo.description}</li>`
-            });
-            return `<main>
-            <h1>Most Popular JavaScript Projects in Github</h1>
-            <ol> ${repoList.join('')}</ol>
-              </main> `
-
-        },
-        // 错误处理
-        _fetchDataFailed: function (error) {
-            let errorHtml = `<span>Error: ${error.message}</span>`;
-            this.render(errorHtml)
-        }
+  init: function() {
+    var y = this;
+    y.id = "root";
+    y.error = null;
+    y.fetchOrderList(); // 若有可以扩展添加结束处理的逻辑
+  },
+  fetchOrderList: function() {
+    var y = this;
+    $.getJSON(
+      "https://api.github.com/search/repositories?q=javascript&sort=stars"
+    ).then(
+      value => {
+        y.render(value);
+      },
+      error => {
+        y.error = error; // 错误标记
+        y._fetchDataFailed(error);
+      }
+    );
+  },
+  render: function(data) {
+    var y = this;
+    let html;
+    if (y.error === null) {
+      html = this._resolveData(data);
+    } else {
+      html = data;
     }
-    Module.init();
-````
- ## 文件结构
- ````bash
- assets      # 静态资源
- api         # 接口地址
- environment # 环境切换
- mock        # 本地模拟数据
- components  # 组件库
- layouts     # 布局库
- styles      # 全局公共分类样式
- views       # 页面
- utils       # 方法
+    document.getElementById(y.id).innerHTML = html;
+  },
 
- # 可以省略
- libs        # 第三方SDK
- routes      # 路由管理
- store       # 状态管理
- ````
+  // 需要时格式化处理
+  _resolveData: function(data) {
+    var repos = data.items;
+    var repoList = repos.map(function(repo, index) {
+      return `<li> <a href=${
+        repo.html_url
+      }>${repo.name}</a> (${repo.stargazers_count} stars) <br /> ${repo.description}</li>`;
+    });
+    return `<main>
+            <h1>Most Popular JavaScript Projects in Github</h1>
+            <ol> ${repoList.join("")}</ol>
+              </main> `;
+  },
+  // 错误处理
+  _fetchDataFailed: function(error) {
+    let errorHtml = `<span>Error: ${error.message}</span>`;
+    this.render(errorHtml);
+  }
+};
+Module.init();
+```
+
+## 文件结构
+
+```bash
+assets      # 静态资源
+api         # 接口地址
+environment # 环境切换
+mock        # 本地模拟数据
+components  # 组件库
+layouts     # 布局库
+styles      # 全局公共分类样式
+views       # 页面
+utils       # 方法
+
+# 可以省略
+libs        # 第三方SDK
+routes      # 路由管理
+store       # 状态管理
+```

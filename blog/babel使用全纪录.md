@@ -1,25 +1,29 @@
 ## 说明
 
-在react项目中使用`ant-design`的时候，配置`import antd/dist/antd.css`的`babel-plugin-import` 插件并未成功导入，搞的很心烦，环境配置不通,此篇将babel的使用梳理一遍！！！
+在 react 项目中使用`ant-design`的时候，配置`import antd/dist/antd.css`的`babel-plugin-import` 插件并未成功导入，搞的很心烦，环境配置不通,此篇将 babel 的使用梳理一遍！！！
 
 ## 配置文件.babelrc
 
-Babel的配置文件是`.babelrc`，存放在项目的根目录下。使用Babel的第一步，就是配置这个文件。
+Babel 的配置文件是`.babelrc`，存放在项目的根目录下。使用 Babel 的第一步，就是配置这个文件。
 
-cmd命令行创建
-````cmd
+cmd 命令行创建
+
+```cmd
  touch .babelrc
-````
+```
+
 该文件用来设置转码规则和插件，基本格式如下。
 
-````javascript
+```javascript
 {
   "presets": [],
   "plugins": []
 }
-````
-presets字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。
-````javascript
+```
+
+presets 字段设定转码规则，官方提供以下的规则集，你可以根据需要安装。
+
+```javascript
 # ES2015转码规则
 $ npm install --save-dev babel-preset-es2015
 
@@ -31,9 +35,11 @@ $ npm install --save-dev babel-preset-stage-0
 $ npm install --save-dev babel-preset-stage-1
 $ npm install --save-dev babel-preset-stage-2
 $ npm install --save-dev babel-preset-stage-3
-````
+```
+
 将规则写入`.babelrc`
-````javascript
+
+```javascript
  {
     "presets": [
       "es2015",
@@ -42,21 +48,26 @@ $ npm install --save-dev babel-preset-stage-3
     ],
     "plugins": []
   }
-````
-注意，以下所有Babel工具和模块的使用，都必须先写好`.babelrc`。
-## 命令行转码babel-cli
-Babel提供`babel-cli`工具，用于命令行转码。
+```
+
+注意，以下所有 Babel 工具和模块的使用，都必须先写好`.babelrc`。
+
+## 命令行转码 babel-cli
+
+Babel 提供`babel-cli`工具，用于命令行转码。
 听阮老师的，在全局环境和当前项目环境都安装。
-````bash
+
+```bash
 # 全局
 $ npm install --global babel-cli
 
 # 本地
 $ npm install --save-dev babel-cli
-````
+```
 
 #### 基本用法
-````bash
+
+```bash
 # 转码结果输出到标准输出
 $ babel example.js
 
@@ -74,27 +85,33 @@ $ babel src -d lib
 
 # -s 参数生成source map文件
 $ babel src -d lib -s
-````
+```
 
 ##### demo
+
 1. es6
-````
+
+```
 const arr = [1,2,3];
 arr.forEach(item=>{
   console.log(item+1)
 })
-````
+```
+
 2. .babelrc,使用`es2015`转码规则
-````
+
+```
 {
   "presets": [
     "es2015"
   ],
   "plugins": []
 }
-````
-3. package.json添加命令
-````
+```
+
+3. package.json 添加命令
+
+```
 {
   // ...
   "devDependencies": {
@@ -104,61 +121,72 @@ arr.forEach(item=>{
     "build": "babel src -d lib"
   },
 }
-````
+```
+
 最后，转码`npm run build`
-````
+
+```
 "use strict";
 
 var arr = [1, 2, 3];
 arr.forEach(function (item) {
   console.log(item + 1);
 });
-````
-> 转码对应的在与src同级目录的lib目录下编译所有的文件。
+```
+
+> 转码对应的在与 src 同级目录的 lib 目录下编译所有的文件。
 
 ## babel-node
-babel-cli工具自带一个`babel-node`命令，提供一个支持ES6的REPL环境。它支持Node的REPL环境的所有功能，而且可以直接运行ES6代码。
 
-它不用单独安装，而是随babel-cli一起安装。然后，执行babel-node就进入PEPL环境。
+babel-cli 工具自带一个`babel-node`命令，提供一个支持 ES6 的 REPL 环境。它支持 Node 的 REPL 环境的所有功能，而且可以直接运行 ES6 代码。
 
-````
+它不用单独安装，而是随 babel-cli 一起安装。然后，执行 babel-node 就进入 PEPL 环境。
+
+```
 $ babel-node
 > (x => x * 2)(1)
 2
-````
-babel-node命令可以直接运行ES6脚本。将上面的代码放入脚本文件es6.js，然后直接运行。
+```
 
-````
+babel-node 命令可以直接运行 ES6 脚本。将上面的代码放入脚本文件 es6.js，然后直接运行。
+
+```
 $ babel-node es6.js
 2
-````
-babel-node也可以安装在项目中。
-````
-$ npm install --save-dev babel-cli
-````
-然后，改写package.json。
+```
 
-````
+babel-node 也可以安装在项目中。
+
+```
+$ npm install --save-dev babel-cli
+```
+
+然后，改写 package.json。
+
+```
 {
   "scripts": {
     "script-name": "babel-node script.js"
   }
 }
-````
-上面代码中，使用babel-node替代node，这样script.js本身就不用做任何转码处理。
+```
+
+上面代码中，使用 babel-node 替代 node，这样 script.js 本身就不用做任何转码处理。
 
 ## babel-core
-如果某些代码需要调用Babel的API进行转码，就要使用babel-core模块。
+
+如果某些代码需要调用 Babel 的 API 进行转码，就要使用 babel-core 模块。
 
 安装命令如下。
 
-````
+```
 
 $ npm install babel-core --save
-````
-然后，在项目中就可以调用babel-core。
+```
 
-````
+然后，在项目中就可以调用 babel-core。
+
+```
 var babel = require('babel-core');
 
 // 字符串转码
@@ -177,12 +205,13 @@ babel.transformFileSync('filename.js', options);
 // Babel AST转码
 babel.transformFromAst(ast, code, options);
 // => { code, map, ast }
-````
-配置对象options，可以参看[官方文档](http://babeljs.io/docs/usage/options/)。
+```
+
+配置对象 options，可以参看[官方文档](http://babeljs.io/docs/usage/options/)。
 
 下面是一个例子。
 
-````
+```
 var es6Code = 'let x = n => n + 1';
 var es5Code = require('babel-core')
   .transform(es6Code, {
@@ -190,41 +219,43 @@ var es5Code = require('babel-core')
   })
   .code;
 // '"use strict";\n\nvar x = function x(n) {\n  return n + 1;\n};'
-````
-上面代码中，transform方法的第一个参数是一个字符串，表示需要转换的ES6代码，第二个参数是转换的配置对象。
+```
 
+上面代码中，transform 方法的第一个参数是一个字符串，表示需要转换的 ES6 代码，第二个参数是转换的配置对象。
 
 ## babel-polyfill
-Babel默认只转换新的JavaScript句法（syntax），而不转换新的API，比如Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise等全局对象，以及一些定义在全局对象上的方法（比如Object.assign）都不会转码。
 
-举例来说，ES6在Array对象上新增了Array.from方法。Babel就不会转码这个方法。如果想让这个方法运行，必须使用babel-polyfill，为当前环境提供一个垫片。
+Babel 默认只转换新的 JavaScript 句法（syntax），而不转换新的 API，比如 Iterator、Generator、Set、Maps、Proxy、Reflect、Symbol、Promise 等全局对象，以及一些定义在全局对象上的方法（比如 Object.assign）都不会转码。
+
+举例来说，ES6 在 Array 对象上新增了 Array.from 方法。Babel 就不会转码这个方法。如果想让这个方法运行，必须使用 babel-polyfill，为当前环境提供一个垫片。
 
 安装命令如下。
 
-````
+```
 
 $ npm install --save babel-polyfill
-````
+```
+
 然后，在脚本头部，加入如下一行代码。
 
-
-````
+```
 import 'babel-polyfill';
 // 或者
 require('babel-polyfill');
-````
-Babel默认不转码的API非常多，详细清单可以查看 `babel-plugin-transform-runtime`模块的[definitions.js](https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js)文件。
+```
+
+Babel 默认不转码的 API 非常多，详细清单可以查看 `babel-plugin-transform-runtime`模块的[definitions.js](https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/definitions.js)文件。
 
 ## webpack 和 babel 配置 react 开发环境
 
-### 1. 安装 
+### 1. 安装
 
-````bash
+```bash
 $ npm install --save react react-dom
 $ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es2015 babel-preset-stage-0 babel-plugin-transform-runtime
-````
+```
 
-````json
+```json
  "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
@@ -234,22 +265,24 @@ $ npm install --save-dev babel-cli babel-core babel-preset-react babel-preset-es
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
   }
-````
+```
 
 ### 2. 建立 babel
+
 创建 .babelrc 文件。
 
-````js
+```js
 {
   "presets": ["es2015", "stage-0"],
   "plugins": [
-    ["transform-runtime"] 
+    ["transform-runtime"]
   ]
 }
-````
+```
 
-### 3.webpack配置
-````js
+### 3.webpack 配置
+
+```js
 ...
 module: {
     rules:[
@@ -266,17 +299,20 @@ module: {
       },
     ]
 }
-````
+```
 
 ## 补充：eslint
 
 ### 1.安装
-````bash
+
+```bash
 npm install eslint --save-dev
 npm install eslint-plugin-import eslint-config-airbnb-base --save-dev
-````
-### 2.eslint结合webpack配置
-````js
+```
+
+### 2.eslint 结合 webpack 配置
+
+```js
 ...
 module: {
     rules:[
@@ -287,15 +323,18 @@ module: {
       },
     ]
 }
-````
-### 3.eslintrc.json规则配置
-````bash
+```
+
+### 3.eslintrc.json 规则配置
+
+```bash
 touch .eslintrc.json
 touch .eslintignore
-````
+```
 
 .eslintrc.json
-````json
+
+```json
 {
   "extends": "airbnb-base",
   "env": {
@@ -315,13 +354,15 @@ touch .eslintignore
     ...
   }
 }
-````
+```
 
-````bash
+```bash
 npm install eslint-loader --save-dev
-````
-### 4.package.json检查eslint语法
-````json
+```
+
+### 4.package.json 检查 eslint 语法
+
+```json
  ...
  "scripts": {
     "lint": "eslint **/*.js",
@@ -329,30 +370,32 @@ npm install eslint-loader --save-dev
     "lint-fix": "eslint --fix **/*.js"
   },
   ...
-````
+```
 
-### 5.eslint结合babel
-````bash
+### 5.eslint 结合 babel
+
+```bash
 npm install babel-eslint --save-dev
-````
+```
+
 然后创建或使用项目现有的 .eslintrc.json 文件并设置 parser 为 babel-eslint。.
-````js
+
+```js
   {
 +   "parser": "babel-eslint",
     "rules": {
       ...
     }
   }
-````
+```
+
 #### 参考链接
+
 - [React preset](https://babeljs.io/docs/plugins/preset-react/)
 - [React Installation](https://reactjs.org/docs/try-react.html)
 
-
-
 #### userful links
+
 - http://www.ruanyifeng.com/blog/2016/01/babel.html
 - [Babel 手册](https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/README.md)
 - https://github.com/jamiebuilds/babel-handbook/blob/master/translations/zh-Hans/user-handbook.md#toc-introduction
-
-
