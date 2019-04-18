@@ -1,7 +1,7 @@
 //jq
-(function(window, undefined) {
-  var jQuery = (function() {
-    var jQuery = function(selector, context) {
+(function (window, undefined) {
+  var jQuery = (function () {
+    var jQuery = function (selector, context) {
       // return new jQuery.fn.init(selector, context, rootjQuery);
     };
     return jQuery;
@@ -28,17 +28,17 @@
 
 //underscore
 
-(function() {
+(function () {
   var root = this;
 
   var previousUndercore = root._;
   //创建一个安全的引用到Underscore对象以供下面使用。
-  var _ = function(obj) {
+  var _ = function (obj) {
     if (obj instanceof _) return obj;
     if (!(this instanceof _)) return new _(obj);
     // 原始数据存放在包装对象的_wrapped属性中
     this._wrapped = obj;
   };
 
-  _.FunctionName = function(obj) {};
+  _.FunctionName = function (obj) { };
 }.call(this));
