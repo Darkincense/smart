@@ -4,6 +4,19 @@
   flex-direction: column;
   box-sizing: border-box;
 }
+/* 高控制 */
+page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  height: 100%;
+}
+.h100 {
+  height: 100%;
+}
+.h-auto {
+  height: auto !important;
+}
 
 .borderBox {
   box-sizing: border-box;

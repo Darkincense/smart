@@ -25,3 +25,9 @@ function onceFn(callback) {
     return function() {};
   }
 }
+
+let print = obj => {
+  var type = "log";
+  const log = JSON.parse(JSON.stringify(obj));
+  console[type](log);
+};
