@@ -442,7 +442,6 @@ function htmlToElements(html) {
 
 /**
  *
- *
  * @param {*} a dom 元素
  * @param {*} b 事件类型 click change scroll
  * @param {*} c function
@@ -456,6 +455,57 @@ function removeEvent(a, b, c, d) {
   a.removeEventListener
     ? a.removeEventListener(b, c, d)
     : a.detachEvent("on" + b, c);
+}
+
+/**
+ * 监听移动端手势，'left','right','top','bottom'
+ *
+ * @param {*} target dom 元素
+ * @param {*} options 配置项 json
+ */
+function listenTouch(target, options) {
+  addEvent(target, "touchstart", handleTouchEvent);
+  addEvent(target, "touchend", handleTouchEvent);
+  addEvent(target, "touchmove", handleTouchEvent);
+  var startX;
+  var startY;
+  function handleTouchEvent(event) {
+    switch (event.type) {
+      case "touchstart":
+        startX = event.touches[0].pageX;
+        startY = event.touches[0].pageY;
+        break;
+      case "touchend":
+        var spanX = event.changedTouches[0].pageX - startX;
+        var spanY = event.changedTouches[0].pageY - startY;
+
+        if (Math.abs(spanX) > Math.abs(spanY)) {
+          //认定为水平方向滑动
+          if (spanX > 30) {
+            //向右
+            if (options.right) options.right();
+          } else if (spanX < -30) {
+            //向左
+            if (options.left) options.left();
+          }
+        } else {
+          //认定为垂直方向滑动
+          if (spanY > 30) {
+            //向下
+            if (options.bottom) options.bottom();
+          } else if (spanY < -30) {
+            //向上
+            if (options.top) options.top();
+          }
+        }
+
+        break;
+      case "touchmove":
+        //阻止默认行为
+        event.preventDefault();
+        break;
+    }
+  }
 }
 
 var Event = {

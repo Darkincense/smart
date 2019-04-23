@@ -6,15 +6,6 @@
 - [前端圈](https://fequan.com/)
 - [JavaScript Visualizer ](https://tylermcginnis.com/)在线可视化工具——用于可视化 查看`JavaScript` 中执行上下文，变量提升，闭包和作用域
 
-## Show-mycode
-
-- https://www.netlify.com
-- https://codesandbox.io/u/xiaoyueyue165
-- https://codepen.io/xiaoyueyue165/
-- http://jsbin.com/
-- https://jsfiddle.net/
-- https://www.hackerrank.com/
-
 ## 站点素材
 
 - 优灵 http://yoolin.cc/

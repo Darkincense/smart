@@ -1,4 +1,6 @@
-### 模拟测试
+# Mock
+
+## 模拟测试
 
 - [mockapi](https://www.mockapi.io/projects)
 - [json-server](https://github.com/typicode/json-server)
@@ -8,7 +10,7 @@
 - https://github.com/nuysoft/Mock
 - [jsonplaceholder](https://github.com/typicode/jsonplaceholder) A simple online fake REST API server https://jsonplaceholder.typicode.com
 
-**公共 API**
+## 公共 API
 
 ```js
 // github
@@ -29,3 +31,9 @@ $.get(
   "jsonp"
 );
 ```
+
+## Show-mycode
+
+- https://www.netlify.com
+- [codesandbox](https://codesandbox.io/u/xiaoyueyue165) - vue && react Test 仓库，借助官方脚手架构建
+- [todomvc-demos template 分支存放的静态模板](https://github.com/xiaoyueyue165/todomvc-demos/tree/template)

@@ -42,14 +42,12 @@ github 本身是个网站,但是这个网站所在的电脑可以做为公用的
 1. 在项目根目录下创建`.git`文件，暂存区和仓库的代码都在此文件夹下
 
 ```bash
-
      git init
 ```
 
 2. 添加文件到暂存区
 
 ```bash
-
      git add A4.txt //添加单一文件
      git add -A    //把自上一次git commit后，修改过的文件全部添加到暂存区
 ```
@@ -57,27 +55,28 @@ github 本身是个网站,但是这个网站所在的电脑可以做为公用的
 3. 放到仓库
 
 ```bash
-
       git commit -m "注释" // 是把暂存区的代码，放到仓库
 ```
 
 4. git 上传代码到远端分支
 
 ```bash
-
      git push git@github.com:xiaoyueyue165/fed02.git master
-
 ```
 
 ##### 简化命令
 
 ```bash
-
      git remote add origin git@github.com:xiaoyueyue165/fed02.git
+
+     # 查看自己设置好的远端仓库简写
+     git remote -v
+
+     # 使用设置好的简写推送
      git push origin master
 ```
 
-> // 这个 origin 随便起, 就相当于设置`var origin = "git@github.com:xiaoyueyue165/fed02.git"`
+> 这个 origin 自定义的简写, 就相当于设置 `var origin = "git@github.com:xiaoyueyue165/fed02.git"`
 
 5.  忽略清单文件(.gitignore)
 
@@ -105,9 +104,14 @@ app.js
 
 默认 head 指向 master,就会把 master 中的提交的代码拿到工作区
 
-- `git reset --hard 提交的id`
-- `git reset --hard 53bd6a3cd5b9ff5782af4837985c1e3023412d23` // 本地更新
-- `git push -f origin master` // 推送至远端更新
+```bash
+# 先做本地回滚更新
+git reset --hard [commitId]
+
+# 版本落后于远端分支，必须强制推送到远端更新 ，否则无法推送到远程分支
+# 此处origin master 可省略
+git push -f origin master
+```
 
 _注意，如果是回退到最近的一次提交的状态，不需要添加 commit_id_
 \_git reset --hard head
@@ -139,7 +143,6 @@ _注意，如果是回退到最近的一次提交的状态，不需要添加 com
 【创建分支，然后在分支中提交代码!，直到这个功能完成了，就可以回到 master 分支，然后合并】
 
 ```bash
-
     git branch dev
     git checkout dev
     git add -A, git commit -m //一样是这两个命令功能完成之后回到 master 分支
@@ -147,7 +150,6 @@ _注意，如果是回退到最近的一次提交的状态，不需要添加 com
     git merge dev
     git branch -d dev   # 删除本地 dev分支
     git push origin --delete dev # 删除远端 dev 分支
-
 ```
 
 - 将本项目下的 dist 文件夹内容发布到远端的 `gh-pages` 分支
