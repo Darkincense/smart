@@ -1,109 +1,142 @@
 ## 前言
 
-移动端 rem 适配方案记录
+移动端 rem 适配方案回顾总结
 
-### 问题：为什么是 clientWidth/640?为什么要乘以 100？
+## 如何使用 rem
 
-```js
-const oHtml = document.documentElement;
-const width = oHtml.clientWidth;
-if (width < 500) {
-  // 移动设备
-  oHtml.style.fontSize = (width / 640) * 100 + "px";
-}
-```
+`rem` 单位的计算参考 html 的根节点 `font-size`进行计算，根节点的字体变化，布局参考的 rem 页面也会相应进行缩放，次为 rem 布局的本质。
 
-答：
+### 1. 动态改变 html 的 font-size 值
 
-1. 是因为这里是作为一个基础数值，换个方向去想，这里先不乘以 100 以免产生误解。
+几乎在每个浏览器中我们都将 `html` 的 `font-size` 初始化 为 **16px** ， 我们动态改变的话可以暂时将 `16px` 设置为 rem 适配的根节点 `font-size` 初始值。
 
-例如：设计稿宽度是 640px，有一个元素设计稿上的宽度是 50px，设备物理宽度是 320px,那么我们在页面上应该设置宽度为 width:50rem，相当于宽度是：50\*（320/640）=25px；这里能正确算出在 320px 的设备上刚好占一半,其实可以想象为 rem=（320/640）。
+那么如何进行适配动态修改？
 
-2. 一般浏览器的最小字体是`12px`，如果 html 的 font-size=（320/640）px，相当于 font-size=0.5px，那么这个数值就小于 12px，会造成一些计算的错误，和一些奇怪的问题，`*100`后，font-size 是 50px，就可以解决这种字体小于 12px 的问题。
+假设设计稿宽度 为 750px，我们定义了自己使用 1rem = 16px 的单位去布局，如何适配呢？
 
-3. 为了计算方便我们后面把比率乘以了 100，（320/640）\*100，那么相对应这个元素在设置数值的时候就需要除以 100 了（50/100）,这样可以保证最后出来的数值不变.
+在 chrome 的 手机 iphone 模拟器宽度为 `375px`，正好为设计稿的 一半，我们可以口算: 当时的 1rem 应该等于初始化时 html 节点 `font-size` 的一半,即 `newFontSize = 16/2 = 8px`,这样一半对一半不就适配了吗...
 
-## 栗子
+从中得到公式 `设计稿宽度/16px = 需要适配的设备宽度/8px`,能够看出 新的 `font-size` 是参考 当前的设备宽度与原设计稿的宽度，进行等比缩放的
 
-设计稿是 640px，有一个红色盒子宽高都是 320px，里面的文字是 32px，那么下面是这个例子的代码。
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1"
-    />
-    <script type="text/javascript">
-      const oHtml = document.documentElement;
-      const width = oHtml.clientWidth;
-      oHtml.style.fontSize = (width / 640) * 100 + "px";
-    </script>
-  </head>
-
-  <body style="margin: 0 ;padding: 0;font-size: 0.32rem">
-    <div style="width: 3.2rem;height: 3.2rem ;background: red">
-      <span>xiaoyueyue</span>
-    </div>
-  </body>
-</html>
-```
-
-使用下面的方法在非移动设备适配更好一些，可以将 html 的根元素设置为`100px`:
-
-```html
-<!DOCTYPE html>
-<html lang="en" style="font-size: 100px;">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Title</title>
-    <meta
-      name="viewport"
-      content="width=device-width,initial-scale=1,maximum-scale=1, minimum-scale=1"
-    />
-    <script type="text/javascript">
-      const oHtml = document.documentElement;
-      const width = oHtml.clientWidth;
-      if (width < 500) {
-        oHtml.style.fontSize = (width / 640) * 100 + "px";
-      }
-    </script>
-  </head>
-
-  <body style="margin: 0 ;padding: 0;">
-    <div
-      style="font-size:0.32rem;width: 3.2rem;height: 3.2rem ;background:green;color:#fff"
-    >
-      <span>xiaoyueyue</span>
-    </div>
-  </body>
-</html>
-```
-
-## 工具函数
-
-- [src rem 计算适配](https://github.com/xiaoyueyue165/src/blob/master/js.md)
+最终得到 `newFontSize = 16px \* 需要适配的设备宽度 / 原设计稿宽度`
 
 ```js
 (function(doc, win) {
-  var docEl = doc.documentElement,
-    resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
-    recalc = function() {
-      var clientWidth = docEl.clientWidth;
-      if (!clientWidth) return;
-      docEl.style.fontSize = 20 * (clientWidth / 320) + "px";
+  var resizeEvt =
+      "orientationchange" in window ? "orientationchange" : "resize",
+    setRemResponse = function() {
+      var vM = 750;
+      var vfontSize = 16;
+      var html = doc.documentElement;
+      var newfontSize = (vfontSize * html.clientWidth) / vM;
+      html.style.fontSize = newfontSize + "px";
     };
-
-  if (!doc.addEventListener) return;
-  win.addEventListener(resizeEvt, recalc, false);
-  doc.addEventListener("DOMContentLoaded", recalc, false);
+  doc.addEventListener("DOMContentLoaded", setRemResponse, false);
+  win.addEventListener(resizeEvt, setRemResponse, false);
 })(document, window);
 ```
 
-#### 参考
+### 2. 实际使用
 
-- [一步步教你使用 rem 适配不同屏幕的移动设备](https://www.cnblogs.com/dannyxie/p/6640903.html)
-- [移动端适配：font-size 设置的思考](https://www.cnblogs.com/axl234/p/5156956.html)
+将测量得出的`btn` 按钮的样式从 `px`转换 为 `rem`
+
+```css
+.btn {
+  width: 699px; /* 699/16 => 43.6875rem; */
+  height: 90px; /* 90/16px => 5.625rem;  */
+  background: rgba(90, 173, 246, 1);
+  border-radius: 6px; /* 6/16=> 0.375rem; */
+}
+```
+
+自己计算太繁琐，使用 scss 定义 函数代替计算过程
+
+```Scss
+@function pxToRem($initialStyle) {
+  @return $initialStyle/16 * 1rem;
+}
+```
+
+那么上面的 `css`改写为:
+
+```Scss
+.btn {
+  width: pxToRem(699);
+  height:pxToRem(90);
+  background: rgba(90, 173, 246, 1);
+  border-radius:pxToRem(6);
+}
+```
+
+> 补充： vscode 的插件 [cssrem](https://marketplace.visualstudio.com/items?itemName=cipchk.cssrem) 支持计算 将我们在 css,scss 中输入的 px 转换为 rem 单位，默认设置的 font-size 为 **16px**
+
+## 计算方法变形，口算 rem
+
+### 1. 简单分析
+
+分析上一节我们最终得到 `newFontSize = 16px \* 需要适配的设备宽度 / 原设计稿宽度`
+
+每次计算要除以 100 很是繁琐，我们若将 初始的 html 根节点 `font-size`变为方便计算的，反正它最终做为一个除数，变为多少呢? 是否 **100** 更为方便呢？对了！
+
+```js
+const oHtml = document.documentElement;
+const clientWidth = oHtml.clientWidth;
+var vM = 750;
+var vfontSize = 100;
+// 移动设备
+oHtml.style.fontSize = (vfontSize * clientWidth) / vM + "px";
+```
+
+### 2. 实际使用
+
+还是上面熟悉的那个 `btn`, 将`px`转换 为 `rem`, 口算得出结果。
+
+```css
+.btn {
+  width: 699px; /* 699/100 => 6.99rem; */
+  height: 90px; /* 90/100 => 0.9rem;  */
+  background: rgba(90, 173, 246, 1);
+  border-radius: 6px; /* 6/100=> 0.06rem; */
+}
+```
+
+不得不说，有了 scss 是真的方便！
+
+```Scss
+@function reduced100($initialStyle) {
+  @return $initialStyle/100 * 1rem;
+}
+```
+
+那么上面的 `css`函数方法改写为:
+
+```Scss
+.btn {
+  width: reduced100(699);
+  height:reduced100(90);
+  background: rgba(90, 173, 246, 1);
+  border-radius:reduced100(6);
+}
+```
+
+怎么样，`rem` 原来就是这么简单！！！
+
+## 工具函数
+
+上面的方法，二选其一就可以了，毕竟现在 `javascript` 的 执行效率不差！
+
+```js
+(function(doc, win) {
+  var resizeEvt =
+      "orientationchange" in window ? "orientationchange" : "resize",
+    setRemResponse = function() {
+      var vM = 750;
+      var vfontSize = 16;
+      var html = doc.documentElement;
+      var newfontSize = (vfontSize * html.clientWidth) / vM;
+      html.style.fontSize = newfontSize + "px";
+    };
+  doc.addEventListener("DOMContentLoaded", setRemResponse, false);
+  win.addEventListener(resizeEvt, setRemResponse, false);
+})(document, window);
+```
