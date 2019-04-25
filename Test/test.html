@@ -1,26 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div id="root"></div>
-    <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
-    <script>
-      function isFunction(obj) {
-        return (
-          {}.toString
-            .call(obj)
-            .split(" ")[1]
-            .slice(0, -1) === "Function"
-        );
-      }
-      console.log(isFunction(function() {}));
-      console.log(isFunction({}));
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="https://cdn.bootcss.com/react/16.8.6/umd/react.development.js"></script>
+  <script>
+    // public static $xcx_appid  = 'wxdc7efe409d688f37';
+    // public static $xcx_secret = '0af8cda7dbfe6751b248233ebcf55d2f';
+    var begin_time = "2019/04/26",
+      end_time = "2019-05-05";
+
+    function belongTimeRange(begin_time, end_time) {
+      var timeStr = new Date().getTime();
+      var start = new Date(begin_time).getTime();
+      var end = new Date(end_time).getTime();
+      return timeStr >= start && timeStr <= end;
+    }
+    console.log(belongTimeRange(begin_time, end_time));
+  </script>
+</body>
+
 </html>

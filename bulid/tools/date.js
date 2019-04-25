@@ -257,3 +257,16 @@ var Time = {
     return tip;
   }
 };
+
+/**
+ * 判断当前的操作是否在 允许的时间范围内
+ * @param {*} begin_time "2019/04/26"
+ * @param {*} end_time "2019-05-05"
+ * @returns Boolean
+ */
+function belongTimeRange(begin_time, end_time) {
+  var timeStr = new Date().getTime();
+  var start = new Date(begin_time).getTime();
+  var end = new Date(end_time).getTime();
+  return timeStr >= start && timeStr <= end;
+}
